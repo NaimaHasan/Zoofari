@@ -31,12 +31,12 @@ Abbreviations relevant to the endangered animals section of the app are the foll
 
 ## Few Screens
 
-![homeScreen](home_screen_with_menu_view.png)
+![homeScreen](Assets/home_screen_with_menu_view.png)
 
-![categoricalScreen _bird](categorical_birds.png)
+![categoricalScreen _bird](Assets/categorical_birds.png)
 
-![categoricalScreen _fish](categorical_fish.png)
+![categoricalScreen _fish](Assets/categorical_fish.png)
 
-![animalDetailsScreen](animal_details.png)
+![animalDetailsScreen](Assets/animal_details.png)
 
-![searchResultScreen](search_result.png)
+![searchResultScreen](Assets/search_result.png)
