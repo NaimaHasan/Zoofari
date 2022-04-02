@@ -1,31 +1,34 @@
 import 'dart:convert';
 
-Animal animalFromJson(String str) => json.decode(str).map((x) => Animal.fromJson(x));
+// Animal animalFromJson(String str) => json.decode(str).map((x) => Animal.fromJson(x));
+Animal animalFromJson(String str) {
+  return Animal.fromJson(json.decode(str));
+}
 
 
 class Animal {
-  String _commonName;
-  String _scientificName;
-  String _kingdom;
-  String _phylum;
-  String _class;
-  String _order;
-  String _family;
-  String _genus;
-  String _avgWeight;
-  String _maxWeight;
-  String _maxLength;
-  String _maxSpeed;
-  String _lifespan;
-  String _lifestyle;
-  String _skinType;
-  String _funFact;
-  List<String> _diets;
-  List<String> _habitats;
-  List<String> _preys;
-  List<String> _predators;
-  List<String> _colors;
-  List<String> _imageLinks;
+  String? _commonName;
+  String? _scientificName;
+  String? _kingdom;
+  String? _phylum;
+  String? _class;
+  String? _order;
+  String? _family;
+  String? _genus;
+  String? _avgWeight;
+  String? _maxWeight;
+  String? _maxLength;
+  String? _maxSpeed;
+  String? _lifespan;
+  String? _lifestyle;
+  String? _skinType;
+  String? _funFact;
+  String? _diets;
+  String? _habitats;
+  String? _preys;
+  String? _predators;
+  List<dynamic> _colors;
+  List<dynamic> _imageLinks;
 
   Animal(
       this._commonName,
@@ -51,155 +54,221 @@ class Animal {
       this._colors,
       this._imageLinks);
 
-  List<String> get colors => _colors;
+    String? get commonName => _commonName;
 
-  set colors(List<String> value) {
-    _colors = value;
-  }
+  // List<String> get colors => _colors;
 
-  List<String> get predators => _predators;
+  // set colors(List<String> value) {
+  //   _colors = value;
+  // }
 
-  set predators(List<String> value) {
-    _predators = value;
-  }
+  // List<String> get predators => _predators;
 
-  List<String> get preys => _preys;
+  // set predators(List<String> value) {
+  //   _predators = value;
+  // }
 
-  set preys(List<String> value) {
-    _preys = value;
-  }
+  // List<String> get preys => _preys;
 
-  List<String> get habitats => _habitats;
+  // set preys(List<String> value) {
+  //   _preys = value;
+  // }
 
-  set habitats(List<String> value) {
-    _habitats = value;
-  }
+  // List<String> get habitats => _habitats;
 
-  List<String> get diets => _diets;
+  // set habitats(List<String> value) {
+  //   _habitats = value;
+  // }
 
-  set diets(List<String> value) {
-    _diets = value;
-  }
+  // List<String> get diets => _diets;
 
-  String get funFact => _funFact;
+  // set diets(List<String> value) {
+  //   _diets = value;
+  // }
 
-  set funFact(String value) {
-    _funFact = value;
-  }
+  // String get funFact => _funFact;
 
-  String get skinType => _skinType;
+  // set funFact(String value) {
+  //   _funFact = value;
+  // }
 
-  set skinType(String value) {
-    _skinType = value;
-  }
+  // String get skinType => _skinType;
 
-  String get lifestyle => _lifestyle;
+  // set skinType(String value) {
+  //   _skinType = value;
+  // }
 
-  set lifestyle(String value) {
-    _lifestyle = value;
-  }
+  // String get lifestyle => _lifestyle;
 
-  String get lifespan => _lifespan;
+  // set lifestyle(String value) {
+  //   _lifestyle = value;
+  // }
 
-  set lifespan(String value) {
-    _lifespan = value;
-  }
+  // String get lifespan => _lifespan;
 
-  String get maxSpeed => _maxSpeed;
+  // set lifespan(String value) {
+  //   _lifespan = value;
+  // }
 
-  set maxSpeed(String value) {
-    _maxSpeed = value;
-  }
+  // String get maxSpeed => _maxSpeed;
 
-  String get maxLength => _maxLength;
+  // set maxSpeed(String value) {
+  //   _maxSpeed = value;
+  // }
 
-  set maxLength(String value) {
-    _maxLength = value;
-  }
+  // String get maxLength => _maxLength;
 
-  String get maxWeight => _maxWeight;
+  // set maxLength(String value) {
+  //   _maxLength = value;
+  // }
 
-  set maxWeight(String value) {
-    _maxWeight = value;
-  }
+  // String get maxWeight => _maxWeight;
 
-  String get avgWeight => _avgWeight;
+  // set maxWeight(String value) {
+  //   _maxWeight = value;
+  // }
 
-  set avgWeight(String value) {
-    _avgWeight = value;
-  }
+  // String get avgWeight => _avgWeight;
 
-  String get scientificName => _scientificName;
+  // set avgWeight(String value) {
+  //   _avgWeight = value;
+  // }
 
-  set scientificName(String value) {
-    _scientificName = value;
-  }
+  // String get scientificName => _scientificName;
 
-  String get commonName => _commonName;
+  // set scientificName(String value) {
+  //   _scientificName = value;
+  // }
 
-  set commonName(String value) {
-    _commonName = value;
-  }
+  // String get commonName => _commonName;
 
-  String get kingdom => _kingdom;
+  // set commonName(String value) {
+  //   _commonName = value;
+  // }
 
-  set kingdom(String value) {
-    _kingdom = value;
-  }
+  // String get kingdom => _kingdom;
 
-  String get phylum => _phylum;
+  // set kingdom(String value) {
+  //   _kingdom = value;
+  // }
 
-  set phylum(String value) {
-    _phylum = value;
-  }
+  // String get phylum => _phylum;
 
-  String get order => _order;
+  // set phylum(String value) {
+  //   _phylum = value;
+  // }
 
-  set order(String value) {
-    _order = value;
-  }
+  // String get order => _order;
 
-  String get family => _family;
+  // set order(String value) {
+  //   _order = value;
+  // }
 
-  set family(String value) {
-    _family = value;
-  }
+  // String get family => _family;
 
-  String get genus => _genus;
+  // set family(String value) {
+  //   _family = value;
+  // }
 
-  set genus(String value) {
-    _genus = value;
-  }
+  // String get genus => _genus;
 
-  Map<String, String> getAnimalInfo() {
-    return {
-      'CommonName': _commonName,
-      'ScientificName': _scientificName,
-      'Kingdom': _kingdom,
-      'Phylum': _phylum,
-      'Class': _class,
-      'Order': _order,
-      'Family': _family,
-      'Genus': _genus,
-      'AvgWeight': _avgWeight.toString(),
-      'MaxWeight': _maxWeight.toString(),
-      'Lifespan': _lifespan.toString(),
-      'Lifestyle': _lifestyle,
-      'SkinType': _skinType,
-      'FunFact': _funFact,
-      'MaxSpeed': _maxSpeed.toString(),
-      'MaxLength': _maxLength.toString(),
-      'Diets': _diets.toString(),
-      'Habitats': _habitats.toString(),
-      'Preys': _preys.toString(),
-      'Predators': _predators.toString(),
-      'Colors': _colors.toString()
-    };
+  // set genus(String value) {
+  //   _genus = value;
+  // }
 
-  }
+  // Map<String, String> getAnimalInfo() {
+  //   return {
+  //     'CommonName': _commonName,
+  //     'ScientificName': _scientificName,
+  //     'Kingdom': _kingdom,
+  //     'Phylum': _phylum,
+  //     'Class': _class,
+  //     'Order': _order,
+  //     'Family': _family,
+  //     'Genus': _genus,
+  //     'AvgWeight': _avgWeight.toString(),
+  //     'MaxWeight': _maxWeight.toString(),
+  //     'Lifespan': _lifespan.toString(),
+  //     'Lifestyle': _lifestyle,
+  //     'SkinType': _skinType,
+  //     'FunFact': _funFact,
+  //     'MaxSpeed': _maxSpeed.toString(),
+  //     'MaxLength': _maxLength.toString(),
+  //     'Diets': _diets.toString(),
+  //     'Habitats': _habitats.toString(),
+  //     'Preys': _preys.toString(),
+  //     'Predators': _predators.toString(),
+  //     'Colors': _colors.toString()
+  //   };
 
-  factory Animal.fromJson(Map<String, dynamic> json) => Animal(
-    json["common_name"],
+  // }
+
+  // factory Animal.fromJson(Map<String, dynamic> json) => Animal(
+  //   json["common_name"],
+  //   json["classification"]["Scientific Name"],
+  //   json["classification"]["Kingdom"],
+  //   json["classification"]["Phylum"],
+  //   json["classification"]["Class"],
+  //   json["classification"]["Order"],
+  //   json["classification"]["Family"],
+  //   json["classification"]["Genus"],
+  //   json["general_facts"]["Weight"],
+  //   json["general_facts"]["Weight"],
+  //   json["general_facts"]["Length"],
+  //   json["general_facts"]["Top Speed"],
+  //   json["general_facts"]["Lifespan"],
+  //   json["general_facts"]["Lifestyle"],
+  //   json["general_facts"]["Skin Type"],
+  //   json["general_facts"]["Fun Fact"],
+  //   json["general_facts"]["Diet"],
+  //   json["general_facts"]["Habitat"],
+  //   json["general_facts"]["Prey"],
+  //   json["general_facts"]["Predator"],
+  //   json["general_facts"]["Color"],
+  //   json["general_facts"]["image_link"]
+  // );
+
+  factory Animal.fromJson(var json) {
+    var w = "", l = "", ts = "", ls = "", lsty = "", st = "", ff = "", d = "", h = "", pr = "", pd = "", col = List<dynamic>.empty(growable: true);
+    if(json["general_facts"]["Weight"] != null) {
+      w = json["general_facts"]["Weight"];
+    }
+    if(json["general_facts"]["Length"] != null) {
+      l = json["general_facts"]["Length"];
+    }
+    if(json["general_facts"]["Top Speed"] != null) {
+      ts = json["general_facts"]["Top Speed"];
+    }
+    if(json["general_facts"]["Lifespan"] != null) {
+      ls = json["general_facts"]["Lifespan"];
+    }
+    if(json["general_facts"]["Lifestyle"] != null) {
+      lsty = json["general_facts"]["Lifestyle"];
+    }
+    if(json["general_facts"]["Skin Type"] != null) {
+      st = json["general_facts"]["Skin Type"];
+    }
+    if(json["general_facts"]["Fun Fact"] != null) {
+      ff = json["general_facts"]["Fun Fact"];
+    }
+    if(json["general_facts"]["Diet"] != null) {
+      d = json["general_facts"]["Diet"];
+    }
+    if(json["general_facts"]["Habitat"] != null) {
+      h = json["general_facts"]["Habitat"];
+    }
+    if(json["general_facts"]["Prey"] != null) {
+      pr = json["general_facts"]["Prey"];
+    }
+    if(json["general_facts"]["Predator"] != null){
+      pd = json["general_facts"]["Predator"];
+    }
+    if(json["general_facts"]["Color"] != null) {
+      col = json["general_facts"]["Color"];
+    }
+    
+    return Animal(
+      json["common_name"],
     json["classification"]["Scientific Name"],
     json["classification"]["Kingdom"],
     json["classification"]["Phylum"],
@@ -207,19 +276,9 @@ class Animal {
     json["classification"]["Order"],
     json["classification"]["Family"],
     json["classification"]["Genus"],
-    json["general_facts"]["Weight"],
-    json["general_facts"]["Weight"],
-    json["general_facts"]["Length"],
-    json["general_facts"]["Top Speed"],
-    json["general_facts"]["Lifespan"],
-    json["general_facts"]["Lifestyle"],
-    json["general_facts"]["Skin Type"],
-    json["general_facts"]["Fun Fact"],
-    json["general_facts"]["Diet"],
-    json["general_facts"]["Habitat"],
-    json["general_facts"]["Prey"],
-    json["general_facts"]["Predator"],
-    json["general_facts"]["Color"],
-    json["general_facts"]["image_link"]
-  );
+    w, w, l, ts, ls, lsty, st, ff, d, h, pr, pd, col, 
+    json["image_link"]
+    );
+  }
+
 }

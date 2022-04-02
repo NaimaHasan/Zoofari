@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 import 'package:http/http.dart' as http;
 import 'package:zoofari/Model/Data Definitions/Animal.dart';
@@ -17,34 +18,50 @@ class OnlineRepository {
     return _hostWebsite + '/search/$parsedText';
   }
 
-  static List<Animal> returnAnimalList(var list) {
+  static List<Animal?> returnAnimalList(var list) {
+    print(list);
     return list;
   }
 
-  static Future<List<Animal>?> animalListCompilation(List<String> animalsToFetch) async{
+  static Future<List<Animal?>?> animalListCompilation(List<String> animalsToFetch) async{
     List<Animal?> animalsFetched = List.empty(growable: true);
     for(int itr = 0; itr < animalsToFetch.length; itr++) {
       var fetched = await fetchSingleAnimal( animalsToFetch[itr] );
-      animalsFetched.add( fetched );
+      print("fetched in animal list compilation $fetched");
+      if(fetched != null) {
+        animalsFetched.add( fetched );
+      }
     }
     return returnAnimalList(animalsFetched);
   }
 
   static List<String> extractNames(var jsonString, var category) {
     int resultFound = jsonString['found'];
+    // print("result found $resultFound");
     List<int> positions = List.empty(growable: true);
     for(int itr = 0; itr < 10; itr++) {
       positions.add(random.nextInt(resultFound - 1));
     }
     List<String> toFetch = List.empty(growable: true);
-    for(int itr = 0; itr < toFetch.length; itr++) {
+    // print(jsonString);
+    for(int itr = 0; itr < positions.length; itr++) {
+      print(jsonString[category][ positions[itr] ]);
       toFetch.add( jsonString[category][ positions[itr] ] );
     }
+    print("to fetch list in extract names $toFetch");
     return toFetch;
   }
 
   static List<String> extractSearchResultNames(var jsonString) {
-    List<String> toReturn = jsonString['search_result'];
+    // print(jsonString);
+    jsonString = json.decode(jsonString);
+    List<dynamic> resultList = jsonString['search_result'];
+    List<String> toReturn = List.empty(growable: true);
+
+    for(int itr = 0; itr < resultList.length; itr++) {
+      toReturn.add(resultList[itr]);
+    }
+
     return toReturn;
   }
 
@@ -59,7 +76,7 @@ class OnlineRepository {
   }
 
   // primary function: gets a list of animals, here category == animals, mammals, fish, birds, reptiles, amphibians
-  static Future<List<Animal>?> fetchCategoricalAnimal(String category) async {
+  static Future<List<Animal?>?> fetchCategoricalAnimal(String category) async {
     bool all = false;
     if(category == 'animals') {
       all = true;
@@ -73,15 +90,16 @@ class OnlineRepository {
 
     if( response.statusCode == 200 ) {
       var jsonString = response.body;
-      List<String> animalsToFetch = extractNames(jsonString, category);
+      List<String> animalsToFetch = extractNames(json.decode(jsonString), category);
       
+
       return animalListCompilation(animalsToFetch);
     }
     return null;
   }
 
   // primary function: gets search result
-  static Future<List<Animal>?> fetchSearchedAnimals(String searchText) async {
+  static Future<List<Animal?>?> fetchSearchedAnimals(String searchText) async {
     var searchURL = getSearchURL(searchText);
     var response = await client.get(Uri.parse( searchURL ));
 
