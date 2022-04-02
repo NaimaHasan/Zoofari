@@ -28,3 +28,15 @@ Abbreviations relevant to the endangered animals section of the app are the foll
 - EX = Extinct
 
 ![Activity diagram](Assets/Activity_diagram.png#gh-light-mode-only)
+
+## Few Screens
+
+![homeScreen](home_screen_with_menu_view.png)
+
+![categoricalScreen _bird](categorical_birds.png)
+
+![categoricalScreen _fish](categorical_fish.png)
+
+![animalDetailsScreen](animal_details.png)
+
+![searchResultScreen](search_result.png)
