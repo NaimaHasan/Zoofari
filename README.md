@@ -1,16 +1,30 @@
 # zoofari
 
-A new Flutter project.
+An Android and IOS application built using Flutter with the core feature as the availability of information and pictures of different species of animals to aid children to learn more about them.
 
-## Getting Started
+## Functionalities
 
-This project is a starting point for a Flutter application.
+The function that this mobile application is aimed to provide are the following -
+- Seamless viewing UI
+- View animals of different categories
+- View the details of the clicked animal
+- Infinite scroll feature for viewing categorized animals
+- Save to/remove from favorite animal list 
+- View favorited animals
+- Search for animal/s
+- Go through search results
 
-A few resources to get you started if this is your first Flutter project:
+## Abbreviations
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Abbreviations relevant to the endangered animals section of the app are the following -
+- NT = Near Threatened
+- DD = Data Deficient
+- VU = Vulnerable
+- LC = Least Concern
+- LR = Lowest Risk
+- CR = Critically Endangered
+- EN = Threatened with Danger/Endangered
+- EW = Extinct in the Wild
+- EX = Extinct
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Activity diagram]()
