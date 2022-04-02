@@ -27,4 +27,4 @@ Abbreviations relevant to the endangered animals section of the app are the foll
 - EW = Extinct in the Wild
 - EX = Extinct
 
-![Activity diagram](Zoofari - Activity diagram _lucid chart.png)
+![Activity diagram](Assets/Activity_diagram.png#gh-light-mode-only)
