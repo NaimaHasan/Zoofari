@@ -28,9 +28,9 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  google_fonts: ^2.1.0
-  flutter_tts: ^3.3.3
+  cupertino_icons: ^1.0.4
+  google_fonts: ^2.3.1
+  # flutter_tts: ^3.3.3
 
 dev_dependencies:
   flutter_test:
@@ -76,14 +76,14 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  fonts:
-    - family: Quicksand
-      fonts:
-        - asset: Assets/Fonts/Quicksand/Quicksand-Regular.ttf
-        - asset: Assets/Fonts/Quicksand/Quicksand-Bold.ttf
-          weight: 700
-        - asset: Assets/Fonts/Quicksand/Quicksand-SemiBold.ttf
-          weight: 600
+  # fonts:
+  #   - family: Quicksand
+  #     fonts:
+  #       - asset: Assets/Fonts/Quicksand/Quicksand-Regular.ttf
+  #       - asset: Assets/Fonts/Quicksand/Quicksand-Bold.ttf
+  #         weight: 700
+  #       - asset: Assets/Fonts/Quicksand/Quicksand-SemiBold.ttf
+  #         weight: 600
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

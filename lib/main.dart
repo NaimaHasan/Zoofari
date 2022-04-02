@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
+import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 
 import 'View/Auxiliary/Helpers/ColorGenerator.dart';
 import 'View/Screens/FavoriteScreen.dart';
@@ -29,17 +30,23 @@ class MyApp extends StatelessWidget {
             Color(0xFF4c8e82),
           ),
         ),
+        appBarTheme: AppBarTheme(
+          color: Color(0xFF4c8e82),
+        ),
         backgroundColor: const Color(0xFFe2f9f5),
-        accentColor: Color(0xFF4c8e82),
-        accentIconTheme: IconThemeData(color: Colors.black),
         dividerColor: Colors.white54,
         fontFamily: 'Quicksand',
+
       ),
       routes: {
         HomeScreen.routeName: (ctx) => HomeScreen(),
         FavoriteScreen.routeName: (ctx) => FavoriteScreen(),
-        CategoricalAnimalScreen.routeName: (ctx) => CategoricalAnimalScreen(title: ''),
+        CategoricalAnimalScreen.routeName: (ctx) =>
+            CategoricalAnimalScreen(title: ''),
         AnimalDetailsScreen.routeName: (ctx) => AnimalDetailsScreen(),
+        SearchResultsScreen.routeName: (ctx) => SearchResultsScreen(
+              searchKey: '',
+            ),
       },
     );
   }

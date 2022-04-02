@@ -10,7 +10,7 @@ The function that this mobile application is aimed to provide are the following 
 - View the details of the clicked animal
 - Infinite scroll feature for viewing categorized animals
 - Save to/remove from favorite animal list 
-- View favorited animals
+- View favorite animals
 - Search for animal/s
 - Go through search results
 

@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:zoofari/View/Buttons/FavoriteMenu.dart';
-
+import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 
 import 'HomeTopAnimal.dart';
 
-class HomeTopScreen extends StatelessWidget {
+class HomeTopScreen extends StatefulWidget {
   const HomeTopScreen({Key? key}) : super(key: key);
 
   @override
+  _HomeTopScreenState createState() => _HomeTopScreenState();
+}
+
+class _HomeTopScreenState extends State<HomeTopScreen> {
+  @override
   Widget build(BuildContext context) {
+    var query = '';
     return Card(
       elevation: 5,
       margin: EdgeInsets.zero,
@@ -59,7 +65,20 @@ class HomeTopScreen extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    onSaved: (value) {},
+                    onSaved: (value) {
+                      query = value!;
+                    },
+                    textInputAction: TextInputAction.done,
+                    onFieldSubmitted: (_) {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) =>
+                              SearchResultsScreen(searchKey: query),
+                          transitionDuration: Duration(seconds: 0),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 FavoriteMenu(),
