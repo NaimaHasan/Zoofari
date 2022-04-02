@@ -1,64 +1,64 @@
-import 'Animal.dart';
+// import 'Animal.dart';
 
-class EndangeredAnimal extends Animal {
-  String _endangeredStatus;
+// class EndangeredAnimal extends Animal {
+//   String _endangeredStatus;
 
-  EndangeredAnimal(
-      _commonName,
-      _scientificName,
-      _kingdom,
-      _phylum,
-      _order,
-      _family,
-      _genus,
-      _avgWeight,
-      _maxWeight,
-      _maxLength,
-      _maxSpeed,
-      _lifespan,
-      _lifestyle,
-      _classType,
-      _skinType,
-      _funFact,
-      _diets,
-      _habitats,
-      _preys,
-      _predators,
-      _colors,
-      this._endangeredStatus)
-      : super(
-            _commonName,
-            _scientificName,
-            _kingdom,
-            _phylum,
-            _order,
-            _family,
-            _genus,
-            _avgWeight,
-            _maxWeight,
-            _maxLength,
-            _maxSpeed,
-            _lifespan,
-            _lifestyle,
-            _classType,
-            _skinType,
-            _funFact,
-            _diets,
-            _habitats,
-            _preys,
-            _predators,
-            _colors);
+//   EndangeredAnimal(
+//       _commonName,
+//       _scientificName,
+//       _kingdom,
+//       _phylum,
+//       _order,
+//       _family,
+//       _genus,
+//       _avgWeight,
+//       _maxWeight,
+//       _maxLength,
+//       _maxSpeed,
+//       _lifespan,
+//       _lifestyle,
+//       _classType,
+//       _skinType,
+//       _funFact,
+//       _diets,
+//       _habitats,
+//       _preys,
+//       _predators,
+//       _colors,
+//       this._endangeredStatus)
+//       : super(
+//             _commonName,
+//             _scientificName,
+//             _kingdom,
+//             _phylum,
+//             _order,
+//             _family,
+//             _genus,
+//             _avgWeight,
+//             _maxWeight,
+//             _maxLength,
+//             _maxSpeed,
+//             _lifespan,
+//             _lifestyle,
+//             _classType,
+//             _skinType,
+//             _funFact,
+//             _diets,
+//             _habitats,
+//             _preys,
+//             _predators,
+//             _colors);
 
-  String get endangeredStatus => _endangeredStatus;
+//   String get endangeredStatus => _endangeredStatus;
 
-  set endangeredStatus(String value) {
-    _endangeredStatus = value;
-  }
+//   set endangeredStatus(String value) {
+//     _endangeredStatus = value;
+//   }
 
-  @override
-  Map<String, String> getAnimalInfo() {
-    Map<String, String> info = super.getAnimalInfo();
-    info.addAll({'EndangeredStatus': _endangeredStatus});
-    return info;
-  }
-}
+//   @override
+//   Map<String, String> getAnimalInfo() {
+//     Map<String, String> info = super.getAnimalInfo();
+//     info.addAll({'EndangeredStatus': _endangeredStatus});
+//     return info;
+//   }
+// }

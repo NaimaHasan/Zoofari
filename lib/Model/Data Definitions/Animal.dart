@@ -1,18 +1,23 @@
+import 'dart:convert';
+
+Animal animalFromJson(String str) => json.decode(str).map((x) => Animal.fromJson(x));
+
+
 class Animal {
   String _commonName;
   String _scientificName;
   String _kingdom;
   String _phylum;
+  String _class;
   String _order;
   String _family;
   String _genus;
-  double _avgWeight;
-  double _maxWeight;
-  double _maxLength;
-  double _maxSpeed;
-  double _lifespan;
+  String _avgWeight;
+  String _maxWeight;
+  String _maxLength;
+  String _maxSpeed;
+  String _lifespan;
   String _lifestyle;
-  String _classType;
   String _skinType;
   String _funFact;
   List<String> _diets;
@@ -20,12 +25,14 @@ class Animal {
   List<String> _preys;
   List<String> _predators;
   List<String> _colors;
+  List<String> _imageLinks;
 
   Animal(
       this._commonName,
       this._scientificName,
       this._kingdom,
       this._phylum,
+      this._class,
       this._order,
       this._family,
       this._genus,
@@ -35,14 +42,14 @@ class Animal {
       this._maxSpeed,
       this._lifespan,
       this._lifestyle,
-      this._classType,
       this._skinType,
       this._funFact,
       this._diets,
       this._habitats,
       this._preys,
       this._predators,
-      this._colors);
+      this._colors,
+      this._imageLinks);
 
   List<String> get colors => _colors;
 
@@ -86,45 +93,39 @@ class Animal {
     _skinType = value;
   }
 
-  String get classType => _classType;
-
-  set classType(String value) {
-    _classType = value;
-  }
-
   String get lifestyle => _lifestyle;
 
   set lifestyle(String value) {
     _lifestyle = value;
   }
 
-  double get lifespan => _lifespan;
+  String get lifespan => _lifespan;
 
-  set lifespan(double value) {
+  set lifespan(String value) {
     _lifespan = value;
   }
 
-  double get maxSpeed => _maxSpeed;
+  String get maxSpeed => _maxSpeed;
 
-  set maxSpeed(double value) {
+  set maxSpeed(String value) {
     _maxSpeed = value;
   }
 
-  double get maxLength => _maxLength;
+  String get maxLength => _maxLength;
 
-  set maxLength(double value) {
+  set maxLength(String value) {
     _maxLength = value;
   }
 
-  double get maxWeight => _maxWeight;
+  String get maxWeight => _maxWeight;
 
-  set maxWeight(double value) {
+  set maxWeight(String value) {
     _maxWeight = value;
   }
 
-  double get avgWeight => _avgWeight;
+  String get avgWeight => _avgWeight;
 
-  set avgWeight(double value) {
+  set avgWeight(String value) {
     _avgWeight = value;
   }
 
@@ -176,6 +177,7 @@ class Animal {
       'ScientificName': _scientificName,
       'Kingdom': _kingdom,
       'Phylum': _phylum,
+      'Class': _class,
       'Order': _order,
       'Family': _family,
       'Genus': _genus,
@@ -183,7 +185,6 @@ class Animal {
       'MaxWeight': _maxWeight.toString(),
       'Lifespan': _lifespan.toString(),
       'Lifestyle': _lifestyle,
-      'ClassType': _classType,
       'SkinType': _skinType,
       'FunFact': _funFact,
       'MaxSpeed': _maxSpeed.toString(),
@@ -194,5 +195,31 @@ class Animal {
       'Predators': _predators.toString(),
       'Colors': _colors.toString()
     };
+
   }
+
+  factory Animal.fromJson(Map<String, dynamic> json) => Animal(
+    json["common_name"],
+    json["classification"]["Scientific Name"],
+    json["classification"]["Kingdom"],
+    json["classification"]["Phylum"],
+    json["classification"]["Class"],
+    json["classification"]["Order"],
+    json["classification"]["Family"],
+    json["classification"]["Genus"],
+    json["general_facts"]["Weight"],
+    json["general_facts"]["Weight"],
+    json["general_facts"]["Length"],
+    json["general_facts"]["Top Speed"],
+    json["general_facts"]["Lifespan"],
+    json["general_facts"]["Lifestyle"],
+    json["general_facts"]["Skin Type"],
+    json["general_facts"]["Fun Fact"],
+    json["general_facts"]["Diet"],
+    json["general_facts"]["Habitat"],
+    json["general_facts"]["Prey"],
+    json["general_facts"]["Predator"],
+    json["general_facts"]["Color"],
+    json["general_facts"]["image_link"]
+  );
 }
