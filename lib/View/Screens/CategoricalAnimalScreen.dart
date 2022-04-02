@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Buttons/FavoriteMenu.dart';
 
 import 'AnimalDetailsScreen.dart';
 
-class CategoricalAnimalScreen extends StatefulWidget {
+class CategoricalAnimalScreen extends StatelessWidget {
   const CategoricalAnimalScreen({required this.title, Key? key})
       : super(key: key);
+
   static const String routeName = '/categoryAnimal';
   final String title;
 
-
-  @override
-  _CategoricalAnimalScreenState createState() =>
-      _CategoricalAnimalScreenState();
-}
-
-class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        title: Text(widget.title),
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
+        ),
+        title: Text(
+          title,
+          style: TextStyle(color: Colors.white),
+        ),
         actions: [
           FavoriteMenu(),
         ],
