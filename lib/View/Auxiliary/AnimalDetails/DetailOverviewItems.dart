@@ -7,6 +7,7 @@ class DetailOverviewItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -14,7 +15,7 @@ class DetailOverviewItems extends StatelessWidget {
             padding: EdgeInsets.only(top: 5, bottom: 5),
             child: Container(
               height: 40,
-              color: Colors.white54,
+              color: Theme.of(context).backgroundColor,
               child: Center(
                 child: Text(
                   title,

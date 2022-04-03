@@ -96,8 +96,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                       );
                     },
                     child: Card(
-                      shadowColor: Colors.white38,
-                      color: Colors.white38,
+
                       child: Container(
                         width: 100,
                         child: Column(
@@ -116,7 +115,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                             ),
                             Expanded(
                               child: Container(
-                                color: Colors.white38,
+
                                 width: 110,
                                 child: Row(
                                   children: [

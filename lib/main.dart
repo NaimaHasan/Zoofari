@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           color: Color(0xFF4c8e82),
         ),
-        backgroundColor: const Color(0xFFe2f9f5),
+        backgroundColor: const Color(0xFFe9f8f5),
         dividerColor: Colors.white54,
         fontFamily: 'Quicksand',
 

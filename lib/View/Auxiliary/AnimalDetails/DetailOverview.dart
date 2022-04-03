@@ -26,9 +26,6 @@ class DetailOverview extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              height: 15,
-            ),
             DetailOverviewItems(
               title: 'Name',
               list: nameList,

@@ -15,14 +15,15 @@ class _DetailDrawerState extends State<DetailDrawer> {
 
   @override
   void initState() {
-
     _pageController = PageController(initialPage: 0);
     super.initState();
   }
+
   Widget build(BuildContext context) {
     return BottomDrawer(
+      cornerRadius: 20,
       header: Padding(
-        padding: EdgeInsets.only(top: 10, bottom: 10),
+        padding: EdgeInsets.only(top: 10, bottom: 25),
         child: GestureDetector(
           onVerticalDragStart: (_) {
             controller.open();
@@ -35,7 +36,7 @@ class _DetailDrawerState extends State<DetailDrawer> {
         ),
       ),
       body: DefaultTabController(
-        length: 4, // length of tabs
+        length: 3, // length of tabs
         initialIndex: 0,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -49,14 +50,13 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 unselectedLabelColor: Colors.black,
                 tabs: [
                   Tab(text: 'Overview'),
-                  Tab(text: 'Tab 2'),
-                  Tab(text: 'Tab 3'),
-                  Tab(text: 'Tab 4'),
+                  Tab(text: 'Features'),
+                  Tab(text: 'Miscellaneous'),
                 ],
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height-70, //height of TabBarView
+              height: MediaQuery.of(context).size.height - 90, //height of TabBarView
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(color: Colors.grey, width: 0.5),
@@ -85,24 +85,15 @@ class _DetailDrawerState extends State<DetailDrawer> {
                       ),
                     ),
                   ),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        'Display Tab 4',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             )
           ],
         ),
       ),
-      headerHeight: 500,
+      headerHeight: MediaQuery.of(context).size.height * 0.6 + 20,
       drawerHeight: MediaQuery.of(context).size.height,
-      color: Theme.of(context).backgroundColor,
+      color: Colors.white,
       controller: controller,
     );
   }
