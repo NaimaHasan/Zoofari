@@ -15,7 +15,7 @@ class DetailFeatures extends StatelessWidget {
     'Incubation Period:',
     'Gestation Period:'
   ];
-  static List<String> topInformationlist = [
+  static List<String> topInformationList = [
     'Lifespan',
     'Average Weight',
     'Skin Type',
@@ -31,7 +31,7 @@ class DetailFeatures extends StatelessWidget {
           ),
           Container(
             width: MediaQuery.of(context).size.width,
-            height: 50,
+            height: 45,
             child: ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.zero,
@@ -43,7 +43,7 @@ class DetailFeatures extends StatelessWidget {
                       width: MediaQuery.of(context).size.width / 3,
                       child: Center(
                         child: Text(
-                          topInformationlist[index],
+                          topInformationList[index],
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -69,8 +69,35 @@ class DetailFeatures extends StatelessWidget {
                   ],
                 );
               },
-              itemCount: topInformationlist.length,
+              itemCount: topInformationList.length,
               shrinkWrap: true,
+            ),
+          ),
+          Container(
+            height: 30,
+          ),
+          Container(
+            height: 20,
+            child: Text(
+              'Colors',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF4c8e82),
+              ),
+            ),
+          ),
+          Container(
+            height: 10,
+          ),
+          Container(
+            child: Center(
+              child: Text(
+                'Orange, Yellow, White, Blue',
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
             ),
           ),
           Container(
