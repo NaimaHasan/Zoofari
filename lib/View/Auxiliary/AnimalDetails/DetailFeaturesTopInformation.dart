@@ -8,9 +8,7 @@ class DetailFeaturesTopInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 30,
-        ),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -31,7 +29,7 @@ class DetailFeaturesTopInformation extends StatelessWidget {
               width: MediaQuery.of(context).size.width / 3,
               child: Center(
                 child: Text(
-                  'Skin Type',
+                  'Average Weight',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
@@ -44,7 +42,7 @@ class DetailFeaturesTopInformation extends StatelessWidget {
               width: MediaQuery.of(context).size.width / 3,
               child: Center(
                 child: Text(
-                  'Color',
+                  'Skin Type',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
@@ -76,7 +74,7 @@ class DetailFeaturesTopInformation extends StatelessWidget {
               width: MediaQuery.of(context).size.width / 3,
               child: Center(
                 child: Text(
-                  'Furry boi',
+                  '10 kg',
                   style: TextStyle(
                     fontSize: 16,
                   ),
@@ -87,7 +85,7 @@ class DetailFeaturesTopInformation extends StatelessWidget {
               width: MediaQuery.of(context).size.width / 3,
               child: Center(
                 child: Text(
-                  'Orange',
+                  'Furry boi',
                   style: TextStyle(
                     fontSize: 16,
                   ),
