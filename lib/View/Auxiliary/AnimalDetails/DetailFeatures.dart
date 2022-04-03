@@ -11,6 +11,10 @@ class DetailFeatures extends StatelessWidget {
     'Average Litter Size:',
     'Average Spawn Size:',
     'Wingspan:',
+    'Age of Sexual Maturity:',
+    'Age of Weaning:',
+    'Incubation Period:',
+    'Gestation Period:'
   ];
   static List<String> topInformationlist = [
     'Lifespan',

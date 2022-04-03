@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailFeatures.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailOverview.dart';
 
+import 'DetailMiscellaneous.dart';
+
 class DetailDrawer extends StatefulWidget {
   const DetailDrawer({Key? key}) : super(key: key);
 
@@ -69,15 +71,7 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 children: <Widget>[
                   DetailOverview(),
                   DetailFeatures(),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        'Display Tab 3',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
+                  DetailMiscellaneous(),
                 ],
               ),
             )
