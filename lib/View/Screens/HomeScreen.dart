@@ -4,7 +4,7 @@ import 'package:zoofari/View/Auxiliary/Home/HomeTopScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
-  static const String routeName = '/';
+  static const String routeName = '/hhh';
   static List<String> list = [
     'Random',
     'Endangered',
@@ -21,7 +21,6 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
         child: ListView.builder(
           itemBuilder: (context, index) {
             if (index == 0) {

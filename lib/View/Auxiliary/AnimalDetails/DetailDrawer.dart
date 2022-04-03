@@ -1,5 +1,6 @@
 import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailFeatures.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailOverview.dart';
 
 class DetailDrawer extends StatefulWidget {
@@ -46,7 +47,7 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 onTap: (index) {
                   _pageController.jumpToPage(index);
                 },
-                labelColor: Colors.green,
+                labelColor: Color(0xFF4c8e82),
                 unselectedLabelColor: Colors.black,
                 tabs: [
                   Tab(text: 'Overview'),
@@ -67,15 +68,7 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 controller: _pageController,
                 children: <Widget>[
                   DetailOverview(),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        'Display Tab 2',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
+                  DetailFeatures(),
                   Container(
                     child: Center(
                       child: Text(

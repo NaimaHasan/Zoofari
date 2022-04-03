@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter/rendering.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailOverviewItems.dart';
 
 class DetailOverview extends StatelessWidget {
@@ -22,20 +20,21 @@ class DetailOverview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            DetailOverviewItems(
-              title: 'Name',
-              list: nameList,
-            ),
-            DetailOverviewItems(
-              title: 'Scientific Classification',
-              list: classificationList,
-            ),
-          ],
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          DetailOverviewItems(
+            title: 'Name',
+            list: nameList,
+          ),
+          Container(
+            height: 10,
+          ),
+          DetailOverviewItems(
+            title: 'Scientific Classification',
+            list: classificationList,
+          ),
+        ],
       ),
     );
   }

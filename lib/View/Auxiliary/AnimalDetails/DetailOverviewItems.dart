@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 class DetailOverviewItems extends StatelessWidget {
-  const DetailOverviewItems({required this.title, required this.list, Key? key}) : super(key: key);
+  const DetailOverviewItems({required this.title, required this.list, Key? key})
+      : super(key: key);
   final String title;
   final List<String> list;
   @override
   Widget build(BuildContext context) {
     return Container(
-
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-            padding: EdgeInsets.only(top: 5, bottom: 5),
+            padding: EdgeInsets.only(bottom: 5),
             child: Container(
               height: 40,
               color: Theme.of(context).backgroundColor,
@@ -20,9 +20,9 @@ class DetailOverviewItems extends StatelessWidget {
                 child: Text(
                   title,
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.teal,
+                    color: Color(0xFF4c8e82),
                   ),
                 ),
               ),
@@ -33,7 +33,7 @@ class DetailOverviewItems extends StatelessWidget {
             padding: EdgeInsets.zero,
             itemBuilder: (ctx, index) {
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 7),
                 child: Column(
                   children: [
                     Padding(
@@ -45,14 +45,15 @@ class DetailOverviewItems extends StatelessWidget {
                             child: Text(
                               list[index],
                               style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.teal),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF4c8e82),
+                              ),
                             ),
                           ),
                           Text(
                             'Lion',
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 15),
                           ),
                         ],
                       ),

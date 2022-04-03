@@ -22,7 +22,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
               Expanded(
                 child: Text(
                   widget.title,
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 17),
                 ),
               ),
               IconButton(
@@ -96,7 +96,8 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                       );
                     },
                     child: Card(
-
+                      color: Colors.white,
+                      shadowColor: Colors.white,
                       child: Container(
                         width: 100,
                         child: Column(
