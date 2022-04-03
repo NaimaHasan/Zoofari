@@ -20,6 +20,11 @@ class DetailFeatures extends StatelessWidget {
     'Average Weight',
     'Skin Type',
   ];
+  static List<String> colorList = [
+    'Orange, ',
+    'Red, ',
+    'Black',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -73,35 +78,9 @@ class DetailFeatures extends StatelessWidget {
               shrinkWrap: true,
             ),
           ),
+
           Container(
-            height: 30,
-          ),
-          Container(
-            height: 20,
-            child: Text(
-              'Colors',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF4c8e82),
-              ),
-            ),
-          ),
-          Container(
-            height: 10,
-          ),
-          Container(
-            child: Center(
-              child: Text(
-                'Orange, Yellow, White, Blue',
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            height: 40,
+            height: 35,
           ),
           Container(
             height: 40,

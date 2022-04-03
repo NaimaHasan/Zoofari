@@ -9,20 +9,36 @@ class DetailMiscellaneous extends StatelessWidget {
       children: [
         Container(
           height: 50,
-          color: Colors.red.shade200,
+          color: Colors.red.shade100,
           child: Row(
             children: [
-              Icon(
-                Icons.warning_amber_outlined,
-                size: 18,
+              Container(
+                width: MediaQuery.of(context).size.width * 0.12,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 15),
+                  child: Icon(
+                    Icons.warning_amber_outlined,
+                    size: 16,
+                  ),
+                ),
               ),
-              Text(
-                'Endangered Status:',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.38,
+                child: Text(
+                  'Endangered Status:',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                ),
               ),
-              Text(
-                'Critically Endangered',
-                style: TextStyle(fontSize: 16),
+              Container(
+                alignment: Alignment.centerRight,
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 20),
+                  child: Text(
+                    'Critically Endangered',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
               ),
             ],
           ),
