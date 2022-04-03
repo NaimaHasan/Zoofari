@@ -9,16 +9,16 @@ import 'View/Screens/FavoriteScreen.dart';
 import 'View/Screens/HomeScreen.dart';
 
 import 'Model/Data Definitions/Animal.dart';
-void main() {
-  runApp(const MyApp());
-}
-
-// void main() async {
-//   var sth = await OnlineRepository.fetchSearchedAnimals("black dog");
-
-//   print(sth?[0]?.commonName);
-//   // print(sth?.commonName);
+// void main() {
+//   runApp(const MyApp());
 // }
+
+void main() async {
+  var sth = await OnlineRepository.fetchCategoricalAnimal("reptiles");
+
+  print(sth?[0]?.getAnimalInfo());
+  // print(sth?.commonName);
+}
 
 
 class MyApp extends StatelessWidget {
