@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter/rendering.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailOverviewItems.dart';
 
 class DetailOverview extends StatelessWidget {

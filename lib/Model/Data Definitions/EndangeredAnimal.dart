@@ -53,9 +53,7 @@ class EndangeredAnimal extends Animal {
             _colors,
             _imageLinks);
 
-  String getEndangeredStatus() {
-    return _endangeredStatus;
-  }
+  String get endangeredStatus => _endangeredStatus;
 
   set endangeredStatus(String value) {
     _endangeredStatus = value;

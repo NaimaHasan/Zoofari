@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zoofari/Controller/CategoricalController/CategoricalAnimalFetcher.dart';
 import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
-import 'package:zoofari/Model/Retrievers/LocalDatabase.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
@@ -9,27 +8,19 @@ import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 import 'View/Auxiliary/Helpers/ColorGenerator.dart';
 import 'View/Screens/FavoriteScreen.dart';
 import 'View/Screens/HomeScreen.dart';
-import 'Model/Data Definitions/Animal.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DatabaseManager.initialize();
-  
+  var animals = await DatabaseManager.getSearchedAnimals(" black,lion");
+  await CategoricalAnimalFetcher.getAnimals("animals");
+  var animals1 = CategoricalAnimalFetcher.categoricalAnimalList;
+  print(animals);
+  for (final item in animals1) {
+    print(item.commonName);
+  }
   runApp(const MyApp());
 }
-
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await DatabaseManager.initialize();
-
-//   List<Animal> fromDB = DatabaseManager.getAllFavorites();
-//   print("from db: ");
-//   for(Animal a in fromDB) {
-    
-//     print(a.getAnimalInfo());
-//   }
-// }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -56,7 +47,6 @@ class MyApp extends StatelessWidget {
         backgroundColor: const Color(0xFFe2f9f5),
         dividerColor: Colors.white54,
         fontFamily: 'Quicksand',
-
       ),
       routes: {
         HomeScreen.routeName: (ctx) => HomeScreen(),

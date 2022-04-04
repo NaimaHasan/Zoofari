@@ -1,18 +1,11 @@
 class QueryConstructor {
   static List<String> categories = [];
 
-  static String constructSearchKey(String searchKeyword) {
-    String searchKey = '';
-    formatSearchKey(searchKey);
-    return '';
-  }
-
-  static String constructQuery(String searchKeyword) {
-    constructSearchKey(searchKeyword);
-    return '';
+  static String constructSearchKeyWord(String searchKey) {
+    return formatSearchKey(searchKey).toLowerCase().split(" ").join('+');
   }
 
   static String formatSearchKey(String searchKey) {
-    return '';
+    return searchKey.replaceAll(new RegExp(r'[^a-zA-Z\\s]+'), ' ').trim();
   }
 }

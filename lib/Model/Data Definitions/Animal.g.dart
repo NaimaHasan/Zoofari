@@ -47,7 +47,7 @@ class AnimalAdapter extends TypeAdapter<Animal> {
     writer
       ..writeByte(22)
       ..writeByte(0)
-      ..write(obj._commonName)
+      ..write(obj.commonName)
       ..writeByte(1)
       ..write(obj._scientificName)
       ..writeByte(2)
@@ -55,7 +55,7 @@ class AnimalAdapter extends TypeAdapter<Animal> {
       ..writeByte(3)
       ..write(obj._phylum)
       ..writeByte(4)
-      ..write(obj._class)
+      ..write(obj._classType)
       ..writeByte(5)
       ..write(obj._order)
       ..writeByte(6)

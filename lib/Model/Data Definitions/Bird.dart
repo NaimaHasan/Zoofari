@@ -26,6 +26,7 @@ class Bird extends Animal {
       _preys,
       _predators,
       _colors,
+      _imageLinks,
       this._wingspan,
       this._nestingLocation)
       : super(
@@ -49,27 +50,24 @@ class Bird extends Animal {
             _habitats,
             _preys,
             _predators,
-            _colors);
+            _colors,
+            _imageLinks);
 
-  String getNestingLocation() {
-    return _nestingLocation;
-  }
-
-  set nestingLocation(String value) {
-    _nestingLocation = value;
-  }
-
-  String getWingspan() {
-    return _wingspan;
-  }
+  String get wingspan => _wingspan;
 
   set wingspan(String value) {
     _wingspan = value;
   }
 
+  String get nestingLocation => _nestingLocation;
+
+  set nestingLocation(String value) {
+    _nestingLocation = value;
+  }
+
   @override
-  Map<String, String> getAnimalInfo() {
-    Map<String, String> info = super.getAnimalInfo();
+  Map<String, dynamic> getAnimalInfo() {
+    Map<String, dynamic> info = super.getAnimalInfo();
     info.addAll({'Wingspan': _wingspan, 'NestingLocation': _nestingLocation});
     return info;
   }

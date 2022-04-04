@@ -27,6 +27,7 @@ class Mammal extends Animal {
       _preys,
       _predators,
       _colors,
+      _imageLinks,
       this._ageOfWeaning,
       this._avgLitterSz,
       this._ageOfSexualMaturity)
@@ -51,36 +52,30 @@ class Mammal extends Animal {
             _habitats,
             _preys,
             _predators,
-            _colors);
+            _colors,
+            _imageLinks);
 
-
-  String getAgeOfWeaning() {
-    return _ageOfWeaning;
-  }
+  String get ageOfWeaning => _ageOfWeaning;
 
   set ageOfWeaning(String value) {
     _ageOfWeaning = value;
   }
 
-  String getAvgLitterSz() {
-    return _avgLitterSz;
-  }
+  String get avgLitterSz => _avgLitterSz;
 
   set avgLitterSz(String value) {
     _avgLitterSz = value;
   }
 
-  String getAgeOfSexualMaturity() {
-    return _ageOfSexualMaturity;
-  }
+  String get ageOfSexualMaturity => _ageOfSexualMaturity;
 
   set ageOfSexualMaturity(String value) {
     _ageOfSexualMaturity = value;
   }
 
   @override
-  Map<String, String> getAnimalInfo() {
-    Map<String, String> info = super.getAnimalInfo();
+  Map<String, dynamic> getAnimalInfo() {
+    Map<String, dynamic> info = super.getAnimalInfo();
     info.addAll({
       'AgeOfSexualMaturity': _ageOfSexualMaturity,
       'AgeOfWeaning': _ageOfWeaning,

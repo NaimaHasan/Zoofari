@@ -25,6 +25,7 @@ class Reptile extends Animal {
       _preys,
       _predators,
       _colors,
+      _imageLinks,
       this._gestationPeriod)
       : super(
             _commonName,
@@ -47,19 +48,18 @@ class Reptile extends Animal {
             _habitats,
             _preys,
             _predators,
-            _colors);
+            _colors,
+            _imageLinks);
 
-  String getGestationPeriod() {
-    return _gestationPeriod;
-  }
+  String get gestationPeriod => _gestationPeriod;
 
   set gestationPeriod(String value) {
     _gestationPeriod = value;
   }
 
   @override
-  Map<String, String> getAnimalInfo() {
-    Map<String, String> info = super.getAnimalInfo();
+  Map<String, dynamic> getAnimalInfo() {
+    Map<String, dynamic> info = super.getAnimalInfo();
     info.addAll({'GestationPeriod': _gestationPeriod});
     return info;
   }

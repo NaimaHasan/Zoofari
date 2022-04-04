@@ -26,6 +26,7 @@ class Fish extends Animal {
       _preys,
       _predators,
       _colors,
+      _imageLinks,
       this._groupBehavior,
       this._estimatedPopulationSz)
       : super(
@@ -49,29 +50,24 @@ class Fish extends Animal {
             _habitats,
             _preys,
             _predators,
-            _colors);
+            _colors,
+            _imageLinks);
 
-
-  String getEstimatedPopulationSz() {
-    return _estimatedPopulationSz;
-  }
-
-  set estimatedPopulationSz(String value) {
-    _estimatedPopulationSz = value;
-  }
-
-  String getGroupBehavior() {
-    return _groupBehavior;
-  }
+  String get groupBehavior => _groupBehavior;
 
   set groupBehavior(String value) {
     _groupBehavior = value;
   }
 
+  String get estimatedPopulationSz => _estimatedPopulationSz;
+
+  set estimatedPopulationSz(String value) {
+    _estimatedPopulationSz = value;
+  }
 
   @override
-  Map<String, String> getAnimalInfo() {
-    Map<String, String> info = super.getAnimalInfo();
+  Map<String, dynamic> getAnimalInfo() {
+    Map<String, dynamic> info = super.getAnimalInfo();
     info.addAll({
       'GroupBehavior': _groupBehavior,
       'EstimatedPopulationSz': _estimatedPopulationSz

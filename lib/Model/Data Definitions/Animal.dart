@@ -1,9 +1,8 @@
 import 'dart:convert';
+
 import 'package:hive/hive.dart';
 
 part 'Animal.g.dart';
-
-// Animal animalFromJson(String str) => json.decode(str).map((x) => Animal.fromJson(x));
 
 Animal animalFromJson(String str) {
   return Animal.fromJson(json.decode(str));
@@ -24,7 +23,7 @@ class Animal {
   String _phylum;
 
   @HiveField(4)
-  String _class;
+  String _classType;
 
   @HiveField(5)
   String _order;
@@ -43,7 +42,7 @@ class Animal {
 
   @HiveField(10)
   String _maxLength;
-  
+
   @HiveField(11)
   String _maxSpeed;
 
@@ -56,7 +55,7 @@ class Animal {
   @HiveField(14)
   String _skinType;
 
-  @HiveField(15)  
+  @HiveField(15)
   String _funFact;
 
   @HiveField(16)
@@ -82,7 +81,7 @@ class Animal {
       this._scientificName,
       this._kingdom,
       this._phylum,
-      this._class,
+      this._classType,
       this._order,
       this._family,
       this._genus,
@@ -101,169 +100,118 @@ class Animal {
       this._colors,
       this._imageLinks);
 
-  List<dynamic> getColors() {
-    return _colors;
-  }
-
-  String getPredators() {
-    return _predators;
-  }
-
-  set colors(List<dynamic> value) {
-    _colors = value;
-  }
-
-  String getPreys() {
-    return _preys;
-  }
-  
-  set predators(String value) {
-    _predators = value;
-  }
-
-  String getHabitats() {
-    return _habitats;
-  }
-
-  set preys(String value) {
-    _preys = value;
-  }
-
-  String getDiets() {
-    return _diets;
-  }
-
-  set habitats(String value) {
-    _habitats = value;
-  }
-
-  String getFunFact() {
-    return _funFact;
-  }
-
-  set diets(String value) {
-    _diets = value;
-  }
-
-  String getSkinType() {
-    return _skinType;
-  }
-
-  set funFact(String value) {
-    _funFact = value;
-  }
-
-  String getClassType() {
-    return _classType;
-  }
-
-  set skinType(String value) {
-    _skinType = value;
-  }
-
-  String getLifestyle() {
-    return _lifestyle;
-  }
-
-  set lifestyle(String value) {
-    _lifestyle = value;
-  }
-
-  String getLifespan() {
-    return _lifespan;
-  }
-
-  set lifespan(String value) {
-    _lifespan = value;
-  }
-
-  String getMaxSpeed() {
-    return _maxSpeed;
-  }
-
-  set maxSpeed(String value) {
-    _maxSpeed = value;
-  }
-
-  String getMaxLength() {
-    return _maxLength;
-  }
-
-  set maxLength(String value) {
-    _maxLength = value;
-  }
-
-  String getMaxWeight() {
-    return _maxWeight;
-  }
-
-  set maxWeight(String value) {
-    _maxWeight = value;
-  }
-
-  String getAvgWeight() {
-    return _avgWeight;
-  }
-
-  set avgWeight(String value) {
-    _avgWeight = value;
-  }
-
-  String getScientificName() {
-    return _scientificName;
-  }
-
+  String get scientificName => _scientificName;
 
   set scientificName(String value) {
     _scientificName = value;
   }
 
-  String getCommonName() {
-    return _commonName;
+  get commonName => _commonName;
+
+  set commonName(dynamic commonName) {
+    _commonName = commonName;
   }
 
-  set commonName(String value) {
-    _commonName = value;
-  }
-
-  String getKingdom() {
-    return _kingdom;
-  }
+  String get kingdom => _kingdom;
 
   set kingdom(String value) {
     _kingdom = value;
   }
 
-  String getPhylum() {
-    return _phylum;
-  }
+  String get phylum => _phylum;
 
   set phylum(String value) {
     _phylum = value;
   }
 
-  String getOrder() {
-    return _order;
+  String get classType => _classType;
+  set classType(String value) {
+    _classType = value;
   }
 
+  String get order => _order;
   set order(String value) {
     _order = value;
   }
 
-  String getFamily() {
-    return _family;
-  }
-
+  String get family => _family;
   set family(String value) {
     _family = value;
   }
 
-  String getGenus() {
-    return _genus;
-  }
-
+  String get genus => _genus;
   set genus(String value) {
     _genus = value;
+  }
+
+  String get avgWeight => _avgWeight;
+  set avgWeight(String value) {
+    _avgWeight = value;
+  }
+
+  String get maxWeight => _maxWeight;
+  set maxWeight(String value) {
+    _maxWeight = value;
+  }
+
+  String get maxLength => _maxLength;
+  set maxLength(String value) {
+    _maxLength = value;
+  }
+
+  String get maxSpeed => _maxSpeed;
+  set maxSpeed(String value) {
+    _maxSpeed = value;
+  }
+
+  String get lifespan => _lifespan;
+  set lifespan(String value) {
+    _lifespan = value;
+  }
+
+  String get lifestyle => _lifestyle;
+  set lifestyle(String value) {
+    _lifestyle = value;
+  }
+
+  String get skinType => _skinType;
+  set skinType(String value) {
+    _skinType = value;
+  }
+
+  String get funFact => _funFact;
+  set funFact(String value) {
+    _funFact = value;
+  }
+
+  String get diets => _diets;
+  set diets(String value) {
+    _diets = value;
+  }
+
+  String get habitats => _habitats;
+  set habitats(String value) {
+    _habitats = value;
+  }
+
+  String get preys => _preys;
+  set preys(String value) {
+    _preys = value;
+  }
+
+  String get predators => _predators;
+  set predators(String value) {
+    _predators = value;
+  }
+
+  List<dynamic> get colors => _colors;
+  set colors(List<dynamic> value) {
+    _colors = value;
+  }
+
+  List<dynamic> get imageLinks => _imageLinks;
+  set imageLinks(List<dynamic> value) {
+    _imageLinks = value;
   }
 
   Map<String, dynamic> getAnimalInfo() {
@@ -272,7 +220,7 @@ class Animal {
       'ScientificName': _scientificName,
       'Kingdom': _kingdom,
       'Phylum': _phylum,
-      'Class': _class,
+      'Class': _classType,
       'Order': _order,
       'Family': _family,
       'Genus': _genus,
@@ -291,9 +239,7 @@ class Animal {
       'Colors': _colors.toString(),
       'Image Links': _imageLinks
     };
-
   }
-
 
   factory Animal.fromJson(var json) {
     String commonNameVar = "Not Available";
@@ -319,96 +265,93 @@ class Animal {
     List<dynamic> colorsVar = List.empty(growable: true);
     List<dynamic> imageLinksVar = List.empty(growable: true);
 
-    if( json["common_name"] != null) {
+    if (json["common_name"] != null) {
       commonNameVar = json["common_name"];
     }
-    if( json["classification"]["Scientific Name"] != null ) {
+    if (json["classification"]["Scientific Name"] != null) {
       scientificNameVar = json["classification"]["Scientific Name"];
     }
-    if( json["classification"]["Kingdom"] != null ) {
+    if (json["classification"]["Kingdom"] != null) {
       kingdomVar = json["classification"]["Kingdom"];
     }
-    if( json["classification"]["Phylum"] != null ) {
+    if (json["classification"]["Phylum"] != null) {
       phylumVar = json["classification"]["Phylum"];
     }
-    if( json["classification"]["Class"] != null ) {
+    if (json["classification"]["Class"] != null) {
       classVar = json["classification"]["Class"];
     }
-    if( json["classification"]["Order"] != null ) {
+    if (json["classification"]["Order"] != null) {
       orderVar = json["classification"]["Order"];
     }
-    if( json["classification"]["Family"] != null ) {
+    if (json["classification"]["Family"] != null) {
       familyVar = json["classification"]["Family"];
     }
-    if( json["classification"]["Genus"] != null ) {
+    if (json["classification"]["Genus"] != null) {
       genusVar = json["classification"]["Genus"];
     }
-    if(json["general_facts"]["Weight"] != null) {
+    if (json["general_facts"]["Weight"] != null) {
       avgWeightVar = json["general_facts"]["Weight"];
       maxWeightVar = json["general_facts"]["Weight"];
     }
-    if(json["general_facts"]["Length"] != null) {
+    if (json["general_facts"]["Length"] != null) {
       maxLengthVar = json["general_facts"]["Length"];
     }
-    if(json["general_facts"]["Top Speed"] != null) {
+    if (json["general_facts"]["Top Speed"] != null) {
       maxSpeedVar = json["general_facts"]["Top Speed"];
     }
-    if(json["general_facts"]["Lifespan"] != null) {
+    if (json["general_facts"]["Lifespan"] != null) {
       lifespanVar = json["general_facts"]["Lifespan"];
     }
-    if(json["general_facts"]["Lifestyle"] != null) {
+    if (json["general_facts"]["Lifestyle"] != null) {
       lifestyleVar = json["general_facts"]["Lifestyle"];
     }
-    if(json["general_facts"]["Skin Type"] != null) {
+    if (json["general_facts"]["Skin Type"] != null) {
       skinTypeVar = json["general_facts"]["Skin Type"];
     }
-    if(json["general_facts"]["Fun Fact"] != null) {
+    if (json["general_facts"]["Fun Fact"] != null) {
       funFactVar = json["general_facts"]["Fun Fact"];
     }
-    if(json["general_facts"]["Diet"] != null) {
+    if (json["general_facts"]["Diet"] != null) {
       dietsVar = json["general_facts"]["Diet"];
     }
-    if(json["general_facts"]["Habitat"] != null) {
+    if (json["general_facts"]["Habitat"] != null) {
       habitatsVar = json["general_facts"]["Habitat"];
     }
-    if(json["general_facts"]["Prey"] != null) {
+    if (json["general_facts"]["Prey"] != null) {
       preysVar = json["general_facts"]["Prey"];
     }
-    if(json["general_facts"]["Predator"] != null){
+    if (json["general_facts"]["Predator"] != null) {
       predatorsVar = json["general_facts"]["Predator"];
     }
-    if(json["general_facts"]["Color"] != null) {
+    if (json["general_facts"]["Color"] != null) {
       colorsVar = json["general_facts"]["Color"];
     }
-    if(json["image_link"] != null) {
+    if (json["image_link"] != null) {
       imageLinksVar = json["image_link"];
     }
 
-    
     return Animal(
-      commonNameVar,
-      scientificNameVar,
-      kingdomVar,
-      phylumVar,
-      classVar,
-      orderVar,
-      familyVar, 
-      genusVar,
-      avgWeightVar,
-      maxWeightVar,
-      maxLengthVar,
-      maxSpeedVar,
-      lifespanVar,
-      lifestyleVar,
-      skinTypeVar,
-      funFactVar,
-      dietsVar,
-      habitatsVar,
-      preysVar,
-      predatorsVar,
-      colorsVar,
-      imageLinksVar
-    );
+        commonNameVar,
+        scientificNameVar,
+        kingdomVar,
+        phylumVar,
+        classVar,
+        orderVar,
+        familyVar,
+        genusVar,
+        avgWeightVar,
+        maxWeightVar,
+        maxLengthVar,
+        maxSpeedVar,
+        lifespanVar,
+        lifestyleVar,
+        skinTypeVar,
+        funFactVar,
+        dietsVar,
+        habitatsVar,
+        preysVar,
+        predatorsVar,
+        colorsVar,
+        imageLinksVar);
   }
-
 }

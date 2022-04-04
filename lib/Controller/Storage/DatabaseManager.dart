@@ -1,19 +1,19 @@
-import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
-
+import 'package:zoofari/Controller/SearchController/QueryConstructor.dart';
 import 'package:zoofari/Model/Data Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/LocalDatabase.dart';
+import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 
 class DatabaseManager {
-  // static final LocalDatabase _localDatabase = LocalDatabase("", []);
-  static final OnlineRepository _remoteDatabase = OnlineRepository();
-
-  OnlineRepository get remoteDatabase => _remoteDatabase;
-
-  static Future<void> initialize() async{
+  static Future<void> initialize() async {
     await LocalDatabase.initialize();
   }
 
-  static Animal getParticularAnimal(String commonName) {
+  static Future<List<Animal?>?> getSearchedAnimals(String searchKey) async {
+    return await OnlineRepository.fetchSearchedAnimals(
+        QueryConstructor.constructSearchKeyWord(searchKey));
+  }
+
+  static Animal getParticularFavoriteAnimal(String commonName) {
     return LocalDatabase.getParticularAnimal(commonName);
   }
 
@@ -29,11 +29,11 @@ class DatabaseManager {
     return LocalDatabase.favoriteAnimals;
   }
 
-  static Future addToFavorites(Animal animal) async{
+  static Future addToFavorites(Animal animal) async {
     await LocalDatabase.addFavoriteAnimal(animal);
   }
 
-  static Future removeFromFavorites(Animal animal) async{
+  static Future removeFromFavorites(Animal animal) async {
     await LocalDatabase.removeFavoriteAnimal(animal);
   }
 }
