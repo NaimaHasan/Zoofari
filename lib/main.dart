@@ -8,7 +8,7 @@ import 'View/Screens/FavoriteScreen.dart';
 import 'View/Screens/HomeScreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( const MyApp() );
 }
 
 class MyApp extends StatelessWidget {
@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
         backgroundColor: const Color(0xFFe9f8f5),
         dividerColor: Color(0xFF4c8e82),
         fontFamily: 'Quicksand',
-
       ),
       routes: {
         HomeScreen.routeName: (ctx) => HomeScreen(),

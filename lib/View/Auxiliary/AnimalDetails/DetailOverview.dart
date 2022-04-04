@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailItems.dart';
 
+
 class DetailOverview extends StatelessWidget {
-  DetailOverview({Key? key}) : super(key: key);
+
+  const DetailOverview({required this.controller, Key? key}) : super(key: key);
+  final ScrollController controller;
   static List<String> classificationList = [
     'Kingdom',
     'Phylum',
@@ -15,6 +18,7 @@ class DetailOverview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: controller,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -59,6 +63,9 @@ class DetailOverview extends StatelessWidget {
                 color: Color(0xFF4c8e82),
               ),
             ),
+          ),
+          DetailItems(
+            list: classificationList,
           ),
           DetailItems(
             list: classificationList,

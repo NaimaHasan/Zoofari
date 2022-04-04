@@ -1,7 +1,7 @@
-import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailFeatures.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailOverview.dart';
+import 'package:zoofari/View/Auxiliary/Helpers/CustomBottomDrawer.dart';
 
 import 'DetailMiscellaneous.dart';
 
@@ -13,8 +13,15 @@ class DetailDrawer extends StatefulWidget {
 }
 
 class _DetailDrawerState extends State<DetailDrawer> {
-  final BottomDrawerController controller = BottomDrawerController();
+  final CustomBottomDrawerController controller =
+      CustomBottomDrawerController();
   late PageController _pageController;
+  List<ScrollController> scrollControllers = [
+    ScrollController(),
+    ScrollController(),
+    ScrollController(),
+    ScrollController(),
+  ];
 
   @override
   void initState() {
@@ -23,19 +30,16 @@ class _DetailDrawerState extends State<DetailDrawer> {
   }
 
   Widget build(BuildContext context) {
-    return BottomDrawer(
+    return CustomBottomDrawer(
+      scrollControllers: scrollControllers,
+      pageController: _pageController,
       cornerRadius: 20,
       header: Padding(
         padding: EdgeInsets.only(top: 10, bottom: 25),
-        child: GestureDetector(
-          onVerticalDragStart: (_) {
-            controller.open();
-          },
-          child: Container(
-            height: 2,
-            width: 45,
-            color: Colors.black,
-          ),
+        child: Container(
+          height: 2,
+          width: 45,
+          color: Colors.black,
         ),
       ),
       body: DefaultTabController(
@@ -59,7 +63,8 @@ class _DetailDrawerState extends State<DetailDrawer> {
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height - 90, //height of TabBarView
+              height: MediaQuery.of(context).size.height -
+                  90, //height of TabBarView
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(color: Colors.grey, width: 0.5),
@@ -69,9 +74,9 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 physics: NeverScrollableScrollPhysics(),
                 controller: _pageController,
                 children: <Widget>[
-                  DetailOverview(),
-                  DetailFeatures(),
-                  DetailMiscellaneous(),
+                  DetailOverview(controller: scrollControllers[0],),
+                  DetailFeatures(controller: scrollControllers[1]),
+                  DetailMiscellaneous(controller: scrollControllers[0]),
                 ],
               ),
             )
