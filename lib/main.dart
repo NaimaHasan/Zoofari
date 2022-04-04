@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/View/Screens/EmptyScreen.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
@@ -8,7 +9,7 @@ import 'View/Screens/FavoriteScreen.dart';
 import 'View/Screens/HomeScreen.dart';
 
 void main() {
-  runApp( const MyApp() );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -43,9 +44,9 @@ class MyApp extends StatelessWidget {
         CategoricalAnimalScreen.routeName: (ctx) =>
             CategoricalAnimalScreen(title: ''),
         AnimalDetailsScreen.routeName: (ctx) => AnimalDetailsScreen(),
-        SearchResultsScreen.routeName: (ctx) => SearchResultsScreen(
-              searchKey: '',
-            ),
+        SearchResultsScreen.routeName: (ctx) =>
+            SearchResultsScreen(searchKey: ''),
+        EmptyScreen.routeName: (ctx) => EmptyScreen(imageData: ''),
       },
     );
   }

@@ -124,7 +124,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                                         padding: EdgeInsets.only(left: 10),
                                         child: Text(
                                           'title',
-                                          maxLines: 2,
+                                          maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(fontSize: 14),
                                         ),

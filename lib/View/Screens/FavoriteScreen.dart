@@ -70,7 +70,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                 begin: Alignment.bottomCenter,
                                 end: Alignment.topCenter,
                                 colors: [
-                                  Colors.black87,
+                                  Colors.black45,
                                   Colors.transparent,
                                 ],
                               ),
@@ -80,24 +80,27 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                         Positioned(
                           bottom: 5,
                           child: Container(
-                            padding: EdgeInsets.all(15),
                             width: MediaQuery.of(context).size.width - 15,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.6,
-                                  child: Text(
-                                    'title',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
+                                    child: Text(
+                                      'title',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                FavoriteButton(title: 'title'),
-                              ],
+                                  FavoriteButton(title: 'title'),
+                                ],
+                              ),
                             ),
                           ),
                         ),
