@@ -53,6 +53,7 @@ class Mammal extends Animal {
             _predators,
             _colors);
 
+
   String getAgeOfWeaning() {
     return _ageOfWeaning;
   }

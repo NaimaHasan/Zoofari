@@ -1,6 +1,7 @@
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
-
+import 'package:hive/hive.dart';
 import 'Animal.dart';
+
 
 class Amphibian extends Animal {
   String _avgSpawnSz;
@@ -29,6 +30,7 @@ class Amphibian extends Animal {
       _preys,
       _predators,
       _colors,
+      _imageLinks,
       this._avgSpawnSz,
       this._waterType,
       this._incubationPeriod)
@@ -53,7 +55,9 @@ class Amphibian extends Animal {
             _habitats,
             _preys,
             _predators,
-            _colors);
+            _colors,
+            _imageLinks
+            );
 
   String getIncubationPeriod() {
     return _incubationPeriod;
@@ -80,13 +84,14 @@ class Amphibian extends Animal {
   }
 
   @override
-  Map<String, String> getAnimalInfo() {
-    Map<String, String> info = super.getAnimalInfo();
+  Map<String, dynamic> getAnimalInfo() {
+    Map<String, dynamic> info = super.getAnimalInfo();
     info.addAll({
-      'AvgSpawnSz': _avgSpawnSz,
-      'IncubationPeriod': _incubationPeriod,
-      'WaterType': _waterType
+      'Average Spawn Size': _avgSpawnSz,
+      'Incubation Period': _incubationPeriod,
+      'Water Type': _waterType
     });
     return info;
   }
+
 }

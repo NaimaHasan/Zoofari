@@ -1,3 +1,5 @@
+// import 'package:flutter/material.dart';
+
 import 'Animal.dart';
 
 class EndangeredAnimal extends Animal {
@@ -25,6 +27,7 @@ class EndangeredAnimal extends Animal {
       _preys,
       _predators,
       _colors,
+      _imageLinks,
       this._endangeredStatus)
       : super(
             _commonName,
@@ -47,7 +50,8 @@ class EndangeredAnimal extends Animal {
             _habitats,
             _preys,
             _predators,
-            _colors);
+            _colors,
+            _imageLinks);
 
   String getEndangeredStatus() {
     return _endangeredStatus;
@@ -58,9 +62,9 @@ class EndangeredAnimal extends Animal {
   }
 
   @override
-  Map<String, String> getAnimalInfo() {
-    Map<String, String> info = super.getAnimalInfo();
-    info.addAll({'EndangeredStatus': _endangeredStatus});
+  Map<String, dynamic> getAnimalInfo() {
+    Map<String, dynamic> info = super.getAnimalInfo();
+    info.addAll({'Endangered Status': _endangeredStatus});
     return info;
   }
 }

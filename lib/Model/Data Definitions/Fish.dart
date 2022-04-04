@@ -51,6 +51,7 @@ class Fish extends Animal {
             _predators,
             _colors);
 
+
   String getEstimatedPopulationSz() {
     return _estimatedPopulationSz;
   }
@@ -66,6 +67,7 @@ class Fish extends Animal {
   set groupBehavior(String value) {
     _groupBehavior = value;
   }
+
 
   @override
   Map<String, String> getAnimalInfo() {

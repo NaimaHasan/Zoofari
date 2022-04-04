@@ -4,30 +4,36 @@ import 'package:zoofari/Model/Data Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/LocalDatabase.dart';
 
 class DatabaseManager {
-  static final LocalDatabase _localDatabase = LocalDatabase("", []);
+  // static final LocalDatabase _localDatabase = LocalDatabase("", []);
   static final OnlineRepository _remoteDatabase = OnlineRepository();
 
   OnlineRepository get remoteDatabase => _remoteDatabase;
 
-  static String getAnimals(String category) {
-    // return _remoteDatabase.getAnimals(category);
-    return 'dummy string for now';
+  static Future<void> initialize() async{
+    await LocalDatabase.initialize();
   }
 
-  static List<Animal> getFavoriteAnimals(String category) {
-    return _localDatabase.favoriteAnimals;
+  static Animal getParticularAnimal(String commonName) {
+    return LocalDatabase.getParticularAnimal(commonName);
   }
 
-  static bool addToFavorites(Animal animal) {
-    return _localDatabase.addFavoriteAnimal(animal);
+  static bool isFavoriteAnimal(Animal animal) {
+    return LocalDatabase.isFavoriteAnimal(animal);
   }
 
-  static bool removeFromFavorites(Animal animal) {
-    return _localDatabase.removeFavoriteAnimal(animal);
+  static bool isFavorite(String commonName) {
+    return LocalDatabase.isFavorite(commonName);
   }
 
-  static String getSearchedAnimals(String query) {
-    // return _remoteDatabase.getSearchedAnimals(query);
-    return "dummy string for now";
+  static List<Animal> getAllFavorites() {
+    return LocalDatabase.favoriteAnimals;
+  }
+
+  static Future addToFavorites(Animal animal) async{
+    await LocalDatabase.addFavoriteAnimal(animal);
+  }
+
+  static Future removeFromFavorites(Animal animal) async{
+    await LocalDatabase.removeFavoriteAnimal(animal);
   }
 }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/Controller/CategoricalController/CategoricalAnimalFetcher.dart';
+import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
+import 'package:zoofari/Model/Retrievers/LocalDatabase.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
@@ -6,10 +9,27 @@ import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 import 'View/Auxiliary/Helpers/ColorGenerator.dart';
 import 'View/Screens/FavoriteScreen.dart';
 import 'View/Screens/HomeScreen.dart';
+import 'Model/Data Definitions/Animal.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseManager.initialize();
+  
   runApp(const MyApp());
 }
+
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await DatabaseManager.initialize();
+
+//   List<Animal> fromDB = DatabaseManager.getAllFavorites();
+//   print("from db: ");
+//   for(Animal a in fromDB) {
+    
+//     print(a.getAnimalInfo());
+//   }
+// }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
