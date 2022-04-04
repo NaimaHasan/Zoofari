@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:zoofari/Controller/CategoricalController/CategoricalAnimalFetcher.dart';
 import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
@@ -12,14 +13,22 @@ import 'View/Screens/HomeScreen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DatabaseManager.initialize();
-  var animals = await DatabaseManager.getSearchedAnimals(" black,lion");
-  await CategoricalAnimalFetcher.getAnimals("animals");
-  var animals1 = CategoricalAnimalFetcher.categoricalAnimalList;
-  print(animals);
-  for (final item in animals1) {
-    print(item.commonName);
-  }
-  runApp(const MyApp());
+  // var animals = await DatabaseManager.getSearchedAnimals(" black,lion");
+  // await CategoricalAnimalFetcher.getAnimals("animals");
+  // var animals1 = CategoricalAnimalFetcher.categoricalAnimalList;
+  // print(animals);
+  // for (final item in animals1) {
+  //   print(item.commonName);
+  // }
+  //CategoricalAnimalFetcher ctf = new CategoricalAnimalFetcher();
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => CategoricalAnimalFetcher(),
+      child: MyApp(),
+    ),
+  );
+  //ctf.getAnimals('animals');
+  //runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

@@ -3,9 +3,14 @@ import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 
+import '../../../Model/Data Definitions/Animal.dart';
+
 class CategoricalScroll extends StatefulWidget {
-  const CategoricalScroll({required this.title, Key? key}) : super(key: key);
+  const CategoricalScroll(
+      {required this.title, Key? key, required this.animals})
+      : super(key: key);
   final String title;
+  final List<Animal> animals;
 
   @override
   _CategoricalScrollState createState() => _CategoricalScrollState();
@@ -124,7 +129,10 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                                       child: Padding(
                                         padding: EdgeInsets.only(left: 10),
                                         child: Text(
-                                          'title',
+                                          widget.animals.length >= index
+                                              ? widget.animals[index].commonName
+                                              : "title",
+                                          //"title",
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(fontSize: 14),

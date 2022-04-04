@@ -1,11 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:zoofari/Model/Data Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 
-class CategoricalAnimalFetcher {
-  static List<Animal> categoricalAnimalList = List.empty(growable: true);
-  static String previousCategory = "";
+class CategoricalAnimalFetcher with ChangeNotifier {
+  List<Animal> categoricalAnimalList = List.empty(growable: true);
+  String previousCategory = "";
+  CategoricalAnimalFetcher();
 
-  static Future<void> getAnimals(String category) async {
+  Future<void> getAnimals(String category) async {
     if (previousCategory == "") {
       previousCategory = category;
     }
@@ -21,5 +23,6 @@ class CategoricalAnimalFetcher {
       }
     }
     previousCategory = category;
+    notifyListeners();
   }
 }
