@@ -14,21 +14,20 @@ class DatabaseManager {
   }
 
   static Animal getParticularAnimal(String commonName) {
-    return LocalDatabase.favoritesBox.get(commonName);
+    return LocalDatabase.getParticularAnimal(commonName);
+  }
+
+  static bool isFavoriteAnimal(Animal animal) {
+    return LocalDatabase.isFavoriteAnimal(animal);
+  }
+
+  static bool isFavorite(String commonName) {
+    return LocalDatabase.isFavorite(commonName);
   }
 
   static List<Animal> getAllFavorites() {
     return LocalDatabase.favoriteAnimals;
   }
-
-  static String getAnimals(String category) {
-    // return _remoteDatabase.getAnimals(category);
-    return 'dummy string for now';
-  }
-
-  // static List<Animal> getFavoriteAnimals(String category) {
-  //   return _localDatabase.favoriteAnimals;
-  // }
 
   static Future addToFavorites(Animal animal) async{
     await LocalDatabase.addFavoriteAnimal(animal);
@@ -36,14 +35,5 @@ class DatabaseManager {
 
   static Future removeFromFavorites(Animal animal) async{
     await LocalDatabase.removeFavoriteAnimal(animal);
-  }
-
-  // static bool removeFromFavorites(Animal animal) {
-  //   return _localDatabase.removeFavoriteAnimal(animal);
-  // }
-
-  static String getSearchedAnimals(String query) {
-    // return _remoteDatabase.getSearchedAnimals(query);
-    return "dummy string for now";
   }
 }

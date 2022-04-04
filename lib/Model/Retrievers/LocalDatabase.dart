@@ -38,6 +38,23 @@ class LocalDatabase {
     // return true;
   }
 
+  static bool isFavoriteAnimal(Animal animal) {
+    if(favoritesBox.get(animal.commonName) != null) {
+      return true;
+    }
+    return false;
+  }
+
+  static bool isFavorite(String commonName) {
+    if(favoritesBox.get(commonName) != null) {
+      return true;
+    }
+    return false;
+  }
+
+  static Animal getParticularAnimal(String commonName) {
+    return favoritesBox.get(commonName);
+  }
   // String get path => _path;
 
   // set path(String value) {
