@@ -59,19 +59,25 @@ class Amphibian extends Animal {
             _imageLinks
             );
 
-  String get incubationPeriod => _incubationPeriod;
+  String getIncubationPeriod() {
+    return _incubationPeriod;
+  }
 
   set incubationPeriod(String value) {
     _incubationPeriod = value;
   }
 
-  String get waterType => _waterType;
+  String getWaterType() {
+    return _waterType;
+  }
 
   set waterType(String value) {
     _waterType = value;
   }
 
-  String get avgSpawnSz => _avgSpawnSz;
+  String getAvgSpawnSz() {
+    return _avgSpawnSz;
+  }
 
   set avgSpawnSz(String value) {
     _avgSpawnSz = value;

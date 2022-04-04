@@ -101,127 +101,170 @@ class Animal {
       this._colors,
       this._imageLinks);
 
-    String get commonName => _commonName;
+  List<dynamic> getColors() {
+    return _colors;
+  }
 
-  // List<String> get colors => _colors;
+  String getPredators() {
+    return _predators;
+  }
 
-  // set colors(List<String> value) {
-  //   _colors = value;
-  // }
+  set colors(List<dynamic> value) {
+    _colors = value;
+  }
 
-  // List<String> get predators => _predators;
+  String getPreys() {
+    return _preys;
+  }
+  
+  set predators(String value) {
+    _predators = value;
+  }
 
-  // set predators(List<String> value) {
-  //   _predators = value;
-  // }
+  String getHabitats() {
+    return _habitats;
+  }
 
-  // List<String> get preys => _preys;
+  set preys(String value) {
+    _preys = value;
+  }
 
-  // set preys(List<String> value) {
-  //   _preys = value;
-  // }
+  String getDiets() {
+    return _diets;
+  }
 
-  // List<String> get habitats => _habitats;
+  set habitats(String value) {
+    _habitats = value;
+  }
 
-  // set habitats(List<String> value) {
-  //   _habitats = value;
-  // }
+  String getFunFact() {
+    return _funFact;
+  }
 
-  // List<String> get diets => _diets;
+  set diets(String value) {
+    _diets = value;
+  }
 
-  // set diets(List<String> value) {
-  //   _diets = value;
-  // }
+  String getSkinType() {
+    return _skinType;
+  }
 
-  // String get funFact => _funFact;
+  set funFact(String value) {
+    _funFact = value;
+  }
 
-  // set funFact(String value) {
-  //   _funFact = value;
-  // }
+  String getClassType() {
+    return _classType;
+  }
 
-  // String get skinType => _skinType;
+  set skinType(String value) {
+    _skinType = value;
+  }
 
-  // set skinType(String value) {
-  //   _skinType = value;
-  // }
+  String getLifestyle() {
+    return _lifestyle;
+  }
 
-  // String get lifestyle => _lifestyle;
+  set lifestyle(String value) {
+    _lifestyle = value;
+  }
 
-  // set lifestyle(String value) {
-  //   _lifestyle = value;
-  // }
+  String getLifespan() {
+    return _lifespan;
+  }
 
-  // String get lifespan => _lifespan;
+  set lifespan(String value) {
+    _lifespan = value;
+  }
 
-  // set lifespan(String value) {
-  //   _lifespan = value;
-  // }
+  String getMaxSpeed() {
+    return _maxSpeed;
+  }
 
-  // String get maxSpeed => _maxSpeed;
+  set maxSpeed(String value) {
+    _maxSpeed = value;
+  }
 
-  // set maxSpeed(String value) {
-  //   _maxSpeed = value;
-  // }
+  String getMaxLength() {
+    return _maxLength;
+  }
 
-  // String get maxLength => _maxLength;
+  set maxLength(String value) {
+    _maxLength = value;
+  }
 
-  // set maxLength(String value) {
-  //   _maxLength = value;
-  // }
+  String getMaxWeight() {
+    return _maxWeight;
+  }
 
-  // String get maxWeight => _maxWeight;
+  set maxWeight(String value) {
+    _maxWeight = value;
+  }
 
-  // set maxWeight(String value) {
-  //   _maxWeight = value;
-  // }
+  String getAvgWeight() {
+    return _avgWeight;
+  }
 
-  // String get avgWeight => _avgWeight;
+  set avgWeight(String value) {
+    _avgWeight = value;
+  }
 
-  // set avgWeight(String value) {
-  //   _avgWeight = value;
-  // }
+  String getScientificName() {
+    return _scientificName;
+  }
 
-  // String get scientificName => _scientificName;
 
-  // set scientificName(String value) {
-  //   _scientificName = value;
-  // }
+  set scientificName(String value) {
+    _scientificName = value;
+  }
 
-  // String get commonName => _commonName;
+  String getCommonName() {
+    return _commonName;
+  }
 
-  // set commonName(String value) {
-  //   _commonName = value;
-  // }
+  set commonName(String value) {
+    _commonName = value;
+  }
 
-  // String get kingdom => _kingdom;
+  String getKingdom() {
+    return _kingdom;
+  }
 
-  // set kingdom(String value) {
-  //   _kingdom = value;
-  // }
+  set kingdom(String value) {
+    _kingdom = value;
+  }
 
-  // String get phylum => _phylum;
+  String getPhylum() {
+    return _phylum;
+  }
 
-  // set phylum(String value) {
-  //   _phylum = value;
-  // }
+  set phylum(String value) {
+    _phylum = value;
+  }
 
-  // String get order => _order;
+  String getOrder() {
+    return _order;
+  }
 
-  // set order(String value) {
-  //   _order = value;
-  // }
+  set order(String value) {
+    _order = value;
+  }
 
-  // String get family => _family;
+  String getFamily() {
+    return _family;
+  }
 
-  // set family(String value) {
-  //   _family = value;
-  // }
+  set family(String value) {
+    _family = value;
+  }
 
-  // String get genus => _genus;
+  String getGenus() {
+    return _genus;
+  }
 
-  // set genus(String value) {
-  //   _genus = value;
-  // }
+  set genus(String value) {
+    _genus = value;
+  }
 
   Map<String, dynamic> getAnimalInfo() {
     return {

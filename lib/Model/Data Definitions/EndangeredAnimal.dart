@@ -52,10 +52,10 @@ class EndangeredAnimal extends Animal {
             _predators,
             _colors,
             _imageLinks);
-  
-  
-  // ignore: unnecessary_getters_setters
-  String get endangeredStatus => _endangeredStatus;
+
+  String getEndangeredStatus() {
+    return _endangeredStatus;
+  }
 
   set endangeredStatus(String value) {
     _endangeredStatus = value;

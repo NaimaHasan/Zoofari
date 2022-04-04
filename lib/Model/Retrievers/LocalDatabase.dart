@@ -3,7 +3,6 @@ import '../Data Definitions/Animal.dart';
 
 
 class LocalDatabase {
-  // String _path;
   static List<Animal> _favoriteAnimals = List.empty(growable: true);
   static const String DB_BOX_NAME = "Favorites";
   static late Box favoritesBox;
@@ -14,7 +13,6 @@ class LocalDatabase {
     favoritesBox = await Hive.openBox(DB_BOX_NAME);
   } 
 
-  // LocalDatabase(this._path, this._favoriteAnimals);
 
   static List<Animal> get favoriteAnimals {
     List<dynamic> tempList = favoritesBox.values.toList(growable: true);
@@ -50,14 +48,10 @@ class LocalDatabase {
       return true;
     }
     return false;
+
   }
 
   static Animal getParticularAnimal(String commonName) {
     return favoritesBox.get(commonName);
   }
-  // String get path => _path;
-
-  // set path(String value) {
-  //   _path = value;
-  // }
 }
