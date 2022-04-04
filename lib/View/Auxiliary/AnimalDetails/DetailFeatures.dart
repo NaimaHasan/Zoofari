@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailGridItems.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailItems.dart';
 
 class DetailFeatures extends StatelessWidget {
   const DetailFeatures({required this.controller, Key? key}) : super(key: key);
   final ScrollController controller;
 
-  static List<String> otherFeaturelist = [
+  static List<String> otherFeatureList = [
     'Maximum Weight:',
     'Maximum Length:',
     'Maximum Speed:',
@@ -96,33 +97,7 @@ class DetailFeatures extends StatelessWidget {
               ),
             ),
           ),
-          GridView.builder(
-            padding: EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: colorList.length == 2
-                    ? MediaQuery.of(context).size.width / 3.6
-                    : 30),
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: colorList.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: (colorList.length == 1 ||
-                        colorList.length == 2 ||
-                        colorList.length == 3)
-                    ? colorList.length
-                    : 4,
-                childAspectRatio: colorList.length == 1 ? 20 : 4,
-                mainAxisSpacing: colorList.length == 1 ? 1 : 20,
-                crossAxisSpacing: 4),
-            itemBuilder: (BuildContext context, int index) {
-              return Center(
-                child: Text(
-                  colorList[index],
-                  style: TextStyle(fontSize: 15),
-                ),
-              );
-            },
-          ),
+         DetailGridItems(list: colorList),
           Container(
             height: 25,
           ),
@@ -137,7 +112,7 @@ class DetailFeatures extends StatelessWidget {
               ),
             ),
           ),
-          DetailItems(list: otherFeaturelist)
+          DetailItems(list: otherFeatureList)
         ],
       ),
     );
