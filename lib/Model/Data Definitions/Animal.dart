@@ -1,33 +1,80 @@
 import 'dart:convert';
+import 'package:hive/hive.dart';
+
+part 'Animal.g.dart';
 
 // Animal animalFromJson(String str) => json.decode(str).map((x) => Animal.fromJson(x));
+
 Animal animalFromJson(String str) {
   return Animal.fromJson(json.decode(str));
 }
 
-
+@HiveType(typeId: 0)
 class Animal {
+  @HiveField(0)
   String _commonName;
+
+  @HiveField(1)
   String _scientificName;
+
+  @HiveField(2)
   String _kingdom;
+
+  @HiveField(3)
   String _phylum;
+
+  @HiveField(4)
   String _class;
+
+  @HiveField(5)
   String _order;
+
+  @HiveField(6)
   String _family;
+
+  @HiveField(7)
   String _genus;
+
+  @HiveField(8)
   String _avgWeight;
+
+  @HiveField(9)
   String _maxWeight;
+
+  @HiveField(10)
   String _maxLength;
+  
+  @HiveField(11)
   String _maxSpeed;
+
+  @HiveField(12)
   String _lifespan;
+
+  @HiveField(13)
   String _lifestyle;
+
+  @HiveField(14)
   String _skinType;
+
+  @HiveField(15)  
   String _funFact;
+
+  @HiveField(16)
   String _diets;
+
+  @HiveField(17)
   String _habitats;
+
+  @HiveField(18)
   String _preys;
+
+  @HiveField(19)
   String _predators;
+
+  @HiveField(20)
   List<dynamic> _colors;
+
+  @HiveField(21)
   List<dynamic> _imageLinks;
 
   Animal(
@@ -186,49 +233,50 @@ class Animal {
       'Order': _order,
       'Family': _family,
       'Genus': _genus,
-      'AvgWeight': _avgWeight,
-      'MaxWeight': _maxWeight,
+      'Avg Weight': _avgWeight,
+      'Max Weight': _maxWeight,
       'Lifespan': _lifespan,
       'Lifestyle': _lifestyle,
-      'SkinType': _skinType,
-      'FunFact': _funFact,
-      'MaxSpeed': _maxSpeed,
-      'MaxLength': _maxLength,
+      'Skin Type': _skinType,
+      'Fun Fact': _funFact,
+      'Max Speed': _maxSpeed,
+      'Max Length': _maxLength,
       'Diets': _diets,
       'Habitats': _habitats,
       'Preys': _preys,
       'Predators': _predators.toString(),
-      'Colors': _colors.toString()
+      'Colors': _colors.toString(),
+      'Image Links': _imageLinks
     };
 
   }
 
 
   factory Animal.fromJson(var json) {
-    String commonNameVar = "";
-    String scientificNameVar = "";
-    String kingdomVar = "";
-    String phylumVar = "";
-    String classVar = "";
-    String orderVar = "";
-    String familyVar = "";
-    String genusVar = "";
-    String avgWeightVar = "";
-    String maxWeightVar = "";
-    String maxLengthVar = "";
-    String maxSpeedVar = "";
-    String lifespanVar = "";
-    String lifestyleVar = "";
-    String skinTypeVar = "";
-    String funFactVar = "";
-    String dietsVar = "";
-    String habitatsVar = "";
-    String preysVar = "";
-    String predatorsVar = "";
+    String commonNameVar = "Not Available";
+    String scientificNameVar = "Not Available";
+    String kingdomVar = "Not Available";
+    String phylumVar = "Not Available";
+    String classVar = "Not Available";
+    String orderVar = "Not Available";
+    String familyVar = "Not Available";
+    String genusVar = "Not Available";
+    String avgWeightVar = "Not Available";
+    String maxWeightVar = "Not Available";
+    String maxLengthVar = "Not Available";
+    String maxSpeedVar = "Not Available";
+    String lifespanVar = "Not Available";
+    String lifestyleVar = "Not Available";
+    String skinTypeVar = "Not Available";
+    String funFactVar = "Not Available";
+    String dietsVar = "Not Available";
+    String habitatsVar = "Not Available";
+    String preysVar = "Not Available";
+    String predatorsVar = "Not Available";
     List<dynamic> colorsVar = List.empty(growable: true);
     List<dynamic> imageLinksVar = List.empty(growable: true);
 
-        if( json["common_name"] != null) {
+    if( json["common_name"] != null) {
       commonNameVar = json["common_name"];
     }
     if( json["classification"]["Scientific Name"] != null ) {
