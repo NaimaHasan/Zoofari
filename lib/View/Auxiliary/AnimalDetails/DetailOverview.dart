@@ -67,9 +67,7 @@ class DetailOverview extends StatelessWidget {
           DetailItems(
             list: classificationList,
           ),
-          DetailItems(
-            list: classificationList,
-          ),
+
         ],
       ),
     );

@@ -24,11 +24,9 @@ class DetailFeatures extends StatelessWidget {
   ];
   static List<String> colorList = [
     'Orange',
-    'Red',
-    'Black',
     'Orange',
-    'Red',
-    'Black',
+    'Orange',
+
   ];
 
   @override
@@ -88,7 +86,7 @@ class DetailFeatures extends StatelessWidget {
             height: 40,
           ),
           Container(
-            height: 30,
+            height: 25,
             child: Text(
               'Colors',
               style: TextStyle(
@@ -98,50 +96,35 @@ class DetailFeatures extends StatelessWidget {
               ),
             ),
           ),
-          ListView.builder(
+          GridView.builder(
+            padding: EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: colorList.length == 2
+                    ? MediaQuery.of(context).size.width / 3.6
+                    : 30),
+            shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.zero,
-            itemBuilder: (ctx, index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(width: 5),
-                          Text(
-                            colorList[index * 3],
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          Text(
-                            colorList[index * 3 + 1],
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          Text(
-                            colorList[index * 3 + 2],
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          Container(width: 5),
-                        ],
-                      ),
-                    ),
-                    Divider(
-                      color: Colors.teal.shade100,
-                      thickness: 0.5,
-                    ),
-                  ],
+            itemCount: colorList.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: (colorList.length == 1 ||
+                        colorList.length == 2 ||
+                        colorList.length == 3)
+                    ? colorList.length
+                    : 4,
+                childAspectRatio: colorList.length == 1 ? 20 : 4,
+                mainAxisSpacing: colorList.length == 1 ? 1 : 20,
+                crossAxisSpacing: 4),
+            itemBuilder: (BuildContext context, int index) {
+              return Center(
+                child: Text(
+                  colorList[index],
+                  style: TextStyle(fontSize: 15),
                 ),
               );
             },
-            itemCount: colorList.length ~/ 3,
-            shrinkWrap: true,
           ),
           Container(
-            height: 28,
+            height: 25,
           ),
           Container(
             height: 40,

@@ -116,7 +116,6 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                             ),
                             Expanded(
                               child: Container(
-
                                 width: 110,
                                 child: Row(
                                   children: [

@@ -5,7 +5,7 @@ import 'package:zoofari/View/Buttons/FavoriteMenu.dart';
 
 class AnimalDetailsScreen extends StatelessWidget {
   const AnimalDetailsScreen({Key? key}) : super(key: key);
-  static const String routeName = '/';
+  static const String routeName = '/hhh';
 
   @override
   Widget build(BuildContext context) {

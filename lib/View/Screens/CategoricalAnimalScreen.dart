@@ -77,27 +77,24 @@ class CategoricalAnimalScreen extends StatelessWidget {
                         Positioned(
                           bottom: 5,
                           child: Container(
+                            padding: EdgeInsets.all(15),
                             width: MediaQuery.of(context).size.width - 15,
-                            child: Padding(
-                              padding: EdgeInsets.all(15),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.6,
-                                    child: Text(
-                                      'title',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                      ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.6,
+                                  child: Text(
+                                    'title',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
                                     ),
                                   ),
-                                  FavoriteButton(title: 'title'),
-                                ],
-                              ),
+                                ),
+                                FavoriteButton(title: 'title'),
+                              ],
                             ),
                           ),
                         ),

@@ -4,7 +4,7 @@ import 'package:zoofari/View/Auxiliary/Home/HomeTopScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
-  static const String routeName = '/hhh';
+  static const String routeName = '/';
   static List<String> list = [
     'Random',
     'Endangered',

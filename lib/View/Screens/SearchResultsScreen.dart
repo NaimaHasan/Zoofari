@@ -11,7 +11,6 @@ class SearchResultsScreen extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -28,13 +27,11 @@ class SearchResultsScreen extends StatelessWidget {
       body: ListView.builder(
         itemBuilder: (ctx, index) {
           if (index == 0) {
-            return Padding(
+            return Container(
               padding: EdgeInsets.only(left: 23, top: 25, bottom: 15),
-              child: Container(
-                child: Text(
-                  'All search results for lion' + searchKey,
-                  style: TextStyle(fontSize: 18),
-                ),
+              child: Text(
+                'All search results for lion' + searchKey,
+                style: TextStyle(fontSize: 18),
               ),
             );
           } else {
