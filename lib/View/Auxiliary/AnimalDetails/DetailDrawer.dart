@@ -76,7 +76,7 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 children: <Widget>[
                   DetailOverview(controller: scrollControllers[0],),
                   DetailFeatures(controller: scrollControllers[1]),
-                  DetailMiscellaneous(controller: scrollControllers[0]),
+                  DetailMiscellaneous(controller: scrollControllers[2]),
                 ],
               ),
             )
