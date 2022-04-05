@@ -4,9 +4,10 @@ import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 
 class CategoricalScroll extends StatefulWidget {
-  const CategoricalScroll({required this.title, Key? key}) : super(key: key);
+  const CategoricalScroll({required this.title, required this.emoji, Key? key})
+      : super(key: key);
   final String title;
-
+  final String emoji;
   @override
   _CategoricalScrollState createState() => _CategoricalScrollState();
 }
@@ -16,13 +17,17 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 25, bottom: 2, left: 15, right: 10),
+          padding: EdgeInsets.only(top: 35, bottom: 2, left: 15, right: 10),
           child: Row(
             children: [
+              Text(
+                widget.emoji,
+                style: TextStyle(fontSize: 18),
+              ),
               Expanded(
                 child: Text(
                   widget.title,
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 17),
                 ),
               ),
               IconButton(
@@ -47,7 +52,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
         ),
         Container(
           width: MediaQuery.of(context).size.width,
-          height: 160,
+          height: 170,
           decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -55,7 +60,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
               if (index == 10) {
                 return Container(
                   width: 90,
-                  height: 100,
+                  height: 110,
                   decoration:
                       BoxDecoration(color: Theme.of(context).backgroundColor),
                   child: GestureDetector(
@@ -64,7 +69,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                       child: Text(
                         'View more',
                         style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 12,
                             color: Colors.black,
                             decoration: TextDecoration.underline),
                       ),
@@ -83,7 +88,9 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                 );
               } else {
                 return Padding(
-                  padding: EdgeInsets.only(left: 6, right: 6),
+                  padding: index == 0
+                      ? EdgeInsets.only(left: 12, right: 6)
+                      : EdgeInsets.only(left: 6, right: 6),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -96,16 +103,17 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                       );
                     },
                     child: Card(
-                      shadowColor: Colors.white38,
-                      color: Colors.white38,
+                      color: Colors.white,
+                      shadowColor: Colors.white,
+                      elevation: 5,
                       child: Container(
-                        width: 100,
+                        width: 110,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
-                              width: 100,
-                              height: 110,
+                              width: 110,
+                              height: 120,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(5),
                                 child: Image.asset(
@@ -116,7 +124,6 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                             ),
                             Expanded(
                               child: Container(
-                                color: Colors.white38,
                                 width: 110,
                                 child: Row(
                                   children: [
@@ -125,7 +132,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                                         padding: EdgeInsets.only(left: 10),
                                         child: Text(
                                           'title',
-                                          maxLines: 2,
+                                          maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(fontSize: 14),
                                         ),
@@ -147,6 +154,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
             itemCount: 11,
           ),
         ),
+
       ],
     );
   }

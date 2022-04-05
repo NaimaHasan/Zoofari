@@ -14,6 +14,15 @@ class HomeScreen extends StatelessWidget {
     'Reptile',
     'Mammal'
   ];
+  static List<String> emojiList = [
+    '🔀   ',
+    '⚠️   ',
+    '🐸   ',
+    '🐥   ',
+    '🐟   ',
+    '🐢   ',
+    '🐕   '
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +30,6 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
         child: ListView.builder(
           itemBuilder: (context, index) {
             if (index == 0) {
@@ -29,6 +37,7 @@ class HomeScreen extends StatelessWidget {
             } else {
               return CategoricalScroll(
                 title: list[index - 1],
+                emoji: emojiList[index -1]
               );
             }
           },

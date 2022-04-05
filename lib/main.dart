@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/View/Screens/EmptyScreen.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
@@ -33,10 +34,9 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           color: Color(0xFF4c8e82),
         ),
-        backgroundColor: const Color(0xFFe2f9f5),
-        dividerColor: Colors.white54,
+        backgroundColor: const Color(0xFFe9f8f5),
+        dividerColor: Color(0xFF4c8e82),
         fontFamily: 'Quicksand',
-
       ),
       routes: {
         HomeScreen.routeName: (ctx) => HomeScreen(),
@@ -44,9 +44,9 @@ class MyApp extends StatelessWidget {
         CategoricalAnimalScreen.routeName: (ctx) =>
             CategoricalAnimalScreen(title: ''),
         AnimalDetailsScreen.routeName: (ctx) => AnimalDetailsScreen(),
-        SearchResultsScreen.routeName: (ctx) => SearchResultsScreen(
-              searchKey: '',
-            ),
+        SearchResultsScreen.routeName: (ctx) =>
+            SearchResultsScreen(searchKey: ''),
+        EmptyScreen.routeName: (ctx) => EmptyScreen(imageData: ''),
       },
     );
   }
