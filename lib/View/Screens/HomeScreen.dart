@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 import 'package:zoofari/View/Auxiliary/Home/CategoricalScroll.dart';
 import 'package:zoofari/View/Auxiliary/Home/DummyAnimalList.dart';
 import 'package:zoofari/View/Auxiliary/Home/HomeTopScreen.dart';
@@ -15,38 +16,43 @@ class HomeScreen extends StatelessWidget {
   static List<String> list = [
     'Random',
     'Endangered',
+    'Mammal',
+    'Reptile',
     'Amphibian',
     'Bird',
     'Fish',
-    'Reptile',
-    'Mammal'
   ];
 
-  static CategoricalAnimalFetcher randoms = CategoricalAnimalFetcher();
-  static CategoricalAnimalFetcher endangered = CategoricalAnimalFetcher();
-  static CategoricalAnimalFetcher mammals = CategoricalAnimalFetcher();
-  static CategoricalAnimalFetcher birds = CategoricalAnimalFetcher();
-  static CategoricalAnimalFetcher fish = CategoricalAnimalFetcher();
-  static CategoricalAnimalFetcher reptiles = CategoricalAnimalFetcher();
-  static CategoricalAnimalFetcher amphibians = CategoricalAnimalFetcher();
+  static CategoricalAnimalFetcher randoms = new CategoricalAnimalFetcher();
+  static CategoricalAnimalFetcher endangered = new CategoricalAnimalFetcher();
+  static CategoricalAnimalFetcher mammals = new CategoricalAnimalFetcher();
+  static CategoricalAnimalFetcher birds = new CategoricalAnimalFetcher();
+  static CategoricalAnimalFetcher fish = new CategoricalAnimalFetcher();
+  static CategoricalAnimalFetcher reptiles = new CategoricalAnimalFetcher();
+  static CategoricalAnimalFetcher amphibians = new CategoricalAnimalFetcher();
+
+  static List<List<Animal>> listing = [
+    randoms.categoricalAnimalList,
+    endangered.categoricalAnimalList,
+    mammals.categoricalAnimalList,
+    reptiles.categoricalAnimalList,
+    amphibians.categoricalAnimalList,
+    birds.categoricalAnimalList,
+    fish.categoricalAnimalList,
+  ];
   
 
 
   @override
   Widget build(BuildContext context) {
     populateLists();
+    initialListing();
     
 
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         body: RefreshIndicator(
           onRefresh: () async {
-            // await Provider.of<RandomProvider>(context, listen: false).getData();
-            // await Provider.of<MammalsProvider>(context, listen: false).getData();
-            // await Provider.of<ReptileProvider>(context, listen: false).getData();
-            // await Provider.of<BirdProvider>(context, listen: false).getData();
-            // await Provider.of<FishProvider>(context, listen: false).getData();
-            // await Provider.of<AmphibianProvider>(context, listen: false).getData();
             await fetchAnimals();
           },
           child: Container(
@@ -55,11 +61,13 @@ class HomeScreen extends StatelessWidget {
             decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
             child: ListView.builder(
               itemBuilder: (context, index) {
+                print("----------------------------index $index------------------------");
                 if (index == 0) {
                   return HomeTopScreen();
                 } else {
                   return CategoricalScroll(
                     title: list[index - 1],
+                    animals: listing[index - 1],
                   );
                 }
               },
@@ -77,6 +85,16 @@ class HomeScreen extends StatelessWidget {
   }
 
   Future<void> fetchAnimals() async{
-    await randoms.
+    await randoms.getAnimals("animals");
+    await endangered.getAnimals("animals");
+    await mammals.getAnimals("mammals");
+    await reptiles.getAnimals("reptiles");
+    await amphibians.getAnimals("amphibians");
+    await birds.getAnimals("birds");
+    await fish.getAnimals("fish");
+  }
+
+  Future<void> initialListing() async {
+    await fetchAnimals();
   }
 }

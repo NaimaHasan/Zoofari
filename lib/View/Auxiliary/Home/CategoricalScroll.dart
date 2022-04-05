@@ -1,27 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:zoofari/View/Auxiliary/Home/Item.dart';
-import 'package:zoofari/View/Buttons/FavoriteButton.dart';
-import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 
 import '../../../Model/Data Definitions/Animal.dart';
 
 class CategoricalScroll extends StatefulWidget {
   const CategoricalScroll(
-      {required this.title, Key? key,})
+      {required this.title,required this.animals, Key? key,})
       : super(key: key);
   final String title;
   final List<Animal> animals;
-  static List<List<Animal>> listOfAnimals = [
-    // RandomProvider.randomList,
-    // MammalsProvider.mammalList,
-    // BirdProvider.birdList,
-
-  ];
-  // static var a = [
-  //   Consumer<MammalsProvider>(builder: (context, value, child) => ,)
-  // ]
 
   @override
   _CategoricalScrollState createState() => _CategoricalScrollState();
@@ -29,6 +17,7 @@ class CategoricalScroll extends StatefulWidget {
 
 class _CategoricalScrollState extends State<CategoricalScroll> {
   Widget build(BuildContext context) {
+    
     return Column(
       children: [
         Padding(
@@ -74,16 +63,17 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                   height: 100,
                   decoration:
                       BoxDecoration(color: Theme.of(context).backgroundColor),
-                  child: Item(index: index,),
+                  child: Item(index: index, animals: widget.animals,),
                 );
               } else {
                 return Padding(
                   padding: EdgeInsets.only(left: 6, right: 6),
-                  child: Item(index: index,));
+                  child: Item(index: index, animals: widget.animals,));
               }
             },
-            itemCount: 11,
-          ),,
+            itemCount: 10,
+          ), 
+        ),
       ],
     );
   }
