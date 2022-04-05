@@ -14,6 +14,15 @@ class HomeScreen extends StatelessWidget {
     'Reptile',
     'Mammal'
   ];
+  static List<String> emojiList = [
+    '🔀   ',
+    '⚠️   ',
+    '🐸   ',
+    '🐥   ',
+    '🐟   ',
+    '🐢   ',
+    '🐕   '
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +37,7 @@ class HomeScreen extends StatelessWidget {
             } else {
               return CategoricalScroll(
                 title: list[index - 1],
+                emoji: emojiList[index -1]
               );
             }
           },
