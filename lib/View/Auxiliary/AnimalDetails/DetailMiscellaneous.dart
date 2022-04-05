@@ -119,7 +119,7 @@ class DetailMiscellaneous extends StatelessWidget {
               alignment: Alignment.center,
               height: 40,
               width: MediaQuery.of(context).size.width,
-              color: Theme.of(context).backgroundColor,
+              color: Color(0xFFf6fffd),
               child: Text(
                 'Diets',
                 style: TextStyle(
@@ -137,7 +137,7 @@ class DetailMiscellaneous extends StatelessWidget {
               alignment: Alignment.center,
               height: 40,
               width: MediaQuery.of(context).size.width,
-              color: Theme.of(context).backgroundColor,
+              color: Color(0xFFf6fffd),
               child: Text(
                 'Preys',
                 style: TextStyle(
@@ -155,7 +155,7 @@ class DetailMiscellaneous extends StatelessWidget {
               alignment: Alignment.center,
               height: 40,
               width: MediaQuery.of(context).size.width,
-              color: Theme.of(context).backgroundColor,
+              color: Color(0xFFf6fffd),
               child: Text(
                 'Predators',
                 style: TextStyle(

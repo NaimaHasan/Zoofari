@@ -27,7 +27,11 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
               Expanded(
                 child: Text(
                   widget.title,
-                  style: TextStyle(fontSize: 17),
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: Colors.black,
+                    fontFamily: 'Quicksand-SemiBold',
+                  ),
                 ),
               ),
               IconButton(
@@ -103,9 +107,9 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                       );
                     },
                     child: Card(
-                      color: Colors.white,
+                      color: Color(0xFFf6fffd),
                       shadowColor: Colors.white,
-                      elevation: 5,
+                      elevation: 3,
                       child: Container(
                         width: 110,
                         child: Column(
@@ -134,7 +138,10 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                                           'title',
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(fontSize: 14),
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.black,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -154,7 +161,6 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
             itemCount: 11,
           ),
         ),
-
       ],
     );
   }
