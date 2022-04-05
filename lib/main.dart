@@ -7,28 +7,17 @@ import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 
 import 'View/Auxiliary/Helpers/ColorGenerator.dart';
+import 'View/Auxiliary/Home/DummyAnimalList.dart';
 import 'View/Screens/FavoriteScreen.dart';
 import 'View/Screens/HomeScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DatabaseManager.initialize();
-  // var animals = await DatabaseManager.getSearchedAnimals(" black,lion");
-  // await CategoricalAnimalFetcher.getAnimals("animals");
-  // var animals1 = CategoricalAnimalFetcher.categoricalAnimalList;
-  // print(animals);
-  // for (final item in animals1) {
-  //   print(item.commonName);
-  // }
-  //CategoricalAnimalFetcher ctf = new CategoricalAnimalFetcher();
+  DummyAnimalList();
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => CategoricalAnimalFetcher(),
-      child: MyApp(),
-    ),
+    MyApp()
   );
-  //ctf.getAnimals('animals');
-  //runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

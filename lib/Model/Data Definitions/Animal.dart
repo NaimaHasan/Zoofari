@@ -354,4 +354,56 @@ class Animal {
         colorsVar,
         imageLinksVar);
   }
+
+
+  factory Animal.emptyAnimal() {
+    String commonNameVar = "Not Available";
+    String scientificNameVar = "Not Available";
+    String kingdomVar = "Not Available";
+    String phylumVar = "Not Available";
+    String classVar = "Not Available";
+    String orderVar = "Not Available";
+    String familyVar = "Not Available";
+    String genusVar = "Not Available";
+    String avgWeightVar = "Not Available";
+    String maxWeightVar = "Not Available";
+    String maxLengthVar = "Not Available";
+    String maxSpeedVar = "Not Available";
+    String lifespanVar = "Not Available";
+    String lifestyleVar = "Not Available";
+    String skinTypeVar = "Not Available";
+    String funFactVar = "Not Available";
+    String dietsVar = "Not Available";
+    String habitatsVar = "Not Available";
+    String preysVar = "Not Available";
+    String predatorsVar = "Not Available";
+    List<dynamic> colorsVar = List.empty(growable: true);
+    List<dynamic> imageLinksVar = List.empty(growable: true);
+
+    return Animal(
+        commonNameVar,
+        scientificNameVar,
+        kingdomVar,
+        phylumVar,
+        classVar,
+        orderVar,
+        familyVar,
+        genusVar,
+        avgWeightVar,
+        maxWeightVar,
+        maxLengthVar,
+        maxSpeedVar,
+        lifespanVar,
+        lifestyleVar,
+        skinTypeVar,
+        funFactVar,
+        dietsVar,
+        habitatsVar,
+        preysVar,
+        predatorsVar,
+        colorsVar,
+        imageLinksVar);
+  }
+
+
 }
