@@ -160,28 +160,41 @@ class _CustomBottomDrawerState extends State<CustomBottomDrawer>
   }
 
   void onDragStart(DragStartDetails details) {
-    lastDrag = details.globalPosition.dy;
-    lastDragOffset = 0;
-    totalDragOffset = 0;
+    if (widget.scrollControllers[widget.pageController.page!.toInt()].offset ==
+        widget.scrollControllers[widget.pageController.page!.toInt()]
+            .initialScrollOffset) {
+      lastDrag = details.globalPosition.dy;
+      lastDragOffset = 0;
+      totalDragOffset = 0;
+    }
   }
 
   void onDragUpdate(DragUpdateDetails details) {
-    lastDragOffset = details.globalPosition.dy - lastDrag;
-    totalDragOffset += lastDragOffset;
-    offset = offset + details.delta.dy;
-    lastDrag = details.globalPosition.dy;
+    if (widget.scrollControllers[widget.pageController.page!.toInt()].offset ==
+        widget.scrollControllers[widget.pageController.page!.toInt()]
+            .initialScrollOffset) {
+      lastDragOffset = details.globalPosition.dy - lastDrag;
+      totalDragOffset += lastDragOffset;
+      offset = offset + details.delta.dy;
+      lastDrag = details.globalPosition.dy;
+      setState(() {});
+    }
   }
 
   void onDragEnd(DragEndDetails details) {
-    if (lastDragOffset < 0) {
-      open();
-    } else if (lastDragOffset > 0) {
-      close();
-    } else {
-      if (totalDragOffset < 0) {
+    if (widget.scrollControllers[widget.pageController.page!.toInt()].offset ==
+        widget.scrollControllers[widget.pageController.page!.toInt()]
+            .initialScrollOffset) {
+      if (lastDragOffset < 0) {
         open();
-      } else if (totalDragOffset > 0) {
+      } else if (lastDragOffset > 0) {
         close();
+      } else {
+        if (totalDragOffset < 0) {
+          open();
+        } else if (totalDragOffset > 0) {
+          close();
+        }
       }
     }
   }
