@@ -67,7 +67,7 @@ class CategoricalAnimalScreen extends StatelessWidget {
                                 begin: Alignment.bottomCenter,
                                 end: Alignment.topCenter,
                                 colors: [
-                                  Colors.black87,
+                                  Colors.black45,
                                   Colors.transparent,
                                 ],
                               ),
@@ -79,7 +79,7 @@ class CategoricalAnimalScreen extends StatelessWidget {
                           child: Container(
                             width: MediaQuery.of(context).size.width - 15,
                             child: Padding(
-                              padding: EdgeInsets.all(15),
+                              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,

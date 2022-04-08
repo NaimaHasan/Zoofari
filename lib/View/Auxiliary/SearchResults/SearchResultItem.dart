@@ -24,8 +24,8 @@ class SearchResultItem extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              width: MediaQuery.of(context).size.width / 2 -30,
-              height: MediaQuery.of(context).size.width / 2 -30,
+              width: MediaQuery.of(context).size.width / 2 - 30,
+              height: MediaQuery.of(context).size.width / 2 - 30,
               child: Image.asset(
                 'Assets/dummy.jpg',
                 fit: BoxFit.cover,
@@ -51,25 +51,23 @@ class SearchResultItem extends StatelessWidget {
             Positioned(
               bottom: 1,
               child: Container(
+                padding: EdgeInsets.only(left: 15, right: 5),
                 width: MediaQuery.of(context).size.width / 2 - 30,
-                child: Padding(
-                  padding: EdgeInsets.only(left:15, right:5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2 - 120,
-                        child: Text(
-                          'title',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width / 2 - 120,
+                      child: Text(
+                        'title',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
                         ),
                       ),
-                      FavoriteButton(title: 'title'),
-                    ],
-                  ),
+                    ),
+                    FavoriteButton(title: 'title'),
+                  ],
                 ),
               ),
             ),
