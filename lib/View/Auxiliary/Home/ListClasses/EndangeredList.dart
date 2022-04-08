@@ -5,9 +5,10 @@ import 'package:zoofari/View/Auxiliary/Home/Item.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 
 class EndangeredList extends StatefulWidget {
-  const EndangeredList({required this.title, Key? key})
+  const EndangeredList({required this.title, required this.emoji, Key? key})
     :super(key: key);
   final String title;
+  final String emoji;
 
 
   @override
@@ -36,10 +37,14 @@ class _EndangeredListState extends State<EndangeredList> {
           padding: EdgeInsets.only(top: 25, bottom: 2, left: 15, right: 10),
           child: Row(
             children: [
+              Text(
+                widget.emoji,
+                style: TextStyle(fontSize: 18),
+              ),
               Expanded(
                 child: Text(
                   widget.title,
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 17),
                 ),
               ),
               IconButton(

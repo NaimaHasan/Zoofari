@@ -23,6 +23,16 @@ class HomeScreen extends StatelessWidget {
     'Fish',
   ];
 
+  static List<String> emojiList = [
+    '🔀   ',
+    '⚠️   ',
+    '🐸   ',
+    '🐥   ',
+    '🐟   ',
+    '🐢   ',
+    '🐕   '
+  ];
+
 
 
   @override
@@ -44,8 +54,8 @@ class HomeScreen extends StatelessWidget {
                   Column(
                     children: [
                       HomeTopScreen(), //equivalent to eten card
-                      RandomList(title: list[0]),
-                      EndangeredList(title: list[1]),
+                      RandomList(title: list[0], emoji: emojiList[0],),
+                      EndangeredList(title: list[1], emoji: emojiList[1],),
                     ],
                   ) 
               ),

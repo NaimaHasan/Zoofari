@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:zoofari/View/Screens/EmptyScreen.dart';
 import 'package:provider/provider.dart';
 
-import 'package:zoofari/Controller/CategoricalController/CategoricalAnimalFetcher.dart';
+
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/AmphibianProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/BirdProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/EndangeredProvider.dart';
@@ -11,8 +10,9 @@ import 'package:zoofari/Controller/CategoricalController/AnimalProviders/MammalP
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/ReptileProvider.dart';
 import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
-import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 
+
+import 'package:zoofari/View/Screens/EmptyScreen.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
@@ -26,7 +26,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DatabaseManager.initialize();
   DummyAnimalList();
-  runApp(MultiProvider(
+  runApp(MultiProvider( 
     providers: [
       ChangeNotifierProvider.value(value: Randoms()),
       ChangeNotifierProvider.value(value: Endangered()),
