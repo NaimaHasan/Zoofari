@@ -3,11 +3,13 @@ import 'dart:math';
 
 import 'package:http/http.dart' as http;
 import 'package:zoofari/Model/Data Definitions/Animal.dart';
+import 'package:zoofari/Model/Data%20Definitions/EndangeredAnimal.dart';
 
 class OnlineRepository {
   static var random = new Random();
   static var client = http.Client();
   static const String _hostWebsite = "https://a-z-animals-api.herokuapp.com";
+  // static const String _hostWebsite = "https://animalsaroundus.pythonanywhere.com";
   static const String _allAnimalsURL = _hostWebsite + '/animals';
 
   static String get allAnimalsURL => _allAnimalsURL;
@@ -26,8 +28,7 @@ class OnlineRepository {
     return list;
   }
 
-  static Future<List<Animal?>?> animalListCompilation(
-      List<String> animalsToFetch) async {
+  static Future<List<Animal?>?> animalListCompilation(List<String> animalsToFetch) async {
     List<Animal?> animalsFetched = List.empty(growable: true);
     for (int itr = 0; itr < animalsToFetch.length; itr++) {
       var fetched = await fetchSingleAnimal(animalsToFetch[itr]);
@@ -43,13 +44,13 @@ class OnlineRepository {
     int resultFound = jsonString['found'];
     // print("result found $resultFound");
     List<int> positions = List.empty(growable: true);
-    for (int itr = 0; itr < 10; itr++) {
+    for (int itr = 0; itr < 5; itr++) {
       positions.add(random.nextInt(resultFound - 1));
     }
     List<String> toFetch = List.empty(growable: true);
     // print(jsonString);
     for (int itr = 0; itr < positions.length; itr++) {
-      print(jsonString[category][positions[itr]]);
+      // print(jsonString[category][positions[itr]]);
       toFetch.add(jsonString[category][positions[itr]]);
     }
     //print("to fetch list in extract names $toFetch");
@@ -92,10 +93,15 @@ class OnlineRepository {
       response = await client.get(Uri.parse(getAnimalTypeURL(category)));
     }
 
+    List<String> animalsToFetch = List.empty(growable : true);
     if (response.statusCode == 200) {
       var jsonString = response.body;
-      List<String> animalsToFetch =
+      if(category == 'endangered') {
+        animalsToFetch = extractEnNames( json.decode(jsonString) );
+      } else {
+      animalsToFetch =
           extractNames(json.decode(jsonString), category);
+      }
 
       return animalListCompilation(animalsToFetch);
     }
@@ -115,5 +121,21 @@ class OnlineRepository {
     }
 
     return null;
+  }
+
+  static List<String> extractEnNames(var jsonString) {
+    List<dynamic> ex = jsonString['ex'];
+    List<dynamic> ew = jsonString['ew'];
+    List<dynamic> en = jsonString['en'];
+    List<dynamic> cr = jsonString['cr'];
+    List<dynamic> vu = jsonString['vu'];
+    
+    List<String> animalToFetch = List.empty(growable: true);
+    animalToFetch.add( ex[random.nextInt( ex.length - 1 )] );
+    animalToFetch.add( ew[random.nextInt( ew.length - 1 )] );
+    animalToFetch.add( en[random.nextInt( en.length - 1 )] );
+    animalToFetch.add( cr[random.nextInt( cr.length - 1 )] );
+    animalToFetch.add( vu[random.nextInt( vu.length - 1 )] );
+    return animalToFetch;
   }
 }

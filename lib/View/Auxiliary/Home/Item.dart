@@ -4,10 +4,9 @@ import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 
 class Item extends StatelessWidget {
-  const Item({required this.animals, required this.index, Key? key}) : super(key: key);
+  const Item({required this.animal,  Key? key}) : super(key: key);
 
-  final List<Animal> animals;
-  final int index;
+  final Animal animal;
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +34,8 @@ class Item extends StatelessWidget {
                       height: 110,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(5),
-                        child: Image.asset(
-                          'Assets/dummy.jpg',
-                          fit: BoxFit.cover,
-                        ),
+                        child: 
+                        animal.imageLinks.isNotEmpty?Image.network(animal.imageLinks[0]):Image.asset('Assets/dummy.jpg'),  
                       ),
                     ),
                     Expanded(
@@ -51,9 +48,7 @@ class Item extends StatelessWidget {
                               child: Padding(
                                 padding: EdgeInsets.only(left: 10),
                                 child: Text(
-                                  animals.length >= index
-                                      ? animals[index].commonName
-                                      : "title",
+                                  animal.commonName as String,
                                   //"title",
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,

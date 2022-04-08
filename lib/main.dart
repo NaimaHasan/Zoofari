@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:zoofari/Controller/CategoricalController/CategoricalAnimalFetcher.dart';
+import 'package:zoofari/Controller/CategoricalController/AnimalProviders/AmphibianProvider.dart';
+import 'package:zoofari/Controller/CategoricalController/AnimalProviders/BirdProvider.dart';
+import 'package:zoofari/Controller/CategoricalController/AnimalProviders/EndangeredProvider.dart';
+import 'package:zoofari/Controller/CategoricalController/AnimalProviders/FishProvider.dart';
+import 'package:zoofari/Controller/CategoricalController/AnimalProviders/MammalProvider.dart';
+import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
+import 'package:zoofari/Controller/CategoricalController/AnimalProviders/ReptileProvider.dart';
 import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
+import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
+
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
@@ -15,9 +25,18 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DatabaseManager.initialize();
   DummyAnimalList();
-  runApp(
-    MyApp()
-  );
+  runApp(MultiProvider( 
+    providers: [
+      ChangeNotifierProvider.value(value: Randoms()),
+      ChangeNotifierProvider.value(value: Endangered()),
+      ChangeNotifierProvider.value(value: Mammals()),
+      ChangeNotifierProvider.value(value: Amphibians()),
+      ChangeNotifierProvider.value(value: Bird()),
+      ChangeNotifierProvider.value(value: Fish()),
+      ChangeNotifierProvider.value(value: Reptiles()),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

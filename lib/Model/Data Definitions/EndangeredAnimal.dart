@@ -65,4 +65,31 @@ class EndangeredAnimal extends Animal {
     info.addAll({'Endangered Status': _endangeredStatus});
     return info;
   }
+
+  factory EndangeredAnimal.fromAnimalString(Animal animal, String enStatus) {
+    return EndangeredAnimal(
+      animal.commonName, 
+      animal.scientificName, 
+      animal.kingdom, 
+      animal.phylum, 
+      animal.order, 
+      animal.family, 
+      animal.genus, 
+      animal.avgWeight, 
+      animal.maxWeight, 
+      animal.maxLength, 
+      animal.maxSpeed, 
+      animal.lifespan, 
+      animal.lifestyle, 
+      animal.classType, 
+      animal.skinType, 
+      animal.funFact, 
+      animal.diets, 
+      animal.habitats, 
+      animal.preys, 
+      animal.predators, 
+      animal.colors, 
+      animal.imageLinks,
+      enStatus);
+  }
 }

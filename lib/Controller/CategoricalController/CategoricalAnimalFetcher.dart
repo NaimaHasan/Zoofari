@@ -1,12 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:zoofari/Model/Data Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 import 'package:zoofari/View/Auxiliary/Home/DummyAnimalList.dart';
 
 class CategoricalAnimalFetcher  {
   List<Animal> categoricalAnimalList = DummyAnimalList.animalList;
-  // String previousCategory = "";
-  CategoricalAnimalFetcher();
+  late int k;
+
+  CategoricalAnimalFetcher(int a) {
+    this.k = a;
+  }
+  
 
   Future<void> getAnimals(String category) async {
     print("---------------fetching $category");
