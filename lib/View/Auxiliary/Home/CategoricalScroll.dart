@@ -71,7 +71,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                   );
                 },
                 child: Padding(
-                  padding: EdgeInsets.only(right: 10, top:8),
+                  padding: EdgeInsets.only(right: 10, top: 8),
                   child: Text(
                     'VIEW MORE',
                     style: TextStyle(
@@ -117,31 +117,6 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
             },
           ),
         ),
-        // GestureDetector(
-        //   onTap: () {
-        //     Navigator.push(
-        //       context,
-        //       PageRouteBuilder(
-        //         pageBuilder: (context, animation1, animation2) =>
-        //             CategoricalAnimalScreen(title: widget.title),
-        //         transitionDuration: Duration(seconds: 0),
-        //       ),
-        //     );
-        //   },
-        //   child: Padding(
-        //     padding: EdgeInsets.only(top: 20, right: 18),
-        //     child: Align(
-        //       alignment: Alignment.centerRight,
-        //       child: Text(
-        //         'View more',
-        //         style: TextStyle(
-        //             fontSize: 13,
-        //             color: Colors.black,
-        //             decoration: TextDecoration.underline),
-        //       ),
-        //     ),
-        //   ),
-        // ),
       ],
     );
   }
