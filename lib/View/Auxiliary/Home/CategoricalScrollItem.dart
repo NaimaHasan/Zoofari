@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
-import 'package:zoofari/View/Buttons/FavoriteButton.dart';
-import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
+
+import '../../Screens/CategoricalAnimalScreen.dart';
 
 class CategoricalScrollItem extends StatelessWidget {
-  const CategoricalScrollItem({required this.animal, Key? key}) : super(key: key);
-
-  final Animal animal;
+  const CategoricalScrollItem(
+      {required this.imageURL, required this.title, Key? key})
+      : super(key: key);
+  final String imageURL;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -16,52 +17,45 @@ class CategoricalScrollItem extends StatelessWidget {
           context,
           PageRouteBuilder(
             pageBuilder: (context, animation1, animation2) =>
-                AnimalDetailsScreen(),
+                CategoricalAnimalScreen(title: title),
             transitionDuration: Duration(seconds: 0),
           ),
         );
       },
-      child: Card(
-        color: Color(0xFFf6fffd),
-        shadowColor: Colors.white,
-        elevation: 3,
-        child: Container(
-          width: 110,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                width: 110,
-                height: 120,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: animal.imageLinks.isNotEmpty
-                      ? Image.network(
-                          animal.imageLinks[0],
-                          fit: BoxFit.cover,
-                        )
-                      : Image.asset('Assets/dummy.jpg'),
+      child: Container(
+        child: ClipRRect(
+          borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+          child: Stack(
+            children: <Widget>[
+              Image.network(
+                imageURL,
+                fit: BoxFit.cover,
+                width: 160.0,
+                height: 185,
+              ),
+              Positioned(
+                bottom: 0.0,
+                left: 0.0,
+                right: 0.0,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color.fromARGB(50, 0, 0, 0),
+                        Color.fromARGB(0, 0, 0, 0)
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
+                  ),
                 ),
               ),
-              Expanded(
-                child: Container(
-                  width: 110,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: Text(
-                            animal.commonName as String,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ),
-                      ),
-                      FavoriteButton(title: 'title')
-                    ],
-                  ),
+              Positioned(
+                bottom: 10,
+                left: 10,
+                child: Text(
+                  title,
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
             ],

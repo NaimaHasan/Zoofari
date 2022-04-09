@@ -3,10 +3,11 @@ import 'package:provider/provider.dart';
 
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/EndangeredProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
-import 'package:zoofari/View/Auxiliary/Home/CategoricalCarousel.dart';
 import 'package:zoofari/View/Auxiliary/Home/CategoricalScroll.dart';
 
 import 'package:zoofari/View/Auxiliary/Home/HomeTopScreen.dart';
+import 'package:zoofari/View/Auxiliary/Home/ListClasses/EndangeredList.dart';
+import 'package:zoofari/View/Auxiliary/Home/ListClasses/RandomList.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -29,13 +30,13 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   HomeTopScreen(),
-                  CategoricalCarousel(),
-                  const CategoricalScroll(
+                  CategoricalScroll(),
+                  RandomList(
                     key: ValueKey('Random'),
                     title: 'Random',
                     icon: Icons.shuffle,
                   ),
-                  const CategoricalScroll(
+                  EndangeredList(
                     key: ValueKey('Endangered'),
                     title: 'Endangered',
                     icon: Icons.warning_amber_outlined,

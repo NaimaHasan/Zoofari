@@ -1,23 +1,26 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
-import 'package:zoofari/View/Auxiliary/Home/CategoricalScrollItem.dart';
+import 'package:zoofari/View/Auxiliary/Home/ListClasses/ListItem.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 
-class RandomList extends StatefulWidget {
-  const RandomList({required this.title, required this.emoji, Key? key})
-    :super(key: key);
-  final String title;
-  final String emoji;
+import '../../../../Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
+import '../../../../Model/Data Definitions/Animal.dart';
 
+class RandomList extends StatefulWidget {
+  const RandomList({required this.title, required this.icon, Key? key})
+      : super(key: key);
+  final String title;
+  final IconData icon;
 
   @override
   _RandomListState createState() => _RandomListState();
-  
 }
 
 class _RandomListState extends State<RandomList> {
   late Future _randomFuture;
+  late List<Animal> randomList;
+  late List<Widget> sliders;
 
   Future _obtainRandomFuture() {
     return Provider.of<Randoms>(context, listen: false).getData();
@@ -26,29 +29,35 @@ class _RandomListState extends State<RandomList> {
   @override
   void initState() {
     _randomFuture = _obtainRandomFuture();
+
     super.initState();
   }
 
-  @override
   Widget build(BuildContext context) {
     return Column(
+      key: ValueKey(widget.title),
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 35, bottom: 2, left: 15, right: 10),
+          padding: EdgeInsets.only(top: 50, bottom: 15, left: 18, right: 10),
           child: Row(
             children: [
-               Text(
-                widget.emoji,
-                style: TextStyle(fontSize: 18),
+              Icon(
+                widget.icon,
+                color: Color(0xffd4af37),
+                size: 18,
               ),
+              Container(width: 10),
               Expanded(
                 child: Text(
                   widget.title,
-                  style: TextStyle(fontSize: 17),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'Quicksand-SemiBold',
+                  ),
                 ),
               ),
-              IconButton(
-                onPressed: () {
+              GestureDetector(
+                onTap: () {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
@@ -58,11 +67,16 @@ class _RandomListState extends State<RandomList> {
                     ),
                   );
                 },
-                icon: Icon(
-                  Icons.arrow_forward,
-                  color: Colors.black,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 10, top: 8),
+                  child: Text(
+                    'VIEW MORE',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
-                iconSize: 18,
               ),
             ],
           ),
@@ -70,65 +84,35 @@ class _RandomListState extends State<RandomList> {
         Container(
           width: MediaQuery.of(context).size.width,
           height: 170,
-          child: Consumer<Randoms> (
-            builder: (context, randoms, child) {
-              return FutureBuilder(
-                future: _randomFuture,
-                builder: (ctx, snapshot) {
-                  if(randoms.randomList.isNotEmpty) {
-                    return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        if (index == 10) {
-                          return Container(
-                            width: 90,
-                            height: 100,
-                            decoration:
-                                BoxDecoration(color: Theme.of(context).backgroundColor),
-                            child: CategoricalScrollItem(animal: randoms.randomList[index]),
-                          );
-                        } else {
-                          return Padding(
-                            padding: EdgeInsets.only(left: 6, right: 6),
-                            child: CategoricalScrollItem(animal: randoms.randomList[index]));
-                        }
-                      },
-                      itemCount: randoms.randomList.length,
-                    );
-                  }
-                  if(snapshot.connectionState == ConnectionState.waiting)
-                    Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  return Container();
-                }
-              );
-            }
-          ), 
+          child: FutureBuilder(
+            future: _randomFuture,
+            builder: (ctx, snapshot) {
+              randomList = Provider.of<Randoms>(context).randomList;
+              sliders = randomList
+                  .map(
+                    (item) => ListItem(animal: item),
+              )
+                  .toList();
+              if (randomList.isNotEmpty) {
+                return CarouselSlider(
+                  options: CarouselOptions(
+                      autoPlay: false,
+                      viewportFraction:
+                      (MediaQuery.of(context).size.width / 392.73) * 0.33,
+                      height: 185,
+                      initialPage: 5),
+                  items: sliders,
+                );
+              }
+              if (snapshot.connectionState == ConnectionState.waiting)
+                Center(
+                  child: CircularProgressIndicator(),
+                );
+              return Container();
+            },
+          ),
         ),
       ],
     );
   }
 }
-
-
-
-// ListView.builder(
-//   scrollDirection: Axis.horizontal,
-//   itemBuilder: (context, index) {
-//     if (index == 10) {
-//       return Container(
-//         width: 90,
-//         height: 100,
-//         decoration:
-//             BoxDecoration(color: Theme.of(context).backgroundColor),
-//         child: Item(index: index, animals: widget.animals,),
-//       );
-//     } else {
-//       return Padding(
-//         padding: EdgeInsets.only(left: 6, right: 6),
-//         child: Item(index: index, animals: widget.animals,));
-//     }
-//   },
-//   itemCount: 10,
-// )
