@@ -31,10 +31,12 @@ class HomeScreen extends StatelessWidget {
                   HomeTopScreen(),
                   CategoricalCarousel(),
                   CategoricalScroll(
+                    key: ValueKey('Random'),
                     title: 'Random',
                     icon: Icons.shuffle,
                   ),
                   CategoricalScroll(
+                    key: ValueKey('Endangered'),
                     title: 'Endangered',
                     icon: Icons.warning_amber_outlined,
                   ),

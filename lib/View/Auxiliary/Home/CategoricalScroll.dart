@@ -96,7 +96,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                   : Provider.of<Randoms>(context, listen: false).randomList;
               sliders = categoricalList
                   .map(
-                    (item) => CategoricalScrollItem(animal: item),
+                    (item) => CategoricalScrollItem(key: ObjectKey(item), animal: item),
                   )
                   .toList();
               if (categoricalList.isNotEmpty) {
