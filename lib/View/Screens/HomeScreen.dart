@@ -20,24 +20,27 @@ class HomeScreen extends StatelessWidget {
           await Provider.of<Randoms>(context, listen: false).getData();
           await Provider.of<Endangered>(context, listen: false).getData();
         },
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                HomeTopScreen(),
-                CategoricalCarousel(),
-                CategoricalScroll(
-                  title: 'Random',
-                  icon: Icons.shuffle,
-                ),
-                CategoricalScroll(
-                  title: 'Endangered',
-                  icon: Icons.warning_amber_outlined,
-                ),
-                Container(height: 50),
-              ],
+        child: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  HomeTopScreen(),
+                  CategoricalCarousel(),
+                  CategoricalScroll(
+                    title: 'Random',
+                    icon: Icons.shuffle,
+                  ),
+                  CategoricalScroll(
+                    title: 'Endangered',
+                    icon: Icons.warning_amber_outlined,
+                  ),
+                  Container(height: 50),
+                ],
+              ),
             ),
           ),
         ),

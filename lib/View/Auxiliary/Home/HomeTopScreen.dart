@@ -22,7 +22,7 @@ class _HomeTopScreenState extends State<HomeTopScreen> {
         children: [
           HomeTopRandom(),
           Padding(
-            padding: EdgeInsets.only(bottom: 10, left: 15, right: 5, top: MediaQuery.of(context).viewPadding.top),
+            padding: EdgeInsets.only(bottom: 10, left: 15, right: 5),
             child: Row(
               children: [
                 Container(
