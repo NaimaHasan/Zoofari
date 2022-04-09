@@ -103,7 +103,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                 return CarouselSlider(
                   options: CarouselOptions(
                       autoPlay: false,
-                      viewportFraction: 0.33,
+                      viewportFraction:(MediaQuery.of(context).size.width/392.73) * 0.33,
                       height: 185,
                       initialPage: 5),
                   items: sliders,

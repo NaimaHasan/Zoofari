@@ -69,7 +69,7 @@ class CategoricalCarousel extends StatelessWidget {
               autoPlay: false,
               enlargeCenterPage: true,
               enlargeStrategy: CenterPageEnlargeStrategy.height,
-              viewportFraction: 0.48,
+              viewportFraction: (MediaQuery.of(context).size.width/392.73) * 0.48,
               height: 185,
               initialPage: 5),
           items: imageSliders,
