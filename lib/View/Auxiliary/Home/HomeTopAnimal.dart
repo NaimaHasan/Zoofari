@@ -65,7 +65,7 @@ class HomeTopRandom extends StatelessWidget {
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: Text(
-                      'Title',
+                      'Title',//lala
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
