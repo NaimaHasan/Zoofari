@@ -84,34 +84,39 @@ class _EndangeredListState extends State<EndangeredList> {
         Container(
           width: MediaQuery.of(context).size.width,
           height: 170,
-          child: FutureBuilder(
-            future: _endangeredFuture,
-            builder: (ctx, snapshot) {
-              endangeredList = Provider.of<Endangered>(context).endangeredList;
-              sliders = endangeredList
-                  .map(
-                    (item) => ListItem(animal: item),
-                  )
-                  .toList();
-              if (endangeredList.isNotEmpty) {
-                return CarouselSlider(
-                  options: CarouselOptions(
-                      autoPlay: false,
-                      viewportFraction:
-                          (MediaQuery.of(context).size.width / 392.73) * 0.33,
-                      height: 185,
-                      initialPage: 5),
-                  items: sliders,
-                );
-              }
-              if (snapshot.connectionState == ConnectionState.waiting)
-                Center(
-                  child: CircularProgressIndicator(),
-                );
-              return Container();
-            },
+          child: Consumer<Endangered> ( 
+            builder: ((context, list, child) {
+              return FutureBuilder(
+                future: _endangeredFuture,
+                builder: (ctx, snapshot) {
+                  endangeredList = list.endangeredList;
+                  sliders = endangeredList
+                      .map(
+                        (item) => ListItem(animal: item),
+                      )
+                      .toList();
+                  if (endangeredList.isNotEmpty) {
+                    return CarouselSlider(
+                      options: CarouselOptions(
+                          autoPlay: false,
+                          viewportFraction:
+                              ( 392.73 / MediaQuery.of(context).size.width) * 0.33,
+                          height: 185,
+                          initialPage: 5),
+                      items: sliders,
+                    );
+                  }
+                  if (snapshot.connectionState == ConnectionState.waiting)
+                    Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  return Container();
+                },
+              );
+
+            }),
+           )        
           ),
-        ),
       ],
     );
   }

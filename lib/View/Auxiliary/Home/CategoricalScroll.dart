@@ -69,7 +69,7 @@ class CategoricalScroll extends StatelessWidget {
               autoPlay: false,
               enlargeCenterPage: true,
               enlargeStrategy: CenterPageEnlargeStrategy.height,
-              viewportFraction: (MediaQuery.of(context).size.width/392.73) * 0.48,
+              viewportFraction: (392.73/ MediaQuery.of(context).size.width) * 0.48,
               height: 185,
               initialPage: 5),
           items: imageSliders,

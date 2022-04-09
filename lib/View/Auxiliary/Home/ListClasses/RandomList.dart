@@ -84,34 +84,38 @@ class _RandomListState extends State<RandomList> {
         Container(
           width: MediaQuery.of(context).size.width,
           height: 170,
-          child: FutureBuilder(
-            future: _randomFuture,
-            builder: (ctx, snapshot) {
-              randomList = Provider.of<Randoms>(context).randomList;
-              sliders = randomList
-                  .map(
-                    (item) => ListItem(animal: item),
-              )
-                  .toList();
-              if (randomList.isNotEmpty) {
-                return CarouselSlider(
-                  options: CarouselOptions(
-                      autoPlay: false,
-                      viewportFraction:
-                      (MediaQuery.of(context).size.width / 392.73) * 0.33,
-                      height: 185,
-                      initialPage: 5),
-                  items: sliders,
-                );
-              }
-              if (snapshot.connectionState == ConnectionState.waiting)
-                Center(
-                  child: CircularProgressIndicator(),
-                );
-              return Container();
-            },
-          ),
-        ),
+          child: Consumer<Randoms> ( 
+            builder: ((context, list, child) {
+              return FutureBuilder(
+                future: _randomFuture,
+                builder: (ctx, snapshot) {
+                  randomList = list.randomList;
+                  sliders = randomList
+                      .map(
+                        (item) => ListItem(animal: item),
+                  )
+                      .toList();
+                  if (randomList.isNotEmpty) {
+                    return CarouselSlider(
+                      options: CarouselOptions(
+                          autoPlay: false,
+                          viewportFraction:
+                          (392.73 / MediaQuery.of(context).size.width ) * 0.33,
+                          height: 185,
+                          initialPage: 5),
+                      items: sliders,
+                    );
+                  }
+                  if (snapshot.connectionState == ConnectionState.waiting)
+                    Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  return Container();
+                },
+              );
+
+            }),
+          )        ),
       ],
     );
   }
