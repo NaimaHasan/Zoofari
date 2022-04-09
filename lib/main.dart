@@ -18,7 +18,7 @@ import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 
 import 'View/Auxiliary/Helpers/ColorGenerator.dart';
-import 'View/Auxiliary/Home/DummyAnimalList.dart';
+import 'View/Auxiliary/Helpers/DummyAnimalList.dart';
 import 'View/Screens/FavoriteScreen.dart';
 import 'View/Screens/HomeScreen.dart';
 

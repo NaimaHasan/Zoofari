@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
-import 'package:zoofari/View/Auxiliary/Home/DummyAnimalList.dart';
+import 'package:zoofari/View/Auxiliary/Helpers/DummyAnimalList.dart';
 
 class Randoms with ChangeNotifier {
   List<Animal> _list = DummyAnimalList.animalList;

@@ -1,6 +1,6 @@
 import 'package:zoofari/Model/Data Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
-import 'package:zoofari/View/Auxiliary/Home/DummyAnimalList.dart';
+import 'package:zoofari/View/Auxiliary/Helpers/DummyAnimalList.dart';
 
 class CategoricalAnimalFetcher  {
   List<Animal> categoricalAnimalList = DummyAnimalList.animalList;
