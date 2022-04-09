@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
-import 'package:zoofari/View/Auxiliary/Home/Item.dart';
+import 'package:zoofari/View/Auxiliary/Home/CategoricalScrollItem.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 
 class RandomList extends StatefulWidget {
@@ -34,7 +34,7 @@ class _RandomListState extends State<RandomList> {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 25, bottom: 2, left: 15, right: 10),
+          padding: EdgeInsets.only(top: 35, bottom: 2, left: 15, right: 10),
           child: Row(
             children: [
                Text(
@@ -69,8 +69,7 @@ class _RandomListState extends State<RandomList> {
         ),
         Container(
           width: MediaQuery.of(context).size.width,
-          height: 160,
-          decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
+          height: 170,
           child: Consumer<Randoms> (
             builder: (context, randoms, child) {
               return FutureBuilder(
@@ -86,12 +85,12 @@ class _RandomListState extends State<RandomList> {
                             height: 100,
                             decoration:
                                 BoxDecoration(color: Theme.of(context).backgroundColor),
-                            child: Item(animal: randoms.randomList[index]),
+                            child: CategoricalScrollItem(animal: randoms.randomList[index]),
                           );
                         } else {
                           return Padding(
                             padding: EdgeInsets.only(left: 6, right: 6),
-                            child: Item(animal: randoms.randomList[index]));
+                            child: CategoricalScrollItem(animal: randoms.randomList[index]));
                         }
                       },
                       itemCount: randoms.randomList.length,

@@ -36,7 +36,7 @@ class AnimalDetailsScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 10, left: 15, right: 5, top: 18),
+            padding: EdgeInsets.only(bottom: 10, left: 15, right: 5, top: MediaQuery.of(context).viewPadding.top),
             child: Row(
               children: [
                 Container(

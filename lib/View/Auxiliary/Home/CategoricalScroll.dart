@@ -1,32 +1,66 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:zoofari/View/Buttons/FavoriteButton.dart';
-import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
+import 'package:provider/provider.dart';
+import 'package:zoofari/View/Auxiliary/Home/CategoricalScrollItem.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 
+import '../../../Controller/CategoricalController/AnimalProviders/EndangeredProvider.dart';
+import '../../../Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
+import '../../../Model/Data Definitions/Animal.dart';
+
 class CategoricalScroll extends StatefulWidget {
-  const CategoricalScroll({required this.title, Key? key}) : super(key: key);
+  const CategoricalScroll({required this.title, required this.icon, Key? key})
+      : super(key: key);
   final String title;
+  final IconData icon;
 
   @override
   _CategoricalScrollState createState() => _CategoricalScrollState();
 }
 
 class _CategoricalScrollState extends State<CategoricalScroll> {
+  late Future _categoricalFuture;
+  late List<Animal> categoricalList;
+  late List<Widget> sliders;
+
+  Future _obtainCategoricalFuture() {
+    if (widget.title == 'Endangered')
+      return Provider.of<Endangered>(context, listen: false).getData();
+    else
+      return Provider.of<Randoms>(context, listen: false).getData();
+  }
+
+  @override
+  void initState() {
+    _categoricalFuture = _obtainCategoricalFuture();
+
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 25, bottom: 2, left: 15, right: 10),
+          padding: EdgeInsets.only(top: 50, bottom: 15, left: 18, right: 10),
           child: Row(
             children: [
+              Icon(
+                widget.icon,
+                color: Color(0xffd4af37),
+                size: 18,
+              ),
+              Container(width: 10),
               Expanded(
                 child: Text(
                   widget.title,
-                  style: TextStyle(fontSize: 17),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'Quicksand-SemiBold',
+                  ),
                 ),
               ),
-              IconButton(
-                onPressed: () {
+              GestureDetector(
+                onTap: () {
                   Navigator.push(
                     context,
                     PageRouteBuilder(
@@ -36,116 +70,78 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
                     ),
                   );
                 },
-                icon: Icon(
-                  Icons.arrow_forward,
-                  color: Colors.black,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 10, top:8),
+                  child: Text(
+                    'VIEW MORE',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
-                iconSize: 18,
               ),
             ],
           ),
         ),
         Container(
           width: MediaQuery.of(context).size.width,
-          height: 160,
-          decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              if (index == 10) {
-                return Container(
-                  width: 90,
-                  height: 100,
-                  decoration:
-                      BoxDecoration(color: Theme.of(context).backgroundColor),
-                  child: GestureDetector(
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'View more',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black,
-                            decoration: TextDecoration.underline),
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              CategoricalAnimalScreen(title: widget.title),
-                          transitionDuration: Duration(seconds: 0),
-                        ),
-                      );
-                    },
-                  ),
-                );
-              } else {
-                return Padding(
-                  padding: EdgeInsets.only(left: 6, right: 6),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              AnimalDetailsScreen(),
-                          transitionDuration: Duration(seconds: 0),
-                        ),
-                      );
-                    },
-                    child: Card(
-                      color: Colors.white,
-                      shadowColor: Colors.white,
-                      child: Container(
-                        width: 100,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Container(
-                              width: 100,
-                              height: 110,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(5),
-                                child: Image.asset(
-                                  'Assets/dummy.jpg',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                width: 110,
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsets.only(left: 10),
-                                        child: Text(
-                                          'title',
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(fontSize: 14),
-                                        ),
-                                      ),
-                                    ),
-                                    FavoriteButton(title: 'title')
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+          height: 170,
+          child: FutureBuilder(
+            future: _categoricalFuture,
+            builder: (ctx, snapshot) {
+              categoricalList = widget.title == 'Endangered'
+                  ? Provider.of<Endangered>(context, listen: false)
+                      .endangeredList
+                  : Provider.of<Randoms>(context, listen: false).randomList;
+              sliders = categoricalList
+                  .map(
+                    (item) => CategoricalScrollItem(animal: item),
+                  )
+                  .toList();
+              if (categoricalList.isNotEmpty) {
+                return CarouselSlider(
+                  options: CarouselOptions(
+                      autoPlay: false,
+                      viewportFraction: 0.33,
+                      height: 185,
+                      initialPage: 5),
+                  items: sliders,
                 );
               }
+              if (snapshot.connectionState == ConnectionState.waiting)
+                Center(
+                  child: CircularProgressIndicator(),
+                );
+              return Container();
             },
-            itemCount: 11,
           ),
         ),
+        // GestureDetector(
+        //   onTap: () {
+        //     Navigator.push(
+        //       context,
+        //       PageRouteBuilder(
+        //         pageBuilder: (context, animation1, animation2) =>
+        //             CategoricalAnimalScreen(title: widget.title),
+        //         transitionDuration: Duration(seconds: 0),
+        //       ),
+        //     );
+        //   },
+        //   child: Padding(
+        //     padding: EdgeInsets.only(top: 20, right: 18),
+        //     child: Align(
+        //       alignment: Alignment.centerRight,
+        //       child: Text(
+        //         'View more',
+        //         style: TextStyle(
+        //             fontSize: 13,
+        //             color: Colors.black,
+        //             decoration: TextDecoration.underline),
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

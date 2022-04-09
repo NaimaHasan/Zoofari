@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/EndangeredProvider.dart';
-import 'package:zoofari/View/Auxiliary/Home/Item.dart';
+import 'package:zoofari/View/Auxiliary/Home/CategoricalScrollItem.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 
 class EndangeredList extends StatefulWidget {
@@ -34,7 +34,7 @@ class _EndangeredListState extends State<EndangeredList> {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 25, bottom: 2, left: 15, right: 10),
+          padding: EdgeInsets.only(top: 35, bottom: 2, left: 15, right: 10),
           child: Row(
             children: [
               Text(
@@ -69,8 +69,7 @@ class _EndangeredListState extends State<EndangeredList> {
         ),
         Container(
           width: MediaQuery.of(context).size.width,
-          height: 160,
-          decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
+          height: 170,
           child: Consumer<Endangered> (
             builder: (context, endangered, child) {
               return FutureBuilder(
@@ -86,12 +85,12 @@ class _EndangeredListState extends State<EndangeredList> {
                             height: 100,
                             decoration:
                                 BoxDecoration(color: Theme.of(context).backgroundColor),
-                            child: Item(animal: endangered.endangeredList[index]),
+                            child: CategoricalScrollItem(animal: endangered.endangeredList[index]),
                           );
                         } else {
                           return Padding(
                             padding: EdgeInsets.only(left: 6, right: 6),
-                            child: Item(animal: endangered.endangeredList[index]));
+                            child: CategoricalScrollItem(animal: endangered.endangeredList[index]));
                         }
                       },
                       itemCount: endangered.endangeredList.length,

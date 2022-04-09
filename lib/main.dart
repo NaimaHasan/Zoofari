@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         appBarTheme: AppBarTheme(
-          color: Color(0xFF4c8e82),
+            color: Color(0xFF88bbb2)
         ),
         backgroundColor: const Color(0xFFe9f8f5),
         dividerColor: Color(0xFF4c8e82),
