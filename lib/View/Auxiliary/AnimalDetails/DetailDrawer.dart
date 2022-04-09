@@ -82,7 +82,7 @@ class _DetailDrawerState extends State<DetailDrawer> {
           ],
         ),
       ),
-      headerHeight: MediaQuery.of(context).size.height * 0.6 + 20,
+      headerHeight: MediaQuery.of(context).size.height * 0.6 + 20 - MediaQuery.of(context).viewPadding.top,
       drawerHeight: MediaQuery.of(context).size.height,
       color: Colors.white,
       controller: controller,
