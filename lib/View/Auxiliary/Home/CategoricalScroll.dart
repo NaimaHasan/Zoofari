@@ -39,6 +39,7 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
 
   Widget build(BuildContext context) {
     return Column(
+      key: ValueKey(widget.title),
       children: [
         Padding(
           padding: EdgeInsets.only(top: 50, bottom: 15, left: 18, right: 10),
@@ -91,13 +92,13 @@ class _CategoricalScrollState extends State<CategoricalScroll> {
             future: _categoricalFuture,
             builder: (ctx, snapshot) {
               categoricalList = widget.title == 'Endangered'
-                  ? Provider.of<Endangered>(context, listen: false)
-                      .endangeredList
-                  : Provider.of<Randoms>(context, listen: false).randomList;
+                  ? Provider.of<Endangered>(context)
+                  .endangeredList
+                  : Provider.of<Randoms>(context).randomList;
               sliders = categoricalList
                   .map(
-                    (item) => CategoricalScrollItem(key: ObjectKey(item), animal: item),
-                  )
+                    (item) => CategoricalScrollItem(animal: item),
+              )
                   .toList();
               if (categoricalList.isNotEmpty) {
                 return CarouselSlider(

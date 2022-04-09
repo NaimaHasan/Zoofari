@@ -20,7 +20,6 @@ class _DetailDrawerState extends State<DetailDrawer> {
     ScrollController(),
     ScrollController(),
     ScrollController(),
-    ScrollController(),
   ];
 
   @override
