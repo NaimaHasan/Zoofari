@@ -109,7 +109,7 @@ class OnlineRepository {
   }
 
   // primary function: gets search result
-  static Future<List<Animal?>?> fetchSearchedAnimals(String searchText) async {
+  static Future<List<String?>?> fetchSearchedAnimalNames(String searchText) async {
     var searchURL = getSearchURL(searchText);
     var response = await client.get(Uri.parse(searchURL));
 
@@ -117,7 +117,7 @@ class OnlineRepository {
       var jsonString = (response.body);
       List<String> animalsToFetch = extractSearchResultNames(jsonString);
 
-      return animalListCompilation(animalsToFetch);
+      return animalsToFetch;
     }
 
     return null;

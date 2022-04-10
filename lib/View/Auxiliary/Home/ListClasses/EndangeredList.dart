@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:zoofari/View/Auxiliary/Home/ListClasses/ListItem.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
@@ -82,21 +83,25 @@ class _EndangeredListState extends State<EndangeredList> {
           ),
         ),
         Container(
+          key: ValueKey('endangered list value key'),
           width: MediaQuery.of(context).size.width,
           height: 170,
           child: Consumer<Endangered> ( 
+            key: ValueKey('endangered consumer'),
             builder: ((context, list, child) {
               return FutureBuilder(
+                key: ValueKey('endangered future'),
                 future: _endangeredFuture,
                 builder: (ctx, snapshot) {
                   endangeredList = list.endangeredList;
                   sliders = endangeredList
                       .map(
-                        (item) => ListItem(animal: item),
+                        (item) => ListItem(animal: item, key: ValueKey('endangered item'),),
                       )
                       .toList();
                   if (endangeredList.isNotEmpty) {
                     return CarouselSlider(
+                      key: ValueKey('Endangered Carousel Slider'),
                       options: CarouselOptions(
                           autoPlay: false,
                           viewportFraction:

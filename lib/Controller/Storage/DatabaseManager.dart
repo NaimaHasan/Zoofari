@@ -8,10 +8,10 @@ class DatabaseManager {
     await LocalDatabase.initialize();
   }
 
-  static Future<List<Animal?>?> getSearchedAnimals(String searchKey) async {
-    return await OnlineRepository.fetchSearchedAnimals(
-        QueryConstructor.constructSearchKeyWord(searchKey));
-  }
+  // static Future<List<Animal?>?> getSearchedAnimals(String searchKey) async {
+  //   return await OnlineRepository.fetchSearchedAnimals(
+  //       QueryConstructor.constructSearchKeyWord(searchKey));
+  // }
 
   static Animal getParticularFavoriteAnimal(String commonName) {
     return LocalDatabase.getParticularAnimal(commonName);

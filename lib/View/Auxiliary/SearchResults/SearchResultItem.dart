@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 
 import '../../Buttons/FavoriteButton.dart';
 import '../../Screens/AnimalDetailsScreen.dart';
 
 class SearchResultItem extends StatelessWidget {
-  const SearchResultItem({Key? key}) : super(key: key);
+  const SearchResultItem({required this.animal, Key? key}) : super(key: key);
+  final Animal animal;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +28,7 @@ class SearchResultItem extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width / 2 - 30,
               height: MediaQuery.of(context).size.width / 2 - 30,
-              child: Image.asset(
-                'Assets/dummy.jpg',
-                fit: BoxFit.cover,
-              ),
+              child: animal.imageLinks.isEmpty? Image.asset('Assets/dummy.jpg', fit: BoxFit.cover): Image.network(animal.imageLinks[0], fit: BoxFit.cover,),
             ),
             Positioned(
               bottom: 0,
@@ -59,7 +58,7 @@ class SearchResultItem extends StatelessWidget {
                     Container(
                       width: MediaQuery.of(context).size.width / 2 - 120,
                       child: Text(
-                        'title',
+                        animal.commonName,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,

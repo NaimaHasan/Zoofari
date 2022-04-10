@@ -9,6 +9,7 @@ import 'package:zoofari/Controller/CategoricalController/AnimalProviders/FishPro
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/MammalProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/ReptileProvider.dart';
+import 'package:zoofari/Controller/CategoricalController/AnimalProviders/SearchResultProvider.dart';
 import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
 
 
@@ -35,6 +36,7 @@ void main() async {
       ChangeNotifierProvider.value(value: Bird()),
       ChangeNotifierProvider.value(value: Fish()),
       ChangeNotifierProvider.value(value: Reptiles()),
+      ChangeNotifierProvider.value(value: SearchController()),
     ],
     child: MyApp(),
   ));

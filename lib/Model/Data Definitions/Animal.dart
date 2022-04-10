@@ -10,95 +10,79 @@ Animal animalFromJson(String str) {
 
 @HiveType(typeId: 0)
 class Animal {
+  late String _commonName;
+  late String _scientificName;
+  late String _kingdom;
+  late String _phylum;
+  late String _classType;
+  late String _order;
+  late String _family;
+  late String _genus;
+  late String _avgWeight;
+  late String _maxWeight;
+  late String _maxLength;
+  late String _maxSpeed;
+  late String _lifespan;
+  late String _lifestyle;
+  late String _skinType;
+  late String _funFact;
+  late String _diets;
+  late String _habitats;
+  late String _preys;
+  late String _predators;
+  late List<dynamic> _colors;
+  late List<dynamic> _imageLinks;
+
   @HiveField(0)
-  String _commonName;
-
-  @HiveField(1)
-  String _scientificName;
-
-  @HiveField(2)
-  String _kingdom;
-
-  @HiveField(3)
-  String _phylum;
-
-  @HiveField(4)
-  String _classType;
-
-  @HiveField(5)
-  String _order;
-
-  @HiveField(6)
-  String _family;
-
-  @HiveField(7)
-  String _genus;
-
-  @HiveField(8)
-  String _avgWeight;
-
-  @HiveField(9)
-  String _maxWeight;
-
-  @HiveField(10)
-  String _maxLength;
-
-  @HiveField(11)
-  String _maxSpeed;
-
-  @HiveField(12)
-  String _lifespan;
-
-  @HiveField(13)
-  String _lifestyle;
-
-  @HiveField(14)
-  String _skinType;
-
-  @HiveField(15)
-  String _funFact;
-
-  @HiveField(16)
-  String _diets;
-
-  @HiveField(17)
-  String _habitats;
-
-  @HiveField(18)
-  String _preys;
-
-  @HiveField(19)
-  String _predators;
-
-  @HiveField(20)
-  List<dynamic> _colors;
-
-  @HiveField(21)
-  List<dynamic> _imageLinks;
+  late String rawJsonString;
 
   Animal(
-      this._commonName,
-      this._scientificName,
-      this._kingdom,
-      this._phylum,
-      this._classType,
-      this._order,
-      this._family,
-      this._genus,
-      this._avgWeight,
-      this._maxWeight,
-      this._maxLength,
-      this._maxSpeed,
-      this._lifespan,
-      this._lifestyle,
-      this._skinType,
-      this._funFact,
-      this._diets,
-      this._habitats,
-      this._preys,
-      this._predators,
-      this._colors,
-      this._imageLinks);
+    rawJsonString,
+      { commonName,
+      scientificName,
+      kingdom,
+      phylum,
+      classType,
+      order,
+      family,
+      genus,
+      avgWeight,
+      maxWeight,
+      maxLength,
+      maxSpeed,
+      lifespan,
+      lifestyle,
+      skinType,
+      funFact,
+      diets,
+      habitats,
+      preys,
+      predators,
+      colors,
+      imageLinks}
+      ){
+        this._commonName = commonName;
+        this._scientificName = scientificName;
+        this._kingdom = kingdom;
+        this._order = order;
+        this._family = family;
+        this.genus = genus;
+        this._avgWeight = avgWeight;
+        this._maxWeight = maxWeight;
+        this._maxLength = maxLength;
+        this._maxSpeed = maxSpeed;
+        this._lifespan = lifespan;
+        this._lifestyle = lifestyle;
+        this._skinType = skinType;
+        this._funFact = funFact;
+        this._diets = diets;
+        this._habitats = habitats;
+        this._preys = preys;
+        this._predators = predators;
+        this._colors = colors;
+        this._imageLinks = imageLinks;
+        this.rawJsonString = rawJsonString; 
+      }
 
   String get scientificName => _scientificName;
 
@@ -331,28 +315,29 @@ class Animal {
     }
 
     return Animal(
-        commonNameVar,
-        scientificNameVar,
-        kingdomVar,
-        phylumVar,
-        classVar,
-        orderVar,
-        familyVar,
-        genusVar,
-        avgWeightVar,
-        maxWeightVar,
-        maxLengthVar,
-        maxSpeedVar,
-        lifespanVar,
-        lifestyleVar,
-        skinTypeVar,
-        funFactVar,
-        dietsVar,
-        habitatsVar,
-        preysVar,
-        predatorsVar,
-        colorsVar,
-        imageLinksVar);
+        "",
+        commonName: commonNameVar,
+        scientificName: scientificNameVar,
+        kingdom: kingdomVar,
+        phylum: phylumVar,
+        classType: classVar,
+        order: orderVar,
+        family: familyVar,
+        genus: genusVar,
+        avgWeight: avgWeightVar,
+        maxWeight: maxWeightVar,
+        maxLength: maxLengthVar,
+        maxSpeed: maxSpeedVar,
+        lifespan: lifespanVar,
+        lifestyle: lifestyleVar,
+        skinType: skinTypeVar,
+        funFact: funFactVar,
+        diets: dietsVar,
+        habitats: habitatsVar,
+        preys: preysVar,
+        predators: predatorsVar,
+        colors: colorsVar,
+        imageLinks: imageLinksVar);
   }
 
 
@@ -381,28 +366,29 @@ class Animal {
     List<dynamic> imageLinksVar = List.empty(growable: true);
 
     return Animal(
-        commonNameVar,
-        scientificNameVar,
-        kingdomVar,
-        phylumVar,
-        classVar,
-        orderVar,
-        familyVar,
-        genusVar,
-        avgWeightVar,
-        maxWeightVar,
-        maxLengthVar,
-        maxSpeedVar,
-        lifespanVar,
-        lifestyleVar,
-        skinTypeVar,
-        funFactVar,
-        dietsVar,
-        habitatsVar,
-        preysVar,
-        predatorsVar,
-        colorsVar,
-        imageLinksVar);
+        "",
+        commonName: commonNameVar,
+        scientificName: scientificNameVar,
+        kingdom: kingdomVar,
+        phylum: phylumVar,
+        classType: classVar,
+        order: orderVar,
+        family: familyVar,
+        genus: genusVar,
+        avgWeight: avgWeightVar,
+        maxWeight: maxWeightVar,
+        maxLength: maxLengthVar,
+        maxSpeed: maxSpeedVar,
+        lifespan: lifespanVar,
+        lifestyle: lifestyleVar,
+        skinType: skinTypeVar,
+        funFact: funFactVar,
+        diets: dietsVar,
+        habitats: habitatsVar,
+        preys: preysVar,
+        predators: predatorsVar,
+        colors: colorsVar,
+        imageLinks: imageLinksVar);
   }
 
 

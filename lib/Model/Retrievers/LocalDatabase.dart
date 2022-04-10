@@ -17,10 +17,14 @@ class LocalDatabase {
 
   static List<Animal> get favoriteAnimals {
     List<dynamic> tempList = favoritesBox.values.toList(growable: true);
+    if(_favoriteAnimals.isNotEmpty) {
+      _favoriteAnimals.clear();
+    }
     for (var item in tempList) {
-      Animal animal = item;
+      Animal animal = Animal.fromJson(item);
       _favoriteAnimals.add(animal);
     }
+    
     return _favoriteAnimals;
   }
 
@@ -52,6 +56,6 @@ class LocalDatabase {
   }
 
   static Animal getParticularAnimal(String commonName) {
-    return favoritesBox.get(commonName);
+    return Animal.fromJson(favoritesBox.get(commonName));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:zoofari/View/Auxiliary/Home/ListClasses/ListItem.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
@@ -82,21 +83,25 @@ class _RandomListState extends State<RandomList> {
           ),
         ),
         Container(
+          key: ValueKey('random list value key'),
           width: MediaQuery.of(context).size.width,
           height: 170,
           child: Consumer<Randoms> ( 
+            key: ValueKey('random consumer'),
             builder: ((context, list, child) {
               return FutureBuilder(
+                key: ValueKey('random future'),
                 future: _randomFuture,
                 builder: (ctx, snapshot) {
                   randomList = list.randomList;
                   sliders = randomList
                       .map(
-                        (item) => ListItem(animal: item),
+                        (item) => ListItem(animal: item, key: ValueKey('random item'),),
                   )
                       .toList();
                   if (randomList.isNotEmpty) {
                     return CarouselSlider(
+                      key: ValueKey('Random Carousel Slider'),
                       options: CarouselOptions(
                           autoPlay: false,
                           viewportFraction:

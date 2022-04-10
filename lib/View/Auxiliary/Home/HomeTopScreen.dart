@@ -74,7 +74,7 @@ class _HomeTopScreenState extends State<HomeTopScreen> {
                         context,
                         PageRouteBuilder(
                           pageBuilder: (context, animation1, animation2) =>
-                              SearchResultsScreen(searchKey: query),
+                              SearchResultsScreen(searchKey: _),
                           transitionDuration: Duration(seconds: 0),
                         ),
                       );
