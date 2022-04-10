@@ -10,7 +10,6 @@ class HomeTopScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Card(
       elevation: 5,
       margin: EdgeInsets.zero,
@@ -63,15 +62,17 @@ class HomeTopScreen extends StatelessWidget {
                       ),
                     ),
                     textInputAction: TextInputAction.done,
-                    onFieldSubmitted: (_) {
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              SearchResultsScreen(searchKey: _),
-                          transitionDuration: Duration(seconds: 0),
-                        ),
-                      );
+                    onFieldSubmitted: (String _message) {
+                      if (_message.isNotEmpty) {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation1, animation2) =>
+                                SearchResultsScreen(searchKey: _message),
+                            transitionDuration: Duration(seconds: 0),
+                          ),
+                        );
+                      }
                       _controller.clear();
                     },
                   ),
