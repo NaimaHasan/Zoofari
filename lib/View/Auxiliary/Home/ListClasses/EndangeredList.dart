@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:zoofari/View/Auxiliary/Home/ListClasses/ListItem.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
@@ -36,7 +35,6 @@ class _EndangeredListState extends State<EndangeredList> {
 
   Widget build(BuildContext context) {
     return Column(
-      key: ValueKey(widget.title),
       children: [
         Padding(
           padding: EdgeInsets.only(top: 50, bottom: 15, left: 18, right: 10),
@@ -83,45 +81,44 @@ class _EndangeredListState extends State<EndangeredList> {
           ),
         ),
         Container(
-          key: ValueKey('endangered list value key'),
           width: MediaQuery.of(context).size.width,
           height: 170,
-          child: Consumer<Endangered> ( 
-            key: ValueKey('endangered consumer'),
-            builder: ((context, list, child) {
-              return FutureBuilder(
-                key: ValueKey('endangered future'),
-                future: _endangeredFuture,
-                builder: (ctx, snapshot) {
-                  endangeredList = list.endangeredList;
-                  sliders = endangeredList
-                      .map(
-                        (item) => ListItem(animal: item, key: ValueKey('endangered item'),),
-                      )
-                      .toList();
-                  if (endangeredList.isNotEmpty) {
-                    return CarouselSlider(
-                      key: ValueKey('Endangered Carousel Slider'),
-                      options: CarouselOptions(
-                          autoPlay: false,
-                          viewportFraction:
-                              ( 392.73 / MediaQuery.of(context).size.width) * 0.33,
-                          height: 185,
-                          initialPage: 5),
-                      items: sliders,
-                    );
-                  }
-                  if (snapshot.connectionState == ConnectionState.waiting)
-                    Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  return Container();
-                },
-              );
-
-            }),
-           )        
+          child: FutureBuilder(
+            future: _endangeredFuture,
+            builder: (ctx, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting)
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              else
+                return Consumer<Endangered>(
+                  builder: ((context, list, child) {
+                    endangeredList = list.endangeredList;
+                    sliders = endangeredList
+                        .map(
+                          (item) => ListItem(
+                            animal: item,
+                          ),
+                        )
+                        .toList();
+                    if (endangeredList.isNotEmpty) {
+                      return CarouselSlider(
+                        options: CarouselOptions(
+                            autoPlay: false,
+                            viewportFraction:
+                                (392.73 / MediaQuery.of(context).size.width) *
+                                    0.33,
+                            height: 185,
+                            initialPage: 5),
+                        items: sliders,
+                      );
+                    } else
+                      return Container();
+                  }),
+                );
+            },
           ),
+        ),
       ],
     );
   }

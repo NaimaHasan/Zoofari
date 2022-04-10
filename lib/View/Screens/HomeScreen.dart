@@ -31,13 +31,13 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   HomeTopScreen(),
                   CategoricalScroll(),
-                  RandomList(
-                    key: ValueKey('Random'),
+                  const RandomList(
+                    key: ValueKey("Random"),
                     title: 'Random',
                     icon: Icons.shuffle,
                   ),
-                  EndangeredList(
-                    key: ValueKey('Endangered'),
+                  const EndangeredList(
+                    key: ValueKey("Endangered"),
                     title: 'Endangered',
                     icon: Icons.warning_amber_outlined,
                   ),
