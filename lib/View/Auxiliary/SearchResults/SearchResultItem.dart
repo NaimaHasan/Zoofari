@@ -22,13 +22,18 @@ class SearchResultItem extends StatelessWidget {
         );
       },
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(20),
         child: Stack(
           children: [
             Container(
               width: MediaQuery.of(context).size.width / 2 - 30,
               height: MediaQuery.of(context).size.width / 2 - 30,
-              child: animal.imageLinks.isEmpty? Image.asset('Assets/dummy.jpg', fit: BoxFit.cover): Image.network(animal.imageLinks[0], fit: BoxFit.cover,),
+              child: animal.imageLinks.isEmpty
+                  ? Image.asset('Assets/dummy.jpg', fit: BoxFit.cover)
+                  : Image.network(
+                      animal.imageLinks[0],
+                      fit: BoxFit.cover,
+                    ),
             ),
             Positioned(
               bottom: 0,
@@ -48,24 +53,30 @@ class SearchResultItem extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: 1,
+              bottom: 0,
               child: Container(
-                padding: EdgeInsets.only(left: 15, right: 5),
-                width: MediaQuery.of(context).size.width / 2 - 30,
+                padding: EdgeInsets.only(left: 15),
+                width: MediaQuery.of(context).size.width / 2 - 35,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: MediaQuery.of(context).size.width / 2 - 120,
+                      width: MediaQuery.of(context).size.width / 2 - 100,
+                      height: 20,
                       child: Text(
                         animal.commonName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 15,
                         ),
                       ),
                     ),
-                    FavoriteButton(title: 'title'),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 3),
+                      child: FavoriteButton(title: 'title'),
+                    ),
                   ],
                 ),
               ),

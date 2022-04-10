@@ -1,7 +1,5 @@
-import 'package:zoofari/Controller/SearchController/QueryConstructor.dart';
 import 'package:zoofari/Model/Data Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/LocalDatabase.dart';
-import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 
 class DatabaseManager {
   static Future<void> initialize() async {

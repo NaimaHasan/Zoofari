@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zoofari/Controller/CategoricalController/CategoricalAnimalFetcher.dart';
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 
