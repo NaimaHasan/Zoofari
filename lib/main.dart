@@ -6,6 +6,7 @@ import 'package:zoofari/Controller/CategoricalController/AnimalProviders/Amphibi
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/BirdProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/EndangeredProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/FishProvider.dart';
+import 'package:zoofari/Controller/CategoricalController/AnimalProviders/HomeTopAnimalProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/MammalProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/ReptileProvider.dart';
@@ -40,6 +41,7 @@ void main() async {
       ChangeNotifierProvider.value(value: Fish()),
       ChangeNotifierProvider.value(value: Reptiles()),
       ChangeNotifierProvider.value(value: SearchController()),
+      ChangeNotifierProvider.value(value: HomeTopRandomAnimal()),
     ],
     child: MyApp(),
   ));

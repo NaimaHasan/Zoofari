@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/EndangeredProvider.dart';
+import 'package:zoofari/Controller/CategoricalController/AnimalProviders/HomeTopAnimalProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
 import 'package:zoofari/View/Auxiliary/Home/CategoricalScroll.dart';
 
@@ -18,6 +19,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: RefreshIndicator(
         onRefresh: () async {
+          await Provider.of<HomeTopRandomAnimal>(context, listen: false).getData();
           await Provider.of<Randoms>(context, listen: false).getData();
           await Provider.of<Endangered>(context, listen: false).getData();
         },
