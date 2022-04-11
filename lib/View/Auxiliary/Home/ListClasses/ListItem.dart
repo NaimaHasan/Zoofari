@@ -59,7 +59,7 @@ class ListItem extends StatelessWidget {
                           ),
                         ),
                       ),
-                      FavoriteButton(title: 'title')
+                      FavoriteButton(title: 'title', currentAnimal: animal,)
                     ],
                   ),
                 ),

@@ -75,7 +75,7 @@ class SearchResultItem extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(bottom: 3),
-                      child: FavoriteButton(title: 'title'),
+                      child: FavoriteButton(title: 'title', currentAnimal: animal,),
                     ),
                   ],
                 ),

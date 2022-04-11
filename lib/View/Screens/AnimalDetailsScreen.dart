@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailDrawer.dart';
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Buttons/FavoriteMenu.dart';
@@ -9,6 +10,7 @@ class AnimalDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Animal sth = Animal.emptyAnimal();
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Stack(
@@ -66,7 +68,7 @@ class AnimalDetailsScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 4),
-                  child: FavoriteButton(title: 'title'),
+                  child: FavoriteButton(title: 'title', currentAnimal: sth,),
                 ),
                 FavoriteMenu(),
               ],

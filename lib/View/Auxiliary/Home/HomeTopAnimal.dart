@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 
@@ -7,6 +8,7 @@ class HomeTopRandom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Animal sth = Animal.emptyAnimal();
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -73,7 +75,7 @@ class HomeTopRandom extends StatelessWidget {
                     ),
                   ),
                 ),
-                FavoriteButton(title: 'title')
+                FavoriteButton(title: 'title', currentAnimal: sth,)
               ],
             ),
           ),

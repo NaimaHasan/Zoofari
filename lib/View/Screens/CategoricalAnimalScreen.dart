@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Buttons/FavoriteMenu.dart';
@@ -13,6 +14,7 @@ class CategoricalAnimalScreen extends StatelessWidget {
   final String title;
 
   Widget build(BuildContext context) {
+    Animal sth = Animal.emptyAnimal();
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -94,7 +96,7 @@ class CategoricalAnimalScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  FavoriteButton(title: 'title'),
+                                  FavoriteButton(title: 'title', currentAnimal: sth,),
                                 ],
                               ),
                             ),

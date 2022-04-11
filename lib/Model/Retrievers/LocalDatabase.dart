@@ -21,8 +21,8 @@ class LocalDatabase {
       _favoriteAnimals.clear();
     }
     for (var item in tempList) {
-      Animal animal = Animal.fromJson(item);
-      _favoriteAnimals.add(animal);
+      // Animal animal = Animal.fromJson(item);
+      _favoriteAnimals.add(item);
     }
     
     return _favoriteAnimals;
@@ -56,6 +56,6 @@ class LocalDatabase {
   }
 
   static Animal getParticularAnimal(String commonName) {
-    return Animal.fromJson(favoritesBox.get(commonName));
+    return favoritesBox.get(commonName);
   }
 }

@@ -34,7 +34,7 @@ class Animal {
   late List<dynamic> _imageLinks;
 
   @HiveField(0)
-  late String rawJsonString;
+  late dynamic rawJsonString;
 
   Animal(
     rawJsonString,
@@ -61,27 +61,32 @@ class Animal {
       colors,
       imageLinks}
       ){
-        this._commonName = commonName;
-        this._scientificName = scientificName;
-        this._kingdom = kingdom;
-        this._order = order;
-        this._family = family;
-        this.genus = genus;
-        this._avgWeight = avgWeight;
-        this._maxWeight = maxWeight;
-        this._maxLength = maxLength;
-        this._maxSpeed = maxSpeed;
-        this._lifespan = lifespan;
-        this._lifestyle = lifestyle;
-        this._skinType = skinType;
-        this._funFact = funFact;
-        this._diets = diets;
-        this._habitats = habitats;
-        this._preys = preys;
-        this._predators = predators;
-        this._colors = colors;
-        this._imageLinks = imageLinks;
-        this.rawJsonString = rawJsonString; 
+        this.rawJsonString = rawJsonString != null? rawJsonString : ""; 
+        
+        this._commonName = commonName!=null? commonName: rawJsonString["common_name"] != null? rawJsonString["common_name"]: "not available";
+        this._scientificName = scientificName!=null? scientificName: rawJsonString["classification"]["Scientific Name"] != null? rawJsonString["classification"]["Scientific Name"] : "not available";
+        this._kingdom = kingdom!=null? kingdom: rawJsonString["classification"]["Kingdom"] != null? rawJsonString["classification"]["Kingdom"] : "not available";
+        this._phylum = phylum != null? phylum : rawJsonString["classification"]["Phylum"] != null? rawJsonString["classification"]["Phylum"] : "not available";
+        this._classType = classType != null? classType : rawJsonString["classification"]["Class"] != null? rawJsonString["classification"]["Class"] : "not available";
+        this._order = order!=null? order: rawJsonString["classification"]["Order"] != null? rawJsonString["classification"]["Order"] : "not available" ;
+        this._family = family!= null? family:rawJsonString["classification"]["Family"] != null? rawJsonString["classification"]["Family"] : "not available";
+        this._genus = genus != null? genus: rawJsonString["classification"]["Genus"] != null? rawJsonString["classification"]["Genus"] : "not available";
+
+        this._avgWeight = avgWeight != null? avgWeight: rawJsonString["general_facts"]["Weight"] != null? rawJsonString["general_facts"]["Weight"] : "not available";
+        this._maxWeight = maxWeight != null? maxWeight : rawJsonString["general_facts"]["Weight"] != null? rawJsonString["general_facts"]["Weight"] : "not available";
+        this._maxLength = maxLength != null? maxLength : rawJsonString["general_facts"]["Length"] != null? rawJsonString["general_facts"]["Length"] : "not available";
+        this._maxSpeed = maxSpeed != null? maxSpeed: rawJsonString["general_facts"]["Top Speed"] != null? rawJsonString["general_facts"]["Top Speed"] : "not available";
+        this._lifespan = lifespan != null? lifespan : rawJsonString["general_facts"]["Lifespan"] != null? rawJsonString["general_facts"]["Lifespan"] : "not avaialbe";
+        this._lifestyle = lifestyle != null? lifestyle : rawJsonString["general_facts"]["Lifestyle"] != null? rawJsonString["general_facts"]["Lifestyle"] : "not available";
+        this._skinType = skinType != null? skinType: rawJsonString["general_facts"]["Skin Type"] != null? rawJsonString["general_facts"]["Skin Type"] : "not available";
+        this._funFact = funFact != null? funFact : rawJsonString["general_facts"]["Fun Fact"] != null? rawJsonString ["general_facts"]["Fun Fact"] : "not available";
+        this._diets = diets != null? diets : rawJsonString["general_facts"]["Diet"] != null? rawJsonString["general_facts"]["Diet"] : "not available";
+        this._habitats = habitats != null? habitats: rawJsonString["general_facts"]["Habitat"] != null? rawJsonString["general_facts"]["Habitat"] : "not available";
+        this._preys = preys != null? preys : rawJsonString["general_facts"]["Prey"] != null? rawJsonString["general_facts"]["Prey"] : "not available";
+        this._predators = predators != null? predators: rawJsonString["general_facts"]["Predator"] != null? rawJsonString["general_facts"]["Predator"] : "not available";
+        this._colors = colors != null? colors: rawJsonString["general_facts"]["Color"] != null? rawJsonString["general_facts"]["Color"] : List.empty();
+        this._imageLinks = imageLinks != null? imageLinks: rawJsonString["image_link"] != null? rawJsonString["image_link"] : List.empty();
+        
       }
 
   String get scientificName => _scientificName;
@@ -225,7 +230,10 @@ class Animal {
     };
   }
 
-  factory Animal.fromJson(var json) {
+  factory Animal.fromJson(var jsonParam) {
+    if(jsonParam is String)
+      jsonParam = json.decode(jsonParam);
+    
     String commonNameVar = "Not Available";
     String scientificNameVar = "Not Available";
     String kingdomVar = "Not Available";
@@ -249,73 +257,73 @@ class Animal {
     List<dynamic> colorsVar = List.empty(growable: true);
     List<dynamic> imageLinksVar = List.empty(growable: true);
 
-    if (json["common_name"] != null) {
-      commonNameVar = json["common_name"];
+    if (jsonParam["common_name"] != null) {
+      commonNameVar = jsonParam["common_name"];
     }
-    if (json["classification"]["Scientific Name"] != null) {
-      scientificNameVar = json["classification"]["Scientific Name"];
+    if (jsonParam["classification"]["Scientific Name"] != null) {
+      scientificNameVar = jsonParam["classification"]["Scientific Name"];
     }
-    if (json["classification"]["Kingdom"] != null) {
-      kingdomVar = json["classification"]["Kingdom"];
+    if (jsonParam["classification"]["Kingdom"] != null) {
+      kingdomVar = jsonParam["classification"]["Kingdom"];
     }
-    if (json["classification"]["Phylum"] != null) {
-      phylumVar = json["classification"]["Phylum"];
+    if (jsonParam["classification"]["Phylum"] != null) {
+      phylumVar = jsonParam["classification"]["Phylum"];
     }
-    if (json["classification"]["Class"] != null) {
-      classVar = json["classification"]["Class"];
+    if (jsonParam["classification"]["Class"] != null) {
+      classVar = jsonParam["classification"]["Class"];
     }
-    if (json["classification"]["Order"] != null) {
-      orderVar = json["classification"]["Order"];
+    if (jsonParam["classification"]["Order"] != null) {
+      orderVar = jsonParam["classification"]["Order"];
     }
-    if (json["classification"]["Family"] != null) {
-      familyVar = json["classification"]["Family"];
+    if (jsonParam["classification"]["Family"] != null) {
+      familyVar = jsonParam["classification"]["Family"];
     }
-    if (json["classification"]["Genus"] != null) {
-      genusVar = json["classification"]["Genus"];
+    if (jsonParam["classification"]["Genus"] != null) {
+      genusVar = jsonParam["classification"]["Genus"];
     }
-    if (json["general_facts"]["Weight"] != null) {
-      avgWeightVar = json["general_facts"]["Weight"];
-      maxWeightVar = json["general_facts"]["Weight"];
+    if (jsonParam["general_facts"]["Weight"] != null) {
+      avgWeightVar = jsonParam["general_facts"]["Weight"];
+      maxWeightVar = jsonParam["general_facts"]["Weight"];
     }
-    if (json["general_facts"]["Length"] != null) {
-      maxLengthVar = json["general_facts"]["Length"];
+    if (jsonParam["general_facts"]["Length"] != null) {
+      maxLengthVar = jsonParam["general_facts"]["Length"];
     }
-    if (json["general_facts"]["Top Speed"] != null) {
-      maxSpeedVar = json["general_facts"]["Top Speed"];
+    if (jsonParam["general_facts"]["Top Speed"] != null) {
+      maxSpeedVar = jsonParam["general_facts"]["Top Speed"];
     }
-    if (json["general_facts"]["Lifespan"] != null) {
-      lifespanVar = json["general_facts"]["Lifespan"];
+    if (jsonParam["general_facts"]["Lifespan"] != null) {
+      lifespanVar = jsonParam["general_facts"]["Lifespan"];
     }
-    if (json["general_facts"]["Lifestyle"] != null) {
-      lifestyleVar = json["general_facts"]["Lifestyle"];
+    if (jsonParam["general_facts"]["Lifestyle"] != null) {
+      lifestyleVar = jsonParam["general_facts"]["Lifestyle"];
     }
-    if (json["general_facts"]["Skin Type"] != null) {
-      skinTypeVar = json["general_facts"]["Skin Type"];
+    if (jsonParam["general_facts"]["Skin Type"] != null) {
+      skinTypeVar = jsonParam["general_facts"]["Skin Type"];
     }
-    if (json["general_facts"]["Fun Fact"] != null) {
-      funFactVar = json["general_facts"]["Fun Fact"];
+    if (jsonParam["general_facts"]["Fun Fact"] != null) {
+      funFactVar = jsonParam["general_facts"]["Fun Fact"];
     }
-    if (json["general_facts"]["Diet"] != null) {
-      dietsVar = json["general_facts"]["Diet"];
+    if (jsonParam["general_facts"]["Diet"] != null) {
+      dietsVar = jsonParam["general_facts"]["Diet"];
     }
-    if (json["general_facts"]["Habitat"] != null) {
-      habitatsVar = json["general_facts"]["Habitat"];
+    if (jsonParam["general_facts"]["Habitat"] != null) {
+      habitatsVar = jsonParam["general_facts"]["Habitat"];
     }
-    if (json["general_facts"]["Prey"] != null) {
-      preysVar = json["general_facts"]["Prey"];
+    if (jsonParam["general_facts"]["Prey"] != null) {
+      preysVar = jsonParam["general_facts"]["Prey"];
     }
-    if (json["general_facts"]["Predator"] != null) {
-      predatorsVar = json["general_facts"]["Predator"];
+    if (jsonParam["general_facts"]["Predator"] != null) {
+      predatorsVar = jsonParam["general_facts"]["Predator"];
     }
-    if (json["general_facts"]["Color"] != null) {
-      colorsVar = json["general_facts"]["Color"];
+    if (jsonParam["general_facts"]["Color"] != null) {
+      colorsVar = jsonParam["general_facts"]["Color"];
     }
-    if (json["image_link"] != null) {
-      imageLinksVar = json["image_link"];
+    if (jsonParam["image_link"] != null) {
+      imageLinksVar = jsonParam["image_link"];
     }
 
     return Animal(
-        "",
+        jsonParam,
         commonName: commonNameVar,
         scientificName: scientificNameVar,
         kingdom: kingdomVar,
