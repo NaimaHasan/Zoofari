@@ -22,7 +22,7 @@ class ListItem extends StatelessWidget {
         );
       },
       child: Card(
-        color: Color(0xFFf6fffd),
+        color: Colors.white,
         shadowColor: Colors.white,
         elevation: 3,
         child: Container(

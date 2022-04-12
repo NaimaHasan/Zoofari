@@ -16,6 +16,7 @@ class CategoricalAnimalScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Animal sth = Animal.emptyAnimal();
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.white, //change your color here
