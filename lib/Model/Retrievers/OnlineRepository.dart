@@ -11,7 +11,7 @@ import 'package:zoofari/Model/Data%20Definitions/Mammal.dart';
 import 'package:zoofari/Model/Data%20Definitions/Reptile.dart';
 
 class OnlineRepository {
-  static String categoryStr = '';
+  static String categoryStr = 'animals';
   static var random = new Random();
   static var client = http.Client();
   static const String _hostWebsite = "https://a-z-animals-api.herokuapp.com";
@@ -30,7 +30,7 @@ class OnlineRepository {
   }
 
   static List<dynamic> returnAnimalList(var list) {
-    //print(list);
+    categoryStr = 'animals';
     return list;
   }
 
