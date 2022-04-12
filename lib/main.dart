@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/AmphibianProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/BirdProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/EndangeredProvider.dart';
@@ -12,15 +10,11 @@ import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomP
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/ReptileProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/SearchResultProvider.dart';
 import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
-import 'package:zoofari/Model/Retrievers/LocalDatabase.dart';
-
-
-import 'package:zoofari/View/Screens/EmptyScreen.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
+import 'package:zoofari/View/Screens/EmptyScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 
-import 'Model/Data Definitions/Animal.dart';
 import 'View/Auxiliary/Helpers/ColorGenerator.dart';
 import 'View/Auxiliary/Helpers/DummyAnimalList.dart';
 import 'View/Screens/FavoriteScreen.dart';
@@ -31,7 +25,7 @@ void main() async {
   await DatabaseManager.initialize();
   DummyAnimalList();
 
-  runApp(MultiProvider( 
+  runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider.value(value: Randoms()),
       ChangeNotifierProvider.value(value: Endangered()),
@@ -47,6 +41,15 @@ void main() async {
   ));
 }
 
+// StringManipulator testing
+// print(StringManipulator.customizeCommonName("liggg- "));
+// var a = await OnlineRepository.fetchSingleAnimal("lion");
+// print(a?.habitats);
+// print(StringManipulator.stringToList(a?.habitats));
+// print(StringManipulator.stringToList(
+// "Shallow tropical waters and coral reefs"));
+//print(StringManipulator.stringToList(
+//       "Shallow tropical waters, and coral reefs"));
 
 //   hive debug code
 //   print("am i even here?");
@@ -54,7 +57,6 @@ void main() async {
 //   print(DatabaseManager.isFavorite('dog-tick'));
 //   Animal sth = LocalDatabase.favoritesBox.get('dog-tick');
 //   print(sth.scientificName);
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -75,9 +77,7 @@ class MyApp extends StatelessWidget {
             Color(0xFF4c8e82),
           ),
         ),
-        appBarTheme: AppBarTheme(
-            color: Color(0xFF88bbb2)
-        ),
+        appBarTheme: AppBarTheme(color: Color(0xFF88bbb2)),
         backgroundColor: const Color(0xFFe9f8f5),
         dividerColor: Color(0xFF4c8e82),
         fontFamily: 'Quicksand',
