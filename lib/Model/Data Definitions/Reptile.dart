@@ -1,67 +1,122 @@
-// import 'Animal.dart';
-// TODO: fix this
+import 'dart:convert';
 
-// class Reptile extends Animal {
-//   String _gestationPeriod;
+import 'Animal.dart';
 
-//   Reptile(
-//       _commonName,
-//       _scientificName,
-//       _kingdom,
-//       _phylum,
-//       _order,
-//       _family,
-//       _genus,
-//       _avgWeight,
-//       _maxWeight,
-//       _maxLength,
-//       _maxSpeed,
-//       _lifespan,
-//       _lifestyle,
-//       _classType,
-//       _skinType,
-//       _funFact,
-//       _diets,
-//       _habitats,
-//       _preys,
-//       _predators,
-//       _colors,
-//       _imageLinks,
-//       this._gestationPeriod)
-//       : super(
-//             _commonName,
-//             _scientificName,
-//             _kingdom,
-//             _phylum,
-//             _order,
-//             _family,
-//             _genus,
-//             _avgWeight,
-//             _maxWeight,
-//             _maxLength,
-//             _maxSpeed,
-//             _lifespan,
-//             _lifestyle,
-//             _classType,
-//             _skinType,
-//             _funFact,
-//             _diets,
-//             _habitats,
-//             _preys,
-//             _predators,
-//             _colors,
-//             _imageLinks);
+class Reptile extends Animal {
+  late String _gestationPeriod;
 
-//   String get gestationPeriod => _gestationPeriod;
+  Reptile(rawJsonString,
+      {commonName,
+      scientificName,
+      kingdom,
+      phylum,
+      order,
+      family,
+      genus,
+      avgWeight,
+      maxWeight,
+      maxLength,
+      maxSpeed,
+      lifespan,
+      lifestyle,
+      classType,
+      skinType,
+      funFact,
+      diets,
+      habitats,
+      preys,
+      predators,
+      colors,
+      imageLinks,
+      gestationPeriod})
+      : super(rawJsonString) {
+    this._gestationPeriod = gestationPeriod != null
+        ? gestationPeriod
+        : rawJsonString["general_facts"]["Gestation Period"] != null
+            ? rawJsonString["general_facts"]["Gestation Period"]
+            : "not available";
+  }
 
-//   set gestationPeriod(String value) {
-//     _gestationPeriod = value;
-//   }
+  String get gestationPeriod => _gestationPeriod;
 
-//   @override
-//   Map<String, dynamic> getAnimalInfo() {
-//     Map<String, dynamic> info = super.getAnimalInfo();
-//     info.addAll({'GestationPeriod': _gestationPeriod});
-//     return info;
-//   }
-// }
+  set gestationPeriod(String value) {
+    _gestationPeriod = value;
+  }
+
+  @override
+  Map<String, dynamic> getAnimalInfo() {
+    Map<String, dynamic> info = super.getAnimalInfo();
+    info.addAll({'GestationPeriod': _gestationPeriod});
+    return info;
+  }
+
+  factory Reptile.fromJson(var jsonParam) {
+    if (jsonParam is String) jsonParam = json.decode(jsonParam);
+    Animal animal = Animal.fromJson(jsonParam);
+
+    String gestationPeriodVar = "Not Available";
+
+    if (jsonParam["general_facts"]["Gestation Period"] != null) {
+      gestationPeriodVar = jsonParam["general_facts"]["Gestation Period"];
+    }
+
+    return Reptile(jsonParam,
+        commonName: animal.commonName,
+        scientificName: animal.scientificName,
+        kingdom: animal.kingdom,
+        phylum: animal.phylum,
+        classType: animal.classType,
+        order: animal.order,
+        family: animal.family,
+        genus: animal.genus,
+        avgWeight: animal.avgWeight,
+        maxWeight: animal.maxWeight,
+        maxLength: animal.maxLength,
+        maxSpeed: animal.maxSpeed,
+        lifespan: animal.lifespan,
+        lifestyle: animal.lifestyle,
+        skinType: animal.skinType,
+        funFact: animal.funFact,
+        diets: animal.diets,
+        habitats: animal.habitats,
+        preys: animal.preys,
+        predators: animal.predators,
+        colors: animal.colors,
+        imageLinks: animal.imageLinks,
+        gestationPeriod: gestationPeriodVar);
+  }
+
+  factory Reptile.emptyAnimal() {
+    Animal animal = Animal.emptyAnimal();
+
+    String gestationPeriodVar = "Not Available";
+
+    return Reptile("",
+        commonName: animal.commonName,
+        scientificName: animal.scientificName,
+        kingdom: animal.kingdom,
+        phylum: animal.phylum,
+        classType: animal.classType,
+        order: animal.order,
+        family: animal.family,
+        genus: animal.genus,
+        avgWeight: animal.avgWeight,
+        maxWeight: animal.maxWeight,
+        maxLength: animal.maxLength,
+        maxSpeed: animal.maxSpeed,
+        lifespan: animal.lifespan,
+        lifestyle: animal.lifestyle,
+        skinType: animal.skinType,
+        funFact: animal.funFact,
+        diets: animal.diets,
+        habitats: animal.habitats,
+        preys: animal.preys,
+        predators: animal.predators,
+        colors: animal.colors,
+        imageLinks: animal.imageLinks,
+        gestationPeriod: gestationPeriodVar);
+  }
+  static Reptile animalFromJson(String str) {
+    return Reptile.fromJson(json.decode(str));
+  }
+}

@@ -41,6 +41,17 @@ void main() async {
   ));
 }
 
+// T? cast<T>(x) => x is T ? x : null;
+//
+// var amphibians = await OnlineRepository.fetchCategoricalAnimal("mammals");
+// for (final item in amphibians!) {
+// if (item.runtimeType == Mammal) {
+// print(item.toString());
+// Mammal? am = cast<Mammal>(item);
+// print(am?.commonName);
+// }
+// }
+
 // StringManipulator testing
 // print(StringManipulator.customizeCommonName("liggg- "));
 // var a = await OnlineRepository.fetchSingleAnimal("lion");
