@@ -4,6 +4,11 @@ import 'dart:math';
 import 'package:http/http.dart' as http;
 import 'package:zoofari/Model/Data Definitions/Animal.dart';
 import 'package:zoofari/Model/Data%20Definitions/Amphibian.dart';
+import 'package:zoofari/Model/Data%20Definitions/Bird.dart';
+import 'package:zoofari/Model/Data%20Definitions/EndangeredAnimal.dart';
+import 'package:zoofari/Model/Data%20Definitions/Fish.dart';
+import 'package:zoofari/Model/Data%20Definitions/Mammal.dart';
+import 'package:zoofari/Model/Data%20Definitions/Reptile.dart';
 
 class OnlineRepository {
   static String categoryStr = '';
@@ -79,7 +84,18 @@ class OnlineRepository {
       var jsonString = response.body;
       if (categoryStr == 'amphibians')
         return Amphibian.animalFromJson(jsonString);
-      return Animal.animalFromJson(jsonString);
+      else if (categoryStr == 'birds')
+        return Bird.animalFromJson(jsonString);
+      else if (categoryStr == 'fish')
+        return Fish.animalFromJson(jsonString);
+      else if (categoryStr == 'mammals')
+        return Mammal.animalFromJson(jsonString);
+      else if (categoryStr == 'reptiles')
+        return Reptile.animalFromJson(jsonString);
+      else if (categoryStr == 'endangered')
+        return EndangeredAnimal.animalFromJson(jsonString);
+      else if (categoryStr == 'animals')
+        return Animal.animalFromJson(jsonString);
     }
     return null;
   }

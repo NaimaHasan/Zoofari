@@ -2,12 +2,7 @@ import 'dart:convert';
 
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 
-// TODO: fix this
 import 'Animal.dart';
-
-// static Amphibian animalFromJson(String jsonString) {
-//   return Amphibian.fromJson(json.decode(jsonString));
-// }
 
 class Amphibian extends Animal {
   late String _avgSpawnSz;

@@ -152,7 +152,10 @@ class Animal {
         ? preys
         : rawJsonString["general_facts"]["Prey"] != null
             ? rawJsonString["general_facts"]["Prey"]
-            : "not available";
+            : rawJsonString["general_facts"]["Main Prey"] != null
+                ? rawJsonString["general_facts"]["Main Prey"]
+                : "not available";
+
     this._predators = predators != null
         ? predators
         : rawJsonString["general_facts"]["Predator"] != null
@@ -391,6 +394,9 @@ class Animal {
     }
     if (jsonParam["general_facts"]["Prey"] != null) {
       preysVar = jsonParam["general_facts"]["Prey"];
+    }
+    if (jsonParam["general_facts"]["Main Prey"] != null) {
+      preysVar = jsonParam["general_facts"]["Main Prey"];
     }
     if (jsonParam["general_facts"]["Predator"] != null) {
       predatorsVar = jsonParam["general_facts"]["Predator"];

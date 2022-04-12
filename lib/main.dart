@@ -10,8 +10,6 @@ import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomP
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/ReptileProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/SearchResultProvider.dart';
 import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
-import 'package:zoofari/Model/Data%20Definitions/Amphibian.dart';
-import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 import 'package:zoofari/View/Screens/EmptyScreen.dart';
@@ -22,21 +20,11 @@ import 'View/Auxiliary/Helpers/DummyAnimalList.dart';
 import 'View/Screens/FavoriteScreen.dart';
 import 'View/Screens/HomeScreen.dart';
 
-Amphibian? cast<Amphibian>(x) => x is Amphibian ? x : null;
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DatabaseManager.initialize();
   DummyAnimalList();
 
-  var amphibians = await OnlineRepository.fetchCategoricalAnimal("amphibians");
-  for (final item in amphibians!) {
-    if (item.runtimeType == Amphibian) {
-      print(item.toString());
-      Amphibian? am = cast<Amphibian>(item);
-      print(am?.commonName);
-    }
-  }
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider.value(value: Randoms()),
@@ -52,6 +40,17 @@ void main() async {
     child: MyApp(),
   ));
 }
+
+// T? cast<T>(x) => x is T ? x : null;
+//
+// var amphibians = await OnlineRepository.fetchCategoricalAnimal("mammals");
+// for (final item in amphibians!) {
+// if (item.runtimeType == Mammal) {
+// print(item.toString());
+// Mammal? am = cast<Mammal>(item);
+// print(am?.commonName);
+// }
+// }
 
 // StringManipulator testing
 // print(StringManipulator.customizeCommonName("liggg- "));
