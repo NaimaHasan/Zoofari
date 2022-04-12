@@ -4,17 +4,12 @@ import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 
 import 'HomeTopAnimal.dart';
 
-class HomeTopScreen extends StatefulWidget {
-  const HomeTopScreen({Key? key}) : super(key: key);
+class HomeTopScreen extends StatelessWidget {
+  HomeTopScreen({Key? key}) : super(key: key);
+  final _controller = TextEditingController();
 
-  @override
-  _HomeTopScreenState createState() => _HomeTopScreenState();
-}
-
-class _HomeTopScreenState extends State<HomeTopScreen> {
   @override
   Widget build(BuildContext context) {
-    var query = '';
     return Card(
       elevation: 5,
       margin: EdgeInsets.zero,
@@ -46,6 +41,7 @@ class _HomeTopScreenState extends State<HomeTopScreen> {
                   width: MediaQuery.of(context).size.width * 0.45,
                   height: 28,
                   child: TextFormField(
+                    controller: _controller,
                     style: TextStyle(fontSize: 12, color: Colors.white),
                     cursorColor: Colors.white,
                     decoration: InputDecoration(
@@ -65,19 +61,19 @@ class _HomeTopScreenState extends State<HomeTopScreen> {
                         color: Colors.white,
                       ),
                     ),
-                    onSaved: (value) {
-                      query = value!;
-                    },
                     textInputAction: TextInputAction.done,
-                    onFieldSubmitted: (_) {
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              SearchResultsScreen(searchKey: query),
-                          transitionDuration: Duration(seconds: 0),
-                        ),
-                      );
+                    onFieldSubmitted: (String _message) {
+                      if (_message.isNotEmpty) {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation1, animation2) =>
+                                SearchResultsScreen(searchKey: _message),
+                            transitionDuration: Duration(seconds: 0),
+                          ),
+                        );
+                      }
+                      _controller.clear();
                     },
                   ),
                 ),

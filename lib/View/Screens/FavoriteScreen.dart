@@ -1,19 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
+
+import '../../Model/Data Definitions/Animal.dart';
 
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({Key? key}) : super(key: key);
   static const String routeName = '/favorite';
   @override
   _FavoriteScreenState createState() => _FavoriteScreenState();
+
 }
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
+  List<Animal> favorites = DatabaseManager.getAllFavorites();
+
+  // @override
+  // void setState(VoidCallback fn) {
+  //   // TODO: implement setState
+  //   super.setState(fn);
+  // }
+
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.white, //change your color here
@@ -55,10 +67,15 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.width - 120,
-                          child: Image.asset(
-                            'Assets/dummy.jpg',
-                            fit: BoxFit.cover,
-                          ),
+                          child: favorites[index].imageLinks.isNotEmpty? 
+                              Image.network(
+                                favorites[index].imageLinks[0],
+                                fit: BoxFit.cover,
+                              ) :
+                              Image.asset(
+                                "Assets/dummy.jpg",
+                                fit: BoxFit.cover,
+                              ),
                         ),
                         Positioned(
                           bottom: 0,
@@ -70,7 +87,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                 begin: Alignment.bottomCenter,
                                 end: Alignment.topCenter,
                                 colors: [
-                                  Colors.black87,
+                                  Colors.black45,
                                   Colors.transparent,
                                 ],
                               ),
@@ -82,7 +99,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                           child: Container(
                             width: MediaQuery.of(context).size.width - 15,
                             child: Padding(
-                              padding: EdgeInsets.all(15),
+                              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -91,14 +108,14 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                     width:
                                         MediaQuery.of(context).size.width * 0.6,
                                     child: Text(
-                                      'title',
+                                      favorites[index].commonName,
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 18,
                                       ),
                                     ),
                                   ),
-                                  FavoriteButton(title: 'title'),
+                                  FavoriteButton(title: 'title', currentAnimal: favorites[index],),
                                 ],
                               ),
                             ),
@@ -112,7 +129,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
             ),
           );
         },
-        itemCount: 25,
+        itemCount: favorites.length,
       ),
     );
   }

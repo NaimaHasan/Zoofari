@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Buttons/FavoriteMenu.dart';
@@ -13,8 +14,8 @@ class CategoricalAnimalScreen extends StatelessWidget {
   final String title;
 
   Widget build(BuildContext context) {
+    Animal sth = Animal.emptyAnimal();
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.white, //change your color here
@@ -67,7 +68,7 @@ class CategoricalAnimalScreen extends StatelessWidget {
                                 begin: Alignment.bottomCenter,
                                 end: Alignment.topCenter,
                                 colors: [
-                                  Colors.black87,
+                                  Colors.black45,
                                   Colors.transparent,
                                 ],
                               ),
@@ -79,7 +80,7 @@ class CategoricalAnimalScreen extends StatelessWidget {
                           child: Container(
                             width: MediaQuery.of(context).size.width - 15,
                             child: Padding(
-                              padding: EdgeInsets.all(15),
+                              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -95,7 +96,7 @@ class CategoricalAnimalScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  FavoriteButton(title: 'title'),
+                                  FavoriteButton(title: 'title', currentAnimal: sth,),
                                 ],
                               ),
                             ),

@@ -1,151 +1,78 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:zoofari/View/Buttons/FavoriteButton.dart';
-import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
-import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
+import 'package:zoofari/View/Auxiliary/Home/CategoricalScrollItem.dart';
 
-class CategoricalScroll extends StatefulWidget {
-  const CategoricalScroll({required this.title, Key? key}) : super(key: key);
-  final String title;
+final List<Map<String, String>> imgList = [
+  {
+    'imageURL':
+        'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
+    'title': 'Amphibian'
+  },
+  {
+    'imageURL':
+        'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
+    'title': 'Bird'
+  },
+  {
+    'imageURL':
+        'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
+    'title': 'Fish'
+  },
+  {
+    'imageURL':
+        'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
+    'title': 'Mammal'
+  },
+  {
+    'imageURL':
+        'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
+    'title': 'Reptile'
+  }
+];
+
+final List<Widget> imageSliders = imgList
+    .map((item) => CategoricalScrollItem(
+        imageURL: item['imageURL'] as String, title: item['title'] as String))
+    .toList();
+
+class CategoricalScroll extends StatelessWidget {
+  const CategoricalScroll({Key? key}) : super(key: key);
 
   @override
-  _CategoricalScrollState createState() => _CategoricalScrollState();
-}
-
-class _CategoricalScrollState extends State<CategoricalScroll> {
   Widget build(BuildContext context) {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 25, bottom: 2, left: 15, right: 10),
+          padding: EdgeInsets.only(top: 40, bottom: 35, left: 18),
           child: Row(
             children: [
+              Icon(
+                Icons.category_outlined,
+                color: Color(0xffd4af37),
+                size: 18,
+              ),
+              Container(width: 10),
               Expanded(
                 child: Text(
-                  widget.title,
-                  style: TextStyle(fontSize: 18),
+                  'Categories',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'Quicksand-SemiBold',
+                  ),
                 ),
-              ),
-              IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    PageRouteBuilder(
-                      pageBuilder: (context, animation1, animation2) =>
-                          CategoricalAnimalScreen(title: widget.title),
-                      transitionDuration: Duration(seconds: 0),
-                    ),
-                  );
-                },
-                icon: Icon(
-                  Icons.arrow_forward,
-                  color: Colors.black,
-                ),
-                iconSize: 18,
               ),
             ],
           ),
         ),
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: 160,
-          decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              if (index == 10) {
-                return Container(
-                  width: 90,
-                  height: 100,
-                  decoration:
-                      BoxDecoration(color: Theme.of(context).backgroundColor),
-                  child: GestureDetector(
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'View more',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black,
-                            decoration: TextDecoration.underline),
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              CategoricalAnimalScreen(title: widget.title),
-                          transitionDuration: Duration(seconds: 0),
-                        ),
-                      );
-                    },
-                  ),
-                );
-              } else {
-                return Padding(
-                  padding: EdgeInsets.only(left: 6, right: 6),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              AnimalDetailsScreen(),
-                          transitionDuration: Duration(seconds: 0),
-                        ),
-                      );
-                    },
-                    child: Card(
-                      shadowColor: Colors.white38,
-                      color: Colors.white38,
-                      child: Container(
-                        width: 100,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Container(
-                              width: 100,
-                              height: 110,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(5),
-                                child: Image.asset(
-                                  'Assets/dummy.jpg',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                color: Colors.white38,
-                                width: 110,
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsets.only(left: 10),
-                                        child: Text(
-                                          'title',
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(fontSize: 14),
-                                        ),
-                                      ),
-                                    ),
-                                    FavoriteButton(title: 'title')
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              }
-            },
-            itemCount: 11,
-          ),
+        CarouselSlider(
+          options: CarouselOptions(
+              autoPlay: false,
+              enlargeCenterPage: true,
+              enlargeStrategy: CenterPageEnlargeStrategy.height,
+              viewportFraction: (392.73/ MediaQuery.of(context).size.width) * 0.48,
+              height: 185,
+              initialPage: 5),
+          items: imageSliders,
         ),
       ],
     );

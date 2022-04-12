@@ -1,28 +1,28 @@
-import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
-
 import 'package:zoofari/Model/Data Definitions/Animal.dart';
-import 'package:zoofari/Controller/SearchController/ResultParser.dart';
 import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
+import 'package:zoofari/View/Auxiliary/Helpers/DummyAnimalList.dart';
 
-class CategoricalAnimalFetcher {
-  static List<Animal> categoricalAnimalList = List.empty(growable: true);
-  static String previousCategory = "";
+class CategoricalAnimalFetcher  {
+  List<Animal> categoricalAnimalList = DummyAnimalList.animalList;
+  late int k;
 
-  static Future<void> getAnimals(String category) async {
-    if(previousCategory == "") {
-      previousCategory = category;
-    }
-    if(previousCategory != category) {
-      categoricalAnimalList = List.empty(growable: true);
-    }
+  CategoricalAnimalFetcher(int a) {
+    this.k = a;
+  }
+  
+
+  Future<void> getAnimals(String category) async {
+    print("---------------fetching $category");
     var animals = await OnlineRepository.fetchCategoricalAnimal(category);
-    if(animals != null) {
-      for(final item in animals) {
-        if(item is Animal) {
+    if (animals != null) {
+      categoricalAnimalList.clear();
+      for (final item in animals) {
+        if (item is Animal) {
           categoricalAnimalList.add(item);
         }
       }
     }
-    previousCategory = category;
+    // previousCategory = category;
+    // notifyListeners();
   }
 }

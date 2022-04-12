@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 
 import '../../Buttons/FavoriteButton.dart';
 import '../../Screens/AnimalDetailsScreen.dart';
 
 class SearchResultItem extends StatelessWidget {
-  const SearchResultItem({Key? key}) : super(key: key);
+  const SearchResultItem({required this.animal, Key? key}) : super(key: key);
+  final Animal animal;
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +22,18 @@ class SearchResultItem extends StatelessWidget {
         );
       },
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(20),
         child: Stack(
           children: [
             Container(
-              width: MediaQuery.of(context).size.width / 2 -30,
-              height: MediaQuery.of(context).size.width / 2 -30,
-              child: Image.asset(
-                'Assets/dummy.jpg',
-                fit: BoxFit.cover,
-              ),
+              width: MediaQuery.of(context).size.width / 2 - 30,
+              height: MediaQuery.of(context).size.width / 2 - 30,
+              child: animal.imageLinks.isEmpty
+                  ? Image.asset('Assets/dummy.jpg', fit: BoxFit.cover)
+                  : Image.network(
+                      animal.imageLinks[0],
+                      fit: BoxFit.cover,
+                    ),
             ),
             Positioned(
               bottom: 0,
@@ -49,27 +53,31 @@ class SearchResultItem extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: 1,
+              bottom: 0,
               child: Container(
-                width: MediaQuery.of(context).size.width / 2 - 30,
-                child: Padding(
-                  padding: EdgeInsets.only(left:15, right:5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2 - 120,
-                        child: Text(
-                          'title',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
+                padding: EdgeInsets.only(left: 15),
+                width: MediaQuery.of(context).size.width / 2 - 35,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width / 2 - 100,
+                      height: 20,
+                      child: Text(
+                        animal.commonName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
                         ),
                       ),
-                      FavoriteButton(title: 'title'),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 3),
+                      child: FavoriteButton(title: 'title', currentAnimal: animal,),
+                    ),
+                  ],
                 ),
               ),
             ),

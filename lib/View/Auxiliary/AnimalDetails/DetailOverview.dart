@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailItems.dart';
 
-import 'package:flutter/rendering.dart';
-import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailOverviewItems.dart';
 
 class DetailOverview extends StatelessWidget {
-  DetailOverview({Key? key}) : super(key: key);
+
+  const DetailOverview({required this.controller, Key? key}) : super(key: key);
+  final ScrollController controller;
   static List<String> classificationList = [
     'Kingdom',
     'Phylum',
@@ -13,32 +14,61 @@ class DetailOverview extends StatelessWidget {
     'Family',
     'Genus',
   ];
-  static List<String> nameList = [
-    'Common Name',
-    'Scientific Name',
-    'Other Names',
-  ];
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              height: 15,
+      controller: controller,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 30,
+          ),
+          Container(
+            child: Center(
+              child: Text(
+                'Scientific Name',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF4c8e82),
+                ),
+              ),
             ),
-            DetailOverviewItems(
-              title: 'Name',
-              list: nameList,
+          ),
+          Container(
+            height: 5,
+          ),
+          Container(
+            child: Center(
+              child: Text(
+                'Panthera leo',
+                style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
-            DetailOverviewItems(
-              title: 'Scientific Classification',
-              list: classificationList,
+          ),
+          Container(
+            height: 30,
+          ),
+          Container(
+            height: 40,
+            child: Text(
+              'Scientific Classification',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF4c8e82),
+              ),
             ),
-          ],
-        ),
+          ),
+          DetailItems(
+            list: classificationList,
+          ),
+
+        ],
       ),
     );
   }
