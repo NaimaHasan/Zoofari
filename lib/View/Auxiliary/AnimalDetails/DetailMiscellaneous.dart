@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailGridItems.dart';
+import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailListItems.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailItems.dart';
 
 class DetailMiscellaneous extends StatelessWidget {
@@ -17,15 +17,15 @@ class DetailMiscellaneous extends StatelessWidget {
     'Meat',
     'Banana',
     'alala',
-    'hehehe',
-    'Meat',
+    'hehehe hohoho',
+    'Meat hmmmmmmm',
     'Banana',
     'alala',
     'hehehe',
   ];
 
   static String funFact =
-      'ibhkudufks bhudksfdsk dshusvb dshbsd jhbd sdilhb idabh dsihb sdkhhbf sdhb dskb dsilb dsjb';
+      'ibhkudufks bhudksfdsk dshusvb dshbsd jhbd sdilhb idabh dsihb sdkhhbf dffdb wetwt we wer 3wrwr sdhb dskb dsilb dsjb';
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class DetailMiscellaneous extends StatelessWidget {
                   child: Text(
                     'Endangered Status:',
                     style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 15,
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF852028)),
                   ),
@@ -63,31 +63,16 @@ class DetailMiscellaneous extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Text(
                     'Critically Endangered',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 15),
                   ),
                 ),
               ],
             ),
           ),
+
+
           Padding(
             padding: EdgeInsets.only(top: 30),
-            child: Container(
-              alignment: Alignment.center,
-              height: 40,
-              width: MediaQuery.of(context).size.width,
-              child: Text(
-                'Habitats',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF4c8e82),
-                ),
-              ),
-            ),
-          ),
-          DetailGridItems(list: dietList),
-          Padding(
-            padding: EdgeInsets.only(top: 25, bottom: 10),
             child: Container(
               alignment: Alignment.center,
               height: 40,
@@ -103,18 +88,19 @@ class DetailMiscellaneous extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 20, right: 20, bottom: 25),
+            padding: EdgeInsets.only(left: 25, right: 25, bottom: 25),
             child: Container(
-              height: funFact.length * 0.7,
+              height: funFact.length * 0.75,
               child: Text(
                 funFact,
                 style: TextStyle(fontSize: 15, height: 1.5),
               ),
             ),
           ),
-          DetailItems(list: miscellaneousList),
+
+
           Padding(
-            padding: EdgeInsets.only(top: 30, bottom: 10),
+            padding: EdgeInsets.only(top: 10, bottom: 10),
             child: Container(
               alignment: Alignment.center,
               height: 40,
@@ -130,9 +116,56 @@ class DetailMiscellaneous extends StatelessWidget {
               ),
             ),
           ),
-          DetailGridItems(list: dietList),
+          DetailListItems(list: dietList),
+
+
           Padding(
-            padding: EdgeInsets.only(top: 30, bottom: 10),
+            padding: EdgeInsets.only(bottom: 10, top: 30),
+            child: Container(
+              alignment: Alignment.center,
+              height: 40,
+              width: MediaQuery.of(context).size.width,
+              child: Text(
+                'Habitats',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF4c8e82),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 25, right: 25, bottom: 25),
+            child: Container(
+              height: funFact.length * 0.75,
+              child: Text(
+                funFact,
+                style: TextStyle(fontSize: 15, height: 1.5),
+              ),
+            ),
+          ),
+
+          Padding(
+            padding: EdgeInsets.only(bottom: 10),
+            child: Container(
+              alignment: Alignment.center,
+              height: 40,
+              width: MediaQuery.of(context).size.width,
+              child: Text(
+                'Additional Information',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF4c8e82),
+                ),
+              ),
+            ),
+          ),
+          DetailItems(list: miscellaneousList),
+
+          Padding(
+            padding: EdgeInsets.only(top: 40, bottom: 10),
             child: Container(
               alignment: Alignment.center,
               height: 40,
@@ -148,9 +181,11 @@ class DetailMiscellaneous extends StatelessWidget {
               ),
             ),
           ),
-          DetailGridItems(list: dietList),
+          DetailListItems(list: dietList),
+
+
           Padding(
-            padding: EdgeInsets.only(top: 30, bottom: 10),
+            padding: EdgeInsets.only(top: 40, bottom: 10),
             child: Container(
               alignment: Alignment.center,
               height: 40,
@@ -166,9 +201,10 @@ class DetailMiscellaneous extends StatelessWidget {
               ),
             ),
           ),
-          DetailGridItems(list: dietList),
+          DetailListItems(list: dietList),
+
           Container(
-            height: 20,
+            height: 40,
           ),
         ],
       ),

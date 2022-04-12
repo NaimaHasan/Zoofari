@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailGridItems.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailItems.dart';
 
 class DetailFeatures extends StatelessWidget {
@@ -24,9 +23,9 @@ class DetailFeatures extends StatelessWidget {
     'Skin Type',
   ];
   static List<String> colorList = [
-    'Orange',
-    'Orange',
-    'Orange',
+    'Aquamarine',
+    'Aquamarine',
+    'Aquamarine',
 
   ];
 
@@ -97,7 +96,33 @@ class DetailFeatures extends StatelessWidget {
               ),
             ),
           ),
-         DetailGridItems(list: colorList),
+          GridView.builder(
+            padding: EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: colorList.length == 2
+                    ? MediaQuery.of(context).size.width / 3.6
+                    : 30),
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: colorList.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: (colorList.length == 1 ||
+                    colorList.length == 2)
+                    ? colorList.length
+                    : 3,
+                childAspectRatio: colorList.length == 1 ? 20 : 4,
+                mainAxisSpacing: colorList.length == 1 ? 1 : 20,
+                crossAxisSpacing: 4),
+            itemBuilder: (BuildContext context, int index) {
+              return Center(
+                child: Text(
+                  colorList[index],
+                  style: TextStyle(fontSize: 15),
+                ),
+              );
+            },
+          ),
+
           Container(
             height: 25,
           ),
