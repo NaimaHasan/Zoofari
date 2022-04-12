@@ -9,31 +9,36 @@ class DetailListItems extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
       itemBuilder: (ctx, index) {
-        return Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 35, right: 25, top: 16),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.api,
-                    //color: Color(0xFF4c8e82),
-                    color: Colors.blueAccent[200],
-                    size: 12,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 15),
+        return Padding(
+          padding: EdgeInsets.only(left: 35, right: 25, top: 16),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 3.5),
+                child: Icon(
+                  Icons.api,
+                  color: Color(0xFF4c8e82),
+                  size: 12,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 15),
+                child: Container(
+                  width: MediaQuery.of(context).size.width - 100,
+                  child: Flexible(
                     child: Text(
                       list[index],
+                      maxLines: 2,
                       style: TextStyle(
                         fontSize: 15,
                       ),
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       },
       itemCount: list.length,

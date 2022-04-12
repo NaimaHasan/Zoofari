@@ -18,7 +18,7 @@ class DetailMiscellaneous extends StatelessWidget {
     'Banana',
     'alala',
     'hehehe hohoho',
-    'Meat hmmmmmmm',
+    'Meat hmmmmmmm lal hgfh ff u ytfyt yd rd  r ufutr ',
     'Banana',
     'alala',
     'hehehe',
