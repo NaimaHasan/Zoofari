@@ -4,10 +4,6 @@ import 'package:hive/hive.dart';
 
 part 'Animal.g.dart';
 
-Animal animalFromJson(String str) {
-  return Animal.fromJson(json.decode(str));
-}
-
 @HiveType(typeId: 0)
 class Animal {
   late String _commonName;
@@ -36,9 +32,8 @@ class Animal {
   @HiveField(0)
   late dynamic rawJsonString;
 
-  Animal(
-    rawJsonString,
-      { commonName,
+  Animal(rawJsonString,
+      {commonName,
       scientificName,
       kingdom,
       phylum,
@@ -59,35 +54,121 @@ class Animal {
       preys,
       predators,
       colors,
-      imageLinks}
-      ){
-        this.rawJsonString = rawJsonString != null? rawJsonString : ""; 
-        
-        this._commonName = commonName!=null? commonName: rawJsonString["common_name"] != null? rawJsonString["common_name"]: "not available";
-        this._scientificName = scientificName!=null? scientificName: rawJsonString["classification"]["Scientific Name"] != null? rawJsonString["classification"]["Scientific Name"] : "not available";
-        this._kingdom = kingdom!=null? kingdom: rawJsonString["classification"]["Kingdom"] != null? rawJsonString["classification"]["Kingdom"] : "not available";
-        this._phylum = phylum != null? phylum : rawJsonString["classification"]["Phylum"] != null? rawJsonString["classification"]["Phylum"] : "not available";
-        this._classType = classType != null? classType : rawJsonString["classification"]["Class"] != null? rawJsonString["classification"]["Class"] : "not available";
-        this._order = order!=null? order: rawJsonString["classification"]["Order"] != null? rawJsonString["classification"]["Order"] : "not available" ;
-        this._family = family!= null? family:rawJsonString["classification"]["Family"] != null? rawJsonString["classification"]["Family"] : "not available";
-        this._genus = genus != null? genus: rawJsonString["classification"]["Genus"] != null? rawJsonString["classification"]["Genus"] : "not available";
+      imageLinks}) {
+    this.rawJsonString = rawJsonString != null ? rawJsonString : "";
 
-        this._avgWeight = avgWeight != null? avgWeight: rawJsonString["general_facts"]["Weight"] != null? rawJsonString["general_facts"]["Weight"] : "not available";
-        this._maxWeight = maxWeight != null? maxWeight : rawJsonString["general_facts"]["Weight"] != null? rawJsonString["general_facts"]["Weight"] : "not available";
-        this._maxLength = maxLength != null? maxLength : rawJsonString["general_facts"]["Length"] != null? rawJsonString["general_facts"]["Length"] : "not available";
-        this._maxSpeed = maxSpeed != null? maxSpeed: rawJsonString["general_facts"]["Top Speed"] != null? rawJsonString["general_facts"]["Top Speed"] : "not available";
-        this._lifespan = lifespan != null? lifespan : rawJsonString["general_facts"]["Lifespan"] != null? rawJsonString["general_facts"]["Lifespan"] : "not avaialbe";
-        this._lifestyle = lifestyle != null? lifestyle : rawJsonString["general_facts"]["Lifestyle"] != null? rawJsonString["general_facts"]["Lifestyle"] : "not available";
-        this._skinType = skinType != null? skinType: rawJsonString["general_facts"]["Skin Type"] != null? rawJsonString["general_facts"]["Skin Type"] : "not available";
-        this._funFact = funFact != null? funFact : rawJsonString["general_facts"]["Fun Fact"] != null? rawJsonString ["general_facts"]["Fun Fact"] : "not available";
-        this._diets = diets != null? diets : rawJsonString["general_facts"]["Diet"] != null? rawJsonString["general_facts"]["Diet"] : "not available";
-        this._habitats = habitats != null? habitats: rawJsonString["general_facts"]["Habitat"] != null? rawJsonString["general_facts"]["Habitat"] : "not available";
-        this._preys = preys != null? preys : rawJsonString["general_facts"]["Prey"] != null? rawJsonString["general_facts"]["Prey"] : "not available";
-        this._predators = predators != null? predators: rawJsonString["general_facts"]["Predator"] != null? rawJsonString["general_facts"]["Predator"] : "not available";
-        this._colors = colors != null? colors: rawJsonString["general_facts"]["Color"] != null? rawJsonString["general_facts"]["Color"] : List.empty();
-        this._imageLinks = imageLinks != null? imageLinks: rawJsonString["image_link"] != null? rawJsonString["image_link"] : List.empty();
-        
-      }
+    this._commonName = commonName != null
+        ? commonName
+        : rawJsonString["common_name"] != null
+            ? rawJsonString["common_name"]
+            : "not available";
+    this._scientificName = scientificName != null
+        ? scientificName
+        : rawJsonString["classification"]["Scientific Name"] != null
+            ? rawJsonString["classification"]["Scientific Name"]
+            : "not available";
+    this._kingdom = kingdom != null
+        ? kingdom
+        : rawJsonString["classification"]["Kingdom"] != null
+            ? rawJsonString["classification"]["Kingdom"]
+            : "not available";
+    this._phylum = phylum != null
+        ? phylum
+        : rawJsonString["classification"]["Phylum"] != null
+            ? rawJsonString["classification"]["Phylum"]
+            : "not available";
+    this._classType = classType != null
+        ? classType
+        : rawJsonString["classification"]["Class"] != null
+            ? rawJsonString["classification"]["Class"]
+            : "not available";
+    this._order = order != null
+        ? order
+        : rawJsonString["classification"]["Order"] != null
+            ? rawJsonString["classification"]["Order"]
+            : "not available";
+    this._family = family != null
+        ? family
+        : rawJsonString["classification"]["Family"] != null
+            ? rawJsonString["classification"]["Family"]
+            : "not available";
+    this._genus = genus != null
+        ? genus
+        : rawJsonString["classification"]["Genus"] != null
+            ? rawJsonString["classification"]["Genus"]
+            : "not available";
+
+    this._avgWeight = avgWeight != null
+        ? avgWeight
+        : rawJsonString["general_facts"]["Weight"] != null
+            ? rawJsonString["general_facts"]["Weight"]
+            : "not available";
+    this._maxWeight = maxWeight != null
+        ? maxWeight
+        : rawJsonString["general_facts"]["Weight"] != null
+            ? rawJsonString["general_facts"]["Weight"]
+            : "not available";
+    this._maxLength = maxLength != null
+        ? maxLength
+        : rawJsonString["general_facts"]["Length"] != null
+            ? rawJsonString["general_facts"]["Length"]
+            : "not available";
+    this._maxSpeed = maxSpeed != null
+        ? maxSpeed
+        : rawJsonString["general_facts"]["Top Speed"] != null
+            ? rawJsonString["general_facts"]["Top Speed"]
+            : "not available";
+    this._lifespan = lifespan != null
+        ? lifespan
+        : rawJsonString["general_facts"]["Lifespan"] != null
+            ? rawJsonString["general_facts"]["Lifespan"]
+            : "not avaialbe";
+    this._lifestyle = lifestyle != null
+        ? lifestyle
+        : rawJsonString["general_facts"]["Lifestyle"] != null
+            ? rawJsonString["general_facts"]["Lifestyle"]
+            : "not available";
+    this._skinType = skinType != null
+        ? skinType
+        : rawJsonString["general_facts"]["Skin Type"] != null
+            ? rawJsonString["general_facts"]["Skin Type"]
+            : "not available";
+    this._funFact = funFact != null
+        ? funFact
+        : rawJsonString["general_facts"]["Fun Fact"] != null
+            ? rawJsonString["general_facts"]["Fun Fact"]
+            : "not available";
+    this._diets = diets != null
+        ? diets
+        : rawJsonString["general_facts"]["Diet"] != null
+            ? rawJsonString["general_facts"]["Diet"]
+            : "not available";
+    this._habitats = habitats != null
+        ? habitats
+        : rawJsonString["general_facts"]["Habitat"] != null
+            ? rawJsonString["general_facts"]["Habitat"]
+            : "not available";
+    this._preys = preys != null
+        ? preys
+        : rawJsonString["general_facts"]["Prey"] != null
+            ? rawJsonString["general_facts"]["Prey"]
+            : "not available";
+    this._predators = predators != null
+        ? predators
+        : rawJsonString["general_facts"]["Predator"] != null
+            ? rawJsonString["general_facts"]["Predator"]
+            : "not available";
+    this._colors = colors != null
+        ? colors
+        : rawJsonString["general_facts"]["Color"] != null
+            ? rawJsonString["general_facts"]["Color"]
+            : List.empty();
+    this._imageLinks = imageLinks != null
+        ? imageLinks
+        : rawJsonString["image_link"] != null
+            ? rawJsonString["image_link"]
+            : List.empty();
+  }
 
   String get scientificName => _scientificName;
 
@@ -231,9 +312,8 @@ class Animal {
   }
 
   factory Animal.fromJson(var jsonParam) {
-    if(jsonParam is String)
-      jsonParam = json.decode(jsonParam);
-    
+    if (jsonParam is String) jsonParam = json.decode(jsonParam);
+
     String commonNameVar = "Not Available";
     String scientificNameVar = "Not Available";
     String kingdomVar = "Not Available";
@@ -322,8 +402,7 @@ class Animal {
       imageLinksVar = jsonParam["image_link"];
     }
 
-    return Animal(
-        jsonParam,
+    return Animal(jsonParam,
         commonName: commonNameVar,
         scientificName: scientificNameVar,
         kingdom: kingdomVar,
@@ -347,7 +426,6 @@ class Animal {
         colors: colorsVar,
         imageLinks: imageLinksVar);
   }
-
 
   factory Animal.emptyAnimal() {
     String commonNameVar = "Not Available";
@@ -373,8 +451,7 @@ class Animal {
     List<dynamic> colorsVar = List.empty(growable: true);
     List<dynamic> imageLinksVar = List.empty(growable: true);
 
-    return Animal(
-        "",
+    return Animal("",
         commonName: commonNameVar,
         scientificName: scientificNameVar,
         kingdom: kingdomVar,
@@ -399,5 +476,7 @@ class Animal {
         imageLinks: imageLinksVar);
   }
 
-
+  static Animal animalFromJson(String str) {
+    return Animal.fromJson(json.decode(str));
+  }
 }

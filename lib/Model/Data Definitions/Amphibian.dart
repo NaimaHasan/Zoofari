@@ -5,9 +5,9 @@ import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 // TODO: fix this
 import 'Animal.dart';
 
-Amphibian animalFromJson(String str) {
-  return Amphibian.fromJson(json.decode(str));
-}
+// static Amphibian animalFromJson(String jsonString) {
+//   return Amphibian.fromJson(json.decode(jsonString));
+// }
 
 class Amphibian extends Animal {
   late String _avgSpawnSz;
@@ -165,5 +165,8 @@ class Amphibian extends Animal {
         avgSpawnSz: avgSpawnSzVar,
         incubationPeriod: incubationPeriodVar,
         waterType: waterTypeVar);
+  }
+  static Amphibian animalFromJson(String str) {
+    return Amphibian.fromJson(json.decode(str));
   }
 }
