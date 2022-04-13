@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/Controller/SearchController/StringManipulator.dart';
 import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
@@ -15,12 +16,6 @@ class FavoriteScreen extends StatefulWidget {
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
   List<Animal> favorites = DatabaseManager.getAllFavorites();
-
-  // @override
-  // void setState(VoidCallback fn) {
-  //   // TODO: implement setState
-  //   super.setState(fn);
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +104,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                     width:
                                         MediaQuery.of(context).size.width * 0.6,
                                     child: Text(
-                                      favorites[index].commonName,
+                                      StringManipulator.customizeCommonName( favorites[index].commonName ),
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 18,

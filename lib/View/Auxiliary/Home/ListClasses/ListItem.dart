@@ -3,10 +3,26 @@ import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 
-class ListItem extends StatelessWidget {
+import '../../../../Controller/SearchController/StringManipulator.dart';
+
+class ListItem extends StatefulWidget {
   const ListItem({required this.animal, Key? key}) : super(key: key);
 
   final Animal animal;
+
+  @override
+  State<ListItem> createState() {
+    return _ListItemState();
+  }
+}
+
+class _ListItemState extends State<ListItem> {
+
+  @override
+  void setState(VoidCallback fn) {
+    
+    super.setState(fn);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +51,9 @@ class ListItem extends StatelessWidget {
                 height: 120,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
-                  child: animal.imageLinks.isNotEmpty
+                  child: widget.animal.imageLinks.isNotEmpty
                       ? Image.network(
-                          animal.imageLinks[0],
+                          widget.animal.imageLinks[0],
                           fit: BoxFit.cover,
                         )
                       : Image.asset('Assets/dummy.jpg'),
@@ -52,14 +68,14 @@ class ListItem extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.only(left: 10),
                           child: Text(
-                            animal.commonName as String,
+                            StringManipulator.customizeCommonName(widget.animal.commonName as String),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(fontSize: 12),
                           ),
                         ),
                       ),
-                      FavoriteButton(title: 'title', currentAnimal: animal,)
+                      FavoriteButton(title: 'title', currentAnimal: widget.animal,)
                     ],
                   ),
                 ),

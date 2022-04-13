@@ -5,27 +5,27 @@ import 'package:zoofari/View/Auxiliary/Home/CategoricalScrollItem.dart';
 final List<Map<String, String>> imgList = [
   {
     'imageURL':
-        'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
+        'https://a-z-animals.com/media/2022/03/red-eyed-tree-frog-2-768x461.jpg',
     'title': 'Amphibian'
   },
   {
     'imageURL':
-        'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
+        'https://a-z-animals.com/media/2021/04/Scarlet-Macaw-on-branch-768x401.jpg',
     'title': 'Bird'
   },
   {
     'imageURL':
-        'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
+        'https://a-z-animals.com/media/2022/01/Goldfish-header-768x401.jpg',
     'title': 'Fish'
   },
   {
     'imageURL':
-        'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
+        'https://a-z-animals.com/media/animals/images/original/jaguar6.jpg',
     'title': 'Mammal'
   },
   {
     'imageURL':
-        'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
+        'https://a-z-animals.com/media/2022/01/Green-Tree-Python-header-768x401.jpg',
     'title': 'Reptile'
   }
 ];

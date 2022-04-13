@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/HomeTopAnimalProvider.dart';
+import 'package:zoofari/Controller/SearchController/StringManipulator.dart';
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
@@ -118,7 +119,7 @@ class _HomeTopRandomState extends State<HomeTopRandom> {
                             child: Container(
                               width: MediaQuery.of(context).size.width * 0.8,
                               child: Text(
-                                topRandomAnimal.commonName,
+                                StringManipulator.customizeCommonName(topRandomAnimal.commonName),
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 
+import '../../../Controller/SearchController/StringManipulator.dart';
 import '../../Buttons/FavoriteButton.dart';
 import '../../Screens/AnimalDetailsScreen.dart';
 
@@ -64,7 +65,7 @@ class SearchResultItem extends StatelessWidget {
                       width: MediaQuery.of(context).size.width / 2 - 100,
                       height: 20,
                       child: Text(
-                        animal.commonName,
+                        StringManipulator.customizeCommonName(animal.commonName),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
