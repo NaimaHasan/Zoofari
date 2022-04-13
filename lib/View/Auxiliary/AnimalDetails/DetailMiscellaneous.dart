@@ -112,9 +112,6 @@ class DetailMiscellaneous extends StatelessWidget {
           DetailItems(title: 'Additional Information', list: miscellaneousList),
           DetailListItems(title: 'Preys', list: dietList),
           DetailListItems(title: 'Predators', list: dietList),
-          Container(
-            height: 40,
-          ),
         ],
       ),
     );
