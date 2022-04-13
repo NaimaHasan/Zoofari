@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailItems.dart';
 
-
 class DetailOverview extends StatelessWidget {
-
   const DetailOverview({required this.controller, Key? key}) : super(key: key);
   final ScrollController controller;
   static List<String> classificationList = [
@@ -36,38 +34,24 @@ class DetailOverview extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            height: 5,
-          ),
-          Container(
-            child: Center(
-              child: Text(
-                'Panthera leo',
-                style: TextStyle(
-                    fontStyle: FontStyle.italic,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          Container(
-            height: 30,
-          ),
-          Container(
-            height: 40,
-            child: Text(
-              'Scientific Classification',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF4c8e82),
+          Padding(
+            padding: EdgeInsets.only(top: 5, bottom: 30),
+            child: Container(
+              child: Center(
+                child: Text(
+                  'Panthera leo',
+                  style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ),
           DetailItems(
+            title: 'Scientific Classification',
             list: classificationList,
           ),
-
         ],
       ),
     );
