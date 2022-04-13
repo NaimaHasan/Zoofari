@@ -17,26 +17,35 @@ class _FavoriteButtonState extends State<FavoriteButton> {
 
   @override
   Widget build(BuildContext context) {
-    isFavorited = DatabaseManager.isFavorite(widget.currentAnimal.commonName);
-    return IconButton(
-      icon: Icon(isFavorited ? Icons.star : Icons.star_outline),
-      onPressed: () {
-        setState(
-          () {
-            if(isFavorited) {
-              DatabaseManager.removeFromFavorites(widget.currentAnimal);
-            } else {
-              DatabaseManager.addToFavorites(widget.currentAnimal);
-            }
-            isFavorited = !isFavorited;
+    return StreamBuilder(
+      stream: DatabaseManager.getFavoritesStream(),
+      builder: (context, snapshot) {
+        if(snapshot.data != null) {
+          isFavorited = DatabaseManager.isFavorite(widget.currentAnimal.commonName);
+        } 
+        isFavorited = DatabaseManager.isFavorite(widget.currentAnimal.commonName);
+        return IconButton(
+          icon: Icon(isFavorited ? Icons.star : Icons.star_outline),
+          onPressed: () {
+            setState(
+              () {
+                if(isFavorited) {
+                  DatabaseManager.removeFromFavorites(widget.currentAnimal);
+                } else {
+                  DatabaseManager.addToFavorites(widget.currentAnimal);
+                }
+                isFavorited = !isFavorited;
+              },
+            );
           },
+          visualDensity: VisualDensity.compact,
+          iconSize: 22,
+          splashRadius: 16,
+          alignment: Alignment.center,
+          color: Colors.yellow[700],
         );
+        
       },
-      visualDensity: VisualDensity.compact,
-      iconSize: 22,
-      splashRadius: 16,
-      alignment: Alignment.center,
-      color: Colors.yellow[700],
     );
   }
 }

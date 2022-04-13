@@ -2,10 +2,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../Data Definitions/Animal.dart';
 
-class LocalDatabase {
+class LocalDatabase{
   static List<Animal> _favoriteAnimals = List.empty(growable: true);
   static const String DB_BOX_NAME = "Favorites";
   static late Box favoritesBox;
+  static late Stream favoritesStream;
 
   LocalDatabase();
 
@@ -13,6 +14,7 @@ class LocalDatabase {
     await Hive.initFlutter();
     Hive.registerAdapter(AnimalAdapter());
     favoritesBox = await Hive.openBox(DB_BOX_NAME);
+    favoritesStream = favoritesBox.watch();
   }
 
   static List<Animal> get favoriteAnimals {

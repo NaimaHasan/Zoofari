@@ -10,6 +10,7 @@ class DatabaseManager {
   //   return await OnlineRepository.fetchSearchedAnimals(
   //       QueryConstructor.constructSearchKeyWord(searchKey));
   // }
+  static Stream getFavoritesStream() => LocalDatabase.favoritesStream;
 
   static Animal getParticularFavoriteAnimal(String commonName) {
     return LocalDatabase.getParticularAnimal(commonName);
