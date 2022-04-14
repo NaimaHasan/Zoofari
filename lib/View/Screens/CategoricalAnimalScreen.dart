@@ -102,6 +102,8 @@ class CategoricalAnimalScreen extends StatelessWidget {
                                   FavoriteButton(
                                     title: 'title',
                                     currentAnimal: sth,
+                                    onPressed: (_) async => true,
+                                    showToast: (){},
                                   ),
                                 ],
                               ),

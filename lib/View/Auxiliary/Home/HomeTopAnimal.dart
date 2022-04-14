@@ -141,6 +141,8 @@ class _HomeTopRandomState extends State<HomeTopRandom> {
                               FavoriteButton(
                                 title: 'title',
                                 currentAnimal: topRandomAnimal,
+                                onPressed: (_) async => true,
+                                showToast: (){},
                               )
                             ],
                           ),

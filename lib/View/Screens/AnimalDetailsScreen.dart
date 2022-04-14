@@ -86,7 +86,12 @@ class AnimalDetailsScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 4),
-                  child: FavoriteButton(title: 'title', currentAnimal: animal),
+                  child: FavoriteButton(
+                    title: 'title',
+                    currentAnimal: animal,
+                    onPressed: (_) async => true,
+                    showToast: (){},
+                  ),
                 ),
                 FavoriteMenu(),
               ],
