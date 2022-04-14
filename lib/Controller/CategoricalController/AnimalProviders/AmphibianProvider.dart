@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:zoofari/Controller/CategoricalController/CategoricalAnimalFetcher.dart';
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 
+import '../../../Model/Data Definitions/Amphibian.dart';
+
 class Amphibians with ChangeNotifier {
   List<Animal> _list = List.empty(growable: true);
 
@@ -13,7 +15,12 @@ class Amphibians with ChangeNotifier {
     _list.clear();
     CategoricalAnimalFetcher amphibianFetcher = CategoricalAnimalFetcher(1);
     await amphibianFetcher.getAnimals("amphibians");
-    _list = amphibianFetcher.categoricalAnimalList;
+    for(final item in amphibianFetcher.categoricalAnimalList) {
+      if(item is Amphibian) {
+        _list.add(item);
+        notifyListeners();
+      }
+    }
     notifyListeners();
   }
 }

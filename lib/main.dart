@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/AmphibianProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/BirdProvider.dart';
+import 'package:zoofari/Controller/CategoricalController/AnimalProviders/CategoricalAnimalProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/EndangeredProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/FishProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/HomeTopAnimalProvider.dart';
@@ -37,6 +38,7 @@ void main() async {
       ChangeNotifierProvider.value(value: Reptiles()),
       ChangeNotifierProvider.value(value: SearchController()),
       ChangeNotifierProvider.value(value: HomeTopRandomAnimal()),
+      ChangeNotifierProvider.value(value: CategoricalProvider()),
     ],
     child: MyApp(),
   ));
