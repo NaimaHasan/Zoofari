@@ -36,6 +36,7 @@ dependencies:
   get: ^4.1.4
   carousel_slider: ^4.0.0
   flutter_layout_grid: ^1.0.3
+  motion_toast: ^2.1.6
 
 
 
