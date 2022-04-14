@@ -30,7 +30,7 @@ class DetailOverview extends StatelessWidget {
                 'Scientific Name',
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF4c8e82),
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
             ),

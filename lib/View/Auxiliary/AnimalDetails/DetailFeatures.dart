@@ -45,7 +45,7 @@ class DetailFeatures extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFF4c8e82),
+                              color: Theme.of(context).primaryColor,
                             ),
                           ),
                         ),
@@ -70,7 +70,7 @@ class DetailFeatures extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF4c8e82),
+                    color: Theme.of(context).primaryColor,
                   ),
                 )
               : Padding(

@@ -23,7 +23,7 @@ class DetailListItems extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF4c8e82),
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
             ),
@@ -53,7 +53,7 @@ class DetailListItems extends StatelessWidget {
                             padding: EdgeInsets.only(top: 3.5),
                             child: Icon(
                               Icons.api,
-                              color: Color(0xFF4c8e82),
+                              color: Theme.of(context).primaryColor,
                               size: 12,
                             ),
                           ),

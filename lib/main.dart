@@ -13,6 +13,7 @@ import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 import 'package:zoofari/View/Screens/EmptyScreen.dart';
+import 'package:zoofari/View/Screens/SplashScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 
 import 'Model/Data Definitions/Animal.dart';
@@ -81,10 +82,11 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(color: Color(0xFF88bbb2)),
         //backgroundColor: const Color(0xFFe9f8f5),
         backgroundColor: const Color(0xFFf6fffd),
-        dividerColor: Color(0xFF4c8e82),
+        dividerColor: Color(0xFF88bbb2),
         fontFamily: 'Quicksand',
       ),
       routes: {
+        SplashScreen.routeName: (ctx) => SplashScreen(),
         HomeScreen.routeName: (ctx) => HomeScreen(),
         FavoriteScreen.routeName: (ctx) => FavoriteScreen(),
         CategoricalAnimalScreen.routeName: (ctx) =>
