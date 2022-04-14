@@ -47,7 +47,7 @@ class DetailMiscellaneous extends StatelessWidget {
                       Icons.warning_amber_outlined,
                       color: ((aml != null) && (aml is EndangeredAnimal))
                           ? Color(0xFF852028)
-                          : Color(0xFF4c8e82),
+                          : Theme.of(context).primaryColor,
                       size: 16,
                     ),
                   ),
@@ -56,11 +56,12 @@ class DetailMiscellaneous extends StatelessWidget {
                     child: Text(
                       'Endangered Status:',
                       style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: ((aml != null) && (aml is EndangeredAnimal))
-                              ? Color(0xFF852028)
-                              : Color(0xFF4c8e82)),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: ((aml != null) && (aml is EndangeredAnimal))
+                            ? Color(0xFF852028)
+                            : Theme.of(context).primaryColor,
+                      ),
                     ),
                   ),
                   Container(
@@ -84,7 +85,7 @@ class DetailMiscellaneous extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF4c8e82),
+              color: Theme.of(context).primaryColor,
             ),
           ),
           Padding(
@@ -101,7 +102,7 @@ class DetailMiscellaneous extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF4c8e82),
+              color: Theme.of(context).primaryColor,
             ),
           ),
           Padding(

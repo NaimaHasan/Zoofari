@@ -53,7 +53,7 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 onTap: (index) {
                   _pageController.jumpToPage(index);
                 },
-                labelColor: Color(0xFF4c8e82),
+                labelColor: Theme.of(context).primaryColor,
                 unselectedLabelColor: Colors.black,
                 tabs: [
                   Tab(text: 'Overview'),

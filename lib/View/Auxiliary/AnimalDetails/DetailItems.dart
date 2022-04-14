@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class DetailItems extends StatelessWidget {
   const DetailItems({required this.title, required this.itemMap, Key? key})
@@ -23,7 +22,7 @@ class DetailItems extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF4c8e82),
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
             ),
@@ -48,7 +47,7 @@ class DetailItems extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFF4c8e82),
+                                  color: Theme.of(context).primaryColor,
                                 ),
                               ),
                             ),
