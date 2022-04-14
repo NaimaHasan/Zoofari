@@ -20,7 +20,7 @@ class DetailFeatures extends StatelessWidget {
     if ((aml != null) && (aml is Animal)) {
       colorList.clear();
       topInfoMap.clear();
-      colorList = aml.colors.cast<String>();
+      colorList = aml.colors.toList().cast<String>();
       topInfoMap = CustomAnimalInfo.getTopInformationMap(aml);
     }
 
