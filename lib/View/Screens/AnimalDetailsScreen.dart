@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
+import 'package:zoofari/Controller/CategoricalController/CustomAnimalInfo.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailDrawer.dart';
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Buttons/FavoriteMenu.dart';
 
+import '../../Controller/SearchController/StringManipulator.dart';
+import '../../Model/Data Definitions/Animal.dart';
+
 class AnimalDetailsScreen extends StatelessWidget {
-  const AnimalDetailsScreen({Key? key}) : super(key: key);
+  const AnimalDetailsScreen({Key? key, required this.animal}) : super(key: key);
   static const String routeName = '/animalDetail';
+  final animal;
 
   @override
   Widget build(BuildContext context) {
-    Animal sth = Animal.emptyAnimal();
+    var aml = CustomAnimalInfo.getTypeCastedAnimal(animal);
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Stack(
@@ -21,10 +25,17 @@ class AnimalDetailsScreen extends StatelessWidget {
             child: Container(
               height: MediaQuery.of(context).size.height / 2.5,
               width: double.infinity,
-              child: Image.asset(
-                'Assets/dummy.jpg',
-                fit: BoxFit.cover,
-              ),
+              child: ((aml != null) &&
+                      (aml is Animal) &&
+                      (aml.imageLinks.isNotEmpty))
+                  ? Image.network(
+                      aml.imageLinks[0],
+                      fit: BoxFit.cover,
+                    )
+                  : Image.asset(
+                      'Assets/dummy.jpg',
+                      fit: BoxFit.cover,
+                    ),
             ),
           ),
           Padding(
@@ -46,7 +57,11 @@ class AnimalDetailsScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 10, left: 15, right: 5,top: MediaQuery.of(context).viewPadding.top),
+            padding: EdgeInsets.only(
+                bottom: 10,
+                left: 15,
+                right: 5,
+                top: MediaQuery.of(context).viewPadding.top),
             child: Row(
               children: [
                 Container(
@@ -58,7 +73,10 @@ class AnimalDetailsScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(top: 10, left: 8),
                     child: Text(
-                      'title',
+                      ((aml != null) && (aml is Animal))
+                          ? StringManipulator.customizeCommonName(
+                              aml.commonName)
+                          : 'title',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 17,
@@ -68,13 +86,13 @@ class AnimalDetailsScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 4),
-                  child: FavoriteButton(title: 'title', currentAnimal: sth,),
+                  child: FavoriteButton(title: 'title', currentAnimal: animal),
                 ),
                 FavoriteMenu(),
               ],
             ),
           ),
-          DetailDrawer(),
+          DetailDrawer(animal: animal),
         ],
       ),
     );

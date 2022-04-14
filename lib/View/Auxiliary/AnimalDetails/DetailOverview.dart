@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailItems.dart';
 
+import '../../../Controller/CategoricalController/CustomAnimalInfo.dart';
+import '../../../Controller/SearchController/StringManipulator.dart';
+import '../../../Model/Data Definitions/Animal.dart';
+
 class DetailOverview extends StatelessWidget {
-  const DetailOverview({required this.controller, Key? key}) : super(key: key);
+  const DetailOverview(
+      {required this.controller, Key? key, required this.animal})
+      : super(key: key);
   final ScrollController controller;
-  static List<String> classificationList = [
-    'Kingdom',
-    'Phylum',
-    'Class',
-    'Order',
-    'Family',
-    'Genus',
-  ];
+  final animal;
 
   @override
   Widget build(BuildContext context) {
+    var aml = CustomAnimalInfo.getTypeCastedAnimal(animal);
+
     return SingleChildScrollView(
       controller: controller,
       child: Column(
@@ -39,7 +40,9 @@ class DetailOverview extends StatelessWidget {
             child: Container(
               child: Center(
                 child: Text(
-                  'Panthera leo',
+                  ((aml != null) && (aml is Animal))
+                      ? StringManipulator.customizeCommonName(aml.commonName)
+                      : 'Panthera leo',
                   style: TextStyle(
                       fontStyle: FontStyle.italic,
                       fontSize: 17,
@@ -50,7 +53,7 @@ class DetailOverview extends StatelessWidget {
           ),
           DetailItems(
             title: 'Scientific Classification',
-            list: classificationList,
+            itemMap: CustomAnimalInfo.getClassificationMap(aml),
           ),
         ],
       ),

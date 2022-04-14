@@ -11,7 +11,6 @@ import 'package:zoofari/Model/Data%20Definitions/Mammal.dart';
 import 'package:zoofari/Model/Data%20Definitions/Reptile.dart';
 
 class OnlineRepository {
-  static String categoryStr = 'animals';
   static var random = new Random();
   static var client = http.Client();
   static const String _hostWebsite = "https://a-z-animals-api.herokuapp.com";
@@ -30,15 +29,14 @@ class OnlineRepository {
   }
 
   static List<dynamic> returnAnimalList(var list) {
-    categoryStr = 'animals';
     return list;
   }
 
   static Future<List<dynamic>?> animalListCompilation(
-      List<String> animalsToFetch) async {
+      List<String> animalsToFetch, String category) async {
     List<dynamic> animalsFetched = List.empty(growable: true);
     for (int itr = 0; itr < animalsToFetch.length; itr++) {
-      var fetched = await fetchSingleAnimal(animalsToFetch[itr]);
+      var fetched = await fetchSingleAnimal(animalsToFetch[itr], category);
       //print("fetched in animal list compilation $fetched");
       if (fetched != null) {
         animalsFetched.add(fetched);
@@ -78,24 +76,24 @@ class OnlineRepository {
   }
 
   // primary function: gets a single animal
-  static Future<dynamic> fetchSingleAnimal(String animalName) async {
+  static Future<dynamic> fetchSingleAnimal(String animalName,
+      [String category = 'animals']) async {
     var response = await client.get(Uri.parse(getAnimalDetailURL(animalName)));
     if (response.statusCode == 200) {
       var jsonString = response.body;
-      if (categoryStr == 'amphibians')
+      if (category == 'amphibians')
         return Amphibian.animalFromJson(jsonString);
-      else if (categoryStr == 'birds')
+      else if (category == 'birds')
         return Bird.animalFromJson(jsonString);
-      else if (categoryStr == 'fish')
+      else if (category == 'fish')
         return Fish.animalFromJson(jsonString);
-      else if (categoryStr == 'mammals')
+      else if (category == 'mammals')
         return Mammal.animalFromJson(jsonString);
-      else if (categoryStr == 'reptiles')
+      else if (category == 'reptiles')
         return Reptile.animalFromJson(jsonString);
-      else if (categoryStr == 'endangered')
+      else if (category == 'endangered')
         return EndangeredAnimal.animalFromJson(jsonString);
-      else if (categoryStr == 'animals')
-        return Animal.animalFromJson(jsonString);
+      else if (category == 'animals') return Animal.animalFromJson(jsonString);
     }
     return null;
   }
@@ -103,7 +101,6 @@ class OnlineRepository {
   // primary function: gets a list of animals, here category == animals, mammals, fish, birds, reptiles, amphibians
   static Future<List<dynamic>?> fetchCategoricalAnimal(String category) async {
     bool all = false;
-    categoryStr = category;
     if (category == 'animals') {
       all = true;
     }
@@ -123,7 +120,7 @@ class OnlineRepository {
         animalsToFetch = extractNames(json.decode(jsonString), category);
       }
 
-      return animalListCompilation(animalsToFetch);
+      return animalListCompilation(animalsToFetch, category);
     }
     return null;
   }

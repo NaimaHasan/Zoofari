@@ -17,7 +17,9 @@ class SearchResultItem extends StatelessWidget {
           context,
           PageRouteBuilder(
             pageBuilder: (context, animation1, animation2) =>
-                AnimalDetailsScreen(),
+                AnimalDetailsScreen(
+              animal: animal,
+            ),
             transitionDuration: Duration(seconds: 0),
           ),
         );
@@ -65,7 +67,8 @@ class SearchResultItem extends StatelessWidget {
                       width: MediaQuery.of(context).size.width / 2 - 100,
                       height: 20,
                       child: Text(
-                        StringManipulator.customizeCommonName(animal.commonName),
+                        StringManipulator.customizeCommonName(
+                            animal.commonName),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -76,7 +79,10 @@ class SearchResultItem extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(bottom: 3),
-                      child: FavoriteButton(title: 'title', currentAnimal: animal,),
+                      child: FavoriteButton(
+                        title: 'title',
+                        currentAnimal: animal,
+                      ),
                     ),
                   ],
                 ),

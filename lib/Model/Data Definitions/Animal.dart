@@ -122,7 +122,7 @@ class Animal {
         ? lifespan
         : rawJsonString["general_facts"]["Lifespan"] != null
             ? rawJsonString["general_facts"]["Lifespan"]
-            : "not avaialbe";
+            : "not available";
     this._lifestyle = lifestyle != null
         ? lifestyle
         : rawJsonString["general_facts"]["Lifestyle"] != null
@@ -394,8 +394,7 @@ class Animal {
     }
     if (jsonParam["general_facts"]["Prey"] != null) {
       preysVar = jsonParam["general_facts"]["Prey"];
-    }
-    if (jsonParam["general_facts"]["Main Prey"] != null) {
+    } else if (jsonParam["general_facts"]["Main Prey"] != null) {
       preysVar = jsonParam["general_facts"]["Main Prey"];
     }
     if (jsonParam["general_facts"]["Predator"] != null) {

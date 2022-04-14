@@ -1,36 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/Controller/CategoricalController/CustomAnimalInfo.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailItems.dart';
 
+import '../../../Model/Data Definitions/Animal.dart';
 
 class DetailFeatures extends StatelessWidget {
-  const DetailFeatures({required this.controller, Key? key}) : super(key: key);
+  const DetailFeatures(
+      {required this.controller, Key? key, required this.animal})
+      : super(key: key);
   final ScrollController controller;
+  final animal;
 
-  static List<String> otherFeatureList = [
-    'Maximum Weight:',
-    'Maximum Length:',
-    'Maximum Speed:',
-    'Average Litter Size:',
-    'Average Spawn Size:',
-    'Wingspan:',
-    'Age of Sexual Maturity:',
-    'Age of Weaning:',
-    'Incubation Period:',
-    'Gestation Period:'
-  ];
-  static List<String> topInformationList = [
-    'Lifespan',
-    'Average Weight',
-    'Skin Type',
-  ];
-  static List<String> colorList = [
-    'Aquamarine',
-    'Aquamarine',
-    'Aquamarine',
-  ];
+  static Map<String, String> topInfoMap = {};
+  static List<String> colorList = [];
 
   @override
   Widget build(BuildContext context) {
+    var aml = CustomAnimalInfo.getTypeCastedAnimal(animal);
+    if ((aml != null) && (aml is Animal)) {
+      colorList.clear();
+      topInfoMap.clear();
+      colorList = aml.colors.cast<String>();
+      topInfoMap = CustomAnimalInfo.getTopInformationMap(aml);
+    }
+
     return SingleChildScrollView(
       controller: controller,
       child: Column(
@@ -51,7 +44,7 @@ class DetailFeatures extends StatelessWidget {
                         width: MediaQuery.of(context).size.width / 3,
                         child: Center(
                           child: Text(
-                            topInformationList[index],
+                            topInfoMap.keys.elementAt(index),
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -66,7 +59,7 @@ class DetailFeatures extends StatelessWidget {
                           width: MediaQuery.of(context).size.width / 3,
                           child: Center(
                             child: Text(
-                              '18-19 years',
+                              topInfoMap.values.elementAt(index),
                               style: TextStyle(
                                 fontSize: 16,
                               ),
@@ -77,7 +70,7 @@ class DetailFeatures extends StatelessWidget {
                     ],
                   );
                 },
-                itemCount: topInformationList.length,
+                itemCount: topInfoMap.length,
                 shrinkWrap: true,
               ),
             ),
@@ -121,7 +114,10 @@ class DetailFeatures extends StatelessWidget {
           ),
           //DetailListItems(title: 'Colors', list: colorList),
 
-          DetailItems(title: 'Other Features', list: otherFeatureList)
+          DetailItems(
+            title: 'Other Features',
+            itemMap: CustomAnimalInfo.getOtherFeaturesMap(animal),
+          )
         ],
       ),
     );

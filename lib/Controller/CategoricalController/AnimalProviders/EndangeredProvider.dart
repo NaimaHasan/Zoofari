@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 import 'package:zoofari/View/Auxiliary/Helpers/DummyAnimalList.dart';
 
-class Endangered with ChangeNotifier {
-  List<Animal> _list = DummyAnimalList.animalList;
+import '../../../Model/Data Definitions/EndangeredAnimal.dart';
 
-  List<Animal> get endangeredList {
+class Endangered with ChangeNotifier {
+  var _list = DummyEndangeredAnimalList.animalList;
+
+  List<EndangeredAnimal> get endangeredList {
     return _list;
   }
 
@@ -15,13 +16,13 @@ class Endangered with ChangeNotifier {
     if (animals != null) {
       _list.clear();
       for (final item in animals) {
-        if (item is Animal) {
+        if (item is EndangeredAnimal) {
           _list.add(item);
           notifyListeners();
         }
       }
     }
-    
+
     notifyListeners();
   }
 }

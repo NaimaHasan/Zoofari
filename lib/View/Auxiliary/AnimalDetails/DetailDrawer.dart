@@ -6,7 +6,8 @@ import 'package:zoofari/View/Auxiliary/Helpers/CustomBottomDrawer.dart';
 import 'DetailMiscellaneous.dart';
 
 class DetailDrawer extends StatefulWidget {
-  const DetailDrawer({Key? key}) : super(key: key);
+  const DetailDrawer({Key? key, required this.animal}) : super(key: key);
+  final animal;
 
   @override
   _DetailDrawerState createState() => _DetailDrawerState();
@@ -73,16 +74,23 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 physics: NeverScrollableScrollPhysics(),
                 controller: _pageController,
                 children: <Widget>[
-                  DetailOverview(controller: scrollControllers[0],),
-                  DetailFeatures(controller: scrollControllers[1]),
-                  DetailMiscellaneous(controller: scrollControllers[2]),
+                  DetailOverview(
+                      controller: scrollControllers[0], animal: widget.animal),
+                  DetailFeatures(
+                      controller: scrollControllers[1], animal: widget.animal),
+                  DetailMiscellaneous(
+                    controller: scrollControllers[2],
+                    animal: widget.animal,
+                  ),
                 ],
               ),
             )
           ],
         ),
       ),
-      headerHeight: MediaQuery.of(context).size.height * 0.6 + 20 - MediaQuery.of(context).viewPadding.top,
+      headerHeight: MediaQuery.of(context).size.height * 0.6 +
+          20 -
+          MediaQuery.of(context).viewPadding.top,
       drawerHeight: MediaQuery.of(context).size.height,
       color: Colors.white,
       controller: controller,

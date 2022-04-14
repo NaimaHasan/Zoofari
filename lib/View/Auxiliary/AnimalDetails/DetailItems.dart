@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DetailItems extends StatelessWidget {
-  const DetailItems({required this.title, required this.list, Key? key})
+  const DetailItems({required this.title, required this.itemMap, Key? key})
       : super(key: key);
 
-  final List<String> list;
+  final Map<String, String> itemMap;
   final String title;
 
   @override
@@ -39,7 +39,7 @@ class DetailItems extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              list[index],
+                              itemMap.keys.elementAt(index),
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w600,
@@ -48,7 +48,7 @@ class DetailItems extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Lion',
+                            itemMap.values.elementAt(index),
                             style: TextStyle(fontSize: 15),
                           ),
                         ],
@@ -62,7 +62,7 @@ class DetailItems extends StatelessWidget {
                 ),
               );
             },
-            itemCount: list.length,
+            itemCount: itemMap.length,
             shrinkWrap: true,
           ),
         ],

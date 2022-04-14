@@ -17,10 +17,8 @@ class ListItem extends StatefulWidget {
 }
 
 class _ListItemState extends State<ListItem> {
-
   @override
   void setState(VoidCallback fn) {
-    
     super.setState(fn);
   }
 
@@ -32,7 +30,9 @@ class _ListItemState extends State<ListItem> {
           context,
           PageRouteBuilder(
             pageBuilder: (context, animation1, animation2) =>
-                AnimalDetailsScreen(),
+                AnimalDetailsScreen(
+              animal: widget.animal,
+            ),
             transitionDuration: Duration(seconds: 0),
           ),
         );
@@ -68,14 +68,18 @@ class _ListItemState extends State<ListItem> {
                         child: Padding(
                           padding: EdgeInsets.only(left: 10),
                           child: Text(
-                            StringManipulator.customizeCommonName(widget.animal.commonName as String),
+                            StringManipulator.customizeCommonName(
+                                widget.animal.commonName as String),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(fontSize: 12),
                           ),
                         ),
                       ),
-                      FavoriteButton(title: 'title', currentAnimal: widget.animal,)
+                      FavoriteButton(
+                        title: 'title',
+                        currentAnimal: widget.animal,
+                      )
                     ],
                   ),
                 ),

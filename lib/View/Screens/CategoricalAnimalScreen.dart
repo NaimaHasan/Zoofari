@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
-
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Buttons/FavoriteMenu.dart';
 
@@ -44,7 +43,9 @@ class CategoricalAnimalScreen extends StatelessWidget {
                         context,
                         PageRouteBuilder(
                           pageBuilder: (context, animation1, animation2) =>
-                              AnimalDetailsScreen(),
+                              AnimalDetailsScreen(
+                            animal: null,
+                          ), // TODO: add some animal
                           transitionDuration: Duration(seconds: 0),
                         ),
                       );
@@ -81,7 +82,8 @@ class CategoricalAnimalScreen extends StatelessWidget {
                           child: Container(
                             width: MediaQuery.of(context).size.width - 15,
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 25, vertical: 10),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -97,7 +99,10 @@ class CategoricalAnimalScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  FavoriteButton(title: 'title', currentAnimal: sth,),
+                                  FavoriteButton(
+                                    title: 'title',
+                                    currentAnimal: sth,
+                                  ),
                                 ],
                               ),
                             ),

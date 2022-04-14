@@ -11,17 +11,16 @@ class StringManipulator {
     return str.replaceAll(new RegExp(r'[\s-]+'), ' ');
   }
 
-  static Iterable<String> capitalizeFirstOfEachWord(List<String> words) {
-    final capitalizedWords = words.map((word) {
-      if (word.trim().isNotEmpty) {
-        final String firstLetter = word.trim().substring(0, 1).toUpperCase();
-        final String remainingLetters = word.trim().substring(1);
+  static List<String> capitalizeFirstOfEachWord(List<String> words) {
+    List<String> newWords = [];
+    for (final word in words) {
+      final String firstLetter = word.trim().substring(0, 1).toUpperCase();
+      final String remainingLetters = word.trim().substring(1);
 
-        return '$firstLetter$remainingLetters';
-      }
-      return '';
-    });
-    return capitalizedWords;
+      final String newWord = '$firstLetter$remainingLetters';
+      newWords.add(newWord);
+    }
+    return newWords;
   }
 
   static customizeCommonName(String? commonName) {
@@ -36,6 +35,7 @@ class StringManipulator {
         .replaceAll(new RegExp(r', and\b'), ',')
         .replaceAll(new RegExp(r'\band\b'), ',')
         .replaceAll(new RegExp(r'[\s]+'), ' ')
-        .split(','));
+        .split(',')
+        .toList());
   }
 }

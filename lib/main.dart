@@ -15,6 +15,7 @@ import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 import 'package:zoofari/View/Screens/EmptyScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 
+import 'Model/Data Definitions/Animal.dart';
 import 'View/Auxiliary/Helpers/ColorGenerator.dart';
 import 'View/Auxiliary/Helpers/DummyAnimalList.dart';
 import 'View/Screens/FavoriteScreen.dart';
@@ -40,17 +41,6 @@ void main() async {
     child: MyApp(),
   ));
 }
-
-// T? cast<T>(x) => x is T ? x : null;
-//
-// var amphibians = await OnlineRepository.fetchCategoricalAnimal("mammals");
-// for (final item in amphibians!) {
-// if (item.runtimeType == Mammal) {
-// print(item.toString());
-// Mammal? am = cast<Mammal>(item);
-// print(am?.commonName);
-// }
-// }
 
 // StringManipulator testing
 // print(StringManipulator.customizeCommonName("liggg- "));
@@ -90,7 +80,7 @@ class MyApp extends StatelessWidget {
         ),
         appBarTheme: AppBarTheme(color: Color(0xFF88bbb2)),
         //backgroundColor: const Color(0xFFe9f8f5),
-        backgroundColor: const  Color(0xFFf6fffd),
+        backgroundColor: const Color(0xFFf6fffd),
         dividerColor: Color(0xFF4c8e82),
         fontFamily: 'Quicksand',
       ),
@@ -99,7 +89,9 @@ class MyApp extends StatelessWidget {
         FavoriteScreen.routeName: (ctx) => FavoriteScreen(),
         CategoricalAnimalScreen.routeName: (ctx) =>
             CategoricalAnimalScreen(title: ''),
-        AnimalDetailsScreen.routeName: (ctx) => AnimalDetailsScreen(),
+        AnimalDetailsScreen.routeName: (ctx) => AnimalDetailsScreen(
+              animal: Animal.emptyAnimal(),
+            ), // TODO: don't know what to pass
         SearchResultsScreen.routeName: (ctx) =>
             SearchResultsScreen(searchKey: ''),
         EmptyScreen.routeName: (ctx) => EmptyScreen(imageData: ''),

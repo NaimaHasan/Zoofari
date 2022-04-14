@@ -1,77 +1,82 @@
 import 'package:flutter/material.dart';
+import 'package:zoofari/Controller/CategoricalController/CustomAnimalInfo.dart';
+import 'package:zoofari/Model/Data%20Definitions/EndangeredAnimal.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailListItems.dart';
-import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailItems.dart';
+
+import '../../../Controller/SearchController/StringManipulator.dart';
+import '../../../Model/Data Definitions/Animal.dart';
+import 'DetailItems.dart';
 
 class DetailMiscellaneous extends StatelessWidget {
-  const DetailMiscellaneous({required this.controller, Key? key})
+  const DetailMiscellaneous(
+      {required this.controller, Key? key, required this.animal})
       : super(key: key);
+  final animal;
   final ScrollController controller;
-  static List<String> miscellaneousList = [
-    'Active Time:',
-    'Nesting Location:',
-    'Water Type:',
-    'Estimated Population Growth:',
-    'Group Behaviour:',
-  ];
-  static List<String> dietList = [
-    'Meat',
-    'Banana',
-    'alala',
-    'hehehe hohoho',
-    'Meat hmmmmmmm lal hgfh ff u ytfyt yd rd  r ufutr ',
-    'Banana',
-    'alala',
-    'hehehe',
-  ];
-
-  static String funFact =
-      'ibhkudufks bhudksfdsk dshusvb dshbsd jhbd sdilhb idabh dsihb sdkhhbf dffdb wetwt we wer 3wrwr sdhb dskb dsilb dsjb';
+  static List<String> dummyList = ['whatever', 'gth'];
+  static List<String> dietList = [];
+  static List<String> preyList = [];
+  static List<String> predatorList = [];
+  static String notAvail = 'Not Available';
 
   @override
   Widget build(BuildContext context) {
+    var aml = CustomAnimalInfo.getTypeCastedAnimal(animal);
+    if ((aml != null) && (aml is Animal)) {
+      dietList.clear();
+      preyList.clear();
+      predatorList.clear();
+      dietList = StringManipulator.stringToList(aml.diets);
+      preyList = StringManipulator.stringToList(aml.preys);
+      predatorList = StringManipulator.stringToList(aml.predators);
+    }
     return SingleChildScrollView(
       controller: controller,
       child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(bottom: 30),
-            child: Container(
-              height: 40,
-              color: Colors.red.shade100,
-              child: Row(
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(left: 15),
-                    width: MediaQuery.of(context).size.width * 0.12,
-                    child: Icon(
-                      Icons.warning_amber_outlined,
-                      color: Color(0xFF852028),
-                      size: 16,
+          ((aml != null) && (aml is EndangeredAnimal))
+              ? Padding(
+                  padding: EdgeInsets.only(bottom: 30),
+                  child: Container(
+                    height: 40,
+                    color: Colors.red.shade100,
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(left: 15),
+                          width: MediaQuery.of(context).size.width * 0.12,
+                          child: Icon(
+                            Icons.warning_amber_outlined,
+                            color: Color(0xFF852028),
+                            size: 16,
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.38,
+                          child: Text(
+                            'Endangered Status:',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF852028)),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(right: 20),
+                          alignment: Alignment.centerRight,
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: Text(
+                            aml.endangeredStatus,
+                            style: TextStyle(fontSize: 15),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.38,
-                    child: Text(
-                      'Endangered Status:',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF852028)),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(right: 20),
-                    alignment: Alignment.centerRight,
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: Text(
-                      'Critically Endangered',
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+                )
+              : Padding(
+                  padding: EdgeInsets.only(bottom: 30),
+                ),
           Text(
             'Fun Fact',
             style: TextStyle(
@@ -83,9 +88,11 @@ class DetailMiscellaneous extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 25, right: 25, bottom: 20, top: 10),
             child: Container(
-              height: funFact.length * 0.75,
+              height: ((aml != null) && (aml is Animal))
+                  ? aml.funFact.length * 1.25
+                  : 40.0,
               child: Text(
-                funFact,
+                ((aml != null) && (aml is Animal)) ? aml.funFact : notAvail,
                 style: TextStyle(fontSize: 15, height: 1.5),
               ),
             ),
@@ -102,16 +109,20 @@ class DetailMiscellaneous extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 25, right: 25, bottom: 20, top: 10),
             child: Container(
-              height: funFact.length * 0.75,
+              height: ((aml != null) && (aml is Animal))
+                  ? aml.habitats.length * 1.10
+                  : notAvail.length * 10.0,
               child: Text(
-                funFact,
+                ((aml != null) && (aml is Animal)) ? aml.habitats : notAvail,
                 style: TextStyle(fontSize: 15, height: 1.5),
               ),
             ),
           ),
-          DetailItems(title: 'Additional Information', list: miscellaneousList),
-          DetailListItems(title: 'Preys', list: dietList),
-          DetailListItems(title: 'Predators', list: dietList),
+          DetailItems(
+              title: 'Additional Information',
+              itemMap: CustomAnimalInfo.getMiscellaneousMap(aml)),
+          DetailListItems(title: 'Preys', list: preyList),
+          DetailListItems(title: 'Predators', list: predatorList),
         ],
       ),
     );
