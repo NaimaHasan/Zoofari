@@ -31,49 +31,54 @@ class DetailMiscellaneous extends StatelessWidget {
       controller: controller,
       child: Column(
         children: [
-          ((aml != null) && (aml is EndangeredAnimal))
-              ? Padding(
-                  padding: EdgeInsets.only(bottom: 30),
-                  child: Container(
-                    height: 40,
-                    color: Colors.red.shade100,
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(left: 15),
-                          width: MediaQuery.of(context).size.width * 0.12,
-                          child: Icon(
-                            Icons.warning_amber_outlined,
-                            color: Color(0xFF852028),
-                            size: 16,
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.38,
-                          child: Text(
-                            'Endangered Status:',
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF852028)),
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(right: 20),
-                          alignment: Alignment.centerRight,
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          child: Text(
-                            aml.endangeredStatus,
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
-                      ],
+          Padding(
+            padding: EdgeInsets.only(bottom: 30),
+            child: Container(
+              height: 40,
+              color: ((aml != null) && (aml is EndangeredAnimal))
+                  ? Colors.red.shade100
+                  : Color(0xFFe9f8f5),
+              child: Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 15),
+                    width: MediaQuery.of(context).size.width * 0.12,
+                    child: Icon(
+                      Icons.warning_amber_outlined,
+                      color: ((aml != null) && (aml is EndangeredAnimal))
+                          ? Color(0xFF852028)
+                          : Color(0xFF4c8e82),
+                      size: 16,
                     ),
                   ),
-                )
-              : Padding(
-                  padding: EdgeInsets.only(bottom: 30),
-                ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.38,
+                    child: Text(
+                      'Endangered Status:',
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: ((aml != null) && (aml is EndangeredAnimal))
+                              ? Color(0xFF852028)
+                              : Color(0xFF4c8e82)),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(right: 20),
+                    alignment: Alignment.centerRight,
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Text(
+                      ((aml != null) && (aml is EndangeredAnimal))
+                          ? aml.endangeredStatus
+                          : 'Not Endangered',
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
           Text(
             'Fun Fact',
             style: TextStyle(
@@ -83,15 +88,10 @@ class DetailMiscellaneous extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 25, right: 25, bottom: 20, top: 10),
-            child: Container(
-              height: ((aml != null) && (aml is Animal))
-                  ? aml.funFact.length * 1.25
-                  : 40.0,
-              child: Text(
-                ((aml != null) && (aml is Animal)) ? aml.funFact : notAvail,
-                style: TextStyle(fontSize: 15, height: 1.5),
-              ),
+            padding: EdgeInsets.only(left: 25, right: 25, bottom: 40, top: 10),
+            child: Text(
+              ((aml != null) && (aml is Animal)) ? aml.funFact : notAvail,
+              style: TextStyle(fontSize: 15, height: 1.5),
             ),
           ),
 
@@ -105,15 +105,10 @@ class DetailMiscellaneous extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 25, right: 25, bottom: 20, top: 10),
-            child: Container(
-              height: ((aml != null) && (aml is Animal))
-                  ? aml.habitats.length * 1.10
-                  : notAvail.length * 10.0,
-              child: Text(
-                ((aml != null) && (aml is Animal)) ? aml.habitats : notAvail,
-                style: TextStyle(fontSize: 15, height: 1.5),
-              ),
+            padding: EdgeInsets.only(left: 25, right: 25, bottom: 40, top: 10),
+            child: Text(
+              ((aml != null) && (aml is Animal)) ? aml.habitats : notAvail,
+              style: TextStyle(fontSize: 15, height: 1.5),
             ),
           ),
           DetailItems(

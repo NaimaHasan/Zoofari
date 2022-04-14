@@ -35,6 +35,7 @@ dependencies:
   provider: ^5.0.0
   get: ^4.1.4
   carousel_slider: ^4.0.0
+  flutter_layout_grid: ^1.0.3
 
 
 dev_dependencies:

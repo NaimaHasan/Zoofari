@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:zoofari/Controller/CategoricalController/CustomAnimalInfo.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailItems.dart';
-
 import '../../../Model/Data Definitions/Animal.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 class DetailFeatures extends StatelessWidget {
   const DetailFeatures(
@@ -30,20 +30,16 @@ class DetailFeatures extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(top: 30, bottom: 30),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 45,
-              child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (ctx, index) {
-                  return Column(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width / 3,
-                        child: Center(
+            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+            child: LayoutGrid(
+                columnSizes: [1.fr, 1.fr, 1.fr],
+                rowSizes: const [auto],
+                columnGap: 10,
+                children: [
+                  for (var index = 0; index < 3; index++)
+                    Column(
+                      children: [
+                        Center(
                           child: Text(
                             topInfoMap.keys.elementAt(index),
                             style: TextStyle(
@@ -53,12 +49,9 @@ class DetailFeatures extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width / 3,
-                          child: Center(
+                        Center(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 10, bottom: 15),
                             child: Text(
                               topInfoMap.values.elementAt(index),
                               style: TextStyle(
@@ -67,14 +60,9 @@ class DetailFeatures extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  );
-                },
-                itemCount: topInfoMap.length,
-                shrinkWrap: true,
-              ),
-            ),
+                      ],
+                    ),
+                ]),
           ),
           (colorList.isNotEmpty)
               ? Text(

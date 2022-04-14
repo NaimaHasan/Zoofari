@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class DetailItems extends StatelessWidget {
   const DetailItems({required this.title, required this.itemMap, Key? key})
@@ -9,63 +10,73 @@ class DetailItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 30),
-      child: Column(
-        children: [
-          Container(
-            height: 40,
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF4c8e82),
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 30),
+        child: Column(
+          children: [
+            Container(
+              height: 40,
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF4c8e82),
+                ),
               ),
             ),
-          ),
-          ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.zero,
-            itemBuilder: (ctx, index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 7),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              itemMap.keys.elementAt(index),
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF4c8e82),
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.zero,
+              itemBuilder: (ctx, index) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 7),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(right: 25, top: 3),
+                              child: Text(
+                                itemMap.keys.elementAt(index),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xFF4c8e82),
+                                ),
                               ),
                             ),
-                          ),
-                          Text(
-                            itemMap.values.elementAt(index),
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ],
+                            Expanded(
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  itemMap.values.elementAt(index),
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Divider(
-                      color: Colors.teal.shade100,
-                      thickness: 0.5,
-                    ),
-                  ],
-                ),
-              );
-            },
-            itemCount: itemMap.length,
-            shrinkWrap: true,
-          ),
-        ],
+                      Divider(
+                        color: Colors.teal.shade100,
+                        thickness: 0.5,
+                      ),
+                    ],
+                  ),
+                );
+              },
+              itemCount: itemMap.length,
+              shrinkWrap: true,
+            ),
+          ],
+        ),
       ),
     );
   }

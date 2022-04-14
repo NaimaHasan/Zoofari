@@ -17,7 +17,7 @@ class DetailListItems extends StatelessWidget {
               alignment: Alignment.center,
               height: 40,
               width: MediaQuery.of(context).size.width,
-              color: Theme.of(context).backgroundColor,
+              color: Color(0xFFe9f8f5),
               child: Text(
                 title,
                 style: TextStyle(
@@ -28,42 +28,54 @@ class DetailListItems extends StatelessWidget {
               ),
             ),
           ),
-          ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.zero,
-            itemBuilder: (ctx, index) {
-              return Padding(
-                padding: EdgeInsets.only(left: 35, right: 25, top: 16),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 3.5),
-                      child: Icon(
-                        Icons.api,
-                        color: Color(0xFF4c8e82),
-                        size: 12,
+          (list.length == 1 && list[0] == 'Not Available')
+              ? Padding(
+                  padding: EdgeInsets.only(top: 16),
+                  child: Center(
+                    child: Text(
+                      list[0],
+                      style: TextStyle(
+                        fontSize: 15,
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width - 100,
-                        child: Text(
-                          list[index],
-                          style: TextStyle(
-                            fontSize: 15,
+                  ),
+                )
+              : ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  itemBuilder: (ctx, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(left: 35, right: 25, top: 16),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 3.5),
+                            child: Icon(
+                              Icons.api,
+                              color: Color(0xFF4c8e82),
+                              size: 12,
+                            ),
                           ),
-                        ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 15),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width - 100,
+                              child: Text(
+                                list[index],
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                    );
+                  },
+                  itemCount: list.length,
+                  shrinkWrap: true,
                 ),
-              );
-            },
-            itemCount: list.length,
-            shrinkWrap: true,
-          ),
         ],
       ),
     );
