@@ -82,6 +82,8 @@ class SearchResultItem extends StatelessWidget {
                       child: FavoriteButton(
                         title: 'title',
                         currentAnimal: animal,
+                        onPressed: (_) async => true,
+                        showToast: (){},
                       ),
                     ),
                   ],

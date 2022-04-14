@@ -13,7 +13,7 @@ class SplashScreen extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.bottomCenter,
-            height: MediaQuery.of(context).size.height / 2.1,
+            height: MediaQuery.of(context).size.height / 1.85,
             child: Image.asset(
               'Assets/LogoWithoutColor.png',
               width: 120,
@@ -23,7 +23,7 @@ class SplashScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width / 3.3,
-                vertical: 40),
+                vertical: 30),
             child: LinearProgressIndicator(
               color: Theme.of(context).primaryColor,
               minHeight: 4,
