@@ -13,7 +13,6 @@ import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
 import 'package:zoofari/View/Screens/EmptyScreen.dart';
-import 'package:zoofari/View/Screens/SplashScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 
 import 'Model/Data Definitions/Animal.dart';
@@ -86,7 +85,6 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Quicksand',
       ),
       routes: {
-        SplashScreen.routeName: (ctx) => SplashScreen(),
         HomeScreen.routeName: (ctx) => HomeScreen(),
         FavoriteScreen.routeName: (ctx) => FavoriteScreen(),
         CategoricalAnimalScreen.routeName: (ctx) =>

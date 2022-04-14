@@ -13,9 +13,25 @@ import 'package:zoofari/View/Auxiliary/Home/ListClasses/EndangeredList.dart';
 import 'package:zoofari/View/Auxiliary/Home/ListClasses/RandomList.dart';
 import 'package:zoofari/View/Screens/SplashScreen.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
-  static const String routeName = '/home';
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+  static const String routeName = '/';
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool isSplashScreen = true;
+
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 5), () {
+      setState(() {
+        isSplashScreen = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +73,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+            if (isSplashScreen == true) SplashScreen(),
           ],
         ),
       ),
