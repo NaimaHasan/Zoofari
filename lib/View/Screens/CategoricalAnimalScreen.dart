@@ -189,7 +189,9 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                             ),
                                             FavoriteButton(
                                               title: 'title',
-                                              currentAnimal: sth,
+                                              currentAnimal: listAnimal[index],
+                                              onPressed: (_) async => true,
+                                              showToast: () {},
                                             ),
                                           ],
                                         ),
