@@ -22,7 +22,7 @@ class Animal {
   late String _lifestyle;
   late String _skinType;
   late String _funFact;
-  late String _diets;
+  late String _diet;
   late String _habitats;
   late String _preys;
   late String _predators;
@@ -49,7 +49,7 @@ class Animal {
       lifestyle,
       skinType,
       funFact,
-      diets,
+      diet,
       habitats,
       preys,
       predators,
@@ -138,8 +138,8 @@ class Animal {
         : rawJsonString["general_facts"]["Fun Fact"] != null
             ? rawJsonString["general_facts"]["Fun Fact"]
             : "not available";
-    this._diets = diets != null
-        ? diets
+    this._diet = diet != null
+        ? diet
         : rawJsonString["general_facts"]["Diet"] != null
             ? rawJsonString["general_facts"]["Diet"]
             : "not available";
@@ -257,9 +257,9 @@ class Animal {
     _funFact = value;
   }
 
-  String get diets => _diets;
-  set diets(String value) {
-    _diets = value;
+  String get diet => _diet;
+  set diet(String value) {
+    _diet = value;
   }
 
   String get habitats => _habitats;
@@ -305,7 +305,7 @@ class Animal {
       'Fun Fact': _funFact,
       'Max Speed': _maxSpeed,
       'Max Length': _maxLength,
-      'Diets': _diets,
+      'Diet': _diet,
       'Habitats': _habitats,
       'Preys': _preys,
       'Predators': _predators.toString(),
@@ -333,7 +333,7 @@ class Animal {
     String lifestyleVar = "Not Available";
     String skinTypeVar = "Not Available";
     String funFactVar = "Not Available";
-    String dietsVar = "Not Available";
+    String dietVar = "Not Available";
     String habitatsVar = "Not Available";
     String preysVar = "Not Available";
     String predatorsVar = "Not Available";
@@ -387,7 +387,7 @@ class Animal {
       funFactVar = jsonParam["general_facts"]["Fun Fact"];
     }
     if (jsonParam["general_facts"]["Diet"] != null) {
-      dietsVar = jsonParam["general_facts"]["Diet"];
+      dietVar = jsonParam["general_facts"]["Diet"];
     }
     if (jsonParam["general_facts"]["Habitat"] != null) {
       habitatsVar = jsonParam["general_facts"]["Habitat"];
@@ -424,7 +424,7 @@ class Animal {
         lifestyle: lifestyleVar,
         skinType: skinTypeVar,
         funFact: funFactVar,
-        diets: dietsVar,
+        diet: dietVar,
         habitats: habitatsVar,
         preys: preysVar,
         predators: predatorsVar,
@@ -449,7 +449,7 @@ class Animal {
     String lifestyleVar = "Not Available";
     String skinTypeVar = "Not Available";
     String funFactVar = "Not Available";
-    String dietsVar = "Not Available";
+    String dietVar = "Not Available";
     String habitatsVar = "Not Available";
     String preysVar = "Not Available";
     String predatorsVar = "Not Available";
@@ -473,7 +473,7 @@ class Animal {
         lifestyle: lifestyleVar,
         skinType: skinTypeVar,
         funFact: funFactVar,
-        diets: dietsVar,
+        diet: dietVar,
         habitats: habitatsVar,
         preys: preysVar,
         predators: predatorsVar,

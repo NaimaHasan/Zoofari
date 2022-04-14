@@ -18,6 +18,7 @@ class DetailFeatures extends StatelessWidget {
   Widget build(BuildContext context) {
     var aml = CustomAnimalInfo.getTypeCastedAnimal(animal);
     if ((aml != null) && (aml is Animal)) {
+      colorList = colorList.toList();
       colorList.clear();
       topInfoMap.clear();
       colorList = aml.colors.toList().cast<String>();
@@ -75,43 +76,51 @@ class DetailFeatures extends StatelessWidget {
               ),
             ),
           ),
-          Text(
-            'Colors',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF4c8e82),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 30),
-            child: GridView.builder(
-              padding: EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: colorList.length == 2
-                      ? MediaQuery.of(context).size.width / 3.6
-                      : 30),
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: colorList.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount:
-                      (colorList.length == 1 || colorList.length == 2)
-                          ? colorList.length
-                          : 3,
-                  childAspectRatio: colorList.length == 1 ? 20 : 4,
-                  mainAxisSpacing: colorList.length == 1 ? 1 : 20,
-                  crossAxisSpacing: 4),
-              itemBuilder: (BuildContext context, int index) {
-                return Center(
-                  child: Text(
-                    colorList[index],
-                    style: TextStyle(fontSize: 15),
+          (colorList.isNotEmpty)
+              ? Text(
+                  'Colors',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF4c8e82),
                   ),
-                );
-              },
-            ),
-          ),
+                )
+              : Padding(
+                  padding: EdgeInsets.only(bottom: 10),
+                ),
+          (colorList.isNotEmpty)
+              ? Padding(
+                  padding: EdgeInsets.only(bottom: 30),
+                  child: GridView.builder(
+                    padding: EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: colorList.length == 2
+                            ? MediaQuery.of(context).size.width / 3.6
+                            : 30),
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: colorList.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount:
+                            (colorList.length == 1 || colorList.length == 2)
+                                ? colorList.length
+                                : 3,
+                        childAspectRatio: colorList.length == 1 ? 20 : 4,
+                        mainAxisSpacing: colorList.length == 1 ? 1 : 20,
+                        crossAxisSpacing: 4),
+                    itemBuilder: (BuildContext context, int index) {
+                      return Center(
+                        child: Text(
+                          colorList[index],
+                          style: TextStyle(fontSize: 15),
+                        ),
+                      );
+                    },
+                  ),
+                )
+              : Padding(
+                  padding: EdgeInsets.only(bottom: 10),
+                ),
           //DetailListItems(title: 'Colors', list: colorList),
 
           DetailItems(

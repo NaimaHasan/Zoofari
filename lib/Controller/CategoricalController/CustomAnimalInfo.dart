@@ -88,6 +88,7 @@ class CustomAnimalInfo {
     if (animal != null) {
       if (animal is Animal) {
         miscellaneousMap['LifeStyle'] = animal.lifestyle;
+        miscellaneousMap['Diet'] = animal.diet;
       }
       if (animal is Amphibian) {
         miscellaneousMap['Water Type'] = animal.waterType;

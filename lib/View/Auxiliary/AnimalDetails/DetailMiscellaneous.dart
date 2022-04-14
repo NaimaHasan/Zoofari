@@ -14,7 +14,6 @@ class DetailMiscellaneous extends StatelessWidget {
   final animal;
   final ScrollController controller;
   static List<String> dummyList = ['whatever', 'gth'];
-  static List<String> dietList = [];
   static List<String> preyList = [];
   static List<String> predatorList = [];
   static String notAvail = 'Not Available';
@@ -23,10 +22,8 @@ class DetailMiscellaneous extends StatelessWidget {
   Widget build(BuildContext context) {
     var aml = CustomAnimalInfo.getTypeCastedAnimal(animal);
     if ((aml != null) && (aml is Animal)) {
-      dietList.clear();
       preyList.clear();
       predatorList.clear();
-      dietList = StringManipulator.stringToList(aml.diets);
       preyList = StringManipulator.stringToList(aml.preys);
       predatorList = StringManipulator.stringToList(aml.predators);
     }
@@ -97,7 +94,8 @@ class DetailMiscellaneous extends StatelessWidget {
               ),
             ),
           ),
-          DetailListItems(title: 'Diets', list: dietList),
+
+          //DetailListItems(title: 'Diets', list: dietList),
           Text(
             'Habitats',
             style: TextStyle(
