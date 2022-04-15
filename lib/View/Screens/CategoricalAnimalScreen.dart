@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/CategoricalAnimalProvider.dart';
 import 'package:zoofari/Controller/SearchController/StringManipulator.dart';
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
@@ -25,10 +26,11 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
   List<Animal> listAnimal = List.empty(growable: true);
   late String category;
   int scrollReqCount = 0;
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
 
   Future _obtainCategoricalFuture() {
     listAnimal.clear();
-    // getCategory();
     if (widget.title == "Amphibian") {
       category = "amphibians";
     } else if (widget.title == "Bird") {
@@ -52,6 +54,16 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
   void initState() {
     _categoricalFuture = _obtainCategoricalFuture();
     super.initState();
+  }
+
+  void _onRefresh() async {
+    _refreshController.refreshCompleted();
+  }
+
+  void _onLoading() async {
+    await Provider.of<CategoricalProvider>(context, listen: false)
+        .getData(category);
+    _refreshController.loadComplete();
   }
 
   @override
@@ -147,122 +159,156 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                       }
                       return true;
                     },
-                    child: ListView.builder(
-                      itemBuilder: (ctx, index) {
-                        return Padding(
-                          padding:
-                              EdgeInsets.only(left: 15, right: 15, top: 15),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      PageRouteBuilder(
-                                        pageBuilder:
-                                            (context, animation1, animation2) =>
-                                                AnimalDetailsScreen(
-                                          animal: listAnimal[index],
+                    child: SmartRefresher(
+                      enablePullDown: true,
+                      enablePullUp: true,
+                      header: WaterDropHeader(),
+                      footer: CustomFooter(
+                        builder: (ctx, mode) {
+                          Widget body = Text("No more Data");
+                          if (mode == LoadStatus.loading) {
+                            body = CircularProgressIndicator();
+                            // CupertinoActivityIndicator();
+                          } else if (mode == LoadStatus.failed) {
+                            body = Text("Load Failed! Retry!");
+                          } else if (mode != LoadStatus.canLoading) {
+                            body = Text("Pull up to load more");
+                          } else if (mode == LoadStatus.idle) {
+                            //
+                          }
+                          return Container(
+                            height: 55.0,
+                            child: Center(child: body),
+                          );
+                        },
+                      ),
+                      controller: _refreshController,
+                      onRefresh: _onRefresh,
+                      onLoading: _onLoading,
+                      child: ListView.builder(
+                        itemBuilder: (ctx, index) {
+                          return Padding(
+                            padding:
+                                EdgeInsets.only(left: 15, right: 15, top: 15),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        PageRouteBuilder(
+                                          pageBuilder: (context, animation1,
+                                                  animation2) =>
+                                              AnimalDetailsScreen(
+                                            animal: listAnimal[index],
+                                          ),
+                                          transitionDuration:
+                                              Duration(seconds: 0),
                                         ),
-                                        transitionDuration:
-                                            Duration(seconds: 0),
-                                      ),
-                                    );
-                                  },
-                                  child: Stack(
-                                    children: [
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height:
-                                            MediaQuery.of(context).size.width -
-                                                120,
-                                        child: listAnimal[index]
-                                                .imageLinks
-                                                .isNotEmpty
-                                            ? Image.network(
-                                                listAnimal[index].imageLinks[0])
-                                            : Image.asset(
-                                                "Assets/dummy.jpg",
-                                                fit: BoxFit.cover,
-                                              ),
-                                      ),
-                                      Positioned(
-                                        bottom: 0,
-                                        child: Container(
+                                      );
+                                    },
+                                    child: Stack(
+                                      children: [
+                                        Container(
                                           width:
                                               MediaQuery.of(context).size.width,
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .width -
-                                              300,
-                                          decoration: BoxDecoration(
-                                            gradient: LinearGradient(
-                                              begin: Alignment.bottomCenter,
-                                              end: Alignment.topCenter,
-                                              colors: [
-                                                Colors.black45,
-                                                Colors.transparent,
-                                              ],
+                                              120,
+                                          child: listAnimal[index]
+                                                  .imageLinks
+                                                  .isNotEmpty
+                                              ? Image.network(
+                                                  listAnimal[index]
+                                                      .imageLinks[0],
+                                                  fit: BoxFit.cover,
+                                                )
+                                              : Image.asset(
+                                                  "Assets/dummy.jpg",
+                                                  fit: BoxFit.cover,
+                                                ),
+                                        ),
+                                        Positioned(
+                                          bottom: 0,
+                                          child: Container(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .width -
+                                                300,
+                                            decoration: BoxDecoration(
+                                              gradient: LinearGradient(
+                                                begin: Alignment.bottomCenter,
+                                                end: Alignment.topCenter,
+                                                colors: [
+                                                  Colors.black45,
+                                                  Colors.transparent,
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                      Positioned(
-                                        bottom: 5,
-                                        child: Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width -
-                                              15,
-                                          child: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 25, vertical: 10),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.6,
-                                                  child: Text(
-                                                    StringManipulator
-                                                        .customizeCommonName(
-                                                            listAnimal[index]
-                                                                .commonName),
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 18,
+                                        Positioned(
+                                          bottom: 5,
+                                          child: Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width -
+                                                15,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25, vertical: 10),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.6,
+                                                    child: Text(
+                                                      StringManipulator
+                                                          .customizeCommonName(
+                                                              listAnimal[index]
+                                                                  .commonName),
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 18,
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                FavoriteButton(
-                                                  title: 'title',
-                                                  currentAnimal:
-                                                      listAnimal[index],
-                                                  onPressed: (_) async => true,
-                                                  showToast: () {},
-                                                ),
-                                              ],
+                                                  FavoriteButton(
+                                                    title: 'title',
+                                                    currentAnimal:
+                                                        listAnimal[index],
+                                                    onPressed: (_) async =>
+                                                        true,
+                                                    showToast: () {},
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                      itemCount: listAnimal.length,
+                          );
+                        },
+                        itemCount: listAnimal.length,
+                      ),
                     ));
               }),
             );
