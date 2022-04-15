@@ -180,13 +180,13 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                             animationDuration: Duration(
                                                 seconds: 0, milliseconds: 300),
                                             icon: Icons.delete_outline,
-                                            iconSize: 12,
-                                            borderRadius: 10,
+                                            iconSize: 15,
+                                            borderRadius: 7,
                                             toastDuration: Duration(seconds: 1),
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width -
-                                                100,
+                                                80,
                                             primaryColor:
                                                 Theme.of(context).dividerColor,
                                             height: 35,

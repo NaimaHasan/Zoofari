@@ -56,16 +56,6 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
     super.initState();
   }
 
-  void _onRefresh() async {
-    _refreshController.refreshCompleted();
-  }
-
-  void _onLoading() async {
-    await Provider.of<CategoricalProvider>(context, listen: false)
-        .getData(category);
-    _refreshController.loadComplete();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -314,5 +304,16 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
             );
           },
         ));
+  }
+
+  void _onRefresh() async {
+    _refreshController.refreshCompleted();
+    _refreshController.dispose();
+  }
+
+  void _onLoading() async {
+    await Provider.of<CategoricalProvider>(context, listen: false)
+        .getData(category);
+    _refreshController.loadComplete();
   }
 }
