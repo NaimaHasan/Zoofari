@@ -150,7 +150,7 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                       return true;
                     },
                     child: SmartRefresher(
-                      enablePullDown: true,
+                      enablePullDown: false,
                       enablePullUp: true,
                       header: WaterDropHeader(),
                       footer: CustomFooter(
@@ -308,7 +308,7 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
 
   void _onRefresh() async {
     _refreshController.refreshCompleted();
-    _refreshController.dispose();
+    // _refreshController.dispose();
   }
 
   void _onLoading() async {

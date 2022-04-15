@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailItems.dart';
 
 import '../../../Controller/CategoricalController/CustomAnimalInfo.dart';
-import '../../../Controller/SearchController/StringManipulator.dart';
 import '../../../Model/Data Definitions/Animal.dart';
 
 class DetailOverview extends StatelessWidget {
@@ -41,8 +40,7 @@ class DetailOverview extends StatelessWidget {
               child: Center(
                 child: Text(
                   ((aml != null) && (aml is Animal))
-                      ? StringManipulator.customizeCommonName(
-                          aml.scientificName)
+                      ? aml.scientificName
                       : 'scientific name',
                   style: TextStyle(
                       fontStyle: FontStyle.italic,
