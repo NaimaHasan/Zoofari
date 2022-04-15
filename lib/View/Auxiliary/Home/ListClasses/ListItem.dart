@@ -80,7 +80,7 @@ class _ListItemState extends State<ListItem> {
                         title: 'title',
                         currentAnimal: widget.animal,
                         onPressed: (_) async => true,
-                        showToast: () {},
+                        // showToast: () {},
                       )
                     ],
                   ),

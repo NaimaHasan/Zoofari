@@ -64,10 +64,23 @@ class AnimalDetailsScreen extends StatelessWidget {
                 top: MediaQuery.of(context).viewPadding.top),
             child: Row(
               children: [
-                Container(
-                  height: 35,
-                  width: 45,
-                  child: Image.asset('Assets/LogoWithoutColor.png'),
+                GestureDetector(
+                  onTap: () {
+                    //TODO: This shows splash if routed to homeScreen
+                    // Navigator.push(
+                    //   context,
+                    //   PageRouteBuilder(
+                    //     pageBuilder: (context, animation1, animation2) =>
+                    //         HomeScreen(),
+                    //     transitionDuration: Duration(seconds: 0),
+                    //   ),
+                    // );
+                  },
+                  child: Container(
+                    height: 35,
+                    width: 45,
+                    child: Image.asset('Assets/LogoWithoutColor.png'),
+                  ),
                 ),
                 Expanded(
                   child: Padding(
@@ -90,7 +103,6 @@ class AnimalDetailsScreen extends StatelessWidget {
                     title: 'title',
                     currentAnimal: animal,
                     onPressed: (_) async => true,
-                    showToast: (){},
                   ),
                 ),
                 FavoriteMenu(),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zoofari/View/Auxiliary/SearchResults/SearchResultItem.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/SearchResultProvider.dart';
+import 'package:zoofari/View/Auxiliary/SearchResults/SearchResultItem.dart';
 import 'package:zoofari/View/Buttons/FavoriteMenu.dart';
 
 class SearchResultsScreen extends StatefulWidget {

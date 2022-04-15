@@ -83,7 +83,7 @@ class SearchResultItem extends StatelessWidget {
                         title: 'title',
                         currentAnimal: animal,
                         onPressed: (_) async => true,
-                        showToast: (){},
+                        // showToast: (){},
                       ),
                     ),
                   ],

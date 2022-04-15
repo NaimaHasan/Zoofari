@@ -64,20 +64,30 @@ class CustomAnimalInfo {
         otherFeaturesMap['Maximum Weight'] = animal.maxWeight;
         otherFeaturesMap['Maximum Length'] = animal.maxLength;
         otherFeaturesMap['Maximum Speed'] = animal.maxSpeed;
+        otherFeaturesMap['Diet'] = animal.diet;
+        otherFeaturesMap['LifeStyle'] = animal.lifestyle;
       }
       if (animal is Amphibian) {
         otherFeaturesMap['Average Spawn Size'] = animal.avgSpawnSz;
         otherFeaturesMap['Incubation Period'] = animal.incubationPeriod;
+        otherFeaturesMap['Water Type'] = animal.waterType;
       }
       if (animal is Mammal) {
         otherFeaturesMap['Age of Weaning'] = animal.ageOfWeaning;
         otherFeaturesMap['Age of Sexual Maturity'] = animal.ageOfSexualMaturity;
+        otherFeaturesMap['Average Litter Size'] = animal.avgLitterSz;
       }
       if (animal is Bird) {
         otherFeaturesMap['Wingspan'] = animal.wingspan;
+        otherFeaturesMap['Nesting Location'] = animal.nestingLocation;
       }
       if (animal is Fish) {
         otherFeaturesMap['Group Behavior'] = animal.groupBehavior;
+        otherFeaturesMap['Estimated Population Size'] =
+            animal.estimatedPopulationSz;
+      }
+      if (animal is Reptile) {
+        otherFeaturesMap['Gestation Period'] = animal.gestationPeriod;
       }
     }
     return otherFeaturesMap;
@@ -85,28 +95,100 @@ class CustomAnimalInfo {
 
   static Map<String, String> getMiscellaneousMap(animal) {
     Map<String, String> miscellaneousMap = {};
-    if (animal != null) {
-      if (animal is Animal) {
-        miscellaneousMap['LifeStyle'] = animal.lifestyle;
-        miscellaneousMap['Diet'] = animal.diet;
-      }
-      if (animal is Amphibian) {
-        miscellaneousMap['Water Type'] = animal.waterType;
-      }
-      if (animal is Mammal) {
-        miscellaneousMap['Average Litter Size'] = animal.avgLitterSz;
-      }
-      if (animal is Reptile) {
-        miscellaneousMap['Gestation Period'] = animal.gestationPeriod;
-      }
-      if (animal is Bird) {
-        miscellaneousMap['Nesting Location'] = animal.nestingLocation;
-      }
-      if (animal is Fish) {
-        miscellaneousMap['Estimated Population Size'] =
-            animal.estimatedPopulationSz;
-      }
+    if (animal != null && animal is Animal) {
+      var jsonString = animal.rawJsonString;
+      if (animal.runtimeType != Amphibian)
+        getAmphibianMiscellaneousMap(jsonString);
+      if (animal.runtimeType != Mammal) getMammalMiscellaneousMap(jsonString);
+      if (animal.runtimeType != Reptile) getReptileMiscellaneousMap(jsonString);
+      if (animal.runtimeType != Bird) getBirdMiscellaneousMap(jsonString);
+      if (animal.runtimeType != Fish) getFishMiscellaneousMap(jsonString);
     }
     return miscellaneousMap;
+  }
+
+  static Map<String, String> getAmphibianMiscellaneousMap(jsonParam) {
+    Map<String, String> amphibianMiscellaneousMap = {};
+
+    if (jsonParam["general_facts"]["Average Spawn Size"] != null) {
+      amphibianMiscellaneousMap['Average Spawn Size'] =
+          jsonParam["general_facts"]["Average Spawn Size"].toString();
+    }
+    if (jsonParam["general_facts"]["Incubation Period"] != null) {
+      amphibianMiscellaneousMap['Incubation Period'] =
+          jsonParam["general_facts"]["Incubation Period"].toString();
+    }
+    if (jsonParam["general_facts"]["Water Type"] != null) {
+      amphibianMiscellaneousMap['Water Type'] =
+          jsonParam["general_facts"]["Water Type"].toString();
+    }
+    return amphibianMiscellaneousMap;
+  }
+
+  static Map<String, String> getReptileMiscellaneousMap(jsonParam) {
+    Map<String, String> reptileMiscellaneousMap = {};
+
+    if (jsonParam["general_facts"]["Gestation Period"] != null) {
+      reptileMiscellaneousMap['Gestation Period'] =
+          jsonParam["general_facts"]["Gestation Period"].toString();
+    }
+    return reptileMiscellaneousMap;
+  }
+
+  static Map<String, String> getMammalMiscellaneousMap(jsonParam) {
+    Map<String, String> mammalMiscellaneousMap = {};
+
+    if (jsonParam["general_facts"]["Age Of Weaning"] != null) {
+      mammalMiscellaneousMap['Age Of Weaning'] =
+          jsonParam["general_facts"]["Age Of Weaning"].toString();
+    }
+    if (jsonParam["general_facts"]["Age Of Sexual Maturity"] != null) {
+      mammalMiscellaneousMap['Age Of Sexual Maturity'] =
+          jsonParam["general_facts"]["Age Of Sexual Maturity"].toString();
+    }
+    if (jsonParam["general_facts"]["Average Litter Size"] != null) {
+      mammalMiscellaneousMap['Average Litter Size'] =
+          jsonParam["general_facts"]["Average Litter Size"].toString();
+    }
+    return mammalMiscellaneousMap;
+  }
+
+  static Map<String, String> getBirdMiscellaneousMap(jsonParam) {
+    Map<String, String> birdMiscellaneousMap = {};
+
+    if (jsonParam["general_facts"]["Wingspan"] != null) {
+      birdMiscellaneousMap['Wingspan'] =
+          jsonParam["general_facts"]["Wingspan"].toString();
+    }
+    if (jsonParam["general_facts"]["Nesting Location"] != null) {
+      birdMiscellaneousMap['Nesting Location'] =
+          jsonParam["general_facts"]["Nesting Location"].toString();
+    }
+    return birdMiscellaneousMap;
+  }
+
+  static Map<String, String> getFishMiscellaneousMap(jsonParam) {
+    Map<String, String> fishMiscellaneousMap = {};
+
+    if (jsonParam["general_facts"]["Group Behavior"] != null) {
+      fishMiscellaneousMap['Group Behavior'] =
+          jsonParam["general_facts"]["Group Behavior"].toString();
+    }
+    if (jsonParam["general_facts"]["Estimated Population Size"] != null) {
+      fishMiscellaneousMap['Estimated Population Size'] =
+          jsonParam["general_facts"]["Estimated Population Size"].toString();
+    }
+    return fishMiscellaneousMap;
+  }
+
+  static String getEndangeredStatus(animal) {
+    String endangeredStatus = '';
+    if (animal != null && animal is Animal) {
+      var jsonParam = animal.rawJsonString;
+      if (jsonParam["conservation_status"] != null) {
+        endangeredStatus = jsonParam["conservation_status"].toString();
+      }
+    }
+    return endangeredStatus;
   }
 }

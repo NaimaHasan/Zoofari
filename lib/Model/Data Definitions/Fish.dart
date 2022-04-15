@@ -75,7 +75,7 @@ class Fish extends Animal {
     if (jsonParam["general_facts"]["Group Behavior"] != null) {
       groupBehaviorVar = jsonParam["general_facts"]["Group Behavior"];
     }
-    if (jsonParam["general_facts"]["Nesting Location"] != null) {
+    if (jsonParam["general_facts"]["Estimated Population Size"] != null) {
       estimatedPopulationSzVar =
           jsonParam["general_facts"]["Estimated Population Size"];
     }
