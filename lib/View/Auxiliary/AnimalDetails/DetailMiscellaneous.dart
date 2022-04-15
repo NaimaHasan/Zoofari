@@ -13,19 +13,21 @@ class DetailMiscellaneous extends StatelessWidget {
       : super(key: key);
   final animal;
   final ScrollController controller;
-  static List<String> dummyList = ['whatever', 'gth'];
-  static List<String> preyList = [];
-  static List<String> predatorList = [];
+  static List<String> preyList = List.empty(growable: true);
+  static List<String> predatorList = List.empty(growable: true);
   static String notAvail = 'Not Available';
+  static String endangeredStatus = '';
 
   @override
   Widget build(BuildContext context) {
     var aml = CustomAnimalInfo.getTypeCastedAnimal(animal);
     if ((aml != null) && (aml is Animal)) {
-      preyList.clear();
-      predatorList.clear();
+      preyList = List.empty();
+      predatorList = List.empty();
+      endangeredStatus = '';
       preyList = StringManipulator.stringToList(aml.preys);
       predatorList = StringManipulator.stringToList(aml.predators);
+      endangeredStatus = CustomAnimalInfo.getEndangeredStatus(aml);
     }
     return SingleChildScrollView(
       controller: controller,
@@ -71,7 +73,9 @@ class DetailMiscellaneous extends StatelessWidget {
                     child: Text(
                       ((aml != null) && (aml is EndangeredAnimal))
                           ? aml.endangeredStatus
-                          : 'Not Endangered',
+                          : (endangeredStatus.isNotEmpty)
+                              ? endangeredStatus
+                              : 'Not Found',
                       style: TextStyle(fontSize: 15),
                     ),
                   ),
@@ -79,7 +83,6 @@ class DetailMiscellaneous extends StatelessWidget {
               ),
             ),
           ),
-
           Text(
             'Fun Fact',
             style: TextStyle(
@@ -95,8 +98,6 @@ class DetailMiscellaneous extends StatelessWidget {
               style: TextStyle(fontSize: 15, height: 1.5),
             ),
           ),
-
-          //DetailListItems(title: 'Diets', list: dietList),
           Text(
             'Habitats',
             style: TextStyle(
@@ -113,8 +114,9 @@ class DetailMiscellaneous extends StatelessWidget {
             ),
           ),
           DetailItems(
-              title: 'Additional Information',
-              itemMap: CustomAnimalInfo.getMiscellaneousMap(aml)),
+            title: 'Additional Information',
+            itemMap: CustomAnimalInfo.getMiscellaneousMap(aml),
+          ),
           DetailListItems(title: 'Preys', list: preyList),
           DetailListItems(title: 'Predators', list: predatorList),
         ],

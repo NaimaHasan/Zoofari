@@ -41,8 +41,9 @@ class DetailOverview extends StatelessWidget {
               child: Center(
                 child: Text(
                   ((aml != null) && (aml is Animal))
-                      ? StringManipulator.customizeCommonName(aml.commonName)
-                      : 'Panthera leo',
+                      ? StringManipulator.customizeCommonName(
+                          aml.scientificName)
+                      : 'scientific name',
                   style: TextStyle(
                       fontStyle: FontStyle.italic,
                       fontSize: 17,
