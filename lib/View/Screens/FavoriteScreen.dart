@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:motion_toast/motion_toast.dart';
+import 'package:motion_toast/resources/arrays.dart';
 import 'package:zoofari/Controller/SearchController/StringManipulator.dart';
 import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
@@ -172,6 +174,28 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                         title: 'title',
                                         currentAnimal: favorites[index],
                                         onPressed: confirmUnfavorite,
+                                        showToast: () {
+                                          MotionToast(
+                                            enableAnimation: true,
+                                            animationDuration: Duration(
+                                                seconds: 0, milliseconds: 300),
+                                            icon: Icons.delete_outline,
+                                            iconSize: 12,
+                                            borderRadius: 10,
+                                            toastDuration: Duration(seconds: 1),
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width -
+                                                100,
+                                            primaryColor:
+                                                Theme.of(context).dividerColor,
+                                            height: 35,
+                                            description: const Text(
+                                                'Removed from Favorites'),
+                                            position:
+                                                MOTION_TOAST_POSITION.bottom,
+                                          ).show(context);
+                                        },
                                       ),
                                     ],
                                   ),

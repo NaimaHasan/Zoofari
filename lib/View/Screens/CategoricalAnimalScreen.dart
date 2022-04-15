@@ -247,7 +247,7 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                                   currentAnimal:
                                                       listAnimal[index],
                                                   onPressed: (_) async => true,
-                                                  //showToast: () {},
+                                                  showToast: () {},
                                                 ),
                                               ],
                                             ),

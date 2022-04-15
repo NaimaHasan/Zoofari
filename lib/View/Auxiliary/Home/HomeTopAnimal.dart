@@ -142,7 +142,7 @@ class _HomeTopRandomState extends State<HomeTopRandom> {
                                 title: 'title',
                                 currentAnimal: topRandomAnimal,
                                 onPressed: (_) async => true,
-                                // showToast: (){},
+                                showToast: () {},
                               )
                             ],
                           ),

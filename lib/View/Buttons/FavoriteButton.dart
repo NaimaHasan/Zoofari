@@ -8,11 +8,13 @@ class FavoriteButton extends StatefulWidget {
       {required this.title,
       required this.currentAnimal,
       required this.onPressed,
-      Key? key})
+      Key? key,
+      required this.showToast})
       : super(key: key);
   final String title;
   final Animal currentAnimal;
   final Future<bool> Function(BuildContext context) onPressed;
+  final Function() showToast;
 
   @override
   _FavoriteButtonState createState() => _FavoriteButtonState();
@@ -20,33 +22,6 @@ class FavoriteButton extends StatefulWidget {
 
 class _FavoriteButtonState extends State<FavoriteButton> {
   bool isFavorited = false;
-  bool isCurrentlyFavorited = false;
-
-  void showToast() {
-    // MotionToast(
-    //   enableAnimation: true,
-    //   animationDuration: Duration(seconds: 0, milliseconds: 300),
-    //   // icon: Icons.delete_outline,
-    //   icon: (isFavorited) ? Icons.add : Icons.remove,
-    //   iconSize: 12,
-    //   borderRadius: 10,
-    //   toastDuration: Duration(seconds: 1),
-    //   width: MediaQuery.of(context).size.width - 100,
-    //   primaryColor: Theme.of(context).dividerColor,
-    //   height: 35,
-    //   description: (!isFavorited)
-    //       ? const Text('Removed from Favorites')
-    //       : const Text('Added to Favorites'),
-    //   position: MOTION_TOAST_POSITION.bottom,
-    // ).show(context);
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: (!isFavorited)
-          ? const Text('Removed from Favorites')
-          : const Text('Added to Favorites'),
-      backgroundColor: Theme.of(context).dividerColor,
-      duration: Duration(seconds: 0, milliseconds: 200),
-    ));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +34,6 @@ class _FavoriteButtonState extends State<FavoriteButton> {
         }
         isFavorited =
             DatabaseManager.isFavorite(widget.currentAnimal.commonName);
-        isCurrentlyFavorited = isFavorited;
 
         return IconButton(
           icon: Icon(isFavorited ? Icons.star : Icons.star_outline),
@@ -76,7 +50,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                   isFavorited = !isFavorited;
                 },
               );
-            if (isCurrentlyFavorited != isFavorited) showToast();
+            widget.showToast();
           },
           visualDensity: VisualDensity.compact,
           iconSize: 22,
