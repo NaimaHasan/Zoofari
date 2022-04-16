@@ -34,7 +34,7 @@ class Reptile extends Animal {
         ? gestationPeriod
         : rawJsonString["general_facts"]["Gestation Period"] != null
             ? rawJsonString["general_facts"]["Gestation Period"]
-            : "not available";
+            : "Not Available";
   }
 
   String get gestationPeriod => _gestationPeriod;

@@ -36,12 +36,12 @@ class Bird extends Animal {
         ? wingspan
         : rawJsonString["general_facts"]["Wingspan"] != null
             ? rawJsonString["general_facts"]["Wingspan"]
-            : "not available";
+            : "Not Available";
     this._nestingLocation = nestingLocation != null
         ? nestingLocation
         : rawJsonString["general_facts"]["Nesting Location"] != null
             ? rawJsonString["general_facts"]["Nesting Location"]
-            : "not available";
+            : "Not Available";
   }
 
   String get wingspan => _wingspan;

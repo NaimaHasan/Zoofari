@@ -34,7 +34,7 @@ class EndangeredAnimal extends Animal {
         ? endangeredStatus
         : rawJsonString["conservation_status"] != null
             ? rawJsonString["conservation_status"]
-            : "not available";
+            : "Not Available";
   }
 
   String get endangeredStatus => _endangeredStatus;
