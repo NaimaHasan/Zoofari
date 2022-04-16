@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zoofari/Controller/CategoricalController/AnimalProviders/AmphibianProvider.dart';
-import 'package:zoofari/Controller/CategoricalController/AnimalProviders/BirdProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/CategoricalAnimalProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/EndangeredProvider.dart';
-import 'package:zoofari/Controller/CategoricalController/AnimalProviders/FishProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/HomeTopAnimalProvider.dart';
-import 'package:zoofari/Controller/CategoricalController/AnimalProviders/MammalProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
-import 'package:zoofari/Controller/CategoricalController/AnimalProviders/ReptileProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/SearchResultProvider.dart';
 import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
@@ -31,11 +26,6 @@ void main() async {
     providers: [
       ChangeNotifierProvider.value(value: Randoms()),
       ChangeNotifierProvider.value(value: Endangered()),
-      ChangeNotifierProvider.value(value: Mammals()),
-      ChangeNotifierProvider.value(value: Amphibians()),
-      ChangeNotifierProvider.value(value: Bird()),
-      ChangeNotifierProvider.value(value: Fish()),
-      ChangeNotifierProvider.value(value: Reptiles()),
       ChangeNotifierProvider.value(value: SearchController()),
       ChangeNotifierProvider.value(value: HomeTopRandomAnimal()),
       ChangeNotifierProvider.value(value: CategoricalProvider()),

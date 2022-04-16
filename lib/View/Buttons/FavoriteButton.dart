@@ -44,13 +44,14 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                 () {
                   if (isFavorited) {
                     DatabaseManager.removeFromFavorites(widget.currentAnimal);
+                    widget.showToast();
                   } else {
                     DatabaseManager.addToFavorites(widget.currentAnimal);
                   }
                   isFavorited = !isFavorited;
                 },
               );
-            widget.showToast();
+            
           },
           visualDensity: VisualDensity.compact,
           iconSize: 22,
