@@ -20,15 +20,25 @@ class DetailMiscellaneous extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var aml = CustomAnimalInfo.getTypeCastedAnimal(animal);
-    if ((aml != null) && (aml is Animal)) {
+    var castedAnimal = CustomAnimalInfo.getTypeCastedAnimal(animal);
+    if ((castedAnimal != null) && (castedAnimal is Animal)) {
       preyList = List.empty();
       predatorList = List.empty();
       endangeredStatus = '';
-      preyList = StringManipulator.stringToList(aml.preys);
-      predatorList = StringManipulator.stringToList(aml.predators);
-      endangeredStatus = CustomAnimalInfo.getEndangeredStatus(aml);
+      preyList = StringManipulator.stringToList(castedAnimal.preys);
+      predatorList = StringManipulator.stringToList(castedAnimal.predators);
+      endangeredStatus = CustomAnimalInfo.getEndangeredStatus(castedAnimal);
     }
+    List<String> endangeredKeywords = [
+      'Extinct',
+      'Extinct in the Wild',
+      'Endangered',
+      'Critically Endangered',
+      'Vulnerable'
+    ];
+    bool isEndangered = endangeredKeywords
+        .any((listElement) => listElement.contains(endangeredStatus));
+
     return SingleChildScrollView(
       controller: controller,
       child: Column(
@@ -37,7 +47,7 @@ class DetailMiscellaneous extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 30),
             child: Container(
               height: 40,
-              color: ((aml != null) && (aml is EndangeredAnimal))
+              color: ((castedAnimal != null) && isEndangered)
                   ? Colors.red.shade100
                   : Color(0xFFe9f8f5),
               child: Row(
@@ -47,7 +57,7 @@ class DetailMiscellaneous extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.12,
                     child: Icon(
                       Icons.warning_amber_outlined,
-                      color: ((aml != null) && (aml is EndangeredAnimal))
+                      color: ((castedAnimal != null) && isEndangered)
                           ? Color(0xFF852028)
                           : Theme.of(context).primaryColor,
                       size: 16,
@@ -60,7 +70,8 @@ class DetailMiscellaneous extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
-                        color: ((aml != null) && (aml is EndangeredAnimal))
+                        color: ((castedAnimal != null) &&
+                                (castedAnimal is EndangeredAnimal))
                             ? Color(0xFF852028)
                             : Theme.of(context).primaryColor,
                       ),
@@ -71,12 +82,9 @@ class DetailMiscellaneous extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      ((aml != null) && (aml is EndangeredAnimal))
-                          ? aml.endangeredStatus
-                          : (endangeredStatus.isNotEmpty &&
-                                  endangeredStatus != 'Not Available')
-                              ? endangeredStatus
-                              : 'Not Endangered',
+                      ((castedAnimal != null) && isEndangered)
+                          ? castedAnimal.endangeredStatus
+                          : 'Not Endangered',
                       style: TextStyle(fontSize: 15),
                     ),
                   ),
@@ -95,7 +103,9 @@ class DetailMiscellaneous extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 25, right: 25, bottom: 40, top: 10),
             child: Text(
-              ((aml != null) && (aml is Animal)) ? aml.funFact : notAvail,
+              ((castedAnimal != null) && (castedAnimal is Animal))
+                  ? castedAnimal.funFact
+                  : notAvail,
               style: TextStyle(fontSize: 15, height: 1.5),
             ),
           ),
@@ -110,13 +120,15 @@ class DetailMiscellaneous extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 25, right: 25, bottom: 40, top: 10),
             child: Text(
-              ((aml != null) && (aml is Animal)) ? aml.habitats : notAvail,
+              ((castedAnimal != null) && (castedAnimal is Animal))
+                  ? castedAnimal.habitats
+                  : notAvail,
               style: TextStyle(fontSize: 15, height: 1.5),
             ),
           ),
           DetailItems(
             title: 'Additional Information',
-            itemMap: CustomAnimalInfo.getMiscellaneousMap(aml),
+            itemMap: CustomAnimalInfo.getMiscellaneousMap(castedAnimal),
           ),
           DetailListItems(title: 'Preys', list: preyList),
           DetailListItems(title: 'Predators', list: predatorList),
