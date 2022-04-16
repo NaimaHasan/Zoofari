@@ -35,7 +35,7 @@ class DetailOverview extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 5, bottom: 30),
+            padding: EdgeInsets.only(top: 5, bottom: 30, left: 40, right: 40),
             child: Container(
               child: Center(
                 child: Text(

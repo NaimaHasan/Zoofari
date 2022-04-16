@@ -15,7 +15,7 @@ class HomeTopScreen extends StatelessWidget {
       margin: EdgeInsets.zero,
       child: Stack(
         children: [
-          HomeTopRandom(),
+          HomeTopAnimal(),
           Padding(
             padding: EdgeInsets.only(bottom: 10, left: 15, right: 5),
             child: Row(

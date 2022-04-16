@@ -187,7 +187,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                             icon: Icons.delete_outline,
                                             iconSize: 18,
                                             borderRadius: 7,
-                                            toastDuration: Duration(seconds: 1),
+                                            toastDuration: Duration(seconds: 1, milliseconds: 500),
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width /
@@ -195,7 +195,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                             primaryColor: Color(0xFFe9f8f5),
                                             secondaryColor:
                                                 Theme.of(context).dividerColor,
-                                            height: 35,
+                                            height: 40,
                                             description: Text(
                                               'Removed from Favorites',
                                               style: TextStyle(
