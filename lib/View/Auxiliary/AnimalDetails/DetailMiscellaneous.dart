@@ -73,9 +73,10 @@ class DetailMiscellaneous extends StatelessWidget {
                     child: Text(
                       ((aml != null) && (aml is EndangeredAnimal))
                           ? aml.endangeredStatus
-                          : (endangeredStatus.isNotEmpty)
+                          : (endangeredStatus.isNotEmpty &&
+                                  endangeredStatus != 'Not Available')
                               ? endangeredStatus
-                              : 'Not Found',
+                              : 'Not Endangered',
                       style: TextStyle(fontSize: 15),
                     ),
                   ),
