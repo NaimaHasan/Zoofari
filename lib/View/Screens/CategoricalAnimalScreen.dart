@@ -113,6 +113,14 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
             }
             return Consumer<CategoricalProvider>(
               builder: ((context, listA, child) {
+                if(listA.categoricalList.length > 5) {
+                  listA.categoricalList.clear();
+                  Provider.of<CategoricalProvider>(context, listen: false).getData(category);
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                
                 if (listAnimal.isEmpty) {
                   listAnimal.addAll(listA.categoricalList);
                 } else {

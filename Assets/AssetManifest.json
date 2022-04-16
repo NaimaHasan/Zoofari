@@ -1,0 +1,15 @@
+{
+    "assets": [
+        "assets/dummy.jpg",
+        "assets/LogoWithoutColor.png",
+        "assets/NewLogo.png",
+        "assets/noFavorites.jpg",
+        "assets/noSearchResults.jpg",
+        "assets/categoricalIcons/amphibian_icon.png",
+        "assets/categoricalIcons/bird_icon.png",
+        "assets/categoricalIcons/endangered_icon.png",
+        "assets/categoricalIcons/fish_icon.png",
+        "assets/categoricalIcons/mammal_icon.png",
+        "assets/categoricalIcons/reptile_icon.png"
+    ]
+}

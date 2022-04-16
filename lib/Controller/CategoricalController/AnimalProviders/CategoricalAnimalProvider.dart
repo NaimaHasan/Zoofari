@@ -4,6 +4,7 @@ import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 
 class CategoricalProvider with ChangeNotifier {
   List<Animal> _list = List.empty(growable: true);
+  String callingCategory = "";
 
   List<Animal> get categoricalList {
     return _list;
@@ -15,5 +16,6 @@ class CategoricalProvider with ChangeNotifier {
     await categoricalFetcher.getAnimals(category);
     _list.addAll(categoricalFetcher.categoricalAnimalList);
     notifyListeners();
+    callingCategory = category;
   }
 }

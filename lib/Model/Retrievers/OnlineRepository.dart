@@ -52,7 +52,7 @@ class OnlineRepository {
     for (int itr = 0; itr < 5; itr++) {
       int newAdd = random.nextInt(resultFound - 1);
       if(! ( positions.contains(newAdd) ) ) 
-        positions.add(random.nextInt(resultFound - 1));
+        positions.add(newAdd);
       else itr--;
     }
     List<String> toFetch = List.empty(growable: true);
