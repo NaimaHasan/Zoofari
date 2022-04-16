@@ -1,41 +1,49 @@
-import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailFeatures.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailOverview.dart';
+import 'package:zoofari/View/Auxiliary/Helpers/CustomBottomDrawer.dart';
+
+import 'DetailMiscellaneous.dart';
 
 class DetailDrawer extends StatefulWidget {
-  const DetailDrawer({Key? key}) : super(key: key);
+  const DetailDrawer({Key? key, required this.animal}) : super(key: key);
+  final animal;
 
   @override
   _DetailDrawerState createState() => _DetailDrawerState();
 }
 
 class _DetailDrawerState extends State<DetailDrawer> {
-  final BottomDrawerController controller = BottomDrawerController();
+  final CustomBottomDrawerController controller =
+      CustomBottomDrawerController();
   late PageController _pageController;
+  List<ScrollController> scrollControllers = [
+    ScrollController(),
+    ScrollController(),
+    ScrollController(),
+  ];
 
   @override
   void initState() {
-
     _pageController = PageController(initialPage: 0);
     super.initState();
   }
+
   Widget build(BuildContext context) {
-    return BottomDrawer(
+    return CustomBottomDrawer(
+      scrollControllers: scrollControllers,
+      pageController: _pageController,
+      cornerRadius: 20,
       header: Padding(
-        padding: EdgeInsets.only(top: 10, bottom: 10),
-        child: GestureDetector(
-          onVerticalDragStart: (_) {
-            controller.open();
-          },
-          child: Container(
-            height: 2,
-            width: 45,
-            color: Colors.black,
-          ),
+        padding: EdgeInsets.only(top: 10, bottom: 25),
+        child: Container(
+          height: 2,
+          width: 45,
+          color: Colors.black,
         ),
       ),
       body: DefaultTabController(
-        length: 4, // length of tabs
+        length: 3, // length of tabs
         initialIndex: 0,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -45,18 +53,18 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 onTap: (index) {
                   _pageController.jumpToPage(index);
                 },
-                labelColor: Colors.green,
+                labelColor: Theme.of(context).primaryColor,
                 unselectedLabelColor: Colors.black,
                 tabs: [
                   Tab(text: 'Overview'),
-                  Tab(text: 'Tab 2'),
-                  Tab(text: 'Tab 3'),
-                  Tab(text: 'Tab 4'),
+                  Tab(text: 'Features'),
+                  Tab(text: 'Miscellaneous'),
                 ],
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height-70, //height of TabBarView
+              height: MediaQuery.of(context).size.height -
+                  90, //height of TabBarView
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(color: Colors.grey, width: 0.5),
@@ -66,33 +74,13 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 physics: NeverScrollableScrollPhysics(),
                 controller: _pageController,
                 children: <Widget>[
-                  DetailOverview(),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        'Display Tab 2',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        'Display Tab 3',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        'Display Tab 4',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                  DetailOverview(
+                      controller: scrollControllers[0], animal: widget.animal),
+                  DetailFeatures(
+                      controller: scrollControllers[1], animal: widget.animal),
+                  DetailMiscellaneous(
+                    controller: scrollControllers[2],
+                    animal: widget.animal,
                   ),
                 ],
               ),
@@ -100,9 +88,11 @@ class _DetailDrawerState extends State<DetailDrawer> {
           ],
         ),
       ),
-      headerHeight: 500,
+      headerHeight: MediaQuery.of(context).size.height * 0.6 +
+          20 -
+          MediaQuery.of(context).viewPadding.top,
       drawerHeight: MediaQuery.of(context).size.height,
-      color: Theme.of(context).backgroundColor,
+      color: Colors.white,
       controller: controller,
     );
   }
