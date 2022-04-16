@@ -176,22 +176,27 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                         onPressed: confirmUnfavorite,
                                         showToast: () {
                                           MotionToast(
-                                            enableAnimation: true,
-                                            animationDuration: Duration(
-                                                seconds: 0, milliseconds: 300),
+                                            backgroundType:
+                                                BACKGROUND_TYPE.solid,
+                                            enableAnimation: false,
                                             icon: Icons.delete_outline,
-                                            iconSize: 15,
+                                            iconSize: 18,
                                             borderRadius: 7,
                                             toastDuration: Duration(seconds: 1),
                                             width: MediaQuery.of(context)
                                                     .size
-                                                    .width -
-                                                80,
-                                            primaryColor:
+                                                    .width /
+                                                1.5,
+                                            primaryColor: Color(0xFFe9f8f5),
+                                            secondaryColor:
                                                 Theme.of(context).dividerColor,
-                                            height: 35,
-                                            description: const Text(
-                                                'Removed from Favorites'),
+                                            height: 40,
+                                            description: Text(
+                                              'Removed from Favorites',
+                                              style: TextStyle(
+                                                  color: Theme.of(context)
+                                                      .primaryColor),
+                                            ),
                                             position:
                                                 MOTION_TOAST_POSITION.bottom,
                                           ).show(context);

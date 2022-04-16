@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       HomeTopScreen(),
-                      CategoricalScroll(),
+                      const CategoricalScroll(),
                       const RandomList(
                         key: ValueKey("Random"),
                         title: 'Random',
