@@ -52,10 +52,14 @@ class _ListItemState extends State<ListItem> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: widget.animal.imageLinks.isNotEmpty
-                      ? Image.network(
-                          widget.animal.imageLinks[0],
+                      ? Image.network(widget.animal.imageLinks[0],
                           fit: BoxFit.cover,
-                        )
+                          errorBuilder: (context, exception, stackTrace) {
+                          return Image.asset(
+                            "Assets/dummy.jpg",
+                            fit: BoxFit.cover,
+                          );
+                        })
                       : Image.asset('Assets/dummy.jpg'),
                 ),
               ),

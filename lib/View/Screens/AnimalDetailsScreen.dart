@@ -28,10 +28,13 @@ class AnimalDetailsScreen extends StatelessWidget {
               child: ((aml != null) &&
                       (aml is Animal) &&
                       (aml.imageLinks.isNotEmpty))
-                  ? Image.network(
-                      aml.imageLinks[0],
-                      fit: BoxFit.cover,
-                    )
+                  ? Image.network(aml.imageLinks[0], fit: BoxFit.cover,
+                      errorBuilder: (context, exception, stackTrace) {
+                      return Image.asset(
+                        "Assets/dummy.jpg",
+                        fit: BoxFit.cover,
+                      );
+                    })
                   : Image.asset(
                       'Assets/dummy.jpg',
                       fit: BoxFit.cover,
@@ -64,10 +67,23 @@ class AnimalDetailsScreen extends StatelessWidget {
                 top: MediaQuery.of(context).viewPadding.top),
             child: Row(
               children: [
-                Container(
-                  height: 35,
-                  width: 45,
-                  child: Image.asset('Assets/LogoWithoutColor.png'),
+                GestureDetector(
+                  onTap: () {
+                    //TODO: This shows splash if routed to homeScreen
+                    // Navigator.push(
+                    //   context,
+                    //   PageRouteBuilder(
+                    //     pageBuilder: (context, animation1, animation2) =>
+                    //         HomeScreen(),
+                    //     transitionDuration: Duration(seconds: 0),
+                    //   ),
+                    // );
+                  },
+                  child: Container(
+                    height: 35,
+                    width: 45,
+                    child: Image.asset('Assets/LogoWithoutColor.png'),
+                  ),
                 ),
                 Expanded(
                   child: Padding(
@@ -90,7 +106,7 @@ class AnimalDetailsScreen extends StatelessWidget {
                     title: 'title',
                     currentAnimal: animal,
                     onPressed: (_) async => true,
-                    showToast: (){},
+                    showToast: () {},
                   ),
                 ),
                 FavoriteMenu(),

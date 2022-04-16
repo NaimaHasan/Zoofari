@@ -122,8 +122,13 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                               child: favorites[index].imageLinks.isNotEmpty
                                   ? Image.network(
                                       favorites[index].imageLinks[0],
-                                      fit: BoxFit.cover,
-                                    )
+                                      fit: BoxFit.cover, errorBuilder:
+                                          (context, exception, stackTrace) {
+                                      return Image.asset(
+                                        "Assets/dummy.jpg",
+                                        fit: BoxFit.cover,
+                                      );
+                                    })
                                   : Image.asset(
                                       "Assets/dummy.jpg",
                                       fit: BoxFit.cover,
@@ -175,23 +180,31 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                         currentAnimal: favorites[index],
                                         onPressed: confirmUnfavorite,
                                         showToast: () {
-                                          if (isConfirmed)
-                                            MotionToast(
-                                              enableAnimation: false,
-                                              animationDuration:
-                                                  Duration(seconds: 0),
-                                              icon: Icons.delete_outline,
-                                              iconSize: 20,
-                                              borderRadius: 5,
-                                              width: MediaQuery.of(context).size.width - 70,
-                                              primaryColor: Theme.of(context)
-                                                  .dividerColor,
-                                              height: 50,
-                                              description: const Text(
-                                                  'Removed from Favorites'),
-                                              position:
-                                                  MOTION_TOAST_POSITION.bottom,
-                                            ).show(context);
+                                          MotionToast(
+                                            backgroundType:
+                                                BACKGROUND_TYPE.solid,
+                                            enableAnimation: false,
+                                            icon: Icons.delete_outline,
+                                            iconSize: 18,
+                                            borderRadius: 7,
+                                            toastDuration: Duration(seconds: 1),
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                1.5,
+                                            primaryColor: Color(0xFFe9f8f5),
+                                            secondaryColor:
+                                                Theme.of(context).dividerColor,
+                                            height: 40,
+                                            description: Text(
+                                              'Removed from Favorites',
+                                              style: TextStyle(
+                                                  color: Theme.of(context)
+                                                      .primaryColor),
+                                            ),
+                                            position:
+                                                MOTION_TOAST_POSITION.bottom,
+                                          ).show(context);
                                         },
                                       ),
                                     ],

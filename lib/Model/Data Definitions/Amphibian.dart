@@ -40,17 +40,17 @@ class Amphibian extends Animal {
         ? avgSpawnSz
         : rawJsonString["general_facts"]["Average Spawn Size"] != null
             ? rawJsonString["general_facts"]["Average Spawn Size"]
-            : "not available";
+            : "Not Available";
     this._incubationPeriod = incubationPeriod != null
         ? incubationPeriod
         : rawJsonString["general_facts"]["Incubation Period"] != null
             ? rawJsonString["general_facts"]["Incubation Period"]
-            : "not available";
+            : "Not Available";
     this._waterType = waterType != null
         ? waterType
         : rawJsonString["general_facts"]["Water Type"] != null
             ? rawJsonString["general_facts"]["Water Type"]
-            : "not available";
+            : "Not Available";
   }
 
   String get avgSpawnSz => _avgSpawnSz;

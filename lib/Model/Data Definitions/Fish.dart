@@ -36,12 +36,12 @@ class Fish extends Animal {
         ? groupBehavior
         : rawJsonString["general_facts"]["Group Behavior"] != null
             ? rawJsonString["general_facts"]["Group Behavior"]
-            : "not available";
+            : "Not Available";
     this._estimatedPopulationSz = estimatedPopulationSz != null
         ? estimatedPopulationSz
         : rawJsonString["general_facts"]["Estimated Population Size"] != null
             ? rawJsonString["general_facts"]["Estimated Population Size"]
-            : "not available";
+            : "Not Available";
   }
   String get groupBehavior => _groupBehavior;
 
@@ -75,7 +75,7 @@ class Fish extends Animal {
     if (jsonParam["general_facts"]["Group Behavior"] != null) {
       groupBehaviorVar = jsonParam["general_facts"]["Group Behavior"];
     }
-    if (jsonParam["general_facts"]["Nesting Location"] != null) {
+    if (jsonParam["general_facts"]["Estimated Population Size"] != null) {
       estimatedPopulationSzVar =
           jsonParam["general_facts"]["Estimated Population Size"];
     }

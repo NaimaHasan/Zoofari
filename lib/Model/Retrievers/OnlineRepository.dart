@@ -50,7 +50,10 @@ class OnlineRepository {
     // print("result found $resultFound");
     List<int> positions = List.empty(growable: true);
     for (int itr = 0; itr < 5; itr++) {
-      positions.add(random.nextInt(resultFound - 1));
+      int newAdd = random.nextInt(resultFound - 1);
+      if(! ( positions.contains(newAdd) ) ) 
+        positions.add(random.nextInt(resultFound - 1));
+      else itr--;
     }
     List<String> toFetch = List.empty(growable: true);
     // print(jsonString);

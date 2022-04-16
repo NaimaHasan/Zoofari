@@ -37,10 +37,16 @@ dependencies:
   carousel_slider: ^4.0.0
   flutter_layout_grid: ^1.0.3
   motion_toast: ^2.1.6
-
+  pull_to_refresh: ^2.0.0
+  connectivity_plus: ^1.0.6
 
 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
+  test: any
+  flutter_driver:
+    sdk: flutter
   flutter_test:
     sdk: flutter
   
@@ -71,6 +77,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - Assets/
+    - Assets/categoricalIcons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

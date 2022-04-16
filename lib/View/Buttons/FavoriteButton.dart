@@ -8,13 +8,13 @@ class FavoriteButton extends StatefulWidget {
       {required this.title,
       required this.currentAnimal,
       required this.onPressed,
-      required this.showToast,
-      Key? key})
+      Key? key,
+      required this.showToast})
       : super(key: key);
   final String title;
   final Animal currentAnimal;
   final Future<bool> Function(BuildContext context) onPressed;
-  final void Function() showToast;
+  final Function() showToast;
 
   @override
   _FavoriteButtonState createState() => _FavoriteButtonState();
@@ -34,22 +34,24 @@ class _FavoriteButtonState extends State<FavoriteButton> {
         }
         isFavorited =
             DatabaseManager.isFavorite(widget.currentAnimal.commonName);
+
         return IconButton(
           icon: Icon(isFavorited ? Icons.star : Icons.star_outline),
           onPressed: () async {
-             var isConfirmed = await widget.onPressed(context);
+            var isConfirmed = await widget.onPressed(context);
             if (isConfirmed)
               setState(
                 () {
                   if (isFavorited) {
                     DatabaseManager.removeFromFavorites(widget.currentAnimal);
+                    widget.showToast();
                   } else {
                     DatabaseManager.addToFavorites(widget.currentAnimal);
                   }
                   isFavorited = !isFavorited;
                 },
               );
-            widget.showToast();
+            
           },
           visualDensity: VisualDensity.compact,
           iconSize: 22,

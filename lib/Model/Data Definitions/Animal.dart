@@ -61,106 +61,106 @@ class Animal {
         ? commonName
         : rawJsonString["common_name"] != null
             ? rawJsonString["common_name"]
-            : "not available";
+            : "Not Available";
     this._scientificName = scientificName != null
         ? scientificName
         : rawJsonString["classification"]["Scientific Name"] != null
             ? rawJsonString["classification"]["Scientific Name"]
-            : "not available";
+            : "Not Available";
     this._kingdom = kingdom != null
         ? kingdom
         : rawJsonString["classification"]["Kingdom"] != null
             ? rawJsonString["classification"]["Kingdom"]
-            : "not available";
+            : "Not Available";
     this._phylum = phylum != null
         ? phylum
         : rawJsonString["classification"]["Phylum"] != null
             ? rawJsonString["classification"]["Phylum"]
-            : "not available";
+            : "Not Available";
     this._classType = classType != null
         ? classType
         : rawJsonString["classification"]["Class"] != null
             ? rawJsonString["classification"]["Class"]
-            : "not available";
+            : "Not Available";
     this._order = order != null
         ? order
         : rawJsonString["classification"]["Order"] != null
             ? rawJsonString["classification"]["Order"]
-            : "not available";
+            : "Not Available";
     this._family = family != null
         ? family
         : rawJsonString["classification"]["Family"] != null
             ? rawJsonString["classification"]["Family"]
-            : "not available";
+            : "Not Available";
     this._genus = genus != null
         ? genus
         : rawJsonString["classification"]["Genus"] != null
             ? rawJsonString["classification"]["Genus"]
-            : "not available";
+            : "Not Available";
 
     this._avgWeight = avgWeight != null
         ? avgWeight
         : rawJsonString["general_facts"]["Weight"] != null
             ? rawJsonString["general_facts"]["Weight"]
-            : "not available";
+            : "Not Available";
     this._maxWeight = maxWeight != null
         ? maxWeight
         : rawJsonString["general_facts"]["Weight"] != null
             ? rawJsonString["general_facts"]["Weight"]
-            : "not available";
+            : "Not Available";
     this._maxLength = maxLength != null
         ? maxLength
         : rawJsonString["general_facts"]["Length"] != null
             ? rawJsonString["general_facts"]["Length"]
-            : "not available";
+            : "Not Available";
     this._maxSpeed = maxSpeed != null
         ? maxSpeed
         : rawJsonString["general_facts"]["Top Speed"] != null
             ? rawJsonString["general_facts"]["Top Speed"]
-            : "not available";
+            : "Not Available";
     this._lifespan = lifespan != null
         ? lifespan
         : rawJsonString["general_facts"]["Lifespan"] != null
             ? rawJsonString["general_facts"]["Lifespan"]
-            : "not available";
+            : "Not Available";
     this._lifestyle = lifestyle != null
         ? lifestyle
         : rawJsonString["general_facts"]["Lifestyle"] != null
             ? rawJsonString["general_facts"]["Lifestyle"]
-            : "not available";
+            : "Not Available";
     this._skinType = skinType != null
         ? skinType
         : rawJsonString["general_facts"]["Skin Type"] != null
             ? rawJsonString["general_facts"]["Skin Type"]
-            : "not available";
+            : "Not Available";
     this._funFact = funFact != null
         ? funFact
         : rawJsonString["general_facts"]["Fun Fact"] != null
             ? rawJsonString["general_facts"]["Fun Fact"]
-            : "not available";
+            : "Not Available";
     this._diet = diet != null
         ? diet
         : rawJsonString["general_facts"]["Diet"] != null
             ? rawJsonString["general_facts"]["Diet"]
-            : "not available";
+            : "Not Available";
     this._habitats = habitats != null
         ? habitats
         : rawJsonString["general_facts"]["Habitat"] != null
             ? rawJsonString["general_facts"]["Habitat"]
-            : "not available";
+            : "Not Available";
     this._preys = preys != null
         ? preys
         : rawJsonString["general_facts"]["Prey"] != null
             ? rawJsonString["general_facts"]["Prey"]
             : rawJsonString["general_facts"]["Main Prey"] != null
                 ? rawJsonString["general_facts"]["Main Prey"]
-                : "not available";
+                : "Not Available";
 
     this._predators = predators != null
         ? predators
         : rawJsonString["general_facts"]["Predator"] != null
             ? rawJsonString["general_facts"]["Predator"]
-            : "not available";
+            : "Not Available";
     this._colors = colors != null
         ? colors
         : rawJsonString["general_facts"]["Color"] != null

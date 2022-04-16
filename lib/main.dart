@@ -1,13 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zoofari/Controller/CategoricalController/AnimalProviders/AmphibianProvider.dart';
-import 'package:zoofari/Controller/CategoricalController/AnimalProviders/BirdProvider.dart';
+import 'package:zoofari/Controller/CategoricalController/AnimalProviders/CategoricalAnimalProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/EndangeredProvider.dart';
-import 'package:zoofari/Controller/CategoricalController/AnimalProviders/FishProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/HomeTopAnimalProvider.dart';
-import 'package:zoofari/Controller/CategoricalController/AnimalProviders/MammalProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
-import 'package:zoofari/Controller/CategoricalController/AnimalProviders/ReptileProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/SearchResultProvider.dart';
 import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
@@ -22,35 +20,27 @@ import 'View/Screens/FavoriteScreen.dart';
 import 'View/Screens/HomeScreen.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await DatabaseManager.initialize();
-  DummyAnimalList();
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    await DatabaseManager.initialize();
+    DummyAnimalList();
 
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider.value(value: Randoms()),
-      ChangeNotifierProvider.value(value: Endangered()),
-      ChangeNotifierProvider.value(value: Mammals()),
-      ChangeNotifierProvider.value(value: Amphibians()),
-      ChangeNotifierProvider.value(value: Bird()),
-      ChangeNotifierProvider.value(value: Fish()),
-      ChangeNotifierProvider.value(value: Reptiles()),
-      ChangeNotifierProvider.value(value: SearchController()),
-      ChangeNotifierProvider.value(value: HomeTopRandomAnimal()),
-    ],
-    child: MyApp(),
-  ));
+    runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: Randoms()),
+        ChangeNotifierProvider.value(value: Endangered()),
+        ChangeNotifierProvider.value(value: SearchController()),
+        ChangeNotifierProvider.value(value: HomeTopRandomAnimal()),
+        ChangeNotifierProvider.value(value: CategoricalProvider()),
+      ],
+      child: MyApp(),
+    ));
+    // catching SocketException if not internet found
+  } on SocketException catch (e) {
+    // try again with refresh
+    main();
+  }
 }
-
-// StringManipulator testing
-// print(StringManipulator.customizeCommonName("liggg- "));
-// var a = await OnlineRepository.fetchSingleAnimal("lion");
-// print(a?.habitats);
-// print(StringManipulator.stringToList(a?.habitats));
-// print(StringManipulator.stringToList(
-// "Shallow tropical waters and coral reefs"));
-//print(StringManipulator.stringToList(
-//       "Shallow tropical waters, and coral reefs"));
 
 //   hive debug code
 //   print("am i even here?");
@@ -65,6 +55,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Zoofari',
+      // debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: MaterialColor(
           0xFF9FC5F8,

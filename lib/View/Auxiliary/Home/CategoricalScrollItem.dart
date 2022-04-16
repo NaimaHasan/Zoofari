@@ -30,6 +30,12 @@ class CategoricalScrollItem extends StatelessWidget {
               Image.network(
                 imageURL,
                 fit: BoxFit.cover,
+                errorBuilder: (context, exception, stackTrace) {
+                  return Image.asset(
+                    "Assets/dummy.jpg",
+                    fit: BoxFit.cover,
+                  );
+                },
                 width: 160.0,
                 height: 185,
               ),

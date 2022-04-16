@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:zoofari/Controller/CategoricalController/CustomAnimalInfo.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailItems.dart';
+
 import '../../../Model/Data Definitions/Animal.dart';
-import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 class DetailFeatures extends StatelessWidget {
   const DetailFeatures(
@@ -12,15 +13,15 @@ class DetailFeatures extends StatelessWidget {
   final animal;
 
   static Map<String, String> topInfoMap = {};
-  static List<String> colorList = [];
+  static List<String> colorList = List.empty(growable: true);
 
   @override
   Widget build(BuildContext context) {
     var aml = CustomAnimalInfo.getTypeCastedAnimal(animal);
     if ((aml != null) && (aml is Animal)) {
       colorList = colorList.toList();
-      colorList.clear();
       topInfoMap.clear();
+      colorList = List.empty();
       colorList = aml.colors.toList().cast<String>();
       topInfoMap = CustomAnimalInfo.getTopInformationMap(aml);
     }

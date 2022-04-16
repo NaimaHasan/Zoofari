@@ -23,6 +23,7 @@ class _HomeTopRandomState extends State<HomeTopRandom> {
   @override
   void initState() {
     _topFuture = _obtainTopRandomFuture();
+    topRandomAnimal = HomeTopRandomAnimal().homeTopRandomAnimal;
     super.initState();
   }
 
@@ -30,16 +31,20 @@ class _HomeTopRandomState extends State<HomeTopRandom> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (context, animation1, animation2) =>
-                AnimalDetailsScreen(
-              animal: topRandomAnimal,
+        try {
+          Navigator.push(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation1, animation2) =>
+                  AnimalDetailsScreen(
+                animal: topRandomAnimal,
+              ),
+              transitionDuration: Duration(seconds: 0),
             ),
-            transitionDuration: Duration(seconds: 0),
-          ),
-        );
+          );
+        } catch (e) {
+          // print(e);
+        }
       },
       child: Container(
           height: MediaQuery.of(context).size.height / 2.5,
@@ -82,10 +87,14 @@ class _HomeTopRandomState extends State<HomeTopRandom> {
                         Container(
                           height: MediaQuery.of(context).size.height,
                           child: topRandomAnimal.imageLinks.isNotEmpty
-                              ? Image.network(
-                                  topRandomAnimal.imageLinks[0],
-                                  fit: BoxFit.cover,
-                                )
+                              ? Image.network(topRandomAnimal.imageLinks[0],
+                                  fit: BoxFit.cover, errorBuilder:
+                                      (context, exception, stackTrace) {
+                                  return Image.asset(
+                                    "Assets/dummy.jpg",
+                                    fit: BoxFit.cover,
+                                  );
+                                })
                               : Image.asset(
                                   "Assets/dummy.jpg",
                                   fit: BoxFit.cover,
@@ -142,7 +151,7 @@ class _HomeTopRandomState extends State<HomeTopRandom> {
                                 title: 'title',
                                 currentAnimal: topRandomAnimal,
                                 onPressed: (_) async => true,
-                                showToast: (){},
+                                showToast: () {},
                               )
                             ],
                           ),
