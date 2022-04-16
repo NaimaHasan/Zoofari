@@ -58,7 +58,9 @@ class _HomeTopAnimalState extends State<HomeTopAnimal> {
                   children: [
                     Container(
                       child: Center(
-                        child: CircularProgressIndicator(),
+                        child: CircularProgressIndicator(
+                          color: Theme.of(context).dividerColor,
+                        ),
                       ),
                     ),
                     Container(

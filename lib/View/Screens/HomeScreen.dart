@@ -24,11 +24,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
-      setState(() {
-        isSplashScreen = false;
-      });
-    });
+    Timer(
+      Duration(seconds: 5),
+      () {
+        setState(
+          () {
+            isSplashScreen = false;
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -36,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: RefreshIndicator(
+        color: Theme.of(context).dividerColor,
         onRefresh: () async {
           await Provider.of<HomeTopRandomAnimal>(context, listen: false)
               .getData();

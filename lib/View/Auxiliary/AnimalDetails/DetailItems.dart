@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class DetailItems extends StatelessWidget {
   const DetailItems({required this.title, required this.itemMap, Key? key})

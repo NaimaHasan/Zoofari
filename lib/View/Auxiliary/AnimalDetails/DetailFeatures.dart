@@ -33,37 +33,38 @@ class DetailFeatures extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             child: LayoutGrid(
-                columnSizes: [1.fr, 1.fr, 1.fr],
-                rowSizes: const [auto],
-                columnGap: 10,
-                children: [
-                  for (var index = 0; index < 3; index++)
-                    Column(
-                      children: [
-                        Center(
+              columnSizes: [1.fr, 1.fr, 1.fr],
+              rowSizes: const [auto],
+              columnGap: 10,
+              children: [
+                for (var index = 0; index < 3; index++)
+                  Column(
+                    children: [
+                      Center(
+                        child: Text(
+                          topInfoMap.keys.elementAt(index),
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 10, bottom: 15),
                           child: Text(
-                            topInfoMap.keys.elementAt(index),
+                            topInfoMap.values.elementAt(index),
                             style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: Theme.of(context).primaryColor,
+                              fontSize: 16,
                             ),
                           ),
                         ),
-                        Center(
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 10, bottom: 15),
-                            child: Text(
-                              topInfoMap.values.elementAt(index),
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                ]),
+                      ),
+                    ],
+                  ),
+              ],
+            ),
           ),
           (colorList.isNotEmpty)
               ? Text(

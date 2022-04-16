@@ -88,7 +88,9 @@ class _RandomListState extends State<RandomList> {
             builder: (ctx, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting)
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).dividerColor,
+                  ),
                 );
               else
                 return Consumer<Randoms>(

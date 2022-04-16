@@ -108,19 +108,24 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
                   child: Container(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).dividerColor,
+                ),
               ));
             }
             return Consumer<CategoricalProvider>(
               builder: ((context, listA, child) {
-                if(listA.categoricalList.length > 5) {
+                if (listA.categoricalList.length > 5) {
                   listA.categoricalList.clear();
-                  Provider.of<CategoricalProvider>(context, listen: false).getData(category);
+                  Provider.of<CategoricalProvider>(context, listen: false)
+                      .getData(category);
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: Theme.of(context).dividerColor,
+                    ),
                   );
                 }
-                
+
                 if (listAnimal.isEmpty) {
                   listAnimal.addAll(listA.categoricalList);
                 } else {
@@ -137,7 +142,9 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
 
                 if (listAnimal.isEmpty) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: Theme.of(context).dividerColor,
+                    ),
                   );
                 }
 
@@ -149,7 +156,9 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                     builder: (ctx, mode) {
                       Widget body = Text("No more Data");
                       if (mode == LoadStatus.loading) {
-                        body = CircularProgressIndicator();
+                        body = CircularProgressIndicator(
+                          color: Theme.of(context).dividerColor,
+                        );
                         // CupertinoActivityIndicator();
                       } else if (mode == LoadStatus.failed) {
                         body = Text("Load Failed! Retry!");
