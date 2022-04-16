@@ -107,9 +107,10 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
           builder: (ctx, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
-                  child: Container(
-                child: CircularProgressIndicator(color: Theme.of(context).dividerColor,),
-              ));
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).dividerColor,
+                ),
+              );
             }
             return Consumer<CategoricalProvider>(
               builder: ((context, listA, child) {
