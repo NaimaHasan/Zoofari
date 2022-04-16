@@ -65,7 +65,10 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
             color: Colors.white, //change your color here
           ),
           leading: Padding(
-            padding: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20),
+            padding: EdgeInsets.only(
+                top: (widget.title == 'Endangered') ? 18 : 10,
+                bottom: (widget.title == 'Endangered') ? 18 : 10,
+                left: 20),
             child: ImageIcon(
               (widget.title == 'Reptile')
                   ? AssetImage("Assets/categoricalIcons/reptile_icon.png")
@@ -88,7 +91,7 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
               color: Colors.white,
             ),
           ),
-          leadingWidth: 65.0,
+          leadingWidth: 53.0,
           title: Text(
             widget.title,
             style: TextStyle(color: Colors.white),
@@ -184,7 +187,8 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                       height:
                                           MediaQuery.of(context).size.width -
                                               120,
-                                      child: listAnimal[index]
+                                      child:
+                                      listAnimal[index]
                                               .imageLinks
                                               .isNotEmpty
                                           ? Image.network(
@@ -197,7 +201,8 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                                 fit: BoxFit.cover,
                                               );
                                             })
-                                          : Image.asset(
+                                          :
+                                      Image.asset(
                                               "Assets/dummy.jpg",
                                               fit: BoxFit.cover,
                                             ),

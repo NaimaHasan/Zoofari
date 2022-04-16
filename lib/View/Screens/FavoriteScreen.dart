@@ -191,11 +191,11 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width /
-                                                1.5,
+                                                1.4,
                                             primaryColor: Color(0xFFe9f8f5),
                                             secondaryColor:
                                                 Theme.of(context).dividerColor,
-                                            height: 40,
+                                            height: 35,
                                             description: Text(
                                               'Removed from Favorites',
                                               style: TextStyle(
