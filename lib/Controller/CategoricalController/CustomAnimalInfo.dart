@@ -98,12 +98,13 @@ class CustomAnimalInfo {
     if (animal != null && animal is Animal) {
       var jsonString = animal.rawJsonString;
       if (animal.runtimeType != Amphibian)
-        getAmphibianMiscellaneousMap(jsonString);
-      if (animal.runtimeType != Mammal) getMammalMiscellaneousMap(jsonString);
-      if (animal.runtimeType != Reptile) getReptileMiscellaneousMap(jsonString);
-      if (animal.runtimeType != Bird) getBirdMiscellaneousMap(jsonString);
-      if (animal.runtimeType != Fish) getFishMiscellaneousMap(jsonString);
+        miscellaneousMap.addAll(getAmphibianMiscellaneousMap(jsonString));
+      if (animal.runtimeType != Mammal) miscellaneousMap.addAll(getMammalMiscellaneousMap(jsonString));
+      if (animal.runtimeType != Reptile) miscellaneousMap.addAll(getReptileMiscellaneousMap(jsonString));
+      if (animal.runtimeType != Bird) miscellaneousMap.addAll(getBirdMiscellaneousMap(jsonString));
+      if (animal.runtimeType != Fish) miscellaneousMap.addAll(getFishMiscellaneousMap(jsonString));
     }
+    print(miscellaneousMap);
     return miscellaneousMap;
   }
 
@@ -188,6 +189,20 @@ class CustomAnimalInfo {
       if (jsonParam["conservation_status"] != null) {
         endangeredStatus = jsonParam["conservation_status"].toString();
       }
+    }
+    List<String> possibleStats = ['Extinct', 
+                                  'Extinct in the Wild', 
+                                  'Vulnerable', 
+                                  'Endangered', 
+                                  'Critically Endangered',
+                                  'Not Listed',
+                                  'Near Threatened',
+                                  'Not Found',
+                                  'Not Evaluated',
+                                  'Data Deficient',
+                                  ];
+    if (!possibleStats.contains(endangeredStatus)) {
+      endangeredStatus = "Not Available";
     }
     return endangeredStatus;
   }

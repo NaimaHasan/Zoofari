@@ -38,17 +38,17 @@ class Mammal extends Animal {
         ? ageOfWeaning
         : rawJsonString["general_facts"]["Age Of Weaning"] != null
             ? rawJsonString["general_facts"]["Age Of Weaning"]
-            : "not available";
+            : "Not Available";
     this._avgLitterSz = avgLitterSz != null
         ? avgLitterSz
         : rawJsonString["general_facts"]["Average Litter Size"] != null
             ? rawJsonString["general_facts"]["Average Litter Size"]
-            : "not available";
+            : "Not Available";
     this._ageOfSexualMaturity = ageOfSexualMaturity != null
         ? ageOfSexualMaturity
         : rawJsonString["general_facts"]["Age Of Sexual Maturity"] != null
             ? rawJsonString["general_facts"]["Age Of Sexual Maturity"]
-            : "not available";
+            : "Not Available";
   }
 
   String get ageOfWeaning => _ageOfWeaning;
