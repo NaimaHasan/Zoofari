@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:zoofari/Controller/CategoricalController/CustomAnimalInfo.dart';
-import 'package:zoofari/Model/Data%20Definitions/EndangeredAnimal.dart';
 import 'package:zoofari/View/Auxiliary/AnimalDetails/DetailListItems.dart';
 
 import '../../../Controller/SearchController/StringManipulator.dart';
@@ -71,8 +70,7 @@ class DetailMiscellaneous extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
-                        color: ((castedAnimal != null) &&
-                                (castedAnimal is EndangeredAnimal))
+                        color: ((castedAnimal != null) && isEndangered)
                             ? Color(0xFF852028)
                             : Theme.of(context).primaryColor,
                       ),
