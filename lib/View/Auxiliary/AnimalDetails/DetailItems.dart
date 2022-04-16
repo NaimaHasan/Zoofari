@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class DetailItems extends StatelessWidget {
   const DetailItems({required this.title, required this.itemMap, Key? key})
@@ -12,11 +13,11 @@ class DetailItems extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       child: Padding(
-        padding: EdgeInsets.only(bottom: 30),
+        padding: EdgeInsets.only(bottom: (itemMap.isNotEmpty) ? 30 : 10),
         child: Column(
           children: [
-            Container(
-              height: 40,
+            Padding(
+              padding: EdgeInsets.only(bottom: (itemMap.isNotEmpty) ? 30 : 10),
               child: Text(
                 title,
                 style: TextStyle(
@@ -77,8 +78,7 @@ class DetailItems extends StatelessWidget {
                     shrinkWrap: true,
                   )
                 : Padding(
-                    padding: EdgeInsets.only(
-                        left: 25, right: 25, bottom: 10, top: 10),
+                    padding: EdgeInsets.only(left: 25, right: 25, bottom: 10),
                     child: Text(
                       'Not Available',
                       style: TextStyle(fontSize: 15, height: 1.5),
