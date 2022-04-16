@@ -36,17 +36,15 @@ class DetailOverview extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(top: 5, bottom: 30, left: 40, right: 40),
-            child: Container(
-              child: Center(
-                child: Text(
-                  ((aml != null) && (aml is Animal))
-                      ? aml.scientificName
-                      : 'scientific name',
-                  style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold),
-                ),
+            child: Center(
+              child: Text(
+                ((aml != null) && (aml is Animal))
+                    ? aml.scientificName
+                    : 'scientific name',
+                style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ),
