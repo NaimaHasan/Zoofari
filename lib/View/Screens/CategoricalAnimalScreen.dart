@@ -97,7 +97,9 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
             style: TextStyle(color: Colors.white),
           ),
           actions: [
-            FavoriteMenu(),
+            FavoriteMenu(
+              key: ValueKey('favoriteMenu'),
+            ),
           ],
         ),
         body: FutureBuilder(
@@ -187,8 +189,7 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                       height:
                                           MediaQuery.of(context).size.width -
                                               120,
-                                      child:
-                                      listAnimal[index]
+                                      child: listAnimal[index]
                                               .imageLinks
                                               .isNotEmpty
                                           ? Image.network(
@@ -201,8 +202,7 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                                 fit: BoxFit.cover,
                                               );
                                             })
-                                          :
-                                      Image.asset(
+                                          : Image.asset(
                                               "Assets/dummy.jpg",
                                               fit: BoxFit.cover,
                                             ),
@@ -262,6 +262,7 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                                     listAnimal[index],
                                                 onPressed: (_) async => true,
                                                 showToast: () {},
+                                                key: ValueKey('favoriteBtn'),
                                               ),
                                             ],
                                           ),

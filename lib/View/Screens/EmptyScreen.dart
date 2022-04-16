@@ -19,7 +19,9 @@ class EmptyScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         actions: [
-          FavoriteMenu(),
+          FavoriteMenu(
+            key: ValueKey('favoriteMenu'),
+          ),
         ],
       ),
       body: Container(

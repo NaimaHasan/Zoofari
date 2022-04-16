@@ -14,18 +14,30 @@ void main() {
   group('Zoofari', () {
     IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-    testWidgets('FavoriteScreen is rendered when FavoriteMenu is accessed',
+    testWidgets('FavoriteScreen is rendered when FavoriteMenu is tapped',
         (WidgetTester tester) async {
       // Build our app and trigger a frame.
-      // await tester.pumpWidget(MyApp());
+      await tester.pumpWidget(MyApp());
       await tester.pumpAndSettle();
-      final favMenu = find.byType(PopupMenuButton);
-      final favScrn = find.byType(FavoriteScreen);
+      final favMenu = find.byKey(ValueKey('favoriteMenu'));
+      final favScreen = find.byType(FavoriteScreen);
+
       await tester.tap(favMenu);
       await tester.pumpAndSettle();
       // Verify that our counter starts at 0.
-      expect(favScrn, findsOneWidget);
+      expect(favScreen, findsOneWidget);
+    });
+    testWidgets('FavoriteScreen is rendered when FavoriteBtn is tapped',
+        (WidgetTester tester) async {
+      // Build our app and trigger a frame.
+      await tester.pumpWidget(MyApp());
+      await tester.pumpAndSettle();
+      final favBtn = find.byKey(ValueKey('favoriteBtn'));
 
+      await tester.tap(favBtn);
+      await tester.pumpAndSettle();
+      // Verify that our counter starts at 0.
+      //expect(favScreen, findsOneWidget);
     });
   });
 }

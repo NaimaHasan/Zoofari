@@ -107,9 +107,12 @@ class AnimalDetailsScreen extends StatelessWidget {
                     currentAnimal: animal,
                     onPressed: (_) async => true,
                     showToast: () {},
+                    key: ValueKey('favoriteBtn'),
                   ),
                 ),
-                FavoriteMenu(),
+                FavoriteMenu(
+                  key: ValueKey('favoriteMenu'),
+                ),
               ],
             ),
           ),

@@ -179,6 +179,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                         title: 'title',
                                         currentAnimal: favorites[index],
                                         onPressed: confirmUnfavorite,
+                                        key: ValueKey('favoriteBtn'),
                                         showToast: () {
                                           MotionToast(
                                             backgroundType:
@@ -187,7 +188,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                             icon: Icons.delete_outline,
                                             iconSize: 18,
                                             borderRadius: 7,
-                                            toastDuration: Duration(seconds: 1, milliseconds: 500),
+                                            toastDuration: Duration(
+                                                seconds: 1, milliseconds: 500),
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width /
