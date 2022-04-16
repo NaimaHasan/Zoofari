@@ -43,7 +43,7 @@ class _HomeTopRandomState extends State<HomeTopRandom> {
             ),
           );
         } catch (e) {
-          print(e);
+          // print(e);
         }
       },
       child: Container(
@@ -87,10 +87,14 @@ class _HomeTopRandomState extends State<HomeTopRandom> {
                         Container(
                           height: MediaQuery.of(context).size.height,
                           child: topRandomAnimal.imageLinks.isNotEmpty
-                              ? Image.network(
-                                  topRandomAnimal.imageLinks[0],
-                                  fit: BoxFit.cover,
-                                )
+                              ? Image.network(topRandomAnimal.imageLinks[0],
+                                  fit: BoxFit.cover, errorBuilder:
+                                      (context, exception, stackTrace) {
+                                  return Image.asset(
+                                    "Assets/dummy.jpg",
+                                    fit: BoxFit.cover,
+                                  );
+                                })
                               : Image.asset(
                                   "Assets/dummy.jpg",
                                   fit: BoxFit.cover,

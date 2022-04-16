@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/CategoricalAnimalProvider.dart';
@@ -18,20 +20,26 @@ import 'View/Screens/FavoriteScreen.dart';
 import 'View/Screens/HomeScreen.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await DatabaseManager.initialize();
-  DummyAnimalList();
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    await DatabaseManager.initialize();
+    DummyAnimalList();
 
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider.value(value: Randoms()),
-      ChangeNotifierProvider.value(value: Endangered()),
-      ChangeNotifierProvider.value(value: SearchController()),
-      ChangeNotifierProvider.value(value: HomeTopRandomAnimal()),
-      ChangeNotifierProvider.value(value: CategoricalProvider()),
-    ],
-    child: MyApp(),
-  ));
+    runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: Randoms()),
+        ChangeNotifierProvider.value(value: Endangered()),
+        ChangeNotifierProvider.value(value: SearchController()),
+        ChangeNotifierProvider.value(value: HomeTopRandomAnimal()),
+        ChangeNotifierProvider.value(value: CategoricalProvider()),
+      ],
+      child: MyApp(),
+    ));
+    // catching SocketException if not internet found
+  } on SocketException catch (e) {
+    // try again with refresh
+    main();
+  }
 }
 
 //   hive debug code

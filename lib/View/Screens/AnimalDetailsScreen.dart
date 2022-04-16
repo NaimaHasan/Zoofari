@@ -28,10 +28,13 @@ class AnimalDetailsScreen extends StatelessWidget {
               child: ((aml != null) &&
                       (aml is Animal) &&
                       (aml.imageLinks.isNotEmpty))
-                  ? Image.network(
-                      aml.imageLinks[0],
-                      fit: BoxFit.cover,
-                    )
+                  ? Image.network(aml.imageLinks[0], fit: BoxFit.cover,
+                      errorBuilder: (context, exception, stackTrace) {
+                      return Image.asset(
+                        "Assets/dummy.jpg",
+                        fit: BoxFit.cover,
+                      );
+                    })
                   : Image.asset(
                       'Assets/dummy.jpg',
                       fit: BoxFit.cover,

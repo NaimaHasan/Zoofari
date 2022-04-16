@@ -122,8 +122,13 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                               child: favorites[index].imageLinks.isNotEmpty
                                   ? Image.network(
                                       favorites[index].imageLinks[0],
-                                      fit: BoxFit.cover,
-                                    )
+                                      fit: BoxFit.cover, errorBuilder:
+                                          (context, exception, stackTrace) {
+                                      return Image.asset(
+                                        "Assets/dummy.jpg",
+                                        fit: BoxFit.cover,
+                                      );
+                                    })
                                   : Image.asset(
                                       "Assets/dummy.jpg",
                                       fit: BoxFit.cover,

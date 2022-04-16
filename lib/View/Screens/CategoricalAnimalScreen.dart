@@ -59,74 +59,74 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.white, //change your color here
-        ),
-        leading: Padding(
-          padding: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20),
-          child: ImageIcon(
-            (widget.title == 'Reptile')
-                ? AssetImage("Assets/categoricalIcons/reptile_icon.png")
-                : (widget.title == 'Mammal')
-                    ? AssetImage("Assets/categoricalIcons/mammal_icon.png")
-                    : (widget.title == 'Amphibian')
-                        ? AssetImage(
-                            "Assets/categoricalIcons/amphibian_icon.png")
-                        : (widget.title == 'Bird')
-                            ? AssetImage(
-                                "Assets/categoricalIcons/bird_icon.png")
-                            : (widget.title == 'Fish')
-                                ? AssetImage(
-                                    "Assets/categoricalIcons/fish_icon.png")
-                                : (widget.title == 'Endangered')
-                                    ? AssetImage(
-                                        "Assets/categoricalIcons/endangered_icon.png")
-                                    : AssetImage(
-                                        "Assets/LogoWithoutColor.png"),
-            color: Colors.white,
+        backgroundColor: Theme.of(context).backgroundColor,
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
           ),
+          leading: Padding(
+            padding: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 20),
+            child: ImageIcon(
+              (widget.title == 'Reptile')
+                  ? AssetImage("Assets/categoricalIcons/reptile_icon.png")
+                  : (widget.title == 'Mammal')
+                      ? AssetImage("Assets/categoricalIcons/mammal_icon.png")
+                      : (widget.title == 'Amphibian')
+                          ? AssetImage(
+                              "Assets/categoricalIcons/amphibian_icon.png")
+                          : (widget.title == 'Bird')
+                              ? AssetImage(
+                                  "Assets/categoricalIcons/bird_icon.png")
+                              : (widget.title == 'Fish')
+                                  ? AssetImage(
+                                      "Assets/categoricalIcons/fish_icon.png")
+                                  : (widget.title == 'Endangered')
+                                      ? AssetImage(
+                                          "Assets/categoricalIcons/endangered_icon.png")
+                                      : AssetImage(
+                                          "Assets/LogoWithoutColor.png"),
+              color: Colors.white,
+            ),
+          ),
+          leadingWidth: 65.0,
+          title: Text(
+            widget.title,
+            style: TextStyle(color: Colors.white),
+          ),
+          actions: [
+            FavoriteMenu(),
+          ],
         ),
-        leadingWidth: 65.0,
-        title: Text(
-          widget.title,
-          style: TextStyle(color: Colors.white),
-        ),
-        actions: [
-          FavoriteMenu(),
-        ],
-      ),
-      body: FutureBuilder(
-        future: _categoricalFuture,
-        builder: (ctx, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-                child: Container(
-              child: CircularProgressIndicator(),
-            ));
-          }
-          return Consumer<CategoricalProvider>(
-            builder: ((context, listA, child) {
-              if (listAnimal.isEmpty) {
-                listAnimal.addAll(listA.categoricalList);
-              } else {
-                List<String> namesInOldList = List.empty(growable: true);
-                for (final item in listAnimal) {
-                  namesInOldList.add(item.commonName);
-                }
-                for (final newAnimal in listA.categoricalList) {
-                  if (!namesInOldList.contains(newAnimal.commonName)) {
-                    listAnimal.add(newAnimal);
+        body: FutureBuilder(
+          future: _categoricalFuture,
+          builder: (ctx, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                  child: Container(
+                child: CircularProgressIndicator(),
+              ));
+            }
+            return Consumer<CategoricalProvider>(
+              builder: ((context, listA, child) {
+                if (listAnimal.isEmpty) {
+                  listAnimal.addAll(listA.categoricalList);
+                } else {
+                  List<String> namesInOldList = List.empty(growable: true);
+                  for (final item in listAnimal) {
+                    namesInOldList.add(item.commonName);
+                  }
+                  for (final newAnimal in listA.categoricalList) {
+                    if (!namesInOldList.contains(newAnimal.commonName)) {
+                      listAnimal.add(newAnimal);
+                    }
                   }
                 }
-              }
 
-              if (listAnimal.isEmpty) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
+                if (listAnimal.isEmpty) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
 
                 return SmartRefresher(
                   enablePullDown: false,
@@ -157,8 +157,7 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                   child: ListView.builder(
                     itemBuilder: (ctx, index) {
                       return Padding(
-                        padding:
-                            EdgeInsets.only(left: 15, right: 15, top: 15),
+                        padding: EdgeInsets.only(left: 15, right: 15, top: 15),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(25),
                           child: Column(
@@ -169,33 +168,35 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                   Navigator.push(
                                     context,
                                     PageRouteBuilder(
-                                      pageBuilder: (context, animation1,
-                                              animation2) =>
-                                          AnimalDetailsScreen(
+                                      pageBuilder:
+                                          (context, animation1, animation2) =>
+                                              AnimalDetailsScreen(
                                         animal: listAnimal[index],
                                       ),
-                                      transitionDuration:
-                                          Duration(seconds: 0),
+                                      transitionDuration: Duration(seconds: 0),
                                     ),
                                   );
                                 },
                                 child: Stack(
                                   children: [
                                     Container(
-                                      width:
-                                          MediaQuery.of(context).size.width,
-                                      height: MediaQuery.of(context)
-                                              .size
-                                              .width -
-                                          120,
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.width -
+                                              120,
                                       child: listAnimal[index]
                                               .imageLinks
                                               .isNotEmpty
                                           ? Image.network(
-                                              listAnimal[index]
-                                                  .imageLinks[0],
-                                              fit: BoxFit.cover,
-                                            )
+                                              listAnimal[index].imageLinks[0],
+                                              fit: BoxFit.cover, errorBuilder:
+                                                  (context, exception,
+                                                      stackTrace) {
+                                              return Image.asset(
+                                                "Assets/dummy.jpg",
+                                                fit: BoxFit.cover,
+                                              );
+                                            })
                                           : Image.asset(
                                               "Assets/dummy.jpg",
                                               fit: BoxFit.cover,
@@ -204,13 +205,11 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                     Positioned(
                                       bottom: 0,
                                       child: Container(
-                                        width: MediaQuery.of(context)
-                                            .size
-                                            .width,
-                                        height: MediaQuery.of(context)
-                                                .size
-                                                .width -
-                                            300,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height:
+                                            MediaQuery.of(context).size.width -
+                                                300,
                                         decoration: BoxDecoration(
                                           gradient: LinearGradient(
                                             begin: Alignment.bottomCenter,
@@ -226,24 +225,21 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                     Positioned(
                                       bottom: 5,
                                       child: Container(
-                                        width: MediaQuery.of(context)
-                                                .size
-                                                .width -
-                                            15,
+                                        width:
+                                            MediaQuery.of(context).size.width -
+                                                15,
                                         child: Padding(
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 25, vertical: 10),
                                           child: Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceBetween,
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
                                               Container(
-                                                width:
-                                                    MediaQuery.of(context)
-                                                            .size
-                                                            .width *
-                                                        0.6,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.6,
                                                 child: Text(
                                                   StringManipulator
                                                       .customizeCommonName(
@@ -259,8 +255,7 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                                 title: 'title',
                                                 currentAnimal:
                                                     listAnimal[index],
-                                                onPressed: (_) async =>
-                                                    true,
+                                                onPressed: (_) async => true,
                                                 showToast: () {},
                                               ),
                                             ],
@@ -279,11 +274,10 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                     itemCount: listAnimal.length,
                   ),
                 );
-            }),
-          );
-        },
-      )
-    );
+              }),
+            );
+          },
+        ));
   }
 
   void _onRefresh() async {

@@ -33,10 +33,13 @@ class SearchResultItem extends StatelessWidget {
               height: MediaQuery.of(context).size.width / 2 - 30,
               child: animal.imageLinks.isEmpty
                   ? Image.asset('Assets/dummy.jpg', fit: BoxFit.cover)
-                  : Image.network(
-                      animal.imageLinks[0],
-                      fit: BoxFit.cover,
-                    ),
+                  : Image.network(animal.imageLinks[0], fit: BoxFit.cover,
+                      errorBuilder: (context, exception, stackTrace) {
+                      return Image.asset(
+                        "Assets/dummy.jpg",
+                        fit: BoxFit.cover,
+                      );
+                    }),
             ),
             Positioned(
               bottom: 0,

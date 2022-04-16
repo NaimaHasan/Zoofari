@@ -2,12 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/EndangeredProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/HomeTopAnimalProvider.dart';
 import 'package:zoofari/Controller/CategoricalController/AnimalProviders/RandomProvider.dart';
 import 'package:zoofari/View/Auxiliary/Home/CategoricalScroll.dart';
-
 import 'package:zoofari/View/Auxiliary/Home/HomeTopScreen.dart';
 import 'package:zoofari/View/Auxiliary/Home/ListClasses/EndangeredList.dart';
 import 'package:zoofari/View/Auxiliary/Home/ListClasses/RandomList.dart';
