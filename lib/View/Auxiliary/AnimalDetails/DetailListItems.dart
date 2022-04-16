@@ -29,12 +29,16 @@ class DetailListItems extends StatelessWidget {
             ),
           ),
           (list.length == 1 &&
-                  (list[0] == 'Not Available' || (list[0] == 'Not available')))
+                  (list[0] == 'Not Available' ||
+                      (list[0] == 'Not available') ||
+                      (list[0] == 'N/A') ||
+                      (list[0] == 'n/a') ||
+                      (list[0] == 'not available')))
               ? Padding(
                   padding: EdgeInsets.only(top: 16),
                   child: Center(
                     child: Text(
-                      list[0],
+                      'Not Available',
                       style: TextStyle(
                         fontSize: 15,
                       ),
