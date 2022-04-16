@@ -11,7 +11,7 @@ import 'package:zoofari/View/Screens/FavoriteScreen.dart';
 import 'package:zoofari/main.dart';
 
 void main() {
-  group('Zoofari', () {
+  group('Widget test', () {
     IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
     testWidgets('FavoriteScreen is rendered when FavoriteMenu is tapped',
