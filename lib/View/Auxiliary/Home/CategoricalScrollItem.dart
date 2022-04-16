@@ -17,7 +17,7 @@ class CategoricalScrollItem extends StatelessWidget {
           context,
           PageRouteBuilder(
             pageBuilder: (context, animation1, animation2) =>
-                CategoricalAnimalScreen(title: title),
+                CategoricalAnimalScreen(title: title, key: UniqueKey()),
             transitionDuration: Duration(seconds: 0),
           ),
         );
