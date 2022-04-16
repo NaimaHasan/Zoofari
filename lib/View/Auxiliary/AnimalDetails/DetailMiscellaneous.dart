@@ -21,6 +21,14 @@ class DetailMiscellaneous extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var castedAnimal = CustomAnimalInfo.getTypeCastedAnimal(animal);
+
+    List<String> endangeredKeywords = [
+      'Extinct',
+      'Extinct in the Wild',
+      'Endangered',
+      'Critically Endangered',
+      'Vulnerable'
+    ];
     if ((castedAnimal != null) && (castedAnimal is Animal)) {
       preyList = List.empty();
       predatorList = List.empty();
@@ -29,13 +37,6 @@ class DetailMiscellaneous extends StatelessWidget {
       predatorList = StringManipulator.stringToList(castedAnimal.predators);
       endangeredStatus = CustomAnimalInfo.getEndangeredStatus(castedAnimal);
     }
-    List<String> endangeredKeywords = [
-      'Extinct',
-      'Extinct in the Wild',
-      'Endangered',
-      'Critically Endangered',
-      'Vulnerable'
-    ];
     bool isEndangered = endangeredKeywords
         .any((listElement) => listElement.contains(endangeredStatus));
 
@@ -83,7 +84,7 @@ class DetailMiscellaneous extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
                       ((castedAnimal != null) && isEndangered)
-                          ? castedAnimal.endangeredStatus
+                          ? endangeredStatus
                           : 'Not Endangered',
                       style: TextStyle(fontSize: 15),
                     ),
