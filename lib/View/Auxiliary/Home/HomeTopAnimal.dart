@@ -90,14 +90,16 @@ class _HomeTopAnimalState extends State<HomeTopAnimal> {
                         height: MediaQuery.of(context).size.height / 2.5,
                         width: MediaQuery.of(context).size.width,
                         child: topRandomAnimal.imageLinks.isNotEmpty
-                            ? Image.network(topRandomAnimal.imageLinks[0],
+                            ? Image.network(
+                                topRandomAnimal.imageLinks[0],
                                 fit: BoxFit.cover,
                                 errorBuilder: (context, exception, stackTrace) {
-                                return Image.asset(
-                                  "Assets/dummy.jpg",
-                                  fit: BoxFit.cover,
-                                );
-                              })
+                                  return Image.asset(
+                                    "Assets/dummy.jpg",
+                                    fit: BoxFit.cover,
+                                  );
+                                },
+                              )
                             : Image.asset(
                                 "Assets/dummy.jpg",
                                 fit: BoxFit.cover,

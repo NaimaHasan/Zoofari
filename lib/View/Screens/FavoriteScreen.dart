@@ -40,16 +40,17 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 ),
               ),
               TextButton(
-                  onPressed: () {
-                    isConfirmed = false;
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text(
-                    'No',
-                    style: TextStyle(
-                      color: Color(0xFF4c8e82),
-                    ),
-                  ))
+                onPressed: () {
+                  isConfirmed = false;
+                  Navigator.of(context).pop();
+                },
+                child: const Text(
+                  'No',
+                  style: TextStyle(
+                    color: Color(0xFF4c8e82),
+                  ),
+                ),
+              ),
             ],
           );
         });

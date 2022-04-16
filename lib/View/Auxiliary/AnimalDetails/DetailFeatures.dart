@@ -111,7 +111,6 @@ class DetailFeatures extends StatelessWidget {
               : Padding(
                   padding: EdgeInsets.only(bottom: 10),
                 ),
-          //DetailListItems(title: 'Colors', list: colorList),
 
           DetailItems(
             title: 'Other Features',
