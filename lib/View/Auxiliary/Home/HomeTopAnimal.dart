@@ -95,13 +95,13 @@ class _HomeTopAnimalState extends State<HomeTopAnimal> {
                                 fit: BoxFit.cover,
                                 errorBuilder: (context, exception, stackTrace) {
                                   return Image.asset(
-                                    "Assets/dummy.jpg",
+                                    "assets/dummy.jpg",
                                     fit: BoxFit.cover,
                                   );
                                 },
                               )
                             : Image.asset(
-                                "Assets/dummy.jpg",
+                                "assets/dummy.jpg",
                                 fit: BoxFit.cover,
                               ),
                       ),

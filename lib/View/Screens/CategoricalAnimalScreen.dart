@@ -71,22 +71,22 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
               left: 20),
           child: ImageIcon(
             (widget.title == 'Reptile')
-                ? AssetImage("Assets/categoricalIcons/reptile_icon.png")
+                ? AssetImage("assets/categoricalIcons/reptile_icon.png")
                 : (widget.title == 'Mammal')
-                    ? AssetImage("Assets/categoricalIcons/mammal_icon.png")
+                    ? AssetImage("assets/categoricalIcons/mammal_icon.png")
                     : (widget.title == 'Amphibian')
                         ? AssetImage(
-                            "Assets/categoricalIcons/amphibian_icon.png")
+                            "assets/categoricalIcons/amphibian_icon.png")
                         : (widget.title == 'Bird')
                             ? AssetImage(
-                                "Assets/categoricalIcons/bird_icon.png")
+                                "assets/categoricalIcons/bird_icon.png")
                             : (widget.title == 'Fish')
                                 ? AssetImage(
-                                    "Assets/categoricalIcons/fish_icon.png")
+                                    "assets/categoricalIcons/fish_icon.png")
                                 : (widget.title == 'Endangered')
                                     ? AssetImage(
-                                        "Assets/categoricalIcons/endangered_icon.png")
-                                    : AssetImage("Assets/LogoWithoutColor.png"),
+                                        "assets/categoricalIcons/endangered_icon.png")
+                                    : AssetImage("assets/LogoWithoutColor.png"),
             color: Colors.white,
           ),
         ),
@@ -211,12 +211,12 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                                     (context, exception,
                                                         stackTrace) {
                                                 return Image.asset(
-                                                  "Assets/dummy.jpg",
+                                                  "assets/dummy.jpg",
                                                   fit: BoxFit.cover,
                                                 );
                                               })
                                             : Image.asset(
-                                                "Assets/dummy.jpg",
+                                                "assets/dummy.jpg",
                                                 fit: BoxFit.cover,
                                               ),
                                   ),

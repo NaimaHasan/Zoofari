@@ -56,11 +56,11 @@ class _ListItemState extends State<ListItem> {
                           fit: BoxFit.cover,
                           errorBuilder: (context, exception, stackTrace) {
                           return Image.asset(
-                            "Assets/dummy.jpg",
+                            "assets/dummy.jpg",
                             fit: BoxFit.cover,
                           );
                         })
-                      : Image.asset('Assets/dummy.jpg', fit: BoxFit.cover),
+                      : Image.asset('assets/dummy.jpg', fit: BoxFit.cover),
                 ),
               ),
               Expanded(

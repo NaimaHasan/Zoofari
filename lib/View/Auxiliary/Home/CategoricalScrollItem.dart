@@ -32,7 +32,7 @@ class CategoricalScrollItem extends StatelessWidget {
                 fit: BoxFit.cover,
                 errorBuilder: (context, exception, stackTrace) {
                   return Image.asset(
-                    "Assets/dummy.jpg",
+                    "assets/dummy.jpg",
                     fit: BoxFit.cover,
                   );
                 },

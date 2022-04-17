@@ -85,7 +85,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           }
           if (favorites.isEmpty) {
             return Image.asset(
-              'Assets/noFavorites.jpg',
+              'assets/noFavorites.jpg',
               fit: BoxFit.cover,
             );
           }
@@ -126,12 +126,12 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                       fit: BoxFit.cover, errorBuilder:
                                           (context, exception, stackTrace) {
                                       return Image.asset(
-                                        "Assets/dummy.jpg",
+                                        "assets/dummy.jpg",
                                         fit: BoxFit.cover,
                                       );
                                     })
                                   : Image.asset(
-                                      "Assets/dummy.jpg",
+                                      "assets/dummy.jpg",
                                       fit: BoxFit.cover,
                                     ),
                             ),

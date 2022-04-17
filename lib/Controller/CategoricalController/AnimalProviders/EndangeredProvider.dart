@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 import 'package:zoofari/View/Auxiliary/Helpers/DummyAnimalList.dart';
 
+import '../../../Model/Data Definitions/Animal.dart';
 import '../../../Model/Data Definitions/EndangeredAnimal.dart';
 
 class Endangered with ChangeNotifier {
-  var _list = DummyEndangeredAnimalList.animalList;
+  var _list = DummyAnimalList.animalList;
 
-  List<EndangeredAnimal> get endangeredList {
+  List<Animal> get endangeredList {
     return _list;
   }
 

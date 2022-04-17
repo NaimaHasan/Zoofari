@@ -23,7 +23,7 @@ class HomeTopScreen extends StatelessWidget {
                 Container(
                   height: 35,
                   width: 45,
-                  child: Image.asset('Assets/LogoWithoutColor.png'),
+                  child: Image.asset('assets/LogoWithoutColor.png'),
                 ),
                 Expanded(
                   child: Padding(

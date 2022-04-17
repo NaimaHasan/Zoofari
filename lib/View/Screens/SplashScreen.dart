@@ -15,7 +15,7 @@ class SplashScreen extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             height: MediaQuery.of(context).size.height / 1.85,
             child: Image.asset(
-              'Assets/LogoWithoutColor.png',
+              'assets/LogoWithoutColor.png',
               width: 120,
               height: 120,
             ),

@@ -102,7 +102,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                   if (searchCtrl.searchedAnimals.isEmpty) {
                     return Container(
                       child: Image.asset(
-                        'Assets/noSearchResults.jpg',
+                        'assets/noSearchResults.jpg',
                         fit: BoxFit.cover,
                       ),
                     );
@@ -110,7 +110,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                 }
                 return Container(
                   child: Image.asset(
-                    'Assets/noSearchResults.jpg',
+                    'assets/noSearchResults.jpg',
                     fit: BoxFit.cover,
                   ),
                 );

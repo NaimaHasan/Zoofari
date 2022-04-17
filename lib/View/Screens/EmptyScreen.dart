@@ -28,7 +28,7 @@ class EmptyScreen extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Image.asset(
-          'Assets/noSearchResults.jpg',
+          'assets/noSearchResults.jpg',
           fit: BoxFit.cover,
         ),
       ),

@@ -31,12 +31,12 @@ class AnimalDetailsScreen extends StatelessWidget {
                   ? Image.network(aml.imageLinks[0], fit: BoxFit.cover,
                       errorBuilder: (context, exception, stackTrace) {
                       return Image.asset(
-                        "Assets/dummy.jpg",
+                        "assets/dummy.jpg",
                         fit: BoxFit.cover,
                       );
                     })
                   : Image.asset(
-                      'Assets/dummy.jpg',
+                      'assets/dummy.jpg',
                       fit: BoxFit.cover,
                     ),
             ),
@@ -70,7 +70,7 @@ class AnimalDetailsScreen extends StatelessWidget {
                 Container(
                   height: 35,
                   width: 45,
-                  child: Image.asset('Assets/LogoWithoutColor.png'),
+                  child: Image.asset('assets/LogoWithoutColor.png'),
                 ),
                 Expanded(
                   child: Padding(
