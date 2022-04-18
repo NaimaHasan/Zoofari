@@ -43,7 +43,7 @@ class _DetailDrawerState extends State<DetailDrawer> {
         ),
       ),
       body: DefaultTabController(
-        length: 3, // length of tabs
+        length: 3,
         initialIndex: 0,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -30,28 +30,30 @@ class CategoricalScrollItem extends StatelessWidget {
               Image.network(
                 imageURL,
                 fit: BoxFit.cover,
+                width: 160.0,
+                height: 185,
                 errorBuilder: (context, exception, stackTrace) {
                   return Image.asset(
                     "assets/dummy.jpg",
                     fit: BoxFit.cover,
+                    width: 160.0,
+                    height: 185,
                   );
                 },
-                width: 160.0,
-                height: 185,
               ),
               Positioned(
-                bottom: 0.0,
-                left: 0.0,
-                right: 0.0,
+                bottom: 0,
                 child: Container(
-                  decoration: const BoxDecoration(
+                  width: 160.0,
+                  height: 185 / 3,
+                  decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(50, 0, 0, 0),
-                        Color.fromARGB(0, 0, 0, 0)
-                      ],
                       begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
+                      end: Alignment.center,
+                      colors: [
+                        Color.fromRGBO(0, 0, 0, 0.25),
+                        Colors.transparent,
+                      ],
                     ),
                   ),
                 ),
