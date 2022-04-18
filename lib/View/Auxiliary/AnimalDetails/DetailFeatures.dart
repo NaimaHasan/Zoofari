@@ -95,7 +95,7 @@ class DetailFeatures extends StatelessWidget {
                             (colorList.length == 1 || colorList.length == 2)
                                 ? colorList.length
                                 : 3,
-                        childAspectRatio: colorList.length == 1 ? 20 : 4,
+                        childAspectRatio: colorList.length == 1 ? 20 : 2.5,
                         mainAxisSpacing: colorList.length == 1 ? 1 : 20,
                         crossAxisSpacing: 4),
                     itemBuilder: (BuildContext context, int index) {
@@ -111,7 +111,6 @@ class DetailFeatures extends StatelessWidget {
               : Padding(
                   padding: EdgeInsets.only(bottom: 10),
                 ),
-
           DetailItems(
             title: 'Other Features',
             itemMap: CustomAnimalInfo.getOtherFeaturesMap(animal),
