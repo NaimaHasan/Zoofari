@@ -177,7 +177,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                         ),
                                       ),
                                       FavoriteButton(
-                                        title: 'title',
                                         currentAnimal: favorites[index],
                                         onPressed: confirmUnfavorite,
                                         key: ValueKey('favoriteBtn'),

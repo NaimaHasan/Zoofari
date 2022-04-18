@@ -81,7 +81,6 @@ class _ListItemState extends State<ListItem> {
                         ),
                       ),
                       FavoriteButton(
-                        title: 'title',
                         currentAnimal: widget.animal,
                         onPressed: (_) async => true,
                         showToast: () {},

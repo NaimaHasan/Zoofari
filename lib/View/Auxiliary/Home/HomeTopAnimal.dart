@@ -152,7 +152,6 @@ class _HomeTopAnimalState extends State<HomeTopAnimal> {
                               ),
                             ),
                             FavoriteButton(
-                              title: 'title',
                               currentAnimal: topRandomAnimal,
                               onPressed: (_) async => true,
                               showToast: () {},

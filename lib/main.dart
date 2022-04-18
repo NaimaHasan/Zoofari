@@ -10,7 +10,6 @@ import 'package:zoofari/Controller/CategoricalController/AnimalProviders/SearchR
 import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 import 'package:zoofari/View/Screens/CategoricalAnimalScreen.dart';
-import 'package:zoofari/View/Screens/EmptyScreen.dart';
 import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 
 import 'Model/Data Definitions/Animal.dart';
@@ -84,8 +83,7 @@ class MyApp extends StatelessWidget {
               animal: Animal.emptyAnimal(),
             ), // TODO: don't know what to pass
         SearchResultsScreen.routeName: (ctx) =>
-            SearchResultsScreen(searchKey: ''),
-        EmptyScreen.routeName: (ctx) => EmptyScreen(imageData: ''),
+            SearchResultsScreen(searchKey: '')
       },
     );
   }

@@ -5,13 +5,13 @@ import '../../Model/Data Definitions/Animal.dart';
 
 class FavoriteButton extends StatefulWidget {
   FavoriteButton(
-      {required this.title,
+      {
       required this.currentAnimal,
       required this.onPressed,
       Key? key,
       required this.showToast})
       : super(key: key);
-  final String title;
+
   final Animal currentAnimal;
   final Future<bool> Function(BuildContext context) onPressed;
   final Function() showToast;

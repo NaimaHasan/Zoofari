@@ -86,7 +86,6 @@ class SearchResultItem extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(bottom: 3),
                       child: FavoriteButton(
-                        title: 'title',
                         currentAnimal: animal,
                         onPressed: (_) async => true,
                         showToast: () {},
