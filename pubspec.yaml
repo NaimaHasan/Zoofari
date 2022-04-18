@@ -104,10 +104,10 @@ flutter:
   # fonts:
   #   - family: Quicksand
   #     fonts:
-  #       - asset: Assets/Fonts/Quicksand/Quicksand-Regular.ttf
-  #       - asset: Assets/Fonts/Quicksand/Quicksand-Bold.ttf
+  #       - asset: assets/Fonts/Quicksand/Quicksand-Regular.ttf
+  #       - asset: assets/Fonts/Quicksand/Quicksand-Bold.ttf
   #         weight: 700
-  #       - asset: Assets/Fonts/Quicksand/Quicksand-SemiBold.ttf
+  #       - asset: assets/Fonts/Quicksand/Quicksand-SemiBold.ttf
   #         weight: 600
   #
   # For details regarding fonts from package dependencies,

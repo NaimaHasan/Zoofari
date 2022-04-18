@@ -97,12 +97,19 @@ class CustomAnimalInfo {
     Map<String, String> miscellaneousMap = {};
     if (animal != null && animal is Animal) {
       var jsonString = animal.rawJsonString;
+      if (jsonString == "") {
+        return miscellaneousMap;
+      }
       if (animal.runtimeType != Amphibian)
         miscellaneousMap.addAll(getAmphibianMiscellaneousMap(jsonString));
-      if (animal.runtimeType != Mammal) miscellaneousMap.addAll(getMammalMiscellaneousMap(jsonString));
-      if (animal.runtimeType != Reptile) miscellaneousMap.addAll(getReptileMiscellaneousMap(jsonString));
-      if (animal.runtimeType != Bird) miscellaneousMap.addAll(getBirdMiscellaneousMap(jsonString));
-      if (animal.runtimeType != Fish) miscellaneousMap.addAll(getFishMiscellaneousMap(jsonString));
+      if (animal.runtimeType != Mammal)
+        miscellaneousMap.addAll(getMammalMiscellaneousMap(jsonString));
+      if (animal.runtimeType != Reptile)
+        miscellaneousMap.addAll(getReptileMiscellaneousMap(jsonString));
+      if (animal.runtimeType != Bird)
+        miscellaneousMap.addAll(getBirdMiscellaneousMap(jsonString));
+      if (animal.runtimeType != Fish)
+        miscellaneousMap.addAll(getFishMiscellaneousMap(jsonString));
     }
     print(miscellaneousMap);
     return miscellaneousMap;
@@ -183,24 +190,26 @@ class CustomAnimalInfo {
   }
 
   static String getEndangeredStatus(animal) {
-    String endangeredStatus = '';
+    String endangeredStatus = "";
     if (animal != null && animal is Animal) {
       var jsonParam = animal.rawJsonString;
+      if (jsonParam == "") return endangeredStatus;
       if (jsonParam["conservation_status"] != null) {
         endangeredStatus = jsonParam["conservation_status"].toString();
       }
     }
-    List<String> possibleStats = ['Extinct', 
-                                  'Extinct in the Wild', 
-                                  'Vulnerable', 
-                                  'Endangered', 
-                                  'Critically Endangered',
-                                  'Not Listed',
-                                  'Near Threatened',
-                                  'Not Found',
-                                  'Not Evaluated',
-                                  'Data Deficient',
-                                  ];
+    List<String> possibleStats = [
+      'Extinct',
+      'Extinct in the Wild',
+      'Vulnerable',
+      'Endangered',
+      'Critically Endangered',
+      'Not Listed',
+      'Near Threatened',
+      'Not Found',
+      'Not Evaluated',
+      'Data Deficient',
+    ];
     if (!possibleStats.contains(endangeredStatus)) {
       endangeredStatus = "Not Available";
     }

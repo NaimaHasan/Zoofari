@@ -16,6 +16,7 @@ class DetailMiscellaneous extends StatelessWidget {
   static List<String> predatorList = List.empty(growable: true);
   static String notAvail = 'Not Available';
   static String endangeredStatus = '';
+  static bool isEndangered = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,8 @@ class DetailMiscellaneous extends StatelessWidget {
       'Extinct in the Wild',
       'Endangered',
       'Critically Endangered',
-      'Vulnerable'
+      'Vulnerable',
+      'Near Threatend'
     ];
     if ((castedAnimal != null) && (castedAnimal is Animal)) {
       preyList = List.empty();
@@ -36,9 +38,12 @@ class DetailMiscellaneous extends StatelessWidget {
       predatorList = StringManipulator.stringToList(castedAnimal.predators);
       endangeredStatus = CustomAnimalInfo.getEndangeredStatus(castedAnimal);
     }
-    bool isEndangered = endangeredKeywords
-        .any((listElement) => listElement.contains(endangeredStatus));
-
+    if (endangeredStatus == "")
+      endangeredStatus = notAvail;
+    else {
+      isEndangered = endangeredKeywords
+          .any((listElement) => listElement.contains(endangeredStatus));
+    }
     return SingleChildScrollView(
       controller: controller,
       child: Column(
@@ -81,7 +86,8 @@ class DetailMiscellaneous extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      ((castedAnimal != null) && isEndangered)
+                      ((castedAnimal != null) && isEndangered ||
+                              (endangeredStatus == notAvail))
                           ? endangeredStatus
                           : 'Not Endangered',
                       style: TextStyle(fontSize: 15),
