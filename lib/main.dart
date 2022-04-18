@@ -35,18 +35,11 @@ void main() async {
       child: MyApp(),
     ));
     // catching SocketException if not internet found
-  } on SocketException catch (e) {
+  } on SocketException {
     // try again with refresh
     main();
   }
 }
-
-//   hive debug code
-//   print("am i even here?");
-//   DatabaseManager.addToFavorites( Animal.fromJson('''{"common_name": "dog-tick", "classification": {"Kingdom": "Animalia", "Phylum": "Arthropoda", "Class": "Arachnida", "Order": "Ixodida", "Family": "Ixodidae", "Genus": "Dermacentor", "Scientific Name": "Dermacentor variabilis"}, "general_facts": {"Prey": "Blood", "Name Of Young": "Larvae", "Group Behavior": "Solitary", "Fun Fact": "Dog ticks feed on dogs and other mammals", "Biggest Threat": "Ingestion by mites or nematodes", "Most Distinctive Feature": "Ability to expand greatly in size", "Other Name(s)": "American dog tick, brown dog tick", "Gestation Period": "1-30 days", "Litter Size": "2,000-7,000 eggs", "Diet": "Omnivore", "Type": "Arachnid", "Common Name": "Dog tick", "Number Of Species": "2", "Location": "Everywhere humans live", "Color": ["Brown"], "Skin Type": "Exoskeleton", "Lifespan": "2-3 years", "Length": "2-15 mm", "Age of Sexual Maturity": "30-600 days"}, "image_link": ["https://a-z-animals.com/media/2022/02/Dog-Tick-header-768x401.jpg", "https://a-z-animals.com/media/2022/02/Dog-Tick-on-dog-768x401.jpg", "https://a-z-animals.com/media/2022/02/Dog-Tick-removal-768x401.jpg", "https://a-z-animals.com/media/2022/02/Dog-Tick-on-ear-768x401.jpg", "https://a-z-animals.com/media/2022/02/Dog-Tick-with-eggs-768x401.jpg", "https://a-z-animals.com/media/2022/02/Dog-Tick-isolated-768x401.jpg", "https://a-z-animals.com/media/2022/04/why-do-dogs-throw-up-header-300x180.jpg"], "conservation_status": "Not Listed"}''') );
-//   print(DatabaseManager.isFavorite('dog-tick'));
-//   Animal sth = LocalDatabase.favoritesBox.get('dog-tick');
-//   print(sth.scientificName);
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

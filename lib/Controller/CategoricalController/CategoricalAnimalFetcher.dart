@@ -2,14 +2,9 @@ import 'package:zoofari/Model/Data Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 import 'package:zoofari/View/Auxiliary/Helpers/DummyAnimalList.dart';
 
-class CategoricalAnimalFetcher  {
+class CategoricalAnimalFetcher {
   List<Animal> categoricalAnimalList = DummyAnimalList.animalList;
-  late int k;
-
-  CategoricalAnimalFetcher(int a) {
-    this.k = a;
-  }
-  
+  CategoricalAnimalFetcher();
 
   Future<void> getAnimals(String category) async {
     print("---------------fetching $category");

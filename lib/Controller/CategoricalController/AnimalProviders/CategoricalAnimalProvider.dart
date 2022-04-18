@@ -12,7 +12,7 @@ class CategoricalProvider with ChangeNotifier {
 
   Future<void> getData(String category) async {
     _list.clear();
-    CategoricalAnimalFetcher categoricalFetcher = CategoricalAnimalFetcher(1);
+    CategoricalAnimalFetcher categoricalFetcher = CategoricalAnimalFetcher();
     await categoricalFetcher.getAnimals(category);
     _list.addAll(categoricalFetcher.categoricalAnimalList);
     notifyListeners();

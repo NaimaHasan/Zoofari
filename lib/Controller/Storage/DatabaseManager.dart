@@ -6,10 +6,6 @@ class DatabaseManager {
     await LocalDatabase.initialize();
   }
 
-  // static Future<List<Animal?>?> getSearchedAnimals(String searchKey) async {
-  //   return await OnlineRepository.fetchSearchedAnimals(
-  //       QueryConstructor.constructSearchKeyWord(searchKey));
-  // }
   static Stream getFavoritesStream() => LocalDatabase.favoritesStream;
 
   static Animal getParticularFavoriteAnimal(String commonName) {

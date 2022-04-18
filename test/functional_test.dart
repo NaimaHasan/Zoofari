@@ -17,7 +17,7 @@ void main() {
       List<Animal> _list = List.empty(growable: true);
       fAsync.run((_) async {
         CategoricalAnimalFetcher categoricalFetcher =
-            CategoricalAnimalFetcher(1);
+            CategoricalAnimalFetcher();
         await categoricalFetcher.getAnimals('mammals');
         _list.addAll(categoricalFetcher.categoricalAnimalList);
         for (final animal in _list) expect(animal.runtimeType, Mammal);
