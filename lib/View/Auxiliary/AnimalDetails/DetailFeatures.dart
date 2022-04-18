@@ -80,7 +80,7 @@ class DetailFeatures extends StatelessWidget {
                 ),
           (colorList.isNotEmpty)
               ? Padding(
-                  padding: EdgeInsets.only(bottom: 30),
+                  padding: EdgeInsets.only(bottom: 15),
                   child: GridView.builder(
                     padding: EdgeInsets.symmetric(
                         vertical: 10,
