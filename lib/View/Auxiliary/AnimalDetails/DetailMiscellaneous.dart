@@ -39,7 +39,7 @@ class DetailMiscellaneous extends StatelessWidget {
       endangeredStatus = CustomAnimalInfo.getEndangeredStatus(castedAnimal);
     }
     if (endangeredStatus == "")
-      endangeredStatus = notAvail;
+      endangeredStatus = "n/a";
     else {
       isEndangered = endangeredKeywords
           .any((listElement) => listElement.contains(endangeredStatus));
@@ -86,10 +86,11 @@ class DetailMiscellaneous extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      ((castedAnimal != null) && isEndangered ||
-                              (endangeredStatus == notAvail))
+                      ((castedAnimal != null) && isEndangered)
                           ? endangeredStatus
-                          : 'Not Endangered',
+                          : (endangeredStatus == "n/a")
+                              ? notAvail
+                              : 'Not Endangered',
                       style: TextStyle(fontSize: 15),
                     ),
                   ),

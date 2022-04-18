@@ -5,8 +5,7 @@ import '../../Model/Data Definitions/Animal.dart';
 
 class FavoriteButton extends StatefulWidget {
   FavoriteButton(
-      {
-      required this.currentAnimal,
+      {required this.currentAnimal,
       required this.onPressed,
       Key? key,
       required this.showToast})
@@ -36,8 +35,12 @@ class _FavoriteButtonState extends State<FavoriteButton> {
             DatabaseManager.isFavorite(widget.currentAnimal.commonName);
 
         return IconButton(
-          icon: Icon(isFavorited ? Icons.star : Icons.star_outline),
+          icon: Icon(isFavorited &&
+                  (widget.currentAnimal.commonName != 'Not Available')
+              ? Icons.star
+              : Icons.star_outline),
           onPressed: () async {
+            if (widget.currentAnimal.commonName == 'Not Available') return;
             var isConfirmed = await widget.onPressed(context);
             if (isConfirmed)
               setState(
@@ -51,7 +54,6 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                   isFavorited = !isFavorited;
                 },
               );
-            
           },
           visualDensity: VisualDensity.compact,
           iconSize: 22,
