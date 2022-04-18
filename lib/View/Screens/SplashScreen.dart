@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -23,10 +22,11 @@ class SplashScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width / 3.3,
-                vertical: 30),
+                vertical: 20),
             child: LinearProgressIndicator(
+              backgroundColor: Theme.of(context).backgroundColor,
               color: Theme.of(context).primaryColor,
-              minHeight: 4,
+              minHeight: 2.5,
             ),
           ),
         ],
