@@ -29,5 +29,16 @@ void main() {
         expect(animalsToFetch.length, 0);
       });
     });
+    testWidgets('Search gives no result for empty string',
+        (WidgetTester tester) async {
+      FakeAsync fAsync = new FakeAsync();
+      fAsync.run((_) async {
+        dynamic toFetch =
+          await OnlineRepository.fetchSearchedAnimalNames('');
+        List<String> animalsToFetch = toFetch;
+
+        expect(animalsToFetch.length, 0);
+      });
+    });
   });
 }
