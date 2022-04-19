@@ -17,6 +17,7 @@ class FavoriteMenu extends StatelessWidget {
         color: Colors.white,
         itemBuilder: (context) => [
           PopupMenuItem<int>(
+            key: ValueKey('popupMenuOption'),
             value: 0,
             height: 25,
             padding: EdgeInsets.only(left: 15),

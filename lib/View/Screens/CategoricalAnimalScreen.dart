@@ -175,6 +175,7 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                 onRefresh: _onRefresh,
                 onLoading: _onLoading,
                 child: ListView.builder(
+                  key: ValueKey('listViewInCategoricalAnimalScreen'),
                   itemBuilder: (ctx, index) {
                     return Padding(
                       padding: EdgeInsets.only(left: 15, right: 15, top: 15),

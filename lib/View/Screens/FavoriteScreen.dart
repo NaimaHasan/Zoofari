@@ -34,6 +34,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 },
                 child: const Text(
                   'Yes',
+                  key: ValueKey('confirmRemoval'),
                   style: TextStyle(
                     color: Color(0xFF4c8e82),
                   ),
@@ -179,7 +180,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                       FavoriteButton(
                                         currentAnimal: favorites[index],
                                         onPressed: confirmUnfavorite,
-                                        key: ValueKey('favoriteBtn'),
+                                        key: ValueKey('favoriteButtonOnFavoriteScreen'),
                                         showToast: () {
                                           MotionToast(
                                             backgroundType:

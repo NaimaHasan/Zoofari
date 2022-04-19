@@ -77,7 +77,7 @@ class HomeTopScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                FavoriteMenu(),
+                FavoriteMenu(key: ValueKey('homeFavoriteMenu')),
               ],
             ),
           ),

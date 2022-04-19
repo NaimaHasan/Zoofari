@@ -2,46 +2,53 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:zoofari/View/Auxiliary/Home/CategoricalScrollItem.dart';
 
-final List<Map<String, String>> imgList = [
+final List<Map<String, dynamic>> imgList = [
   {
     'imageURL':
         'https://a-z-animals.com/media/2022/03/red-eyed-tree-frog-2-768x461.jpg',
-    'title': 'Amphibian'
+    'title': 'Amphibian',
+    'key': ValueKey("Amphibian Key"),
   },
   {
     'imageURL':
         'https://a-z-animals.com/media/2021/04/Scarlet-Macaw-on-branch-768x401.jpg',
-    'title': 'Bird'
+    'title': 'Bird',
+    'key': ValueKey("Bird Key"),
   },
   {
     'imageURL':
         'https://a-z-animals.com/media/2022/01/Goldfish-header-768x401.jpg',
-    'title': 'Fish'
+    'title': 'Fish',
+    'key': ValueKey("Fish Key"),
   },
   {
     'imageURL':
         'https://a-z-animals.com/media/animals/images/original/jaguar6.jpg',
-    'title': 'Mammal'
+    'title': 'Mammal',
+    'key' : ValueKey("Mammal Key"),
   },
   {
     'imageURL':
         'https://a-z-animals.com/media/2022/01/Green-Tree-Python-header-768x401.jpg',
-    'title': 'Reptile'
+    'title': 'Reptile',
+    'key': ValueKey("Reptile Key"),
   }
 ];
 
 final List<Widget> imageSliders = imgList
     .map((item) => CategoricalScrollItem(
-        key: UniqueKey(),
+        key: item['key'] as ValueKey,
         imageURL: item['imageURL'] as String,
         title: item['title'] as String))
     .toList();
+
 
 class CategoricalScroll extends StatelessWidget {
   const CategoricalScroll({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
         Padding(

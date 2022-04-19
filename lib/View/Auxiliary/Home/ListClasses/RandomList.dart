@@ -70,6 +70,7 @@ class _RandomListState extends State<RandomList> {
                   padding: EdgeInsets.only(right: 10, top: 8),
                   child: Text(
                     'VIEW MORE',
+                    key: ValueKey("Random View More"),
                     style: TextStyle(
                       fontSize: 10,
                       color: Colors.black,
