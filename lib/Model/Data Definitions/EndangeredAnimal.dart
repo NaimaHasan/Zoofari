@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'Animal.dart';
 
+///Class containing the basic structure of information of the animal with category Endangered
 class EndangeredAnimal extends Animal {
   late String _endangeredStatus;
 

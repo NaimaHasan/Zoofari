@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zoofari/View/Screens/FavoriteScreen.dart';
 
+///Class structuring the favorite menu displayed on every screen other than favorite screen
 class FavoriteMenu extends StatelessWidget {
   const FavoriteMenu({Key? key}) : super(key: key);
 

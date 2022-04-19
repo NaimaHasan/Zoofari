@@ -5,8 +5,12 @@ import 'package:zoofari/View/Auxiliary/Helpers/CustomBottomDrawer.dart';
 
 import 'DetailMiscellaneous.dart';
 
+
+///Class forming the structure of the detail drawer of the animal detail screen
 class DetailDrawer extends StatefulWidget {
   const DetailDrawer({Key? key, required this.animal}) : super(key: key);
+
+  ///Animal displayed on the screen
   final animal;
 
   @override
@@ -14,6 +18,8 @@ class DetailDrawer extends StatefulWidget {
 }
 
 class _DetailDrawerState extends State<DetailDrawer> {
+
+  ///Controllers required for smooth navigation of the tabs
   final CustomBottomDrawerController controller =
       CustomBottomDrawerController();
   late PageController _pageController;
@@ -23,6 +29,7 @@ class _DetailDrawerState extends State<DetailDrawer> {
     ScrollController(),
   ];
 
+  ///_pageController is initialized to 0
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
@@ -56,6 +63,7 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 labelColor: Theme.of(context).primaryColor,
                 unselectedLabelColor: Colors.black,
                 tabs: [
+                  ///Names of the three tabs displayed on the screen
                   Tab(text: 'Overview', key: ValueKey('overview tab'),),
                   Tab(text: 'Features', key: ValueKey('features tab'),),
                   Tab(text: 'Miscellaneous', key: ValueKey('miscellaneous tab'), ),
@@ -74,6 +82,7 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 physics: NeverScrollableScrollPhysics(),
                 controller: _pageController,
                 children: <Widget>[
+                  ///Contents of the tabs displayed on the screen
                   DetailOverview(
                       controller: scrollControllers[0], animal: widget.animal),
                   DetailFeatures(

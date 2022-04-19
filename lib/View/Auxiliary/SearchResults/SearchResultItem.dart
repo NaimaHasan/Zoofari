@@ -5,12 +5,17 @@ import '../../../Controller/SearchController/StringManipulator.dart';
 import '../../Buttons/FavoriteButton.dart';
 import '../../Screens/AnimalDetailsScreen.dart';
 
+///Class structuring the items displayed in the search result screen
 class SearchResultItem extends StatelessWidget {
   const SearchResultItem({required this.animal, Key? key}) : super(key: key);
+
+  ///Variable for the animal to be displayed in the item
   final Animal animal;
 
   @override
   Widget build(BuildContext context) {
+
+    ///Tapping on the search result item will result in navigation to the animal detail screen
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -24,6 +29,8 @@ class SearchResultItem extends StatelessWidget {
           ),
         );
       },
+
+      ///Structure of the search result item
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: Stack(
@@ -44,6 +51,8 @@ class SearchResultItem extends StatelessWidget {
                       },
                     ),
             ),
+
+            ///Gradient on top of the item image so that the item title is always visible
             Positioned(
               bottom: 0,
               child: Container(

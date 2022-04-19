@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'Animal.dart';
 
+///Class containing the basic structure of information of the animal with category Bird
 class Bird extends Animal {
   late String _wingspan;
   late String _nestingLocation;

@@ -2,6 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:zoofari/View/Auxiliary/Home/CategoricalScrollItem.dart';
 
+
+///Class structuring the scroll displaying the Categories of animals available in the application on home screen
+
+///Variable for the list of map of imageURL to title to key to be displayed in each of the scroll item
 final List<Map<String, dynamic>> imgList = [
   {
     'imageURL':
@@ -51,6 +55,8 @@ class CategoricalScroll extends StatelessWidget {
 
     return Column(
       children: [
+
+        ///Structure of the heading displayed on top of the categorical item scroll
         Padding(
           padding: EdgeInsets.only(top: 40, bottom: 35, left: 18),
           child: Row(

@@ -7,28 +7,37 @@ import 'package:zoofari/View/Buttons/FavoriteMenu.dart';
 import '../../Controller/SearchController/StringManipulator.dart';
 import '../../Model/Data Definitions/Animal.dart';
 
+///Class structuring the animal detail screen
 class AnimalDetailsScreen extends StatelessWidget {
   const AnimalDetailsScreen({Key? key, required this.animal}) : super(key: key);
+
+  ///Variable for route name for the animal detail screen
   static const String routeName = '/animalDetail';
+
+  ///Variable for the animal to be displayed
   final animal;
 
   @override
   Widget build(BuildContext context) {
-    var aml = CustomAnimalInfo.getTypeCastedAnimal(animal);
+
+    ///Variable for the typeCasted animal
+    var castedAnimal = CustomAnimalInfo.getTypeCastedAnimal(animal);
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Stack(
         children: [
+
+          ///Structure of the image to be displayed on top of the animal detail screen
           Padding(
             padding:
                 EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
             child: Container(
               height: MediaQuery.of(context).size.height / 2.5,
               width: double.infinity,
-              child: ((aml != null) &&
-                      (aml is Animal) &&
-                      (aml.imageLinks.isNotEmpty))
-                  ? Image.network(aml.imageLinks[0], fit: BoxFit.cover,
+              child: ((castedAnimal != null) &&
+                      (castedAnimal is Animal) &&
+                      (castedAnimal.imageLinks.isNotEmpty))
+                  ? Image.network(castedAnimal.imageLinks[0], fit: BoxFit.cover,
                       errorBuilder: (context, exception, stackTrace) {
                       return Image.asset(
                         "assets/dummy.jpg",
@@ -41,6 +50,8 @@ class AnimalDetailsScreen extends StatelessWidget {
                     ),
             ),
           ),
+
+          ///Gradient applied on top of the image so that the icons and title on top are visible
           Padding(
             padding:
                 EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
@@ -76,9 +87,9 @@ class AnimalDetailsScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(top: 10, left: 8),
                     child: Text(
-                      ((aml != null) && (aml is Animal))
+                      ((castedAnimal != null) && (castedAnimal is Animal))
                           ? StringManipulator.customizeCommonName(
-                              aml.commonName)
+                              castedAnimal.commonName)
                           : 'title',
                       style: TextStyle(
                         color: Colors.white,

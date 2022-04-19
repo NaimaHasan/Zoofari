@@ -5,9 +5,11 @@ import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 
 import '../../../../Controller/SearchController/StringManipulator.dart';
 
+///Helper class for structuring the Endangered list item and Random list item on home screen
 class ListItem extends StatefulWidget {
   const ListItem({required this.animal, Key? key}) : super(key: key);
 
+  ///Variable for animal to be displayed on the item
   final Animal animal;
 
   @override
@@ -24,6 +26,8 @@ class _ListItemState extends State<ListItem> {
 
   @override
   Widget build(BuildContext context) {
+
+    ///Tapping on the animal will result in navigation to the animal detail screen of the specific animal
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -37,6 +41,8 @@ class _ListItemState extends State<ListItem> {
           ),
         );
       },
+
+      ///Structure of the item
       child: Card(
         color: Colors.white,
         shadowColor: Colors.white,

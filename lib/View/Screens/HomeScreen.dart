@@ -10,6 +10,8 @@ import 'package:zoofari/View/Auxiliary/Home/ListClasses/EndangeredList.dart';
 import 'package:zoofari/View/Auxiliary/Home/ListClasses/RandomList.dart';
 import 'package:zoofari/View/Screens/SplashScreen.dart';
 
+
+///Class containing the home screen
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
   static const String routeName = '/';
@@ -19,10 +21,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  ///Variable required to time of the splashscreen
   bool isSplashScreen = true;
 
   void initState() {
     super.initState();
+
+    ///Timer for setting duration for the splashScreen
     Timer(
       Duration(seconds: 3),
       () {
@@ -58,19 +64,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: MediaQuery.of(context).size.height,
                 child: SingleChildScrollView(
                   child: Column(
+
+                    ///Structure of the home screen using helper classes
                     children: [
                       HomeTopScreen(),
                       const CategoricalScroll(),
-                      const RandomList(
-                        key: ValueKey("Random"),
-                        title: 'Random',
-                        icon: Icons.shuffle,
-                      ),
-                      const EndangeredList(
-                        key: ValueKey("Endangered"),
-                        title: 'Endangered',
-                        icon: Icons.warning_amber_outlined,
-                      ),
+                      const RandomList(key: ValueKey("Random")),
+                      const EndangeredList(key: ValueKey("Endangered")),
                       Container(height: 50),
                     ],
                   ),

@@ -8,10 +8,7 @@ import '../../../../Controller/CategoricalController/AnimalProviders/RandomProvi
 import '../../../../Model/Data Definitions/Animal.dart';
 
 class RandomList extends StatefulWidget {
-  const RandomList({required this.title, required this.icon, Key? key})
-      : super(key: key);
-  final String title;
-  final IconData icon;
+  const RandomList({Key? key}) : super(key: key);
 
   @override
   _RandomListState createState() => _RandomListState();
@@ -41,14 +38,14 @@ class _RandomListState extends State<RandomList> {
           child: Row(
             children: [
               Icon(
-                widget.icon,
+                Icons.shuffle,
                 color: Color(0xffd4af37),
                 size: 18,
               ),
               Container(width: 10),
               Expanded(
                 child: Text(
-                  widget.title,
+                  'Random',
                   style: TextStyle(
                     fontSize: 18,
                     fontFamily: 'Quicksand-SemiBold',
@@ -61,7 +58,7 @@ class _RandomListState extends State<RandomList> {
                     context,
                     PageRouteBuilder(
                       pageBuilder: (context, animation1, animation2) =>
-                          CategoricalAnimalScreen(title: widget.title),
+                          CategoricalAnimalScreen(title: 'Random'),
                       transitionDuration: Duration(seconds: 0),
                     ),
                   );

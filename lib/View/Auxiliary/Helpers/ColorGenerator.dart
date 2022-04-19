@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+///Helper class for generating the necessary colors
 class ColorGenerator{
   static Map<int, Color> getSwatch(Color color) {
     final hslColor = HSLColor.fromColor(color);

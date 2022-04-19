@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 
 import '../../Screens/CategoricalAnimalScreen.dart';
 
+
+///Class structuring the each item of the categorical scroll
 class CategoricalScrollItem extends StatelessWidget {
   const CategoricalScrollItem(
       {required this.imageURL, required this.title, Key? key})
       : super(key: key);
+
+  ///Variables for the imageURL and title of the scroll item
   final String imageURL;
   final String title;
 
   @override
   Widget build(BuildContext context) {
+
+    ///Tapping on the scroll item will result in navigation to the respective categorical screens
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -22,6 +28,8 @@ class CategoricalScrollItem extends StatelessWidget {
           ),
         );
       },
+
+      ///Structure of the scroll items
       child: Container(
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(5.0)),

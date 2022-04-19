@@ -3,6 +3,7 @@ import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 import 'package:zoofari/View/Auxiliary/Helpers/DummyAnimalList.dart';
 
+///Class containing the provider for the random animal on the home screen list view
 class Randoms with ChangeNotifier {
   List<Animal> _list = DummyAnimalList.animalList;
 

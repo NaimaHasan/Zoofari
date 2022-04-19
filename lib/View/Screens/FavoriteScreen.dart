@@ -8,6 +8,7 @@ import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 
 import '../../Model/Data Definitions/Animal.dart';
 
+///Class containing the structure of the favorite screen
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({Key? key}) : super(key: key);
   static const String routeName = '/favorite';
@@ -16,9 +17,11 @@ class FavoriteScreen extends StatefulWidget {
 }
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
+  ///Variables required for the display of the list of items
   List<Animal> favorites = DatabaseManager.getAllFavorites();
   bool isConfirmed = false;
 
+  ///Function for thr structure of the confirmation dialogue
   Future<bool> confirmUnfavorite(BuildContext context) async {
     await showDialog(
         context: context,
@@ -90,6 +93,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               fit: BoxFit.cover,
             );
           }
+
+          ///Structure of the favorite list view
           return ListView.builder(
             itemBuilder: (ctx, index) {
               return Padding(
@@ -103,6 +108,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      ///Tapping on the favorite screen item will result in navigation to the animal detail screen
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -116,6 +122,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             ),
                           );
                         },
+
+                        ///Structure of the favorite screen list item
                         child: Stack(
                           children: [
                             Container(
@@ -180,7 +188,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                       FavoriteButton(
                                         currentAnimal: favorites[index],
                                         onPressed: confirmUnfavorite,
-                                        key: ValueKey('favoriteButtonOnFavoriteScreen'),
+                                        key: ValueKey(
+                                            'favoriteButtonOnFavoriteScreen'),
+
+                                        ///Structure of the toast shown on favorite screen
                                         showToast: () {
                                           MotionToast(
                                             backgroundType:

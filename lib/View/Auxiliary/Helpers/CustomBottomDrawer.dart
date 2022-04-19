@@ -1,10 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-/// Created by GP
-/// 2020/11/25.
-
-/// drawer controller.
 class CustomBottomDrawerController {
   /// open drawer.
   void open() {

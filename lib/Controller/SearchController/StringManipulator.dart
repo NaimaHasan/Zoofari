@@ -1,3 +1,5 @@
+
+///Class aiding in parsing the search key string
 class StringManipulator {
   static String constructSearchKeyWord(String searchKey) {
     return formatSearchKey(searchKey).toLowerCase().split(" ").join('+');

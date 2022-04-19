@@ -1,6 +1,8 @@
 import 'package:zoofari/Model/Data Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/LocalDatabase.dart';
 
+
+///Class aiding in controlling the addition and removal of an animal from the favorite list
 class DatabaseManager {
   static Future<void> initialize() async {
     await LocalDatabase.initialize();

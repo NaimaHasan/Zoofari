@@ -10,6 +10,7 @@ import 'package:zoofari/Model/Data%20Definitions/Fish.dart';
 import 'package:zoofari/Model/Data%20Definitions/Mammal.dart';
 import 'package:zoofari/Model/Data%20Definitions/Reptile.dart';
 
+///Class describing the structure of the online repository from which data is to be retrieved
 class OnlineRepository {
   static var random = new Random();
   static var client = http.Client();

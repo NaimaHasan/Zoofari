@@ -6,6 +6,7 @@ import '../../Model/Data Definitions/Fish.dart';
 import '../../Model/Data Definitions/Mammal.dart';
 import '../../Model/Data Definitions/Reptile.dart';
 
+///Class that aids in fetching the animal information
 class CustomAnimalInfo {
   static T? cast<T>(x) => x is T ? x : null;
 

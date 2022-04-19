@@ -6,6 +6,7 @@ import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Screens/AnimalDetailsScreen.dart';
 
+///Class structuring the random animal displayed on top of the home screen
 class HomeTopAnimal extends StatefulWidget {
   const HomeTopAnimal({Key? key}) : super(key: key);
 
@@ -14,6 +15,8 @@ class HomeTopAnimal extends StatefulWidget {
 }
 
 class _HomeTopAnimalState extends State<HomeTopAnimal> {
+
+  ///Variables required for displaying the animal
   late Animal topRandomAnimal;
   late Future _topFuture;
 
@@ -29,6 +32,8 @@ class _HomeTopAnimalState extends State<HomeTopAnimal> {
 
   @override
   Widget build(BuildContext context) {
+
+    ///Tapping on the random animal will result in navigating to the animal detail screen of the specific animal
     return GestureDetector(
       onTap: () {
         try {
@@ -86,6 +91,8 @@ class _HomeTopAnimalState extends State<HomeTopAnimal> {
                   topRandomAnimal = futureAnimal.homeTopRandomAnimal;
                   return Stack(
                     children: [
+
+                      ///Structure of the image displayed on top of the sceren
                       Container(
                         height: MediaQuery.of(context).size.height / 2.5,
                         width: MediaQuery.of(context).size.width,
@@ -105,6 +112,8 @@ class _HomeTopAnimalState extends State<HomeTopAnimal> {
                                 fit: BoxFit.cover,
                               ),
                       ),
+
+                      ///Gradient applied on top of the image so that the title and other widgets on top of the image can be visible for all images
                       Container(
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height / 5,
@@ -133,6 +142,8 @@ class _HomeTopAnimalState extends State<HomeTopAnimal> {
                           ),
                         ),
                       ),
+
+                      ///Structure of the name of the animal displayed
                       Positioned(
                         bottom: 5,
                         child: Row(
@@ -151,6 +162,8 @@ class _HomeTopAnimalState extends State<HomeTopAnimal> {
                                 ),
                               ),
                             ),
+
+                            ///Favorite button structured using the helper class Favorite button
                             FavoriteButton(
                               key:ValueKey('homeTopAnimalFavoriteButton'),
                               currentAnimal: topRandomAnimal,

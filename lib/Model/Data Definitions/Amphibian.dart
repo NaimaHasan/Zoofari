@@ -1,9 +1,8 @@
 import 'dart:convert';
-
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
-
 import 'Animal.dart';
 
+///Class containing the basic structure of information of the animal with category Amphibian
 class Amphibian extends Animal {
   late String _avgSpawnSz;
   late String _waterType;

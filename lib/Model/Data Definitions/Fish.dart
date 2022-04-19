@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'Animal.dart';
 
+///Class containing the basic structure of information of the animal with category Fish
 class Fish extends Animal {
   late String _groupBehavior;
   late String _estimatedPopulationSz;

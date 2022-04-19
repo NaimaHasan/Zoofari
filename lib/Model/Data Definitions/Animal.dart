@@ -5,6 +5,8 @@ import 'package:hive/hive.dart';
 part 'Animal.g.dart';
 
 @HiveType(typeId: 0)
+
+///Class containing the basic structure of information of the animals
 class Animal {
   late String _commonName;
   late String _scientificName;

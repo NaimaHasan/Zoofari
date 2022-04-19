@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+///Class structuring the splash screen displayed on top of the home screen
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
   @override

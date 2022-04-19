@@ -6,14 +6,18 @@ import 'package:zoofari/Controller/SearchController/StringManipulator.dart';
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 import 'package:zoofari/View/Buttons/FavoriteButton.dart';
 import 'package:zoofari/View/Buttons/FavoriteMenu.dart';
-
 import 'AnimalDetailsScreen.dart';
 
+
+///Class structuring thr categorical animal screen
 class CategoricalAnimalScreen extends StatefulWidget {
   const CategoricalAnimalScreen({required this.title, Key? key})
       : super(key: key);
 
+  ///Variable for route name of the categorical animal screen
   static const String routeName = '/categoryAnimal';
+
+  ///Variable for title on top of the categorical animal screen
   final String title;
 
   @override
@@ -22,6 +26,8 @@ class CategoricalAnimalScreen extends StatefulWidget {
 }
 
 class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
+
+  ///Variables required for fetching the information and structuring the categorical animal screen
   late Future _categoricalFuture;
   List<Animal> listAnimal = List.empty(growable: true);
   late String category;
@@ -64,6 +70,8 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
         iconTheme: IconThemeData(
           color: Colors.white, //change your color here
         ),
+
+        ///Structuring the leading icon beside the title
         leading: Padding(
           padding: EdgeInsets.only(
               top: (widget.title == 'Endangered') ? 18 : 10,
@@ -174,6 +182,8 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                 controller: _refreshController,
                 onRefresh: _onRefresh,
                 onLoading: _onLoading,
+
+                ///Structure of the categorical screen listview
                 child: ListView.builder(
                   key: ValueKey('listViewInCategoricalAnimalScreen'),
                   itemBuilder: (ctx, index) {
@@ -184,6 +194,8 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+
+                            ///Tapping on the categorical screen item will result in navigation to the animal detail screen
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
@@ -198,6 +210,8 @@ class _CategoricalAnimalScreenState extends State<CategoricalAnimalScreen> {
                                   ),
                                 );
                               },
+
+                              ///Structure of the categorical screen item
                               child: Stack(
                                 children: [
                                   Container(

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'Animal.dart';
 
+///Class containing the basic structure of information of the animal with category Mammal
 class Mammal extends Animal {
   late String _ageOfWeaning;
   late String _avgLitterSz;

@@ -6,12 +6,19 @@ import '../../../Controller/SearchController/StringManipulator.dart';
 import '../../../Model/Data Definitions/Animal.dart';
 import 'DetailItems.dart';
 
+///Class forming the structure of the third tab of detail drawer in animal detail screen
 class DetailMiscellaneous extends StatelessWidget {
   const DetailMiscellaneous(
       {required this.controller, Key? key, required this.animal})
       : super(key: key);
+
+  ///Animal to be displayed on the screen
   final animal;
+
+  ///Variable for controller for smooth navigation
   final ScrollController controller;
+
+  ///Variables required to display the information on the screen
   static List<String> preyList = List.empty(growable: true);
   static List<String> predatorList = List.empty(growable: true);
   static String notAvail = 'Not Available';
@@ -20,16 +27,20 @@ class DetailMiscellaneous extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ///Variable for typeCasted animal
     var castedAnimal = CustomAnimalInfo.getTypeCastedAnimal(animal);
 
+    ///List of endangered keywords
     List<String> endangeredKeywords = [
       'Extinct',
       'Extinct in the Wild',
       'Endangered',
       'Critically Endangered',
       'Vulnerable',
-      'Near Threatend'
+      'Near Threatened'
     ];
+
+    ///Fetching the information to be displayed on the screen
     if ((castedAnimal != null) && (castedAnimal is Animal)) {
       preyList = List.empty();
       predatorList = List.empty();
@@ -48,6 +59,7 @@ class DetailMiscellaneous extends StatelessWidget {
       controller: controller,
       child: Column(
         children: [
+          ///Structure of the endangered status on top of the screen
           Padding(
             padding: EdgeInsets.only(bottom: 30),
             child: Container(
@@ -98,6 +110,8 @@ class DetailMiscellaneous extends StatelessWidget {
               ),
             ),
           ),
+
+          ///Structure of the fun fact displayed on the screen
           Text(
             'Fun Fact',
             style: TextStyle(
@@ -115,6 +129,8 @@ class DetailMiscellaneous extends StatelessWidget {
               style: TextStyle(fontSize: 15, height: 1.5),
             ),
           ),
+
+          ///Structure of the habitat displayed on the screen
           Text(
             'Habitats',
             style: TextStyle(
@@ -132,6 +148,8 @@ class DetailMiscellaneous extends StatelessWidget {
               style: TextStyle(fontSize: 15, height: 1.5),
             ),
           ),
+
+          ///Additional information, preys, predators structured using the helper classes
           DetailItems(
             title: 'Additional Information',
             itemMap: CustomAnimalInfo.getMiscellaneousMap(castedAnimal),

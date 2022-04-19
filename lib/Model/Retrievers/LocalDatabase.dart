@@ -2,6 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../Data Definitions/Animal.dart';
 
+///Class containing the basic structure of information to be stored in the local database
 class LocalDatabase {
   static List<Animal> _favoriteAnimals = List.empty(growable: true);
   static const String DB_BOX_NAME = "Favorites";

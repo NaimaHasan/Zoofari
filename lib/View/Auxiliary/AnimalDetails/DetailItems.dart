@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
+///Helper class for structuring the detail drawer
+///Items that are displayed as list with a heading and information places horizontally side by side are structured here
 class DetailItems extends StatelessWidget {
   const DetailItems({required this.title, required this.itemMap, Key? key})
       : super(key: key);
 
+  ///Map of the heading of information and the information
   final Map<String, String> itemMap;
+
+  ///Title to be placed on top of the list
   final String title;
 
   @override
@@ -26,6 +31,7 @@ class DetailItems extends StatelessWidget {
                 ),
               ),
             ),
+            ///List view structure for the list if the list is not empty
             (itemMap.isNotEmpty)
                 ? ListView.builder(
                     physics: NeverScrollableScrollPhysics(),

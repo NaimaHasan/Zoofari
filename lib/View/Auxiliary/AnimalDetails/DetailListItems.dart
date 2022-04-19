@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 
+///Helper class for structuring the detail drawer
+///Items that have listed information are structured here
 class DetailListItems extends StatelessWidget {
   const DetailListItems({required this.title, required this.list, Key? key})
       : super(key: key);
+
+  ///List of the information
   final List<String> list;
+
+  ///Title of the item to be displayed
   final String title;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: 40),
       child: Column(
         children: [
+          ///Structure of the title of the item
           Padding(
             padding: EdgeInsets.only(top: 10, bottom: 10),
             child: Container(
@@ -41,6 +49,7 @@ class DetailListItems extends StatelessWidget {
                     ),
                   ),
                 )
+              ///Structure of the list view of the items
               : ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   padding: EdgeInsets.zero,

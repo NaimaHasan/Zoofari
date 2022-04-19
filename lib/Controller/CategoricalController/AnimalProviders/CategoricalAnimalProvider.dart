@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zoofari/Controller/CategoricalController/CategoricalAnimalFetcher.dart';
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 
+///Class containing the provider for categorical animal
 class CategoricalProvider with ChangeNotifier {
   List<Animal> _list = List.empty(growable: true);
   String callingCategory = "";

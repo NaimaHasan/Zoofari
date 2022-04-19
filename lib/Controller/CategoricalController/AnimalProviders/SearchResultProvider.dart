@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:zoofari/Model/Data%20Definitions/Animal.dart';
 import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 
+///Class containing the provider for the search result
 class SearchController with ChangeNotifier {
   List<Animal> _searchResults = List.empty(growable: true);
   

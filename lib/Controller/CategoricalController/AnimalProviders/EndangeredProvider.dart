@@ -5,6 +5,7 @@ import 'package:zoofari/View/Auxiliary/Helpers/DummyAnimalList.dart';
 import '../../../Model/Data Definitions/Animal.dart';
 import '../../../Model/Data Definitions/EndangeredAnimal.dart';
 
+///Class containing the provider for Endangered animal on the home screen listview
 class Endangered with ChangeNotifier {
   var _list = DummyAnimalList.animalList;
 

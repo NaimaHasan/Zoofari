@@ -6,6 +6,7 @@ import 'package:zoofari/Model/Retrievers/OnlineRepository.dart';
 
 import '../../../Model/Data Definitions/Animal.dart';
 
+///Class containing the provider for the random animal on top of the home screen
 class HomeTopRandomAnimal with ChangeNotifier {
   Animal _animal = Animal.emptyAnimal();
   Random random = Random();

@@ -3,14 +3,17 @@ import 'package:zoofari/Controller/Storage/DatabaseManager.dart';
 
 import '../../Model/Data Definitions/Animal.dart';
 
-class FavoriteButton extends StatefulWidget {
-  FavoriteButton(
-      {required this.currentAnimal,
-      required this.onPressed,
-      Key? key,
-      required this.showToast})
-      : super(key: key);
 
+///Class structuring the favorite button on every screen
+class FavoriteButton extends StatefulWidget {
+  FavoriteButton({
+    required this.currentAnimal,
+    required this.onPressed,
+    required this.showToast,
+    Key? key,
+  }) : super(key: key);
+
+  ///Variables required for properly displaying and updating the favorite button and favorite list
   final Animal currentAnimal;
   final Future<bool> Function(BuildContext context) onPressed;
   final Function() showToast;

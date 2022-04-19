@@ -4,6 +4,7 @@ import 'package:zoofari/View/Screens/SearchResultsScreen.dart';
 
 import 'HomeTopAnimal.dart';
 
+///Class structuring the Top screen of the home page
 class HomeTopScreen extends StatelessWidget {
   HomeTopScreen({Key? key}) : super(key: key);
   final _controller = TextEditingController();
@@ -37,6 +38,8 @@ class HomeTopScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                ///Structure of the search bar on top of the screen
                 Container(
                   width: MediaQuery.of(context).size.width * 0.45,
                   height: 28,

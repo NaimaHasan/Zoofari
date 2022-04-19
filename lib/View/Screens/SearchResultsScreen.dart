@@ -4,11 +4,14 @@ import 'package:zoofari/Controller/CategoricalController/AnimalProviders/SearchR
 import 'package:zoofari/View/Auxiliary/SearchResults/SearchResultItem.dart';
 import 'package:zoofari/View/Buttons/FavoriteMenu.dart';
 
+///Class structuring the search result screen
 class SearchResultsScreen extends StatefulWidget {
   const SearchResultsScreen({required this.searchKey, Key? key})
       : super(key: key);
 
   static const String routeName = '/searchResults';
+
+  ///Variable for thr search key
   final String searchKey;
 
   @override
@@ -66,6 +69,8 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                             style: TextStyle(fontSize: 20),
                           ),
                         ),
+
+                        ///Structure of the search result grid
                         Padding(
                           padding: EdgeInsets.only(right: 22),
                           child: GridView.builder(
