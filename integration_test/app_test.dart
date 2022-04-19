@@ -63,6 +63,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();
+      expect(find.byType(GridView), findsNothing);
 
       // back to home screen
       await tester.tapAt(Offset(30, 30));
@@ -75,16 +76,32 @@ void main() {
       await tester.pumpAndSettle();
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle(Duration(seconds: 2));
+      expect(find.byType(GridView), findsWidgets);
+      
     });  
 
 
-    // testWidgets('Animal details screen', (tester) async {
-    //   app.main();
-    //   await tester.pumpAndSettle();
-    //   final topAnimal = find.byKey(ValueKey('Home Top Animal'));
-    //   await tester.tap(topAnimal);
-    //   await tester.pumpAndSettle();
-    //   await tester.
-    // });  
+    testWidgets('Animal details screen', (tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+      final topAnimal = find.byKey(ValueKey('Home Top Animal'));
+      await tester.tap(topAnimal);
+      await tester.pumpAndSettle();
+      final details = find.byKey(ValueKey("Detail Drawer"));
+      expect(details, findsOneWidget);
+
+      // dragging the drawer up
+      await tester.timedDrag(details, Offset(0, -100), Duration(seconds: 2));
+      await tester.pumpAndSettle(Duration(seconds: 1));
+      final features = find.byKey(ValueKey('features tab'));
+      final miscellaneous = find.byKey(ValueKey('miscellaneous tab'));
+
+
+      // viewing the other tabs
+      await tester.tap(features);
+      await tester.pumpAndSettle(Duration(seconds: 2));
+      await tester.tap(miscellaneous);
+      await tester.pumpAndSettle(Duration(seconds: 2));
+    });  
   });
 }

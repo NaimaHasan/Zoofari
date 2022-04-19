@@ -102,7 +102,7 @@ class AnimalDetailsScreen extends StatelessWidget {
               ],
             ),
           ),
-          DetailDrawer(animal: animal),
+          DetailDrawer(key: ValueKey("Detail Drawer"),animal: animal),
         ],
       ),
     );

@@ -56,9 +56,9 @@ class _DetailDrawerState extends State<DetailDrawer> {
                 labelColor: Theme.of(context).primaryColor,
                 unselectedLabelColor: Colors.black,
                 tabs: [
-                  Tab(text: 'Overview'),
-                  Tab(text: 'Features'),
-                  Tab(text: 'Miscellaneous'),
+                  Tab(text: 'Overview', key: ValueKey('overview tab'),),
+                  Tab(text: 'Features', key: ValueKey('features tab'),),
+                  Tab(text: 'Miscellaneous', key: ValueKey('miscellaneous tab'), ),
                 ],
               ),
             ),
