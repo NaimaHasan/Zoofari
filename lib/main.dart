@@ -34,7 +34,7 @@ void main() async {
       ],
       child: MyApp(),
     ));
-    // catching SocketException if not internet found
+    // catching SocketException if no internet found
   } on SocketException {
     // try again with refresh
     main();
@@ -47,7 +47,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Zoofari',
-      // debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: MaterialColor(
           0xFF9FC5F8,
@@ -62,7 +61,6 @@ class MyApp extends StatelessWidget {
           ),
         ),
         appBarTheme: AppBarTheme(color: Color(0xFF88bbb2)),
-        //backgroundColor: const Color(0xFFe9f8f5),
         backgroundColor: const Color(0xFFf6fffd),
         dividerColor: Color(0xFF88bbb2),
         fontFamily: 'Quicksand',
@@ -74,7 +72,7 @@ class MyApp extends StatelessWidget {
             CategoricalAnimalScreen(title: ''),
         AnimalDetailsScreen.routeName: (ctx) => AnimalDetailsScreen(
               animal: Animal.emptyAnimal(),
-            ), // TODO: don't know what to pass
+            ),
         SearchResultsScreen.routeName: (ctx) =>
             SearchResultsScreen(searchKey: '')
       },

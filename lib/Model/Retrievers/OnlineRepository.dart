@@ -15,7 +15,6 @@ class OnlineRepository {
   static var random = new Random();
   static var client = http.Client();
   static const String _hostWebsite = "https://a-z-animals-api.herokuapp.com";
-  // static const String _hostWebsite = "https://animalsaroundus.pythonanywhere.com";
   static const String _allAnimalsURL = _hostWebsite + '/animals';
 
   static String get allAnimalsURL => _allAnimalsURL;
@@ -25,7 +24,6 @@ class OnlineRepository {
       _allAnimalsURL + '/name=$animalName';
 
   static String getSearchURL(String searchText) {
-    //String parsedText = searchText.toLowerCase().replaceAll(' ', '+');
     return _hostWebsite + '/search/$searchText';
   }
 
@@ -38,7 +36,6 @@ class OnlineRepository {
     List<dynamic> animalsFetched = List.empty(growable: true);
     for (int itr = 0; itr < animalsToFetch.length; itr++) {
       var fetched = await fetchSingleAnimal(animalsToFetch[itr], category);
-      //print("fetched in animal list compilation $fetched");
       if (fetched != null) {
         animalsFetched.add(fetched);
       }
@@ -48,26 +45,22 @@ class OnlineRepository {
 
   static List<String> extractNames(var jsonString, var category) {
     int resultFound = jsonString['found'];
-    // print("result found $resultFound");
     List<int> positions = List.empty(growable: true);
     for (int itr = 0; itr < 5; itr++) {
       int newAdd = random.nextInt(resultFound - 1);
-      if(! ( positions.contains(newAdd) ) ) 
+      if (!(positions.contains(newAdd)))
         positions.add(newAdd);
-      else itr--;
+      else
+        itr--;
     }
     List<String> toFetch = List.empty(growable: true);
-    // print(jsonString);
     for (int itr = 0; itr < positions.length; itr++) {
-      // print(jsonString[category][positions[itr]]);
       toFetch.add(jsonString[category][positions[itr]]);
     }
-    //print("to fetch list in extract names $toFetch");
     return toFetch;
   }
 
   static List<String> extractSearchResultNames(var jsonString) {
-    // print(jsonString);
     jsonString = json.decode(jsonString);
     List<dynamic> resultList = jsonString['search_result'];
     List<String> toReturn = List.empty(growable: true);
