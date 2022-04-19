@@ -15,7 +15,7 @@ class HomeTopScreen extends StatelessWidget {
       margin: EdgeInsets.zero,
       child: Stack(
         children: [
-          HomeTopAnimal(),
+          HomeTopAnimal(key: ValueKey('Home Top Animal'),),
           Padding(
             padding: EdgeInsets.only(bottom: 10, left: 15, right: 5),
             child: Row(
@@ -41,6 +41,7 @@ class HomeTopScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.45,
                   height: 28,
                   child: TextFormField(
+                    key: ValueKey('Search Bar'),
                     controller: _controller,
                     style: TextStyle(fontSize: 12, color: Colors.white),
                     cursorColor: Colors.white,
