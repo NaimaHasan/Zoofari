@@ -46,6 +46,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               TextButton(
                 onPressed: () {
                   isConfirmed = false;
+
                   Navigator.of(context).pop();
                 },
                 child: const Text(
@@ -193,32 +194,35 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
 
                                         ///Structure of the toast shown on favorite screen
                                         showToast: () {
-                                          MotionToast(
-                                            backgroundType:
-                                                BACKGROUND_TYPE.solid,
-                                            enableAnimation: false,
-                                            icon: Icons.delete_outline,
-                                            iconSize: 18,
-                                            borderRadius: 7,
-                                            toastDuration: Duration(
-                                                seconds: 1, milliseconds: 500),
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                1.4,
-                                            primaryColor: Color(0xFFe9f8f5),
-                                            secondaryColor:
-                                                Theme.of(context).dividerColor,
-                                            height: 40,
-                                            description: Text(
-                                              'Removed from Favorites',
-                                              style: TextStyle(
-                                                  color: Theme.of(context)
-                                                      .primaryColor),
-                                            ),
-                                            position:
-                                                MOTION_TOAST_POSITION.bottom,
-                                          ).show(context);
+                                          if (isConfirmed) {
+                                            isConfirmed = false;
+                                            MotionToast(
+                                              backgroundType:
+                                                  BACKGROUND_TYPE.solid,
+                                              enableAnimation: false,
+                                              icon: Icons.delete_outline,
+                                              iconSize: 18,
+                                              borderRadius: 7,
+                                              toastDuration:
+                                                  Duration(milliseconds: 500),
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  1.4,
+                                              primaryColor: Color(0xFFe9f8f5),
+                                              secondaryColor: Theme.of(context)
+                                                  .dividerColor,
+                                              height: 40,
+                                              description: Text(
+                                                'Removed from Favorites',
+                                                style: TextStyle(
+                                                    color: Theme.of(context)
+                                                        .primaryColor),
+                                              ),
+                                              position:
+                                                  MOTION_TOAST_POSITION.bottom,
+                                            ).show(context);
+                                          }
                                         },
                                       ),
                                     ],
