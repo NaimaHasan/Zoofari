@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 5),
+      Duration(seconds: 3),
       () {
         setState(
           () {
@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: RefreshIndicator(
+        key: ValueKey('home screen refresh indicator'),
         color: Theme.of(context).dividerColor,
         onRefresh: () async {
           await Provider.of<HomeTopRandomAnimal>(context, listen: false)

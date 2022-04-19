@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:zoofari/View/Screens/FavoriteScreen.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:zoofari/View/Screens/HomeScreen.dart';
 import 'package:zoofari/main.dart' as app;
 void main() {
@@ -103,5 +102,44 @@ void main() {
       await tester.tap(miscellaneous);
       await tester.pumpAndSettle(Duration(seconds: 2));
     });  
+
+    testWidgets('Categorical screen navigation', (tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+      final amphibian = find.byKey(ValueKey("Amphibian Key"));
+      await tester.tap(amphibian);
+      await tester.pumpAndSettle();
+      final listView = find.byKey(ValueKey('listViewInCategoricalAnimalScreen'));
+      await tester.timedDrag(listView, Offset(0, -500), Duration(seconds: 2));
+      await tester.pumpAndSettle();
+      await tester.timedDrag(listView, Offset(0, -500), Duration(seconds: 2));
+      await tester.pumpAndSettle();
+      await tester.timedDrag(listView, Offset(0, -500), Duration(seconds: 2));
+      await tester.pumpAndSettle();
+      expect(find.byType( SmartRefresher ), findsOneWidget);
+    });   
+  
+
+    testWidgets("Home screen scrolls", (tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+      final refreshIndicator = find.byKey(ValueKey('home screen refresh indicator'));
+      // simple scroll down
+      await tester.timedDrag(refreshIndicator, Offset(0, -700), Duration(seconds: 1));
+      await tester.pumpAndSettle();
+      
+      // refresh
+      await tester.timedDrag(refreshIndicator, Offset(0, 1800), Duration(seconds: 1));
+      await tester.timedDrag(refreshIndicator, Offset(0, 700), Duration(seconds: 1));
+      
+      // simple scroll down again
+      await tester.timedDrag(refreshIndicator, Offset(0, -900), Duration(seconds: 1));
+      await tester.pumpAndSettle();
+
+      // scroll the endangered list sideways
+      final endangeredList = find.byKey(ValueKey("Endangered"));
+      await tester.timedDrag(endangeredList, Offset(200, 0), Duration(seconds: 1));
+      await tester.pumpAndSettle();
+    });
   });
 }
