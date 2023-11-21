@@ -13,4 +13,5 @@ The function that this mobile application is aimed to provide are the following 
 - View favorite animals
 - Search for animal/s
 - Go through search results
-
+  
+![Screens](screens/zoofari.pdf)
