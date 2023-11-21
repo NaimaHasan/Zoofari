@@ -13,7 +13,8 @@ The function that this mobile application is aimed to provide are the following 
 - View favorite animals
 - Search for animal/s
 - Go through search results
-  
+
+The preview of the application is given below:  
 <div style="display: flex; justify-content: space-between;">
   <img src="screens/zoofari-01.png" style="width: 22%; padding: 5px;" />
   <img src="screens/zoofari-02.png" style="width: 22%; padding: 5px;" />
