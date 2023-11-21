@@ -44,6 +44,6 @@ The preview of the application is given below:
 </div>
 
 <div style="display: flex; justify-content: space-between;">
-  <img src="screens/zoofari-17.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-18.png" style="width: 25%; padding: 5px;" />
+  <img src="screens/zoofari-17.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-18.png" style="width: 22%; padding: 5px;" />
 </div>
