@@ -15,31 +15,31 @@ The function that this mobile application is aimed to provide are the following 
 - Go through search results
   
 <div style="display: flex; justify-content: space-between;">
-  <img src="screens/zoofari-01.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-02.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-03.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-04.png" style="width: 25%; padding: 5px;" />
+  <img src="screens/zoofari-01.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-02.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-03.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-04.png" style="width: 22%; padding: 5px;" />
 </div>
 
 <div style="display: flex; justify-content: space-between;">
-  <img src="screens/zoofari-05.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-06.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-07.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-08.png" style="width: 25%; padding: 5px;" />
+  <img src="screens/zoofari-05.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-06.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-07.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-08.png" style="width: 22%; padding: 5px;" />
 </div>
 
 <div style="display: flex; justify-content: space-between;">
-  <img src="screens/zoofari-09.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-10.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-11.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-12.png" style="width: 25%; padding: 5px;" />
+  <img src="screens/zoofari-09.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-10.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-11.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-12.png" style="width: 22%; padding: 5px;" />
 </div>
 
 <div style="display: flex; justify-content: space-between;">
-  <img src="screens/zoofari-13.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-14.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-15.png" style="width: 25%; padding: 5px;" />
-  <img src="screens/zoofari-16.png" style="width: 25%; padding: 5px;" />
+  <img src="screens/zoofari-13.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-14.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-15.png" style="width: 22%; padding: 5px;" />
+  <img src="screens/zoofari-16.png" style="width: 22%; padding: 5px;" />
 </div>
 
 <div style="display: flex; justify-content: space-between;">
