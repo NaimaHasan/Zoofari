@@ -13,5 +13,3 @@ The function that this mobile application is aimed to provide are the following 
 - View favorite animals
 - Search for animal/s
 - Go through search results
-
-[zoofari.pdf](https://github.com/NaimaHasan/Zoofari/files/13423559/zoofari.pdf)
